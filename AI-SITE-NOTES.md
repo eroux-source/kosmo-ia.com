@@ -8,7 +8,7 @@
 - Charte KOSMO® (tokens, composants, animations) reprise telle quelle ; `npm run check:tokens` passe.
 
 ## À valider (rédigé sans validation)
-- **Domaine** : `ai.kosmocgi.com` provisoire (astro.config.mjs + src/lib/seo.ts).
+- **Domaine** : `kosmo-ia.com` (apex, sans www), d'après le nom du repo (astro.config.mjs + src/lib/seo.ts).
 - **Nom** : « KOSMO® AI » dans les titres.
 - **Prix** : aucun chiffre affiché. FAQ : « fixed price after a short call » ; contact : « A fixed price before production starts ».
   Fourchettes de budget du formulaire : Under $10k → $100k and above (src/lib/lead.ts).

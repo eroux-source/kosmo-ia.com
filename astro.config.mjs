@@ -4,8 +4,8 @@ import tailwindcss from '@tailwindcss/vite';
 import vercel from '@astrojs/vercel';
 import sitemap from '@astrojs/sitemap';
 
-/** Domaine provisoire du site IA (à confirmer). Garder identique à SITE.url dans src/lib/seo.ts. */
-const SITE_URL = 'https://ai.kosmocgi.com';
+/** Domaine du site IA (nom du repo, 02/11/2026). Garder identique à SITE.url dans src/lib/seo.ts. */
+const SITE_URL = 'https://kosmo-ia.com';
 const PRIVATE_PATHS = ['/thank-you', '/book'];
 
 export default defineConfig({

@@ -13,7 +13,7 @@ export const tokenColor = tokenValue;
 
 export const SITE = {
   name: 'KOSMO®',
-  url: 'https://ai.kosmocgi.com', // domaine provisoire du site IA, même hôte que `site` dans astro.config.mjs
+  url: 'https://kosmo-ia.com', // domaine du site IA, même hôte que `site` dans astro.config.mjs
   email: 'contact@kosmocgi.com',
   phone: '+971526713890',
   defaultImage: '/og/default.jpg',
