@@ -36,7 +36,7 @@ export function foohItem(p: FoohProject): WorkItem {
     /* Projet KOSMO® mis au nom d'une marque (Apple, Disney+…) : pas le logo KOSMO®, le nom de la marque à la place. */
     logo: clientOf(p)?.slug === 'kosmo' && featuredName(p) !== 'KOSMO' ? undefined : clientOf(p)?.logo,
     category: p.category,
-    categoryLabel: CATEGORY_LABELS.fooh,
+    categoryLabel: 'CGI & mixed reality',
     industry: p.industry,
     city: cityOf(p),
     title: p.subtitle,

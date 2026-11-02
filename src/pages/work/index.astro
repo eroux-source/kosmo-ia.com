@@ -1,5 +1,5 @@
 ---
-/** /work : tous les films du studio (projects.json, aucun DOOH) en mosaïque au format natif. */
+/** /work : productions IA (ai-work.ts) et films du studio (projects.json, aucun DOOH) mélangés dans une mosaïque. */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageTop from '../../components/layout/PageTop.astro';
 import Footer from '../../components/layout/Footer.astro';
@@ -13,7 +13,13 @@ import { foohProjects } from '../../lib/fooh';
 import { aiItem, aiWorks } from '../../data/ai-work';
 import { breadcrumbJsonLd } from '../../lib/seo';
 
-const title = 'Work: AI Films and Studio Productions | KOSMO® AI';
+/* Une seule mosaïque : productions IA et films du studio en alternance (demande d'Eugène du 02/11/2026). Chaque carte
+   garde son étiquette réelle (AI concept, AI production, FOOH) : les films CGI ne sont pas présentés comme de l'IA. */
+const ai = aiWorks.map(aiItem);
+const studio = foohProjects.map(foohItem);
+const items = Array.from({ length: Math.max(ai.length, studio.length) }, (_, i) => [ai[i], studio[i]]).flat().filter(Boolean);
+
+const title = 'Work: Films for Brands by KOSMO® AI';
 const description = `${aiWorks.length} AI productions and ${foohProjects.length} studio films by KOSMO®: AI spots, fashion films and social content, plus CGI work for Netflix, Zalando and Porsche.`;
 ---
 
@@ -21,27 +27,15 @@ const description = `${aiWorks.length} AI productions and ${foohProjects.length}
   <PageTop />
   <main>
     <Section spacing="lg" data-fade="trigger">
-      <Eyebrow label={`ai productions · ${aiWorks.length} films`} />
+      <Eyebrow label={`work · ${items.length} films`} />
       <div class="mt-(--head-gap) grid grid-cols-2 items-end gap-10 max-lg:grid-cols-1">
-        <h1 data-stagger-text class="heading-h3"><TwoTone text="Made with AI, finished like a campaign." /></h1>
+        <h1 data-stagger-text class="heading-h3"><TwoTone text="Films people stop for, made for brands." /></h1>
         <p data-fade="target" class="max-w-(--head-intro-max) justify-self-end text-body-medium text-(--body-soft) max-lg:justify-self-start">
-          TV spots, fashion films and social content generated, directed and finished by the KOSMO® team. Films marked “AI concept” were made on our own initiative, not commissioned by the brand.
+          AI spots, fashion films, social content and launch films for Netflix, Zalando, Porsche and more, all made by the KOSMO® team. Hover a film to see how it was made.
         </p>
       </div>
       <ul data-fade="target" data-mosaic class="mt-12 grid grid-flow-row-dense grid-cols-4 auto-rows-(--mosaic-unit) gap-x-(--mosaic-gap) max-md:grid-cols-2">
-        {aiWorks.map((w) => <MosaicCard item={aiItem(w)} />)}
-      </ul>
-    </Section>
-    <Section spacing="lg" data-fade="trigger">
-      <Eyebrow label={`from the studio · ${foohProjects.length} films`} />
-      <div class="mt-(--head-gap) grid grid-cols-2 items-end gap-10 max-lg:grid-cols-1">
-        <h2 data-stagger-text class="heading-h3"><TwoTone text="The studio behind KOSMO® AI." /></h2>
-        <p data-fade="target" class="max-w-(--head-intro-max) justify-self-end text-body-medium text-(--body-soft) max-lg:justify-self-start">
-          Before AI, KOSMO® built its name on CGI and mixed reality films for Netflix, Zalando, Miele, Porsche and Renault. Same team, same standards.
-        </p>
-      </div>
-      <ul data-fade="target" data-mosaic class="mt-12 grid grid-flow-row-dense grid-cols-4 auto-rows-(--mosaic-unit) gap-x-(--mosaic-gap) max-md:grid-cols-2">
-        {foohProjects.map((p) => <MosaicCard item={foohItem(p)} />)}
+        {items.map((item) => <MosaicCard item={item} />)}
       </ul>
     </Section>
     <Contact id="contact" />
