@@ -55,7 +55,7 @@ const titleCase = (t: string) =>
     .join(' ');
 const projectTitle = p.title === p.title.toUpperCase() ? titleCase(p.title) : p.title;
 const base = `${name} film: ${projectTitle}`;
-const title = `${base} | KOSMO®`.length <= 60 ? `${base} | KOSMO®` : base.slice(0, 60);
+const title = `${base} | KOSMO® AI`.length <= 60 ? `${base} | KOSMO® AI` : base.slice(0, 60);
 const description = `${projectTitle}: ${p.subtitle}. ${(p.description[0] ?? '').replace(/\*/g, '')}`.slice(0, 157).replace(/\s+\S*$/, '') + '…';
 const jsonLd = [
   breadcrumbJsonLd([

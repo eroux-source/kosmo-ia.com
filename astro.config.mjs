@@ -16,6 +16,7 @@ export default defineConfig({
   integrations: [
     sitemap({
       filter: (page) => !PRIVATE_PATHS.includes(new URL(page).pathname.replace(/(.)\/$/, '$1')),
+      lastmod: new Date('2026-11-02'),
     }),
   ],
   vite: { plugins: [tailwindcss()] },

@@ -18,7 +18,7 @@ import Ambassadors from '../components/ai/Ambassadors.astro';
 import { services, serviceHref, aiProcess, type AiService } from '../data/ai';
 import { brands, bookLabel } from '../data/site';
 import { heroOf } from '../lib/ai-hero';
-import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from '../lib/seo';
+import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd, videoJsonLd, LAST_UPDATED } from '../lib/seo';
 import type { ProcessData } from '../data/3dooh';
 
 export function getStaticPaths() {
@@ -32,7 +32,8 @@ const path = serviceHref(s);
 const media = heroOf(s);
 const cover = media.poster;
 const jsonLd = [
-  serviceJsonLd(s.keyword.replace(/^\w/, (c) => c.toUpperCase()), s.seo.description, path),
+  serviceJsonLd(s.keyword.replace(/^\w/, (c) => c.toUpperCase()), s.seo.description, path, { alternateName: s.label, image: cover }),
+  media.video && videoJsonLd({ name: `${s.label} by KOSMO® AI`, description: s.hero.subtitle, thumbnailUrl: cover, contentUrl: media.video, uploadDate: LAST_UPDATED }),
   faqJsonLd(s.faq),
   breadcrumbJsonLd([
     { name: 'KOSMO® AI', path: '/' },

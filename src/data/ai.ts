@@ -43,7 +43,7 @@ export const services: AiService[] = [
     keyword: 'AI video production company',
     seo: {
       title: 'AI Video Production Company for Brands | KOSMO® AI',
-      description: 'KOSMO® is an AI video production company and AI video agency: brand films, product videos and social content made with generative AI and a real CGI team.',
+      description: 'AI video production company and AI video agency for brands: brand films, product videos and social content made with AI and a CGI team. Send us your brief.',
     },
     hero: {
       title: 'AI video production, made by a real studio.',
@@ -73,6 +73,7 @@ export const services: AiService[] = [
     projects: ['disney-la-haut', 'disney-lilo-and-stitch', 'below-statue-of-liberty', 'zalando-lounge-balance', 'miele-hydroclean', 'porsche'],
     faq: [
       { question: 'What does an AI video production company do?', answer: 'It turns a brief into finished brand films using generative AI for images, motion and sound, with people directing and finishing the work. At KOSMO®, AI covers concept frames, generation and variations; our 3D and post-production team handles consistency, compositing, color and the final delivery.' },
+      { question: 'How do you choose the best AI video agency?', answer: 'Look at three things: finished work for real brands, a team that can fix what AI gets wrong (3D, compositing, color), and clear usage rights. Many AI video production companies stop at generation; an AI video production agency like KOSMO® also handles the idea, the edit and the delivery, which is what makes an AI media production agency usable for a campaign.' },
       { question: 'Is AI video good enough for a brand campaign?', answer: 'On its own, rarely. Raw generations drift from shot to shot and fall apart on a big screen. Combined with CGI, compositing and a real edit, it reaches campaign quality. That combination is the whole point of working with a studio rather than a tool.' },
       { question: 'How long does AI video production take?', answer: 'Most projects run 3 to 4 weeks from an approved brief to delivery, with 2 rounds of revisions included. We share a timeline with dates on the first call.' },
       { question: 'Can you work with our existing footage and assets?', answer: 'Yes. We extend, restyle and finish footage you already own, and we can build your product in 3D from packshots or CAD files so it stays exact in every shot.' },
@@ -87,7 +88,7 @@ export const services: AiService[] = [
     keyword: 'AI commercial production',
     seo: {
       title: 'AI Commercials and AI Ad Agency for Brands | KOSMO® AI',
-      description: 'AI commercial production for social, digital and TV: an AI ad agency for scroll-stopping ads and TV commercial production, delivered in every format.',
+      description: 'AI ad agency for social, digital and TV: AI commercial production and TV commercial production, delivered in every format your plan needs. Book a call today.',
     },
     hero: {
       title: 'AI commercials people actually stop for.',
@@ -98,7 +99,7 @@ export const services: AiService[] = [
     intro: {
       heading: 'AI commercial production for the feed.',
       text: [
-        'On social, an ad has a second to earn attention. AI commercial production lets us show your product doing something it never could on a set: a giant ball on a Paris fountain, a laptop in a museum, a whole season of fashion balanced on a bench.',
+        'KOSMO® AI is an AI ad agency and AI commercial production company: we create ads for social, digital and TV with generative AI, then finish them with a CGI team. On social, an ad has a second to earn attention. AI commercial production lets us show your product doing something it never could on a set: a pear dripping into a perfume bottle, a logo embossed on a mandarin, a TV spot built around a single red lens.',
         'As an AI ad agency, we start from the idea, not the tool. Then we generate, animate and finish the ad, and deliver every version your paid and organic plans need.',
         'The same production also covers TV commercial production: 15, 30 and 60 second spots for national TV and streaming, delivered to broadcast and CTV specs, with cutdowns made alongside the hero spot instead of after it.',
       ],
@@ -117,6 +118,7 @@ export const services: AiService[] = [
     projects: ['zalando-prive-tennis', 'asus-i', 'pringles', 'la-baleine', 'bose', 'maisons-du-monde-ii'],
     faq: [
       { question: 'What is an AI commercial?', answer: 'An ad where images, motion or sound are generated with AI instead of filmed. The best ones use AI for what a camera cannot do, and keep the product and the brand exact with CGI and careful finishing.' },
+      { question: 'Are you an AI advertising agency or a commercial production company?', answer: 'Both. As an AI advertising agency we bring the idea; as a commercial production company we produce it: AI product commercials for social, and TV commercial production for national TV and streaming. Brands work with us as their AI ads agency, and agencies use us as their AI commercial production company or TV commercial production company for AI TV commercials.' },
       { question: 'What does an AI ad agency do that an AI tool does not?', answer: 'The idea, the consistency and the finish. Tools generate shots. An agency writes the concept, keeps your product and characters identical from shot to shot, fixes what the model gets wrong and delivers files your media team can run.' },
       { question: 'Do you produce TV commercials with AI?', answer: 'Yes. We handle TV commercial production from the script and the AI animatic to the broadcast master: 15, 30 and 60 second spots for national TV and streaming, cleared and delivered to network and CTV specs like any other spot.' },
       { question: 'How many versions do we get?', answer: 'We agree the list of formats and variations with you at the brief, so the price and the timeline cover everything your plan needs.' },
@@ -131,10 +133,10 @@ export const services: AiService[] = [
     keyword: 'animated commercial production',
     seo: {
       title: 'Animated Commercial Production with AI | KOSMO® AI',
-      description: 'Animated commercial production with AI and 3D: characters, worlds and product animation for brands, from a 15 second spot to a full campaign.',
+      description: 'Animated commercial production with AI and 3D: characters, mascots, worlds and product animation for brands, from a 15 second spot to a series. Get a quote.',
     },
     hero: {
-      title: 'Animated commercials, without the animation timeline.',
+      title: 'Animated commercial production, without the long timeline.',
       subtitle: 'Characters, worlds and product stories in 3D or stylized animation, produced with AI and finished by animators.',
       project: 'super-mario-galaxy-yoshi-eggs',
       work: 'all-quiet-teaser',
@@ -142,7 +144,7 @@ export const services: AiService[] = [
     intro: {
       heading: 'Animated commercial production that keeps its charm.',
       text: [
-        'Animation sells what live action cannot: a mascot, a feeling, a product explained in ten seconds. Traditional animated commercial production takes months. With AI in the pipeline, the look development and the shots move much faster.',
+        'KOSMO® AI handles animated commercial production with AI and 3D: animated spots, characters and product animation for brands. Animation sells what live action cannot: a mascot, a feeling, a product explained in ten seconds. Traditional animated commercial production takes months. With AI in the pipeline, the look development and the shots move much faster.',
         'Our animators direct the characters and the timing, AI generates and extends the frames, and our 3D team keeps your product and your mascot on model in every shot.',
       ],
     },
@@ -170,11 +172,11 @@ export const services: AiService[] = [
     blurb: 'Lookbooks, virtual models and campaigns for fashion and beauty.',
     keyword: 'AI fashion campaign',
     seo: {
-      title: 'AI Fashion Campaigns, Lookbooks and Virtual Models | KOSMO® AI',
-      description: 'AI fashion and beauty production: AI lookbooks, AI fashion photography, virtual models and campaign films for fashion, beauty and luxury brands.',
+      title: 'AI Fashion Campaigns and Virtual Models | KOSMO® AI',
+      description: 'AI fashion campaigns, AI lookbooks, AI fashion photography and virtual models for fashion, beauty and luxury brands, art directed like a real shoot. Talk to us.',
     },
     hero: {
-      title: 'Fashion and beauty campaigns, generated with taste.',
+      title: 'AI fashion campaigns, generated with taste.',
       subtitle: 'AI lookbooks, virtual models and campaign films for fashion, beauty and luxury brands, art directed like a real shoot.',
       project: 'zalando-lounge-balance',
       work: 'zara-ai-fashion-film',
@@ -182,7 +184,7 @@ export const services: AiService[] = [
     intro: {
       heading: 'AI fashion campaigns that still look like your brand.',
       text: [
-        'Fashion moves faster than shoot calendars. With AI fashion photography, a new drop can have its lookbook, its campaign images and its social films in days, on models and in places that fit the collection.',
+        'KOSMO® AI creates AI fashion campaigns, AI lookbooks and AI fashion photography for fashion, beauty and luxury brands. Fashion moves faster than shoot calendars. With AI fashion photography, a new drop can have its lookbook, its campaign images and its social films in days, on models and in places that fit the collection.',
         'We keep the garments true to the real ones, the casting consistent from image to image and the mood in line with your brand book, so the result reads as your campaign, not as an AI experiment.',
       ],
     },
@@ -190,7 +192,7 @@ export const services: AiService[] = [
       heading: 'For fashion, beauty and luxury.',
       items: [
         { icon: 'file-text', title: 'AI lookbook', text: 'The full collection on consistent virtual models, in looks and locations chosen with you.' },
-        { icon: 'users', title: 'Virtual models', text: 'A cast built for your brand and reused season after season, always the same faces.' },
+        { icon: 'users', title: 'Virtual models', text: 'A cast built for your brand and reused season after season, always the same faces, from an AI model photoshoot to a campaign film.' },
         { icon: 'eye', title: 'Beauty close-ups', text: 'Texture, shine and color for skincare, makeup and fragrance, at macro scale.' },
         { icon: 'video', title: 'Campaign films', text: 'Short films for launches and social, in the same world as the stills.' },
       ],
@@ -211,10 +213,10 @@ export const services: AiService[] = [
     keyword: 'AI UGC agency',
     seo: {
       title: 'AI UGC Agency: UGC Ads at Scale | KOSMO® AI',
-      description: 'An AI UGC agency for performance teams: UGC-style ads, hooks and variations produced at scale with AI, scripted by people and built to test.',
+      description: 'AI UGC agency for brands and performance teams: UGC-style ads, hooks and variations scripted by people and produced at scale with AI. Start your first batch.',
     },
     hero: {
-      title: 'UGC ads at the speed your tests need.',
+      title: 'AI UGC ads at the speed your tests need.',
       subtitle: 'An AI UGC agency for brands and performance teams: scripted, produced and versioned so you can test more hooks every week.',
       project: 'neoness',
       work: 'tui-brazil',
@@ -222,8 +224,8 @@ export const services: AiService[] = [
     intro: {
       heading: 'An AI UGC agency built for testing.',
       text: [
-        'UGC ads work because they feel native to the feed. The problem is volume: every winning ad needs dozens of new hooks, angles and creators to keep performing.',
-        'As an AI UGC agency, we write the scripts from your best performers, produce the videos with AI and your real product, and deliver them in batches your media team can test. Human creators can be mixed in when you need them.',
+        'KOSMO® AI is an AI UGC agency: we script, produce and version UGC-style ads with AI for brands and performance teams. UGC ads work because they feel native to the feed. The problem is volume: every winning ad needs dozens of new hooks, angles and creators to keep performing.',
+        'As an AI UGC ads agency, we write the scripts from your best performers, produce the videos with AI and your real product, and deliver them in batches your media team can test. Human creators can be mixed in when you need them.',
       ],
     },
     deliverables: {
@@ -251,17 +253,17 @@ export const services: AiService[] = [
     keyword: 'music video production company',
     seo: {
       title: 'AI Music Video Production Company | KOSMO® AI',
-      description: 'A music video production company working with AI: music videos, animated music videos, visualizers and lyric videos for artists and labels.',
+      description: 'Music video production company working with AI: music videos, animated music videos, AI lyric videos and visualizers for artists and labels. Send your track.',
     },
     hero: {
-      title: 'Music video production with no limits on the set.',
+      title: 'AI music video production, no limits on the set.',
       subtitle: 'Music videos, visualizers and lyric videos for artists and labels, produced with AI and finished by a CGI team.',
       project: 'nrj-x-fini',
     },
     intro: {
       heading: 'A music video production company for the AI era.',
       text: [
-        'A great music video builds a world around a song. With AI, that world no longer depends on the location budget: a city made of light, a dream that changes with every bar, an animated story that follows the lyrics.',
+        'KOSMO® AI is a music video production company working with AI: music videos, animated music videos, AI lyric videos and visualizers for artists and labels. A great music video builds a world around a song. With AI, that world no longer depends on the location budget: a city made of light, a dream that changes with every bar, an animated story that follows the lyrics.',
         'We direct the treatment with the artist, generate and animate the scenes, then edit to the track and finish every shot. The result is a music video that looks like a big production, not like a filter.',
       ],
     },
@@ -270,7 +272,7 @@ export const services: AiService[] = [
       items: [
         { icon: 'video', title: 'Music videos', text: 'The full video, from treatment to final edit, with or without performance footage.' },
         { icon: 'sparkles', title: 'Animated music videos', text: 'A story told in animation, in the style that fits the record.' },
-        { icon: 'file-text', title: 'Lyric videos', text: 'Lyric videos that feel designed, not templated, for streaming and YouTube.' },
+        { icon: 'file-text', title: 'AI lyric videos', text: 'Lyric video services that feel designed, not templated, for streaming and YouTube: we work as a lyric video company for releases and back catalogs.' },
         { icon: 'share', title: 'Visualizers and social', text: 'Loops for Spotify Canvas, visualizers and vertical clips for the release campaign.' },
       ],
     },
@@ -290,17 +292,17 @@ export const services: AiService[] = [
     keyword: 'SaaS explainer video',
     seo: {
       title: 'AI Explainer Videos for SaaS and Tech | KOSMO® AI',
-      description: 'An explainer video company using AI: SaaS explainer videos, app promo videos and product launch films that make complex products simple.',
+      description: 'Explainer video company using AI: SaaS explainer videos, app promo videos and product launch films that make complex products simple. Request a quote today.',
     },
     hero: {
-      title: 'Explainer videos that make complex products simple.',
+      title: 'AI explainer videos that make products simple.',
       subtitle: 'SaaS explainer videos, app promo videos and product launch films, scripted by people and produced with AI and 3D.',
       project: 'hiscox',
     },
     intro: {
       heading: 'An explainer video company for SaaS and tech.',
       text: [
-        'A good SaaS explainer video answers one question fast: why should I care? We write the script around your buyer, design the visual system around your product and produce the film with AI, 3D and motion design.',
+        'KOSMO® AI is an explainer video company for SaaS and tech: we produce SaaS explainer videos, app promo videos and product launch films with AI, 3D and motion design. A good SaaS explainer video answers one question fast: why should I care? We write the script around your buyer, design the visual system around your product and produce the film with AI, 3D and motion design.',
         'Because the production runs in the studio, the explainer stays easy to update when the product changes, and every feature can get its own short version.',
       ],
     },
@@ -329,10 +331,10 @@ export const services: AiService[] = [
     keyword: 'AI influencer agency',
     seo: {
       title: 'AI Influencer Agency: Virtual Brand Ambassadors | KOSMO® AI',
-      description: 'An AI influencer agency for brands: virtual influencers and AI brand ambassadors designed, produced and kept consistent across every campaign.',
+      description: 'AI influencer agency for brands: virtual influencers and AI brand ambassadors you own, designed, produced and kept consistent across every campaign. Talk to us.',
     },
     hero: {
-      title: 'An AI influencer that belongs to your brand.',
+      title: 'An AI influencer agency for your own brand ambassador.',
       subtitle: 'Virtual influencers and AI brand ambassadors, designed with you and produced consistently across content, campaigns and seasons.',
       project: 'rhode',
       work: 'ai-influencer-character',
@@ -340,7 +342,7 @@ export const services: AiService[] = [
     intro: {
       heading: 'An AI influencer agency for brands.',
       text: [
-        'A virtual influencer gives a brand a face that is always available, always on brand and never tied to another label. The hard part is not creating one image. It is keeping the same person, voice and personality across hundreds of posts.',
+        'KOSMO® AI is an AI influencer agency: we design virtual influencers and AI brand ambassadors that brands own, and produce their content every month. A virtual influencer gives a brand a face that is always available, always on brand and never tied to another label. The hard part is not creating one image. It is keeping the same person, voice and personality across hundreds of posts.',
         'As an AI influencer agency, we design the character with you, build the references that keep it consistent and produce the content: photos, short videos and campaign appearances.',
       ],
     },
@@ -356,7 +358,7 @@ export const services: AiService[] = [
     works: ['ai-influencer-character', 'lanvin-ai-social', 'balenciaga-ai-social', 'memoria-dernier-rayon', 'loewe-ai-social', 'polene-ai-product-film'],
     projects: ['rhode', 'jylor', 'oysho-i', 'icemoon', 'zalando-lounge-balance', 'extreme'],
     faq: [
-      { question: 'What is an AI influencer?', answer: 'A virtual character that posts and appears in campaigns like a real influencer. For a brand, it works as an ambassador the brand fully owns.' },
+      { question: 'What is an AI influencer?', answer: 'An AI virtual influencer is a character that posts and appears in campaigns like a real influencer. For a brand, it works as an ambassador the brand fully owns.' },
       { question: 'Who owns the AI influencer?', answer: 'The ownership of the character is set in the contract before work starts. The usual setup is that the brand owns the character it commissions.' },
       { question: 'Do we have to say it is AI?', answer: 'Yes, where platforms or local rules require it, and we recommend being open about it. Audiences accept virtual ambassadors; they do not accept being misled.' },
     ],
@@ -373,7 +375,7 @@ export const featuredServices = ['ai-video-production', 'ai-commercials', 'ai-ug
 export const home = {
   seo: {
     title: 'AI Creative Agency for Brands | KOSMO® AI',
-    description: 'KOSMO® is an AI creative agency and AI design agency for brands: AI commercials, UGC ads, music videos and campaigns, made by a real CGI studio.',
+    description: 'AI creative agency for brands: AI commercials, fashion films, UGC ads and AI influencers, made by the CGI studio behind Netflix and Zalando. Send us a brief.',
   },
   hero: {
     title: 'The AI creative agency with a real studio behind it.',
@@ -409,6 +411,7 @@ export const home = {
   },
   faq: [
     { question: 'What is an AI creative agency?', answer: 'An agency that uses generative AI across concept, production and versioning, with people directing the ideas and finishing the work. KOSMO® AI combines AI with a CGI and post-production team, so the output is campaign quality.' },
+    { question: 'What is the difference between an AI design agency and an AI creative agency?', answer: 'An AI design agency mostly produces visuals and layouts with AI. An AI creative agency like KOSMO® AI also owns the idea, the film and the delivery: AI creative solutions from concept to campaign, and AI-powered creative production in every format. We work as a generative AI agency for brands and as a production partner for agencies.' },
     { question: 'How much does an AI commercial cost?', answer: 'It depends on length, the number of formats and versions, and how much of the product has to be built in 3D. We scope every project as a fixed price after a short call, so you know the full cost before production starts.' },
     { question: 'How long does a project take?', answer: 'Most projects run 3 to 4 weeks from an approved brief to delivery, with 2 rounds of revisions included.' },
     { question: 'Who owns the content you make?', answer: 'The usage rights are set in the contract before work starts, covering the channels, markets and duration you need. We only use tools and assets that allow commercial use.' },

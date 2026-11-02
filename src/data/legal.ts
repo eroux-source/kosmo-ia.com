@@ -12,7 +12,7 @@ export interface LegalSection {
 
 export const legalPage = {
   title: 'Legal notice',
-  description: 'Legal notice for kosmocgi.com, published by KOSMO CGI SAS.',
+  description: 'Legal notice for kosmo-ia.com, the KOSMO® AI website published by KOSMO CGI SAS: publisher, hosting, intellectual property and contact details.',
   updated: '2026-09-27',
   sections: [
     {
@@ -47,7 +47,7 @@ export const legalPage = {
 
 export const privacyPage = {
   title: 'Privacy policy',
-  description: 'How KOSMO® collects and uses personal data on kosmocgi.com: forms, analytics, cookies, your rights under GDPR.',
+  description: 'How KOSMO® collects and uses personal data on kosmo-ia.com: forms, analytics, cookies, your rights under GDPR.',
   updated: '2026-09-27',
   sections: [
     {

@@ -42,7 +42,7 @@ const cols = items.length % 3 === 0 ? 'grid-cols-3' : 'grid-cols-4';
           <span class="grid size-(--way-icon) place-items-center rounded-default bg-acid text-black">
             <Icon name={item.icon} class="size-(--button-icon)" />
           </span>
-          <h4 class="mt-5 heading-h6">{item.title}</h4>
+          {itemsHeading ? <h4 class="mt-5 heading-h6">{item.title}</h4> : <h3 class="mt-5 heading-h6">{item.title}</h3>}
           <p class="mt-2 text-small text-(--body-soft)">{item.text}</p>
         </li>
       ))

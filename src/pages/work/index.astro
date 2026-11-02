@@ -11,7 +11,7 @@ import Contact from '../../components/sections/Contact.astro';
 import { foohItem } from '../../lib/mosaic';
 import { foohProjects } from '../../lib/fooh';
 import { aiItem, aiWorks } from '../../data/ai-work';
-import { breadcrumbJsonLd } from '../../lib/seo';
+import { breadcrumbJsonLd, SITE } from '../../lib/seo';
 
 /* Une seule mosaïque : productions IA et films du studio en alternance (demande d'Eugène du 02/11/2026). Chaque carte
    garde son étiquette réelle (AI concept, AI production, FOOH) : les films CGI ne sont pas présentés comme de l'IA. */
@@ -23,7 +23,10 @@ const title = 'Work: Films for Brands by KOSMO® AI';
 const description = `${aiWorks.length} AI productions and ${foohProjects.length} studio films by KOSMO®: AI spots, fashion films and social content, plus CGI work for Netflix, Zalando and Porsche.`;
 ---
 
-<BaseLayout title={title} description={description} path="/work" jsonLd={[breadcrumbJsonLd([{ name: 'KOSMO® AI', path: '/' }, { name: 'Work', path: '/work' }])]}>
+<BaseLayout title={title} description={description} path="/work" jsonLd={[
+    breadcrumbJsonLd([{ name: 'KOSMO® AI', path: '/' }, { name: 'Work', path: '/work' }]),
+    { '@type': 'ItemList', name: 'KOSMO® AI work', numberOfItems: items.length, itemListElement: items.map((item, i) => ({ '@type': 'ListItem', position: i + 1, name: `${item.brand}: ${item.title}`, url: `${SITE.url}${item.href}` })) },
+  ]}>
   <PageTop />
   <main>
     <Section spacing="lg" data-fade="trigger">

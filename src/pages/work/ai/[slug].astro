@@ -21,7 +21,7 @@ const portrait = w.ratio === '9:16';
 const square = w.ratio === '1:1';
 const label = w.concept ? 'AI concept' : 'AI production';
 const title = `${w.brand}: ${w.title}, ${label} | KOSMO® AI`;
-const description = `${w.subtitle} ${w.concept ? 'An AI concept film' : 'An AI production'} by KOSMO®, ${w.format.toLowerCase()}.`.slice(0, 158);
+const description = `${w.brand}, ${w.title}: ${w.subtitle} ${w.concept ? 'An AI concept film' : 'An AI production'} by KOSMO® AI, ${w.format.toLowerCase()}.`.slice(0, 158);
 const meta: [string, string][] = [
   ['Brand', w.brand],
   ['Type', label],
