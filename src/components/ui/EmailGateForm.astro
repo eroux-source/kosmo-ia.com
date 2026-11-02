@@ -1,0 +1,43 @@
+---
+/**
+ * Formulaire à une étape (email + société facultative) pour les lead magnets. Envoi via /api/lead.
+ * tone="dark" (défaut) : posé sur un fond noir ; "light" : sur une carte blanche (champs blancs, bouton noir).
+ */
+import FormField from './FormField.astro';
+import Button from './Button.astro';
+import Captcha from './Captcha.astro';
+import type { FormKind } from '../../lib/lead';
+import { form as labels } from '../../data/site';
+
+interface Props {
+  form: FormKind;
+  success: string;
+  submitLabel: string;
+  withCompany?: boolean;
+  tone?: 'light' | 'dark';
+  class?: string;
+}
+const { form, success, submitLabel, withCompany = true, tone = 'dark', class: className } = Astro.props;
+const dark = tone === 'dark';
+---
+
+<form data-lead-form={form} data-success={success} data-msg-required={labels.required} data-msg-email={labels.invalidEmail} data-msg-url={labels.invalidUrl} data-msg-captcha={labels.captcha} novalidate class:list={['flex flex-col gap-4', dark && 'tone-dark', className]}>
+  <div class:list={['grid gap-3', withCompany ? 'grid-cols-2 max-sm:grid-cols-1' : 'grid-cols-1']}>
+    <FormField name="email" type="email" label={labels.email.label} placeholder={labels.email.placeholder} autocomplete="email" tone={tone} />
+    {withCompany && <FormField name="company" label={labels.company.label} placeholder={labels.company.placeholder} autocomplete="organization" required={false} tone={tone} />}
+  </div>
+  <div class="hidden" aria-hidden="true">
+    <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+  </div>
+  <input type="hidden" name="language" value="en" data-lang-field />
+  <Captcha tone={tone} />
+  <p data-form-error hidden data-default={labels.serverError} class="text-small font-medium text-orange" aria-live="assertive"></p>
+  <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+    <Button type="submit" variant={dark ? 'light' : 'dark'} label={submitLabel} />
+    <p class="text-tagline text-(--label-color)">One email, no newsletter unless you ask.</p>
+  </div>
+</form>
+
+<script>
+  import '../../scripts/lead-form';
+</script>

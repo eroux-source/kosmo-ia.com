@@ -1,0 +1,41 @@
+---
+/** /work : tous les films du studio (projects.json, aucun DOOH) en mosaïque au format natif. */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageTop from '../../components/layout/PageTop.astro';
+import Footer from '../../components/layout/Footer.astro';
+import Section from '../../components/ui/Section.astro';
+import Eyebrow from '../../components/ui/Eyebrow.astro';
+import TwoTone from '../../components/ui/TwoTone.astro';
+import MosaicCard from '../../components/ui/MosaicCard.astro';
+import Contact from '../../components/sections/Contact.astro';
+import { foohItem } from '../../lib/mosaic';
+import { foohProjects } from '../../lib/fooh';
+import { breadcrumbJsonLd } from '../../lib/seo';
+
+const title = 'Work: Films for Netflix, Zalando, Porsche | KOSMO® AI';
+const description = `${foohProjects.length} films produced by the KOSMO® studio for Netflix, Zalando, Miele, Porsche, Renault and more, in CGI, mixed reality and AI.`;
+---
+
+<BaseLayout title={title} description={description} path="/work" jsonLd={[breadcrumbJsonLd([{ name: 'KOSMO® AI', path: '/' }, { name: 'Work', path: '/work' }])]}>
+  <PageTop />
+  <main>
+    <Section spacing="lg" data-fade="trigger">
+      <Eyebrow label={`work · ${foohProjects.length} films`} />
+      <div class="mt-(--head-gap) grid grid-cols-2 items-end gap-10 max-lg:grid-cols-1">
+        <h1 data-stagger-text class="heading-h3"><TwoTone text="Films people stop for, made for brands." /></h1>
+        <p data-fade="target" class="max-w-(--head-intro-max) justify-self-end text-body-medium text-(--body-soft) max-lg:justify-self-start">
+          Every film here was produced by the KOSMO® studio, the team behind KOSMO® AI. Most are CGI and mixed reality; our AI concepts are marked in their description.
+        </p>
+      </div>
+      <ul data-fade="target" data-mosaic class="mt-12 grid grid-flow-row-dense grid-cols-4 auto-rows-(--mosaic-unit) gap-x-(--mosaic-gap) max-md:grid-cols-2">
+        {foohProjects.map((p) => <MosaicCard item={foohItem(p)} />)}
+      </ul>
+    </Section>
+    <Contact id="contact" />
+  </main>
+  <Footer />
+</BaseLayout>
+
+<script>
+  import '../../scripts/mosaic';
+</script>

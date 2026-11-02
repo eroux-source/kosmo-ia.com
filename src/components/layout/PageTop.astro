@@ -1,0 +1,13 @@
+---
+/** Bande papier au-dessus des pages intérieures : réserve la place de la nav fixe (papier d’emblée). */
+import Nav from './Nav.astro';
+
+interface Props {
+  ctaHref?: string;
+}
+const { ctaHref } = Astro.props;
+---
+
+<div class="relative bg-paper pt-(--page-top-offset)">
+  <Nav ctaHref={ctaHref} light />
+</div>

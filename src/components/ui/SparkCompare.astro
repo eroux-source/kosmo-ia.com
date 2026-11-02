@@ -1,0 +1,69 @@
+---
+/**
+ * Avant / après de la page FOOH, d'après « Compare » (Aceternity, 21st.dev), refait sans React : deux films superposés et
+ * synchronisés. L'« avant » (la vraie rue) est dessus, coupé à la ligne, et se lit à gauche ; l'« après » (le film 3D)
+ * est dessous et se lit à droite. La ligne suit la souris (mode « hover » de l'original) et revient au milieu quand elle
+ * sort ; au doigt, on la fait glisser ; au clavier, flèches, Page, Début, Fin. Sur la ligne : dégradé acide, halos
+ * acides, champ d'étincelles (canvas), poignée blanche à trois points. Pas d'étiquette ni de légende : les
+ * libellés ne servent qu'au nom accessible. src/scripts/spark-compare.ts.
+ */
+import Icon from './Icon.astro';
+
+interface Side {
+  label: string;
+  src: string;
+  video?: { src: string; poster: string };
+}
+interface Props {
+  before: Side;
+  after: Side;
+  /** Format de la scène : 16:9 ou 4:5 (films verticaux recadrés). */
+  ratio?: 'video' | 'card';
+  class?: string;
+}
+const { before, after, ratio = 'card', class: className } = Astro.props;
+const media = (side: Side) => ({ video: side.video?.src, poster: side.video?.poster ?? side.src });
+const panes = [
+  { ...media(after), class: 'absolute inset-0' },
+  { ...media(before), class: 'spark-front absolute inset-0 z-1' },
+];
+---
+
+<div data-spark-compare class:list={['relative isolate w-full overflow-hidden rounded-sm bg-black select-none', ratio === 'card' ? 'aspect-card' : 'aspect-video', className]}>
+  {
+    panes.map((pane) => (
+      <div class={pane.class}>
+        {pane.video ? (
+          <video data-src={pane.video} poster={pane.poster} muted loop playsinline preload="none" class="size-full object-cover" />
+        ) : (
+          <img src={pane.poster} alt="" class="size-full object-cover" />
+        )}
+      </div>
+    ))
+  }
+  <div class="spark-seam pointer-events-none absolute top-0 z-3 h-full w-px" aria-hidden="true">
+    <div class="spark-glow absolute top-1/2 left-0 z-2 h-full w-(--spark-glow-w) -translate-y-1/2"></div>
+    <div class="spark-glow-core absolute top-1/2 left-0 z-1 h-1/2 w-(--spark-glow-core-w) -translate-y-1/2"></div>
+    <div class="spark-field absolute top-1/2 left-full h-3/4 w-(--spark-field-w) -translate-y-1/2">
+      <canvas data-spark-field class="block size-full"></canvas>
+    </div>
+    <span class="absolute top-1/2 left-1/2 z-3 flex size-(--spark-handle) -translate-1/2 items-center justify-center rounded-sm bg-white text-black shadow-(--spark-handle-shadow)">
+      <Icon name="dots-vertical" class="size-(--spark-handle-icon)" />
+    </span>
+  </div>
+  <div
+    data-spark-handle
+    role="slider"
+    tabindex="0"
+    aria-label={`${before.label} / ${after.label}`}
+    aria-valuemin="0"
+    aria-valuemax="100"
+    aria-orientation="horizontal"
+    class="absolute inset-0 z-4 cursor-col-resize touch-pan-y outline-none focus-visible:outline-1 focus-visible:-outline-offset-2 focus-visible:outline-acid"
+  >
+  </div>
+</div>
+
+<script>
+  import '../../scripts/spark-compare';
+</script>

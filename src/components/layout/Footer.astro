@@ -1,0 +1,194 @@
+---
+/**
+ * Footer (DESIGN-SYSTEM.md, maquette Cofounder) : sur la trame « Dark Dot Matrix », un bloc central gris anthracite (--surface-dark) avec les
+ * colonnes de liens et l'accroche + Contact, puis une bande de points acides tramés qui dérive lentement ; le logo
+ * KOSMO® n'y est pas dessiné, c'est le vide dans les points (5 % caché sous le bas du bloc). Au survol, les points
+ * sous la souris restent pleins et les autres s'éteignent (src/scripts/footer-band.ts). Barre du bas : mentions,
+ * langues, réseaux, liens légaux.
+ * Mobile (≤ 767 px) : les groupes de liens deviennent des accordéons fermés (<details>, src/scripts/footer-accordion.ts),
+ * lignes plus hautes pour le doigt ; la colonne Follow, doublon des icônes de la barre du bas, est masquée ; le logo
+ * KOSMO® de la bande occupe toute la largeur (demande de Mehdi du 23/10/2026).
+ */
+import Button from '../ui/Button.astro';
+import Dither from '../ui/Dither.astro';
+import TwoTone from '../ui/TwoTone.astro';
+import wordmark from '../../assets/brand/wordmark.svg?raw';
+import Icon from '../ui/Icon.astro';
+import LangSwitch from '../ui/LangSwitch.astro';
+import { footer, ctaLabel, ctaHref as contactHref } from '../../data/site';
+import { SITE } from '../../lib/seo';
+
+interface Props {
+  ctaHref?: string;
+}
+const { ctaHref = contactHref } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer data-fade="trigger" class="footer relative bg-dot-matrix px-(--gutter) pt-(--footer-pad-top) text-on-dark tone-dark">
+  <Dither edge="top" />
+  <div class="mx-auto w-full max-w-page">
+    <div data-fade="target" class="card-dark relative overflow-hidden p-(--footer-pad)">
+      <div class="grid grid-cols-(--footer-cols) items-start gap-10 max-lg:grid-cols-2 max-md:grid-cols-1 max-md:gap-0">
+        {
+          footer.groups.map((group) => (
+            <details data-footer-group open class="group/fg max-md:border-b max-md:border-line-dark">
+              <summary class="mb-3 flex list-none items-center justify-between text-tagline text-on-dark-soft max-md:mb-0 max-md:min-h-(--button-height) max-md:cursor-pointer md:pointer-events-none [&::-webkit-details-marker]:hidden">
+                {group.title}
+                <span aria-hidden="true" class="hidden max-md:flex">
+                  <Icon name="chevron-down" class="size-(--button-icon) transition-transform duration-(--duration-surface) ease-(--ease-kosmo) group-open/fg:rotate-180" />
+                </span>
+              </summary>
+              <ul class:list={['items-start max-md:pb-3', group.columns === 2 ? 'grid grid-cols-2 gap-x-6' : 'flex flex-col']}>
+                {group.links.map((link) => (
+                  <li>
+                    <a
+                      href={link.href}
+                      class:list={[
+                        'flex py-1 text-caption leading-(--footer-link-leading) transition-colors duration-(--duration-color) hover:text-acid max-md:py-(--footer-link-pad-mobile)',
+                        link.sub ? 'pl-3 text-on-dark-soft' : 'text-on-dark',
+                        group.columns === 2 && 'whitespace-nowrap',
+                      ]}
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          ))
+        }
+        {/* Réseaux : déjà en icônes dans la barre du bas, la colonne est masquée sur mobile. */}
+        <div class="flex flex-col items-start max-md:hidden">
+          <div class="mb-3 text-tagline text-on-dark-soft">Follow</div>
+          <ul class="flex flex-col items-start" aria-label="Social profiles">
+            {
+              SITE.social.map((s) => (
+                <li>
+                  <a
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener"
+                    class="flex items-center gap-1.5 py-1 text-caption leading-(--footer-link-leading) text-on-dark transition-colors duration-(--duration-color) hover:text-acid"
+                  >
+                    <Icon name={s.icon} class="size-(--lang-icon) opacity-(--lang-icon-opacity)" />
+                    {s.name}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div class="flex max-w-(--footer-cta-max) flex-col items-start gap-5 justify-self-end max-lg:col-span-full max-lg:justify-self-start max-md:mt-8">
+          <div data-stagger-text class="heading-h3 text-on-dark"><TwoTone text={footer.cta.text} soft={footer.cta.soft} /></div>
+          <Button href={ctaHref} label={ctaLabel} variant="acid" />
+        </div>
+      </div>
+      <div data-footer-band aria-hidden="true" class="footer-band relative -mx-(--footer-pad) mt-(--footer-band-gap) -mb-(--footer-pad) h-(--footer-band-height) overflow-hidden max-md:h-(--footer-band-height-mobile)">
+        <div data-footer-field class="footer-band__field absolute inset-0"><div class="footer-band__dots"></div></div>
+        <div class="footer-band__mark pointer-events-none absolute inset-x-(--footer-pad) bottom-0 text-surface-dark max-md:inset-x-0 [&>svg]:block [&>svg]:h-auto [&>svg]:w-full" set:html={wordmark} />
+      </div>
+    </div>
+    <div class="flex flex-wrap items-center justify-between gap-4 pt-5 pb-7 text-xsmall text-on-dark-soft max-md:flex-col max-md:items-start">
+      <div>
+        <span>© {year}</span> {footer.legalOwners.join(' · ')}. {footer.legalSuffix}
+      </div>
+      <div class="flex flex-wrap items-center gap-4">
+        <LangSwitch tone="dark" />
+        <ul class="flex items-center gap-1.5" aria-label="Social profiles">
+          {
+            SITE.social.map((s) => (
+              <li>
+                <a
+                  href={s.url}
+                  target="_blank"
+                  rel="noopener"
+                  aria-label={s.name}
+                  class="grid size-(--footer-social) place-items-center rounded-sm bg-(--lang-surface-dark) text-on-dark transition-colors duration-(--duration-color) hover:text-acid"
+                >
+                  <Icon name={s.icon} class="size-(--lang-icon)" />
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <ul class="flex gap-4">
+          {
+            footer.legalLinks.map((link) => (
+              <li>
+                <a href={link.href} class="transition-colors duration-(--duration-color) hover:text-white">
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style is:global>
+  /* Après une section sombre (contact), pas de lisière : le footer colle à 24 px. Hors couche pour passer devant pt-(…). */
+  main:has(> :last-child.bg-dot-matrix) + .footer {
+    padding-top: var(--footer-pad-top-tight);
+  }
+  /* Couche « components » : les utilitaires Tailwind du markup (max-lg:hidden…) gardent la main. */
+  @layer components {
+    /* Bande de points acides : trame de 4 px (points de 0,9 px) × bruit seuillé (épars en haut, dense en bas), en dérive. */
+    .footer-band__field.df-lit {
+      -webkit-mask-image: var(--footer-dots-spot-mask);
+      mask-image: var(--footer-dots-spot-mask);
+    }
+    .footer-band__dots {
+      position: absolute;
+      inset-block: 0;
+      left: 0;
+      width: calc(100% + var(--footer-dots-drift));
+      background-color: var(--kosmo-acid);
+      -webkit-mask-image: var(--footer-dots-mask);
+      mask-image: var(--footer-dots-mask);
+      -webkit-mask-size: var(--footer-dots-size);
+      mask-size: var(--footer-dots-size);
+      -webkit-mask-repeat: repeat, repeat-x;
+      mask-repeat: repeat, repeat-x;
+      -webkit-mask-position: 0 0, left bottom;
+      mask-position: 0 0, left bottom;
+      -webkit-mask-composite: source-in;
+      mask-composite: intersect;
+    }
+    .footer-band__mark {
+      transform: translateY(var(--footer-mark-sink));
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .footer-band__dots {
+        animation: footer-drift var(--footer-drift-duration) linear infinite;
+      }
+      @supports (animation-timeline: view()) {
+        .footer-band {
+          view-timeline: --footer-band;
+        }
+        .footer-band__mark {
+          animation: footer-rise linear both;
+          animation-timeline: --footer-band;
+          animation-range: var(--footer-mark-range);
+        }
+      }
+    }
+    @keyframes footer-drift {
+      to {
+        translate: calc(-1 * var(--footer-dots-drift)) 0;
+      }
+    }
+    @keyframes footer-rise {
+      from {
+        translate: 0 var(--footer-mark-rise);
+      }
+    }
+  }
+</style>
+
+<script>
+  import '../../scripts/footer-band';
+  import '../../scripts/footer-accordion';
+</script>

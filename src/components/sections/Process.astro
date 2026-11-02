@@ -1,0 +1,75 @@
+---
+/**
+ * « How we work » (DESIGN-SYSTEM.md) : en-tête de section (surtitre, titre deux tons, intro + étiquettes), puis la
+ * frise à même le fond de la page (référence « workflow plan » validée par Mehdi le 22/10/2026) : guides verticaux en
+ * pointillés, une colonne par semaine nommée en haut (4 semaines puis « Live + »), une barre blanche par étape (icône Angular Icons + nom, la durée se lit sur les guides), l'étape la plus longue en
+ * noir avec un liseré animé (utilitaire beam).
+ * Plus de cartes d'explication sous la frise. Tablette et mobile : barres empilées en pleine largeur, sans guides. Réglages --timeline-* dans tokens.css.
+ */
+import Section from '../ui/Section.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+import TwoTone from '../ui/TwoTone.astro';
+import Demo from '../ui/Demo.astro';
+import Icon from '../ui/Icon.astro';
+import { process as defaultProcess, type ProcessData } from '../../data/3dooh';
+
+interface Props {
+  id?: string;
+  /** Textes de la frise : 3DOOH par défaut, FOOH sur /fooh (même process, autre copy). */
+  data?: ProcessData;
+}
+const { id, data: process = defaultProcess } = Astro.props;
+/* L'étape la plus longue sur la frise passe en noir avec le liseré animé. */
+const span = (col: string) => Number(col.match(/col-span-(\d+)/)?.[1] ?? 0);
+const main = process.steps.reduce((best, step, i) => (span(step.col) > span(process.steps[best].col) ? i : best), 0);
+/* Icônes Angular Icons (angularicons.com, choix de Mehdi du 22/10/2026) à la place des icônes des données. */
+const ANGULAR: Record<string, string> = { 'file-text': 'angular-file', sparkles: 'angular-lightbulb', cube: 'angular-cube', send: 'angular-send', share: 'angular-share' };
+---
+
+<Section id={id} data-fade="trigger" class="scroll-mt-(--nav-inset)">
+  <Eyebrow label={process.overline} />
+  <div class="mt-(--head-gap) grid grid-cols-2 items-end gap-10 max-lg:grid-cols-1">
+    <Demo inline note="titre de la section process">
+      <h2 data-stagger-text class="heading-h3"><TwoTone text={process.heading.text} /></h2>
+    </Demo>
+    <div data-fade="target" class="flex max-w-(--head-intro-max) flex-col gap-4 justify-self-end max-lg:justify-self-start">
+      <Demo inline note="intro de la section process">
+        <p class="text-body-medium text-(--body-soft)">{process.intro.text}</p>
+      </Demo>
+      <div class="flex flex-wrap gap-1.5">
+        <span class="chip">{process.steps.length} steps</span>
+        <span class="chip">3 to 4 weeks from approved brief</span>
+        <span class="chip">2 revision rounds included</span>
+      </div>
+    </div>
+  </div>
+
+  {/* Frise, à même le fond */}
+  <div data-fade="target" class="mt-12">
+    <div class="relative">
+      {/* Une colonne par semaine (4 semaines puis l'après-lancement), nom en haut, guide en pointillés */}
+      <div class="pointer-events-none absolute inset-0 grid grid-cols-5 max-lg:hidden" aria-hidden="true">
+        {process.weeks.map((week) => <div class="border-l border-dashed border-line-strong pt-2 pl-3 text-tagline text-(--label-color)">{week}</div>)}
+        <div class="absolute inset-y-0 right-0 border-r border-dashed border-line-strong" />
+      </div>
+      <ol class="relative grid grid-cols-10 gap-y-3 py-(--timeline-pad) max-lg:gap-y-2 max-lg:py-0" aria-label="The five steps on the timeline">
+        {
+          process.steps.map((step, i) => (
+            <li class:list={['relative flex h-(--timeline-row) items-center px-1 max-lg:col-span-full max-lg:col-start-1 max-lg:h-auto max-lg:px-0', step.col]}>
+              {i === main && <span aria-hidden="true" class="beam-halo absolute inset-x-1 top-1/2 h-(--timeline-bar) -translate-y-1/2 rounded-default max-lg:inset-x-0" />}
+              <span
+                class:list={[
+                  'relative flex h-(--timeline-bar) w-full min-w-0 items-center gap-2.5 rounded-default px-4',
+                  i === main ? 'beam bg-black text-white' : 'bg-white text-black',
+                ]}
+              >
+                <Icon name={ANGULAR[step.icon] ?? step.icon} class="relative z-2 size-(--button-icon)" />
+                <span class="relative z-2 truncate text-small font-medium">{step.label}</span>
+              </span>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </div>
+</Section>

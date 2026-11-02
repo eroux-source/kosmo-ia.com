@@ -1,0 +1,28 @@
+---
+/** /book : réserver un call (agenda Google Calendar ou HubSpot Meetings dans une carte blanche). */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageTop from '../components/layout/PageTop.astro';
+import Footer from '../components/layout/Footer.astro';
+import Section from '../components/ui/Section.astro';
+import Eyebrow from '../components/ui/Eyebrow.astro';
+import TwoTone from '../components/ui/TwoTone.astro';
+import BookingEmbed from '../components/ui/BookingEmbed.astro';
+import Demo from '../components/ui/Demo.astro';
+---
+
+<BaseLayout title="Book a call | KOSMO®" description="Pick a slot to talk about your next AI production with KOSMO® AI." noindex chrome={false}>
+  <PageTop />
+  <main>
+    <Section spacing="lg" data-fade="trigger">
+      <Eyebrow label="book a call" />
+      <div class="mt-(--head-gap) grid grid-cols-2 items-end gap-10 max-lg:grid-cols-1">
+        <Demo inline note="titre et intro de la page de rendez-vous">
+          <h1 data-stagger-text class="heading-h3"><TwoTone text="Pick a slot. Bring a brief." /></h1>
+        </Demo>
+        <p data-fade="target" class="max-w-(--head-intro-max) justify-self-end text-body-medium text-(--body-soft) max-lg:justify-self-start">Twenty minutes is enough to look at your brief and tell you what AI can make of it. A product link, a reference film or your launch dates are a great start.</p>
+      </div>
+      <BookingEmbed class="mt-12" />
+    </Section>
+  </main>
+  <Footer />
+</BaseLayout>

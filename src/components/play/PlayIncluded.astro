@@ -1,0 +1,57 @@
+---
+/**
+ * Clé en main (section sombre) : à gauche, le schéma « six prestataires à coordonner → un seul interlocuteur » dans un
+ * panneau card-dark ; à droite, la liste de tout ce qui est inclus (coches acides, filets sombres).
+ */
+import Section from '../ui/Section.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+import Icon from '../ui/Icon.astro';
+import TwoTone from '../ui/TwoTone.astro';
+import { play } from '../../data/play';
+
+interface Props {
+  id?: string;
+}
+const { id } = Astro.props;
+const { included } = play;
+---
+
+<Section id={id} tone="dark" spacing="lg" data-fade="trigger" class="scroll-mt-(--nav-inset)">
+  <Eyebrow label={included.overline} />
+  <div class="mt-(--head-gap) grid grid-cols-2 gap-12 max-lg:grid-cols-1">
+    <div class="flex flex-col gap-5">
+      <h2 data-stagger-text class="heading-h3"><TwoTone text={included.heading} /></h2>
+      <p data-fade="target" class="max-w-(--head-intro-max) text-body-medium text-(--body-soft)">{included.intro}</p>
+
+      {/* Schéma : plusieurs prestataires → un seul interlocuteur */}
+      <div data-fade="target" class="card-dark mt-3 grid grid-cols-(--process-card-cols) items-center gap-4 p-(--way-pad) max-sm:grid-cols-1">
+        <div class="flex flex-col gap-2">
+          <span class="text-tagline text-(--label-color)">{included.compare.without.label}</span>
+          <ul class="grid grid-cols-2 gap-2">
+            {included.compare.without.items.map((item) => <li class="rounded-default border border-dashed border-line-dark px-2 py-1 text-center font-mono text-xsmall text-(--body-soft)">{item}</li>)}
+          </ul>
+        </div>
+        <div class="flex items-center gap-4 max-sm:flex-col">
+          <Icon name="arrow-right" class="size-6 text-acid max-sm:rotate-90" />
+          <div class="flex flex-1 flex-col gap-2 rounded-default bg-acid p-4 text-black max-sm:w-full">
+            <span class="text-tagline">{included.compare.with.label}</span>
+            <span class="heading-h6">{included.compare.with.text}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ul data-fade="target" class="grid grid-cols-2 content-start gap-x-6 gap-y-4 max-sm:grid-cols-1">
+      {
+        included.items.map((item) => (
+          <li class="flex items-center gap-3 border-b border-line-dark pb-4 text-body-medium">
+            <span class="grid size-6 shrink-0 place-items-center rounded-default bg-acid text-black">
+              <Icon name="check" class="size-4" />
+            </span>
+            {item}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</Section>

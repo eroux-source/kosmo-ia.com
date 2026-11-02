@@ -1,0 +1,36 @@
+---
+/**
+ * « Any screen, any shape » (/3dooh) : en-tête centré (comme la section régies qu'elle remplace), puis quatre formes
+ * d'écran en figures Hairline interactives (plat, angle 90°, incurvé, colonne) : l'écran en caissons LED, les caissons
+ * proches du pointeur sortent de la face. Nom de la forme en étiquette mono. Données : screenTypes dans src/data/3dooh.ts.
+ */
+import Section from '../ui/Section.astro';
+import TwoTone from '../ui/TwoTone.astro';
+import HairlineFigure from '../ui/HairlineFigure.astro';
+import HairlineRuntime from '../ui/HairlineRuntime.astro';
+import { screenTypes } from '../../data/3dooh';
+
+interface Props {
+  id?: string;
+}
+const { id } = Astro.props;
+---
+
+<Section id={id} data-fade="trigger">
+  <div class="mx-auto flex w-full max-w-(--partners-title-max) flex-col items-center gap-(--head-gap) text-center">
+    <p data-fade="target" class="text-tagline text-(--label-color)">{screenTypes.overline}</p>
+    <h2 data-stagger-text class="heading-h3"><TwoTone text={screenTypes.heading} /></h2>
+    <p data-fade="target" class="max-w-(--head-intro-max) text-body-medium text-(--body-soft)">{screenTypes.intro}</p>
+  </div>
+  <ul data-fade="target" class="mt-10 grid grid-cols-4 gap-3 max-md:grid-cols-2">
+    {
+      screenTypes.items.map((item) => (
+        <li class="flex flex-col items-center gap-2">
+          <HairlineFigure name={`screen-${item.shape}`} alt={item.alt} fallback={`/images/formats/screen-${item.shape}.png`} class="w-full" />
+          <span class="text-tagline text-(--label-color)">{item.label}</span>
+        </li>
+      ))
+    }
+  </ul>
+  <HairlineRuntime />
+</Section>

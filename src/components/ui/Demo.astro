@@ -1,0 +1,37 @@
+---
+/**
+ * Marqueur de contenu DÉMO (règle 4 de CLAUDE.md) : tout texte ou preuve inventé
+ * passe par ce composant. Le badge disparaît d'un coup avec PUBLIC_SHOW_DEMO=false.
+ *  - inline : le badge suit le texte (titres, phrases)
+ *  - bloc   : le badge se pose en haut à droite du bloc (cartes, sections)
+ */
+import { showDemo } from '../../lib/demo';
+
+interface Props {
+  inline?: boolean;
+  /** Ce qu'il faudra fournir à la place (affiché au survol). */
+  note?: string;
+  /** false = contenu réel : pas de badge, la structure reste identique. */
+  when?: boolean;
+  class?: string;
+}
+const { inline = false, note, when = true, class: className } = Astro.props;
+const title = note ? `Contenu de démonstration, à remplacer : ${note}` : 'Contenu de démonstration, à remplacer';
+const active = showDemo && when;
+const badge =
+  'inline-flex shrink-0 items-center rounded-default border border-orange px-(--demo-badge-pad-x) font-mono text-xsmall leading-control font-regular tracking-tagline text-orange uppercase';
+---
+
+{
+  inline ? (
+    <span class={className} data-demo={active ? '' : undefined}>
+      <slot />
+      {active && <span class={badge} title={title}>{' '}Démo</span>}
+    </span>
+  ) : (
+    <div class:list={['relative', className]} data-demo={active ? '' : undefined}>
+      <slot />
+      {active && <span class:list={[badge, 'absolute top-2 right-2 z-2']} title={title}>Démo</span>}
+    </div>
+  )
+}

@@ -1,0 +1,60 @@
+---
+/**
+ * Trois projets en rangée au format natif, avec lien vers /work : cas vedettes (featured: true) d'abord,
+ * puis, sans catégorie ou en FOOH, les projets FOOH les plus récents, puis les autres cas.
+ */
+import Section from '../ui/Section.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+import Button from '../ui/Button.astro';
+import TwoTone from '../ui/TwoTone.astro';
+import WorkRow from '../ui/WorkRow.astro';
+import { caseItem, foohItem } from '../../lib/mosaic';
+import Demo from '../ui/Demo.astro';
+import { CATEGORY_LABELS, getPublishedCases } from '../../lib/cases';
+import { foohProjects } from '../../lib/fooh';
+
+interface Props {
+  id?: string;
+  heading?: { demo: boolean; text: string };
+  intro?: string;
+  category?: '3dooh' | 'fooh' | 'social';
+  limit?: number;
+  /** Home : les films FOOH récents d'abord, les cas vedettes ensuite (la preuve avant l'offre). */
+  foohFirst?: boolean;
+}
+const { id, heading = { demo: true, text: 'Screens we broke recently.' }, intro, category, limit = 3, foohFirst = false } = Astro.props;
+const all = await getPublishedCases();
+const pool = category ? all.filter((c) => c.data.category === category) : all;
+const featured = pool.filter((c) => c.data.featured).map(caseItem);
+const rest = pool.filter((c) => !c.data.featured).map(caseItem);
+/* Une marque par rangée : un projet FOOH du même client qu'un cas (ex. la version sociale Miele) ne double pas le cas. */
+const shown = new Set([...featured, ...rest].map((i) => i.brand));
+const fooh = !category || category === 'fooh' ? foohProjects.map(foohItem).filter((i) => !shown.has(i.brand)) : [];
+/* Home : une marque par tuile, les films FOOH récents d'abord, en gardant la place des cas vedettes. */
+const distinctFooh = fooh.filter((i, idx) => fooh.findIndex((o) => o.brand === i.brand) === idx);
+const items = (foohFirst ? [...distinctFooh.slice(0, Math.max(limit - featured.length, 0)), ...featured, ...rest] : [...featured, ...fooh, ...rest]).slice(0, limit);
+const allHref = category ? `/work?category=${category}` : '/work';
+const allLabel = category ? `all ${CATEGORY_LABELS[category]} work` : `all work (${all.length + foohProjects.length})`;
+---
+
+<Section id={id} data-fade="trigger" class="scroll-mt-(--nav-inset)">
+  <Eyebrow label="case studies" />
+  <div class="mt-(--head-gap) flex flex-wrap items-end justify-between gap-6">
+    {
+      heading.demo ? (
+        <Demo inline note="titre de la section cas vedettes">
+          <h2 data-stagger-text class="heading-h3 max-w-(--gallery-heading-max)"><TwoTone text={heading.text} /></h2>
+        </Demo>
+      ) : (
+        <h2 data-stagger-text class="heading-h3 max-w-(--gallery-heading-max)"><TwoTone text={heading.text} /></h2>
+      )
+    }
+    <div data-fade="target" class="flex items-center gap-6 max-md:flex-col max-md:items-start">
+      {intro && <p class="max-w-(--measure-xs) text-body-small text-(--body-soft)">{intro}</p>}
+      <Button href={allHref} label={allLabel} variant="dark" />
+    </div>
+  </div>
+  <div data-fade="target" class="mt-12">
+    <WorkRow items={items} />
+  </div>
+</Section>

@@ -1,0 +1,42 @@
+---
+/**
+ * Logo d'une marque : le SVG officiel s'il est déposé dans src/assets/logos/brands/<slug>.svg,
+ * sinon le nom en lettres (même hauteur, même gris que les logos de la référence).
+ */
+interface Props {
+  name: string;
+  /** Sans SVG officiel : image de repli (logo Framer PNG/SVG) passée en blanc, au lieu du nom en lettres. */
+  fallbackSrc?: string;
+  /** Couleur de l'image de repli : blanc (sur média sombre, défaut) ou noir (carte blanche). */
+  ink?: 'white' | 'black';
+  /** Sans logo du tout : classes du nom en lettres à la place de la taille par défaut (ex. étiquette des cartes projet). */
+  wordmark?: string;
+  class?: string;
+}
+const { name, fallbackSrc, ink = 'white', wordmark = 'text-(length:--logo-wordmark)', class: className } = Astro.props;
+import { svgInstanceId, uniqueSvgIds } from '../../lib/svg';
+const files = import.meta.glob<string>('../../assets/logos/brands/*.svg', { query: '?raw', import: 'default', eager: true });
+const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+const raw = files[`../../assets/logos/brands/${slug}.svg`];
+/* Id uniques par instance : masques et clipPath en double font disparaître le logo sur Safari iOS. */
+const svg = raw ? uniqueSvgIds(raw, svgInstanceId(slug)) : undefined;
+/* Logos « plaque » aux lettres évidées : un fond --logo-detail derrière, pour que les lettres restent lisibles sur toute surface. */
+const PLATE = ['miele', 'lego'];
+---
+
+{
+  svg ? (
+    <span
+      class:list={['flex items-center [&>svg]:h-(--logo-glyph-height) [&>svg]:w-auto [&>svg]:max-w-full', PLATE.includes(slug) && 'bg-(--logo-detail)', className]}
+      aria-label={name}
+      role="img"
+      set:html={svg}
+    />
+  ) : fallbackSrc ? (
+    <span class:list={['flex items-center', className]} aria-label={name} role="img">
+      <img src={fallbackSrc} alt="" loading="lazy" class:list={['h-full w-auto max-w-full object-contain brightness-0', ink === 'white' && 'invert']} />
+    </span>
+  ) : (
+    <span data-placeholder="brand-logos" class:list={['font-sans leading-none font-extrabold whitespace-nowrap uppercase', wordmark, className]}>{name}</span>
+  )
+}

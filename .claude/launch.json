@@ -1,0 +1,33 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "reference",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        ".claude/serve-reference.mjs"
+      ],
+      "port": 4400
+    },
+    {
+      "name": "astro",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--",
+        "--port",
+        "4321"
+      ],
+      "port": 4321
+    },
+    {
+      "name": "built-site",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        ".claude/serve-dist.mjs"
+      ],
+      "port": 4331
+    }
+  ]
+}

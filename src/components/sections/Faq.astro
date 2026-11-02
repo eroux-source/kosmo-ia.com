@@ -1,0 +1,75 @@
+---
+/**
+ * FAQ (DESIGN-SYSTEM.md) : surtitre, puis à gauche le titre de section et une carte noire à plat (titre de carte,
+ * texte, bouton blanc) qui reste visible au défilement ; à droite l'accordéon : lignes séparées par un filet,
+ * question en 17 px, +/− qui se referme en −, réponse en texte secondaire (src/scripts/faq.ts).
+ */
+import Section from '../ui/Section.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+import Button from '../ui/Button.astro';
+import TwoTone from '../ui/TwoTone.astro';
+import GridBeam from '../ui/GridBeam.astro';
+import { faq as defaults } from '../../data/faq';
+import { ctaLabel, ctaHref as contactHref } from '../../data/site';
+
+interface Props {
+  id?: string;
+  ctaHref?: string;
+  /** Libellé du bouton de la carte (défaut : CTA principal du site). */
+  cta?: string;
+  items?: typeof defaults.items;
+  /** Textes de la FAQ d'une autre page (ex. /play) : surtitre, titre, carte. */
+  overline?: string;
+  heading?: string;
+  card?: typeof defaults.card;
+}
+const { id, ctaHref = contactHref, cta = ctaLabel, items = defaults.items, overline = defaults.overline, heading = defaults.heading, card = defaults.card } = Astro.props;
+---
+
+<Section id={id} data-fade="trigger" class="scroll-mt-(--nav-inset)">
+  <Eyebrow label={overline} />
+  <div class="mt-(--head-gap) grid grid-cols-2 gap-10 max-lg:grid-cols-1">
+    <div class="flex max-w-(--measure-sm) flex-col justify-between gap-8 max-lg:max-w-none">
+      <h2 data-stagger-text class="heading-h3"><TwoTone text={heading} /></h2>
+      {/* La carte colle au bas de l'écran dans son propre bloc, sous le titre : elle ne peut jamais remonter sur lui. */}
+      <div class="flex flex-1 flex-col justify-end">
+        <div data-fade="target" class="tone-dark relative isolate flex flex-col items-start gap-5 overflow-hidden rounded-sm bg-black p-(--way-pad) lg:sticky lg:bottom-(--faq-sticky-bottom)">
+          <GridBeam />
+          <div class="flex flex-col gap-2">
+            <div class="heading-h6">{card.title}</div>
+            <p class="text-small text-(--body-soft)">{card.text}</p>
+          </div>
+          <Button href={ctaHref} label={cta} variant="light" />
+        </div>
+      </div>
+    </div>
+    <div data-fade="target" class="border-t border-line">
+      {
+        items.map((item, index) => (
+          <div data-faq-item class="border-b border-line">
+            <button
+              type="button"
+              data-faq-trigger
+              aria-expanded="false"
+              aria-controls={`faq-panel-${index}`}
+              class="group flex w-full cursor-pointer items-center justify-between gap-6 py-(--faq-row-pad) text-left text-large leading-control font-medium"
+            >
+              <span>{item.question}</span>
+              <span class="relative grid size-(--button-sm-height) shrink-0 place-items-center rounded-sm bg-white shadow-(--card-ring-strong) transition-colors duration-(--duration-color) group-hover:bg-acid group-aria-expanded:bg-black group-aria-expanded:text-white" aria-hidden="true">
+                <span data-faq-line class="absolute h-(--faq-icon) w-(--faq-line) bg-current" />
+                <span class="absolute h-(--faq-line) w-(--faq-icon) bg-current" />
+              </span>
+            </button>
+            <div id={`faq-panel-${index}`} data-faq-panel class="overflow-hidden in-[.js]:h-0 in-[.js]:opacity-0">
+              <p class="max-w-(--faq-answer-max) pr-12 pb-(--faq-row-pad) text-body-medium text-(--body-soft) max-md:pr-0">{item.answer}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</Section>
+
+<script>
+  import '../../scripts/faq';
+</script>

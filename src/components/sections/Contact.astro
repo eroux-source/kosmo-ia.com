@@ -1,0 +1,52 @@
+---
+/**
+ * Contact (DESIGN-SYSTEM.md, maquette Cofounder) : section sombre à trame de points ; bandeau « Got an idea? » entre
+ * deux filets, avec l'email et le téléphone, puis trois cartes blanches : rendez-vous, WhatsApp, email.
+ * Le footer suit directement (même trame, 24 px d'écart). Mobile (≤ 767 px) : cartes compactes, la pastille d'icône à
+ * gauche du titre au lieu d'au-dessus.
+ */
+import Section from '../ui/Section.astro';
+import Icon from '../ui/Icon.astro';
+import TwoTone from '../ui/TwoTone.astro';
+import Button from '../ui/Button.astro';
+import Demo from '../ui/Demo.astro';
+import { contact } from '../../data/site';
+import { whatsappHref } from '../../lib/env';
+
+interface Props {
+  id?: string;
+}
+const { id } = Astro.props;
+const links = [
+  { icon: 'mail', label: contact.email, href: `mailto:${contact.email}` },
+  { icon: 'phone', label: contact.phone, href: contact.phoneHref },
+];
+const resolveHref = (href: string) => (href === 'whatsapp' ? whatsappHref('Hi KOSMO, I would like to talk about an AI production.') : href);
+---
+
+<Section id={id} tone="dark" spacing="none" class="scroll-mt-(--nav-inset) pt-(--section-dark-md-y) pb-3 max-lg:pt-(--section-dark-md-y-tablet)">
+  <div data-fade="trigger" class="flex flex-col gap-6">
+    <div data-fade="target" class="flex items-center justify-between gap-6 border-y border-line-dark py-(--contact-band-pad) max-md:flex-col max-md:items-start">
+      <h2 data-stagger-text class="heading-h3"><TwoTone text={contact.heading.join(' ')} /></h2>
+      <div class="flex flex-wrap gap-2">
+        {links.map((link) => <Button href={link.href} label={link.label} icon={link.icon} variant="outline" go={false} verbatim />)}
+      </div>
+    </div>
+    <Demo note="textes des trois canaux de contact">
+      <ul class="grid grid-cols-3 gap-3 max-lg:grid-cols-1">
+        {
+          contact.channels.items.map((channel) => (
+            <li data-fade="target" class="card flex flex-col p-(--way-pad) text-black max-md:grid max-md:grid-cols-(--way-cols-mobile) max-md:gap-x-3">
+              <span class="grid size-(--way-icon) place-items-center rounded-default bg-acid max-md:row-span-3">
+                <Icon name={channel.icon} class="size-(--button-icon)" />
+              </span>
+              <h3 class="mt-5 heading-h6 max-md:mt-0 max-md:self-center">{channel.title}</h3>
+              <p class="mt-2 flex-1 text-small text-ink-soft max-md:mt-1">{channel.text}</p>
+              <Button href={resolveHref(channel.href)} label={channel.cta} variant="dark" class="mt-5 self-start max-md:mt-3 max-md:justify-self-start" data-track-click={`contact_${channel.icon}`} />
+            </li>
+          ))
+        }
+      </ul>
+    </Demo>
+  </div>
+</Section>

@@ -1,0 +1,218 @@
+---
+/**
+ * Hero plein écran (DESIGN-SYSTEM.md, maquette Cofounder) : image ou vidéo plein cadre (le dino en pixel art par
+ * défaut) sous un voile noir à gauche et en bas ; badge, titre en deux tons, sous-titre en bas à gauche ; à droite,
+ * le mini lecteur du showreel (option `reel` : son + agrandir, src/scripts/hero-reel.ts) au-dessus des deux CTA.
+ * Lisière tramée vers la section claire suivante. Personnalisation `?company=` conservée.
+ * Mobile : la barre CTA fixe se retire tant que les boutons du hero sont visibles ([data-hero-ctas], MobileCtaBar) ;
+ * sur écran tactile, « agrandir » ouvre le film en plein écran natif.
+ */
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+import Demo from '../ui/Demo.astro';
+import Dither from '../ui/Dither.astro';
+import TwoTone from '../ui/TwoTone.astro';
+import ProofLine from '../ui/ProofLine.astro';
+
+interface Chip {
+  icon: string;
+  label: string;
+}
+interface DemoText {
+  demo: boolean;
+  text: string;
+  /** Second ton du titre quand il n'a pas de ponctuation intérieure */
+  soft?: string;
+}
+interface Props {
+  title: DemoText | string;
+  subtitle?: DemoText;
+  personalized?: { demo: boolean; prefix: string };
+  /** Chiffre clé + marques (logos officiels via BrandLogo, sinon le nom). */
+  proof?: { views: string; partners: string[] };
+  /** Vidéo de fond optionnelle ; sans vidéo, l'image de fond (le dino de la référence par défaut). */
+  video?: { src: string; poster: string };
+  fallback?: { src: string; srcset?: string };
+  /** Mini lecteur 16:9 au-dessus des CTA (showreel de la home), muet en boucle, son + agrandir. `mobile` : version
+   *  légère servie sous 767 px. */
+  reel?: { src: string; mobile?: string; poster: string };
+  chips?: Chip[];
+  primary: { label: string; href: string };
+  secondary?: { label: string; href: string };
+  award?: boolean;
+  /** Vidéo chargée immédiatement (page d'attaque) ou différée. */
+  eager?: boolean;
+  /** Photo claire en fond (pages de service) : voile plus dense à gauche et en bas. */
+  brightImage?: boolean;
+  /** Cadrage de l'image : `right` garde le sujet de droite dans le cadre quand l'écran est étroit (photos des pages villes). */
+  imagePosition?: 'default' | 'right';
+}
+
+const { title, subtitle, personalized, proof, video, fallback, reel, chips = [], primary, secondary, award = true, eager = true, brightImage = false, imagePosition = 'default' } = Astro.props;
+/* Version sur fond noir du dino de la référence : le texte blanc du hero reste lisible. */
+const DINO = { src: '/images/hero/dino-black.png', srcset: undefined as string | undefined };
+const image = fallback ?? DINO;
+const titleText = typeof title === 'string' ? title : title.text;
+const titleSoft = typeof title === 'string' ? undefined : title.soft;
+const titleDemo = typeof title !== 'string' && title.demo;
+---
+
+<section
+  data-fade="trigger"
+  data-hero
+  class="relative flex min-h-(--hero-min-height) items-end overflow-hidden bg-black text-white h-(--hero-height) max-lg:h-auto max-lg:min-h-(--hero-height)"
+>
+  <div class="absolute inset-0 overflow-hidden" data-hero-media>
+    <img src={image.src} srcset={image.srcset} sizes="100vw" alt="" fetchpriority="high" class:list={['absolute inset-0 size-full object-cover', imagePosition === 'right' ? 'object-(--hero-image-position-right)' : 'object-(--hero-image-position)']} />
+    {
+      video &&
+        (eager ? (
+          <video class="relative size-full object-cover" autoplay muted loop playsinline preload="auto" poster={video.poster}>
+            <source src={video.src} type="video/mp4" />
+          </video>
+        ) : (
+          <video class="relative size-full object-cover" data-lazy data-src={video.src} muted loop playsinline preload="none" poster={video.poster} />
+        ))
+    }
+  </div>
+  <div class:list={['absolute inset-0 z-1 max-md:bg-(image:--hero-overlay-mobile)', brightImage ? 'bg-(image:--hero-overlay-photo)' : 'bg-(image:--hero-overlay)']}></div>
+
+  <div
+    class="relative z-3 grid w-full grid-cols-(--hero-cols) items-end gap-10 px-(--gutter) pt-(--hero-pad-top) pb-(--hero-pad-bottom) max-lg:grid-cols-1 max-lg:pt-(--hero-pad-top-tablet) max-md:pt-(--hero-pad-top-mobile) max-md:pb-(--hero-pad-bottom-mobile)"
+  >
+    <div class="flex min-w-0 flex-col items-start">
+      {award && <img data-fade="target" src="/images/brand/award-pioneer.svg" height="52" alt="Pioneer in mixed reality" class="mb-5 h-(--hero-award-height) w-auto" />}
+      {
+        personalized && (
+          <p data-personalize-block hidden class="mb-3 text-body-large font-medium">
+            {personalized.prefix} <span data-personalize="company" class="rounded-default bg-acid px-2 text-black" />
+          </p>
+        )
+      }
+      {
+        titleDemo ? (
+          <Demo inline note="titre du hero">
+            <h1 data-stagger-text class="display-heading max-w-(--hero-title-max) text-on-dark"><TwoTone text={titleText} soft={titleSoft} /></h1>
+          </Demo>
+        ) : (
+          <h1 data-stagger-text class="display-heading max-w-(--hero-title-max) text-on-dark"><TwoTone text={titleText} soft={titleSoft} /></h1>
+        )
+      }
+      {
+        subtitle && (
+          <Demo inline note="sous-titre du hero">
+            <p data-fade="target" class="mt-4 max-w-(--hero-sub-max) text-body-medium text-on-dark">{subtitle.text}</p>
+          </Demo>
+        )
+      }
+      {
+        chips.length > 0 && (
+          <ul data-fade="target" class="mt-5 flex flex-wrap gap-2">
+            {chips.map((chip) => (
+              <li class="flex h-(--button-sm-height) items-center gap-2 rounded-default bg-(--hero-chip-surface) px-2.5 text-xsmall text-white">
+                <Icon name={chip.icon} class="size-(--lang-icon) text-acid" />
+                <span>{chip.label}</span>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+      {
+        proof && (
+          <div data-fade="target" class="mt-6">
+            <ProofLine views={proof.views} partners={proof.partners} />
+          </div>
+        )
+      }
+    </div>
+
+    <div data-fade="target" class="flex flex-col items-end gap-3 max-lg:items-start">
+      {
+        reel && (
+          <div class="aspect-video w-(--vsl-mini-width) max-lg:w-full max-lg:max-w-(--vsl-mini-width)" data-vsl-slot>
+            <div data-vsl class="vsl relative size-full overflow-hidden rounded-sm bg-black shadow-(--card-ring-dark)">
+              <video poster={reel.poster} autoplay muted loop playsinline preload="metadata" class="size-full object-cover">
+                {reel.mobile && <source src={reel.mobile} type="video/mp4" media="(max-width: 767px)" />}
+                <source src={reel.src} type="video/mp4" />
+              </video>
+              <div class="vsl__bar absolute right-(--vsl-inset) bottom-(--vsl-inset) flex gap-1.5">
+                <button type="button" data-vsl-sound aria-label="Turn sound on" class="vsl__btn">
+                  <Icon name="volume-off" class="vsl__off size-(--button-icon)" />
+                  <Icon name="volume" class="vsl__on size-(--button-icon)" />
+                </button>
+                <button type="button" data-vsl-size aria-label="Enlarge video" class="vsl__btn">
+                  <Icon name="arrows-maximize" class="vsl__grow size-(--button-icon)" />
+                  <Icon name="close" class="vsl__shrink size-(--button-icon)" />
+                </button>
+              </div>
+            </div>
+          </div>
+        )
+      }
+      <div data-hero-ctas class="flex flex-wrap gap-3">
+        <Button href={primary.href} label={primary.label} variant="light" data-track-click="hero_concept" />
+        {secondary && <Button href={secondary.href} label={secondary.label} variant="dark" data-track-click="hero_book" />}
+      </div>
+    </div>
+  </div>
+  <Dither edge="bottom" />
+</section>
+
+<style is:global>
+  /* Couche « components » : les utilitaires Tailwind du markup (max-lg:hidden…) gardent la main. */
+  @layer components {
+    .vsl__btn {
+      display: grid;
+      place-items: center;
+      width: var(--vsl-button);
+      height: var(--vsl-button);
+      border-radius: var(--rounded-default);
+      background-color: var(--kosmo-black);
+      color: var(--kosmo-white);
+      cursor: pointer;
+    }
+    /* Écran tactile : boutons du lecteur à la taille du mode agrandi (40 px), plus faciles à toucher. */
+    @media (pointer: coarse) {
+      .vsl__btn {
+        width: var(--vsl-button-big);
+        height: var(--vsl-button-big);
+      }
+    }
+    .vsl.is-big {
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      z-index: var(--vsl-z);
+      width: var(--vsl-big-width);
+      height: auto;
+      aspect-ratio: var(--aspect-video);
+      transform: translate(-50%, -50%);
+    }
+    .vsl.is-big .vsl__btn {
+      width: var(--vsl-button-big);
+      height: var(--vsl-button-big);
+    }
+    .vsl-scrim {
+      position: fixed;
+      inset: 0;
+      z-index: calc(var(--vsl-z) - 1);
+      background-color: var(--vsl-scrim);
+      cursor: zoom-out;
+    }
+  }
+  /* Bascule des icônes du lecteur : hors couche, pour passer devant l'inline-flex de Icon.astro. */
+  .vsl__on,
+  .vsl__shrink,
+  .vsl.is-sound .vsl__off,
+  .vsl.is-big .vsl__grow {
+    display: none;
+  }
+  .vsl.is-sound .vsl__on,
+  .vsl.is-big .vsl__shrink {
+    display: inline-flex;
+  }
+</style>
+
+<script>
+  import '../../scripts/hero-reel';
+</script>

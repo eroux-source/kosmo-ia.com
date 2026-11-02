@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.astro/
+.vercel/
+.env
+.env.*
+!.env.example
+.DS_Store
+docs/screenshots/
+
+# GIF sources du comparateur (copies de video/out, 13 Mo) : régénérés avec scripts/build-shift-videos.mjs
+imports/shift/
+
+# Traductions : inventaire et lots de travail (scripts/i18n.mjs)
+.i18n/

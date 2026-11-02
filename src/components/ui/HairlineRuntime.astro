@@ -1,0 +1,19 @@
+---
+/**
+ * Moteur des figures Hairline (public/hairline/kernel.js) et hôte qui monte chaque figure dans
+ * son <HairlineFigure>. À inclure une seule fois par page, là où au moins une figure est affichée.
+ */
+---
+
+<script is:inline src="/hairline/kernel.js"></script>
+<script is:inline>
+  window.hairline = (figure) => {
+    const stage = document.querySelector('[data-hairline-host="' + figure.name + '"]');
+    if (!stage || stage.hasAttribute('data-hairline')) return;
+    stage.replaceChildren();
+    HL.inject(document);
+    stage.setAttribute('data-hairline', figure.name);
+    const svg = HL.mk('svg', { viewBox: '0 0 400 320', 'aria-hidden': 'true' }, stage);
+    figure.mount({ stage, svg, read: { textContent: '' } }, figure.range[1]);
+  };
+</script>

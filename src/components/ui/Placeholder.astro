@@ -1,0 +1,39 @@
+---
+/**
+ * Placeholder neutre pour un visuel manquant (outil interne). Chaque usage renvoie à une entrée de
+ * src/data/assets-needed.ts, listée automatiquement sur /todo. Cadre pointillé à plat, rayon 4 px.
+ */
+import { assetsNeeded } from '../../data/assets-needed';
+
+interface Props {
+  id: keyof typeof assetsNeeded;
+  ratio?: 'video' | 'portrait' | 'card' | 'square' | 'none';
+  tone?: 'light' | 'dark';
+  class?: string;
+}
+const { id, ratio = 'video', tone = 'light', class: className } = Astro.props;
+const entry = assetsNeeded[id];
+if (!entry) throw new Error(`Placeholder « ${id} » absent de src/data/assets-needed.ts`);
+---
+
+<div
+  data-placeholder={id}
+  role="img"
+  aria-label={`Visuel attendu : ${entry.what}`}
+  class:list={[
+    'flex w-full items-center justify-center overflow-hidden rounded-sm border border-dashed p-6 text-center',
+    ratio === 'video' && 'aspect-video',
+    ratio === 'portrait' && 'aspect-portrait',
+    ratio === 'card' && 'aspect-card',
+    ratio === 'square' && 'aspect-square',
+    ratio === 'none' && 'min-h-(--placeholder-min-height)',
+    tone === 'dark' ? 'tone-dark border-line-dark bg-surface-dark' : 'border-line-strong bg-white text-black',
+    className,
+  ]}
+>
+  <div class="flex max-w-(--measure-xs) flex-col gap-2 text-small">
+    <span class="text-tagline text-(--label-color)">Visuel attendu</span>
+    <span>{entry.what}</span>
+    {entry.format && <span class="text-tagline text-(--label-color)">{entry.format}</span>}
+  </div>
+</div>

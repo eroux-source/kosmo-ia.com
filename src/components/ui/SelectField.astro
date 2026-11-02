@@ -1,0 +1,47 @@
+---
+/** Liste déroulante, même habillage que FormField (tone light / dark), chevron à droite. */
+import Icon from './Icon.astro';
+
+interface Option {
+  value: string;
+  label: string;
+}
+interface Props {
+  name: string;
+  label: string;
+  options: readonly (Option | string)[];
+  placeholder?: string;
+  required?: boolean;
+  /** Valeur présélectionnée. */
+  value?: string;
+  tone?: 'light' | 'dark';
+  class?: string;
+}
+
+const { name, label, options, placeholder = 'Select…', required = false, value, tone = 'dark', class: className } = Astro.props;
+const id = `field-${name}-${Math.random().toString(36).slice(2, 7)}`;
+const items = options.map((o) => (typeof o === 'string' ? { value: o, label: o } : o));
+---
+
+<div class:list={['flex flex-col gap-(--field-label-gap)', className]}>
+  <label for={id} class="text-small font-medium">{label}{required && '*'}</label>
+  <div class="relative flex w-full items-center">
+    <select
+      id={id}
+      name={name}
+      required={required}
+      aria-describedby={`${id}-error`}
+      class:list={[
+        'w-full min-h-(--button-height) cursor-pointer appearance-none rounded-sm py-(--field-pad-y) pr-(--field-icon-pad) pl-(--field-pad-x) text-medium leading-body outline-none transition-shadow duration-(--duration-color) ease-(--ease-kosmo) aria-invalid:shadow-(--field-ring-error)',
+        tone === 'light'
+          ? 'bg-white text-black shadow-(--card-ring-strong) hover:shadow-(--card-ring-black) focus:shadow-(--card-ring-black)'
+          : 'bg-(--input-surface) text-white shadow-(--card-ring-dark) focus:shadow-(--card-ring-acid)',
+      ]}
+    >
+      <option value="" class="text-black">{placeholder}</option>
+      {items.map((o) => <option value={o.value} selected={o.value === value} class="text-black">{o.label}</option>)}
+    </select>
+    <Icon name="chevron-down" class="pointer-events-none absolute right-(--field-pad-x) size-(--button-icon) text-(--label-color)" />
+  </div>
+  <p id={`${id}-error`} data-error-for={name} hidden class="text-xsmall font-medium text-orange" aria-live="polite"></p>
+</div>

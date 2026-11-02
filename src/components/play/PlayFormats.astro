@@ -1,0 +1,54 @@
+---
+/**
+ * Formats de jeux : six familles en cartes blanches, chacune avec son sprite pixel (tuile noire) et ce qu'elle sert le
+ * mieux (étiquettes acides). Liseré acide au survol. Bandeau noir d'appel en dessous (bouton acide, comme Services).
+ */
+import Section from '../ui/Section.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+import PixelSprite from '../ui/PixelSprite.astro';
+import Button from '../ui/Button.astro';
+import TwoTone from '../ui/TwoTone.astro';
+import { play } from '../../data/play';
+import type { SpriteName } from '../../lib/play-sprites';
+
+interface Props {
+  id?: string;
+}
+const { id } = Astro.props;
+const { formats } = play;
+---
+
+<Section id={id} data-fade="trigger" class="scroll-mt-(--nav-inset)">
+  <Eyebrow label={formats.overline} />
+  <div class="mt-(--head-gap) grid grid-cols-2 items-end gap-10 max-lg:grid-cols-1">
+    <h2 data-stagger-text class="heading-h3"><TwoTone text={formats.heading} soft="sans tutoriel." /></h2>
+    <p data-fade="target" class="max-w-(--head-intro-max) justify-self-end text-body-medium text-(--body-soft) max-lg:justify-self-start">{formats.intro}</p>
+  </div>
+  <ul class="mt-12 grid grid-cols-3 gap-3 max-lg:grid-cols-2 max-sm:grid-cols-1">
+    {
+      formats.items.map((item, i) => (
+        <li
+          data-fade="target"
+          class="card flex flex-col p-(--way-pad) transition-[translate,box-shadow] duration-(--duration-surface) ease-(--ease-kosmo) hover:-translate-y-0.5 hover:shadow-(--card-ring-acid)"
+        >
+          <div class="flex items-start justify-between">
+            <PixelSprite name={item.sprite as SpriteName} tile class="size-16" data-play-bob="" />
+            <span class="text-tagline text-ink-soft">0{i + 1}</span>
+          </div>
+          <h3 class="mt-5 heading-h6">{item.title}</h3>
+          <p class="mt-2 text-small text-ink-soft">{item.text}</p>
+          <div class="mt-auto flex flex-wrap items-center gap-1.5 pt-5">
+            <span class="mr-1 text-tagline text-ink-soft">{formats.bestFor}</span>
+            {item.bestFor.map((tag) => (
+              <span class="chip [--chip-surface:var(--kosmo-acid)] [--label-color:var(--kosmo-black)]">{tag}</span>
+            ))}
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+  <div data-fade="target" class="mt-2 flex flex-wrap items-center justify-between gap-4 rounded-sm bg-black py-4 pr-4 pl-5 text-white">
+    <p class="heading-h6">{formats.cta.text}</p>
+    <Button href={formats.cta.href} label={formats.cta.label} variant="acid" data-track-click="play_formats_demo" />
+  </div>
+</Section>

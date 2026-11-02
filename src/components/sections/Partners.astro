@@ -1,0 +1,63 @@
+---
+/**
+ * Section « our partners » (DESIGN-SYSTEM.md) : étiquette + titre deux tons centrés, logos des media owners du marché de
+ * la langue (data/3dooh.ts → partners.markets) en défilement continu, à plat et en gris (noirs au survol), puis CTA.
+ */
+import Section from '../ui/Section.astro';
+import Button from '../ui/Button.astro';
+import TwoTone from '../ui/TwoTone.astro';
+import { partners, mediaOwners } from '../../data/3dooh';
+import { ctaLabel, ctaHref as contactHref } from '../../data/site';
+import { delocalizePath } from '../../i18n/routes';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+
+interface Props {
+  id?: string;
+  ctaHref?: string;
+}
+const { id, ctaHref = contactHref } = Astro.props;
+
+/* Hauteur tirée du viewBox du SVG : sans elle, l'image vaut 0 px de haut avant chargement et Chrome ne déclenche
+   jamais le chargement différé. */
+function heightOf({ src, width }: { src: string; width: number }) {
+  const viewBox = readFileSync(join(process.cwd(), 'public', src), 'utf8').match(/viewBox="([^"]+)"/)?.[1];
+  const [, , w, h] = (viewBox ?? '').trim().split(/[\s,]+/).map(Number);
+  return w && h ? Math.round((width * h) / w) : undefined;
+}
+
+/* Régies du marché de la langue affichée ; seules celles dont on a le logo SVG. */
+const { lang } = delocalizePath(Astro.originPathname ?? Astro.url.pathname);
+const logos = partners.markets[lang].flatMap((key) => {
+  const owner = mediaOwners[key];
+  return owner?.logo ? [{ ...owner.logo, height: heightOf(owner.logo), alt: owner.name }] : [];
+});
+/* Liste courte : répétée (copies masquées aux lecteurs d'écran) pour couvrir la largeur pendant le défilement. */
+const copies = Math.max(1, Math.ceil(partners.minTrack / Math.max(1, logos.length)));
+const track = Array.from({ length: copies }, (_, copy) => logos.map((logo) => ({ ...logo, copy }))).flat();
+---
+
+<Section id={id} data-fade="trigger">
+  <div class="mx-auto flex w-full max-w-(--partners-title-max) flex-col items-center gap-(--head-gap) text-center">
+    <p data-fade="target" class="text-tagline text-(--label-color)">{partners.overline}</p>
+    <h2 data-stagger-text class="heading-h3"><TwoTone text={partners.heading} soft="every media owner's specs" /></h2>
+  </div>
+  <div data-ticker="partners" class="my-(--partners-track-y) flex overflow-visible [mask-image:var(--partners-track-mask)] max-md:my-(--partners-track-y-mobile)">
+    <ul data-ticker-track class="flex shrink-0 flex-row items-center gap-(--partners-track-gap) pr-(--partners-track-gap)">
+      {
+        track.map((logo) => (
+          <li class="flex-none" aria-hidden={logo.copy > 0 ? 'true' : undefined}>
+            <img src={logo.src} width={logo.width} height={logo.height} alt={logo.copy > 0 ? '' : logo.alt} loading="lazy" class="opacity-(--partners-logo-opacity) grayscale transition-opacity duration-(--duration-surface) ease-(--ease-kosmo) hover:opacity-100" />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+  <div class="flex justify-center">
+    <Button href={ctaHref} label={ctaLabel} variant="dark" />
+  </div>
+</Section>
+
+<script>
+  import '../../scripts/ticker';
+</script>

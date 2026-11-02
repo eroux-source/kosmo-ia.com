@@ -1,0 +1,93 @@
+---
+/**
+ * Chiffres (DESIGN-SYSTEM.md, maquette Cofounder « In numbers ») : grille de tuiles de 212 px. Chaque chiffre est une
+ * tuile (libellé en haut, chiffre en bas) : papier, acide, noire, papier. Option `tiles` (home) : des films de projets
+ * tramés en gris dans la couleur du fond (src/scripts/ascii-tiles.ts) s'intercalent entre les chiffres.
+ * Option `ctas` : Contact + Book a call sous la grille ; `talk` (par défaut hors home) : l'appel avec la photo de Mehdi.
+ * Mobile (≤ 767 px) : les films tramés, purement décoratifs, sont masqués ; les quatre chiffres restent en 2 × 2.
+ */
+import Section from '../ui/Section.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+import Button from '../ui/Button.astro';
+import Demo from '../ui/Demo.astro';
+import TalkCta from '../ui/TalkCta.astro';
+import { stats, type Stat } from '../../data/stats';
+import { ctaLabel, ctaHref, bookLabel } from '../../data/site';
+
+interface Tile {
+  src: string;
+  label: string;
+}
+interface Props {
+  id?: string;
+  /** Films tramés intercalés (home) : 4 films, aux places 2, 3, 5 et 8 de la grille. */
+  tiles?: Tile[];
+  ctas?: boolean;
+  /** Appel « parler à Mehdi » sous la grille (toutes les pages sauf la home, qui l'a sous le dossier). */
+  talk?: boolean;
+  /** Chiffres d'une autre page (ex. /fooh) ; par défaut ceux de src/data/stats.ts. */
+  items?: Stat[];
+  overline?: string;
+}
+const { id, tiles = [], ctas = false, talk = tiles.length === 0, items = stats.items, overline = stats.overline } = Astro.props;
+/* Tuiles claires posées à même le fond du site, sans carte ni cadre (demande de Mehdi du 22/10/2026). */
+const tones = ['text-black', 'bg-acid text-black', 'bg-black text-white', 'text-black'];
+/* Ordre de la maquette : chiffre, film, film, chiffre, film, chiffre, chiffre, film. */
+const PATTERN = ['stat', 'tile', 'tile', 'stat', 'tile', 'stat', 'stat', 'tile'];
+type Cell = { kind: 'stat'; index: number } | { kind: 'tile'; tile: Tile };
+const cells: Cell[] = [];
+if (tiles.length) {
+  let s = 0;
+  let t = 0;
+  for (const kind of PATTERN) {
+    if (kind === 'stat' && s < items.length) cells.push({ kind, index: s++ });
+    else if (kind === 'tile' && t < tiles.length) cells.push({ kind, tile: tiles[t++] });
+  }
+} else items.forEach((_, index) => cells.push({ kind: 'stat', index }));
+---
+
+<Section id={id} data-fade="trigger">
+  <div class="flex flex-col">
+    <Eyebrow label={overline} />
+    <ul class="mt-8 grid grid-cols-4 gap-4 max-lg:grid-cols-2 max-md:gap-3">
+      {
+        cells.map((cell) => {
+          if (cell.kind === 'tile')
+            return (
+              <li data-fade="target" data-ascii={cell.tile.src} role="img" aria-label={cell.tile.label} class="relative h-(--stat-tile-height) overflow-hidden rounded-sm bg-paper max-md:hidden">
+                <canvas class="block size-full" />
+              </li>
+            );
+          const stat = items[cell.index];
+          const inner = (
+            <div class:list={['flex h-full min-h-(--stat-tile-height) flex-col justify-between gap-6 rounded-sm px-6 pt-5 pb-4 max-md:min-h-(--stat-tile-height-mobile) max-md:p-4', tones[cell.index % tones.length]]}>
+              <span class="flex flex-col gap-2">
+                <span class="max-w-(--stat-label-max) heading-h6 first-letter:uppercase">{stat.label}</span>
+                {stat.source && <span class="text-tiny opacity-(--stat-source-opacity)">{stat.source}</span>}
+              </span>
+              <span class="text-(length:--stat-size) leading-(--stat-leading) font-extrabold tracking-(--stat-tracking) tabular-nums">
+                <span data-counter={stat.value}>0</span>
+                {stat.suffix}
+              </span>
+            </div>
+          );
+          return <li data-fade="target" class="flex [&>*]:w-full">{stat.demo ? <Demo note="chiffre de démonstration">{inner}</Demo> : inner}</li>;
+        })
+      }
+    </ul>
+    {
+      ctas && (
+        <div data-fade="target" class="mt-10 flex flex-wrap gap-3">
+          <Button href={ctaHref} label={ctaLabel} variant="dark" />
+          <Button href="/book" label={bookLabel} variant="light" />
+        </div>
+      )
+    }
+    {talk && <TalkCta class="mt-5" />}
+  </div>
+</Section>
+
+<script>
+  import '../../scripts/counters';
+  import '../../scripts/ascii-tiles';
+</script>

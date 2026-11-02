@@ -1,0 +1,102 @@
+---
+/** /contact : promesse, trois canaux, ce qu'il faut pour un bon brief, formulaire de brief (AiBriefForm), contact direct. */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageTop from '../components/layout/PageTop.astro';
+import Footer from '../components/layout/Footer.astro';
+import Section from '../components/ui/Section.astro';
+import Eyebrow from '../components/ui/Eyebrow.astro';
+import Button from '../components/ui/Button.astro';
+import Icon from '../components/ui/Icon.astro';
+import TwoTone from '../components/ui/TwoTone.astro';
+import AiBriefForm from '../components/ui/AiBriefForm.astro';
+import BriefFolder from '../components/ui/BriefFolder.astro';
+import { bookLabel, contact } from '../data/site';
+import { whatsappHref } from '../lib/env';
+import { breadcrumbJsonLd } from '../lib/seo';
+
+const whatsapp = whatsappHref('Hi KOSMO, I would like to talk about an AI production.');
+const [emailLocal, emailDomain] = contact.email.split('@');
+const brief = [
+  { title: 'The product', text: 'What we are selling, with a link, packshots or 3D files if you have them.' },
+  { title: 'The objective', text: 'A launch, a season, sales, awareness: what the content has to do.' },
+  { title: 'The channels', text: 'TV, CTV, social, e-commerce or out of home, and the formats you already know you need.' },
+  { title: 'The timing', text: 'The launch date and any fixed milestone before it.' },
+  { title: 'References', text: 'Films, ads or images you like, or the ones you never want to look like.' },
+];
+const direct = [
+  { label: 'Email', value: contact.email, href: `mailto:${contact.email}` },
+  { label: 'Phone / WhatsApp', value: contact.phone, href: contact.phoneHref },
+  { label: 'Studio', value: 'Worldwide, working with US brands remotely' },
+];
+---
+
+<BaseLayout
+  title="Contact KOSMO® AI: Send a Brief"
+  description="Send a brief to KOSMO® AI for AI commercials, TV spots, UGC ads, photoshoots or music videos. We reply within one working day."
+  path="/contact"
+  jsonLd={[breadcrumbJsonLd([{ name: 'KOSMO® AI', path: '/' }, { name: 'Contact', path: '/contact' }])]}
+  ctaHref="#brief"
+>
+  <PageTop ctaHref="#brief" />
+  <main>
+    <Section spacing="lg" data-fade="trigger">
+      <div class="grid grid-cols-(--contact-cols) items-start gap-12 max-lg:grid-cols-1 max-lg:gap-10">
+        <div class="flex flex-col gap-16">
+          <div class="flex flex-col">
+            <Eyebrow label="work with us" />
+            <p data-fade="target" class="mt-(--head-gap) text-tagline text-(--label-color)">We reply within one working day</p>
+            <h1 data-stagger-text class="mt-3 heading-h2"><TwoTone text="Tell us what you need. We'll show you what AI can do." /></h1>
+            <p data-fade="target" class="mt-5 max-w-(--measure-2xl) text-body-large text-(--body-soft)">
+              A TV spot, a batch of ads, a photoshoot, a music video or something we have not listed yet. Send a few lines and we come back with questions and a first direction.
+            </p>
+            <div data-fade="target" class="mt-6 flex flex-wrap gap-2">
+              <Button href="#brief" label="send a brief" variant="dark" data-track-click="contact_brief" />
+              <Button href="/book" label={bookLabel} variant="light" data-track-click="contact_book" />
+              <Button href={whatsapp} label="whatsapp" variant="light" target="_blank" rel="noopener" data-track-click="contact_whatsapp" />
+            </div>
+          </div>
+
+          <div class="flex flex-col">
+            <Eyebrow label="a good brief" />
+            <h2 data-stagger-text class="mt-(--head-gap) heading-h3"><TwoTone text="Five things that make a great brief." /></h2>
+            <ol class="mt-8 grid grid-cols-2 items-start gap-3">
+              {brief.map((item, i) => <BriefFolder index={i + 1} title={item.title} text={item.text} />)}
+            </ol>
+          </div>
+
+          <div class="flex flex-col">
+            <Eyebrow label="direct" />
+            <a href={`mailto:${contact.email}`} translate="no" class="mt-(--head-gap) heading-h3 break-words transition-colors duration-(--duration-color) hover:text-ink-soft">{emailLocal}@<wbr />{emailDomain}</a>
+            <dl class="mt-8 grid grid-cols-3 gap-6 border-t border-line pt-6 max-md:grid-cols-1">
+              {
+                direct.map((row) => (
+                  <div data-fade="target" class="flex flex-col gap-2">
+                    <dt class="text-tagline text-(--label-color)">{row.label}</dt>
+                    <dd class="text-medium font-medium">{row.href ? <a href={row.href} class="underline decoration-line-strong underline-offset-4 transition-colors duration-(--duration-color) hover:decoration-black">{row.value}</a> : row.value}</dd>
+                  </div>
+                ))
+              }
+            </dl>
+          </div>
+        </div>
+
+        <aside id="brief" class="scroll-mt-(--nav-inset) lg:sticky lg:top-(--process-sticky-top)">
+          <div class="tone-dark flex flex-col gap-6 rounded-sm bg-black p-6 max-sm:p-5">
+            <div class="flex flex-col gap-3">
+              <Eyebrow label="your brief" />
+              <h2 class="heading-h5"><TwoTone text="Two minutes. Then we take it from there." /></h2>
+              <p class="text-small text-(--body-soft)">Your email and company first, then the project. Everything after the first step is optional.</p>
+            </div>
+            <AiBriefForm />
+            <ul class="flex flex-col gap-2 border-t border-line pt-4 text-small text-(--body-soft)">
+              <li class="flex items-center gap-2"><Icon name="check" class="size-(--button-icon) text-acid" /> A reply within one working day</li>
+              <li class="flex items-center gap-2"><Icon name="check" class="size-(--button-icon) text-acid" /> A fixed price before production starts</li>
+              <li class="flex items-center gap-2"><Icon name="check" class="size-(--button-icon) text-acid" /> 2 rounds of revisions included</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </Section>
+  </main>
+  <Footer ctaHref="#brief" />
+</BaseLayout>

@@ -1,0 +1,73 @@
+---
+/**
+ * Formulaire « free concept » en deux étapes, volontairement court :
+ *  1. email + société (lead capturé immédiatement)
+ *  2. nom, période, marché, budget média (deux fourchettes), brief libre
+ * Le meilleur pas suivant reste le call : bouton « book a call » à côté du bouton d'envoi.
+ * Envoi : src/scripts/lead-form.ts → /api/lead. Redirection vers /thank-you.
+ * tone="dark" (défaut) : posé sur un fond noir (champs translucides, focus acide) ; "light" : sur une carte blanche.
+ * Le champ mois garde l'icône inversée de global.css : réservé au ton sombre tant que ce réglage reste global.
+ */
+import FormField from './FormField.astro';
+import SelectField from './SelectField.astro';
+import Button from './Button.astro';
+import Captcha from './Captcha.astro';
+import { BUDGET_RANGES } from '../../lib/lead';
+import { form as labels, bookLabel } from '../../data/site';
+
+interface Props {
+  submitLabel?: string;
+  tone?: 'light' | 'dark';
+  class?: string;
+}
+const { submitLabel = 'get my free concept', tone = 'dark', class: className } = Astro.props;
+const dark = tone === 'dark';
+const steps = ['Your details', 'Your campaign'];
+---
+
+<form data-lead-form="free-concept" data-success="/thank-you?form=free-concept" data-msg-required={labels.required} data-msg-email={labels.invalidEmail} data-msg-url={labels.invalidUrl} data-msg-captcha={labels.captcha} novalidate class:list={['flex flex-col gap-5', dark && 'tone-dark', className]}>
+  <ol class="flex flex-wrap items-center gap-x-4 gap-y-2 text-tagline text-(--label-color)" aria-label="Steps">
+    {
+      steps.map((label, i) => (
+        <li data-step-indicator aria-current={i === 0 ? 'step' : 'false'} class="flex items-center gap-2 aria-[current=step]:text-current">
+          <span class:list={['size-(--form-step-dot) rounded-pill bg-(--label-color)', dark ? 'in-[[aria-current=step]]:bg-acid' : 'in-[[aria-current=step]]:bg-black']} aria-hidden="true" />
+          <span>
+            {i + 1}/{steps.length} · {label}
+          </span>
+        </li>
+      ))
+    }
+  </ol>
+
+  <div data-step="1" data-step-label="continue" class="grid grid-cols-2 gap-3 max-sm:grid-cols-1">
+    <FormField name="email" type="email" label={labels.email.label} placeholder={labels.email.placeholder} autocomplete="email" tone={tone} />
+    <FormField name="company" label={labels.company.label} placeholder={labels.company.placeholder} autocomplete="organization" tone={tone} />
+  </div>
+
+  <div data-step="2" data-step-label={submitLabel} hidden class="flex flex-col gap-3">
+    <FormField name="name" label={labels.name.label} placeholder={labels.name.placeholder} autocomplete="name" required={false} tone={tone} />
+    <div class="grid grid-cols-2 gap-3 max-sm:grid-cols-1">
+      <FormField name="campaignDate" type="month" label={labels.campaignDate.label} required={false} tone={tone} />
+      <FormField name="market" label={labels.market.label} placeholder={labels.market.placeholder} required={false} tone={tone} />
+    </div>
+    <SelectField name="budget" label={labels.budget.label} options={BUDGET_RANGES} placeholder="Choose a range" tone={tone} />
+    <FormField name="message" type="textarea" label={labels.brief.label} placeholder={labels.brief.placeholder} required={false} tone={tone} />
+  </div>
+
+  <div class="hidden" aria-hidden="true">
+    <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+  </div>
+  <input type="hidden" name="language" value="en" data-lang-field />
+
+  <Captcha tone={tone} />
+  <p data-form-error hidden data-default={labels.serverError} class="text-small font-medium text-orange" aria-live="assertive"></p>
+
+  <div class="flex flex-wrap items-center gap-2">
+    <Button type="submit" variant={dark ? 'light' : 'dark'} label="continue" data-label={submitLabel} />
+    <Button href="/book" variant={dark ? 'outline' : 'light'} label={bookLabel} data-track-click="form_book" />
+  </div>
+</form>
+
+<script>
+  import '../../scripts/lead-form';
+</script>

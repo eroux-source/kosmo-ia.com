@@ -1,0 +1,49 @@
+---
+/**
+ * Tableau « the old way / the new way » (DESIGN-SYSTEM.md), à même le fond : en-têtes en étiquettes mono, filets fins
+ * entre les lignes serrées, première colonne à la largeur de son contenu, les deux autres se partagent la place (une
+ * phrase par ligne sur ordinateur) ; l'ancienne façon en texte atténué, la nouvelle en noir avec un repère acide.
+ */
+import Icon from './Icon.astro';
+
+interface Row {
+  icon: string;
+  feature: string;
+  old: string;
+  new: string;
+}
+interface Props {
+  head: string[];
+  rows: Row[];
+}
+const { head, rows } = Astro.props;
+/* Grille commune (subgrid) : la première colonne prend la largeur de la plus longue caractéristique, sur toutes les lignes. */
+const row = 'col-span-full grid grid-cols-subgrid items-center border-b border-line py-2.5 text-body-small';
+---
+
+<div class="overflow-auto border-t border-line">
+  <div class="grid min-w-(--table-min-width) grid-cols-(--table-cols) gap-x-8 max-lg:grid-cols-(--table-cols-tablet) max-lg:gap-x-5 max-sm:grid-cols-(--table-cols-mobile)" role="table">
+    <div role="rowgroup" class="col-span-full grid grid-cols-subgrid">
+      <div role="row" class:list={[row, 'text-tagline text-(--label-color)']}>
+        <div role="columnheader">{head[0]}</div>
+        <div role="columnheader">{head[1]}</div>
+        <div role="columnheader" class="flex items-center gap-2">
+          <span class="size-2 shrink-0 rounded-default bg-acid" aria-hidden="true"></span>
+          {head[2]}
+        </div>
+      </div>
+      {
+        rows.map((r) => (
+          <div role="row" class={row}>
+            <div role="cell" class="flex items-center gap-2.5 font-medium whitespace-nowrap">
+              <Icon name={r.icon} class="size-(--table-icon)" />
+              <div>{r.feature}</div>
+            </div>
+            <div role="cell" class="text-(--body-soft)">{r.old}</div>
+            <div role="cell" class="font-medium">{r.new}</div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>

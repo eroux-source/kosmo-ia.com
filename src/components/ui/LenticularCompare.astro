@@ -1,0 +1,140 @@
+---
+/**
+ * Comparateur lenticulaire (d'après « Lenticular Compare » de 21st.dev, refait sans React) : l'image est découpée en
+ * lamelles ; chaque lamelle est un vrai prisme 3D à deux faces (avant / après) qui pivote de 0 à 90° en perspective,
+ * avec un léger décalage de l'une à l'autre, un ressort et un ombrage par face. Les faces sont des canvas redessinés à
+ * partir des deux films (gardés synchronisés). On glisse sur l'image ou sur la réglette courte posée en bas de l'image ;
+ * les deux étiquettes amènent d'un coup à un côté. Réduction des animations : bascule directe. src/scripts/lenticular.ts.
+ */
+interface Side {
+  label: string;
+  src: string;
+  video?: { src: string; poster: string };
+}
+interface Props {
+  before: Side;
+  after: Side;
+  /** Format de la scène : 16:9 (défaut, /3dooh) ou 4:5 (films verticaux recadrés, /fooh). */
+  ratio?: 'video' | 'card';
+  class?: string;
+}
+const { before, after, ratio = 'video', class: className } = Astro.props;
+const media = (side: Side) => ({ video: side.video?.src, poster: side.video?.poster ?? side.src });
+const a = media(before);
+const b = media(after);
+const tab =
+  'chip cursor-pointer transition-[background-color,color] duration-(--duration-color) aria-pressed:[--chip-surface:var(--kosmo-black)] aria-pressed:[--label-color:var(--kosmo-white)] hover:not-aria-pressed:[--label-color:var(--kosmo-black)] focus:outline-none focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-black';
+---
+
+<div data-lenticular class:list={['flex flex-col gap-3', className]}>
+  <div class="flex items-center gap-2">
+    <button type="button" data-lenticular-to="0" aria-pressed="true" class={tab}>{before.label}</button>
+    <button type="button" data-lenticular-to="1" aria-pressed="false" class={tab}>{after.label}</button>
+  </div>
+  <div data-lenticular-stage class:list={['lenticular-stage relative isolate w-full cursor-ew-resize touch-pan-y overflow-hidden rounded-sm bg-black select-none', ratio === 'card' ? 'aspect-card' : 'aspect-video']}>
+    {
+      a.video ? (
+        <video data-lenticular-va data-src={a.video} poster={a.poster} muted loop playsinline preload="none" class="absolute inset-0 z-0 size-full object-cover" />
+      ) : (
+        <img data-lenticular-ia src={a.poster} alt="" class="absolute inset-0 z-0 size-full object-cover" />
+      )
+    }
+    <div data-lenticular-facets class="absolute inset-0 z-1 opacity-0" aria-hidden="true"></div>
+    {
+      b.video ? (
+        <video data-lenticular-vb data-src={b.video} poster={b.poster} muted loop playsinline preload="none" class="absolute inset-0 z-2 size-full object-cover opacity-0" />
+      ) : (
+        <img data-lenticular-ib src={b.poster} alt="" class="absolute inset-0 z-2 size-full object-cover opacity-0" />
+      )
+    }
+    <div class="absolute inset-x-0 bottom-(--lenticular-bar-inset) z-3 flex justify-center">
+      <div class="flex items-center rounded-sm bg-(--lenticular-bar-surface) px-(--lenticular-bar-pad)">
+        <input type="range" min="0" max="100" value="0" data-lenticular-range aria-label={`${before.label} / ${after.label}`} class="lenticular-range w-(--lenticular-bar-w)" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  @layer components {
+    /* Lamelle : fenêtre en perspective, prisme 3D à deux faces (canvas), liseré clair / sombre sur les bords. */
+    .lenticular-facet {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      overflow: hidden;
+      perspective: var(--lenticular-perspective);
+      isolation: isolate;
+    }
+    .lenticular-prism {
+      position: absolute;
+      inset: 0;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+    .lenticular-face {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      will-change: filter;
+    }
+    .lenticular-face-edge {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      border-left: var(--hairline) solid var(--lenticular-edge-light);
+      border-right: var(--hairline) solid var(--lenticular-edge-dark);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    /* Réglette courte posée sur l'image : trait clair 1 px, curseur acide rectangulaire (rayon 2 px). */
+    .lenticular-range {
+      appearance: none;
+      height: var(--lenticular-range-h);
+      margin: 0;
+      background: transparent;
+      cursor: ew-resize;
+      touch-action: pan-y;
+    }
+    .lenticular-range::-webkit-slider-runnable-track {
+      height: var(--hairline);
+      background: var(--on-dark-soft);
+    }
+    .lenticular-range::-moz-range-track {
+      height: var(--hairline);
+      background: var(--on-dark-soft);
+    }
+    .lenticular-range::-webkit-slider-thumb {
+      appearance: none;
+      width: var(--lenticular-thumb-w);
+      height: var(--lenticular-thumb-h);
+      margin-top: var(--lenticular-thumb-offset);
+      border: 0;
+      border-radius: var(--rounded-default);
+      background: var(--kosmo-acid);
+    }
+    .lenticular-range::-moz-range-thumb {
+      width: var(--lenticular-thumb-w);
+      height: var(--lenticular-thumb-h);
+      border: 0;
+      border-radius: var(--rounded-default);
+      background: var(--kosmo-acid);
+    }
+    .lenticular-range:focus-visible {
+      outline: var(--hairline) solid var(--kosmo-acid);
+      outline-offset: var(--lenticular-focus-offset);
+    }
+    @media (max-width: 767px) {
+      .lenticular-facet {
+        perspective: var(--lenticular-perspective-mobile);
+      }
+    }
+  }
+</style>
+
+<script>
+  import '../../scripts/lenticular';
+</script>

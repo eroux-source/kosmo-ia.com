@@ -1,0 +1,57 @@
+---
+/**
+ * Champ de formulaire (DESIGN-SYSTEM.md) : 41 px comme les boutons, rayon 4 px, texte 15 px, liseré intérieur 1 px.
+ *  - tone="light" : champ blanc sur papier ou carte, focus noir 1,5 px
+ *  - tone="dark"  : champ translucide sur fond noir (défaut, tous les formulaires actuels sont sur fond sombre), focus acide
+ * Message d'erreur par champ ([data-error-for], src/scripts/lead-form.ts), liseré orange quand aria-invalid.
+ */
+import Icon from './Icon.astro';
+
+interface Props {
+  name: string;
+  label: string;
+  placeholder?: string;
+  type?: 'text' | 'email' | 'number' | 'textarea' | 'url' | 'month' | 'tel';
+  icon?: string;
+  required?: boolean;
+  autocomplete?: string;
+  hint?: string;
+  tone?: 'light' | 'dark';
+  class?: string;
+}
+
+const { name, label, placeholder, type = 'text', icon, required = true, autocomplete, hint, tone = 'dark', class: className } = Astro.props;
+const id = `field-${name}-${Math.random().toString(36).slice(2, 7)}`;
+const inputClass = [
+  'w-full min-h-(--button-height) rounded-sm px-(--field-pad-x) py-(--field-pad-y) text-medium leading-body outline-none transition-shadow duration-(--duration-color) ease-(--ease-kosmo) aria-invalid:shadow-(--field-ring-error)',
+  tone === 'light'
+    ? 'bg-white text-black shadow-(--card-ring-strong) placeholder:text-ink-faint hover:shadow-(--card-ring-black) focus:shadow-(--card-ring-black)'
+    : 'bg-(--input-surface) text-white shadow-(--card-ring-dark) placeholder:text-on-dark-soft focus:shadow-(--card-ring-acid)',
+];
+---
+
+<div class:list={['flex flex-col gap-(--field-label-gap)', className]}>
+  <label for={id} class="text-small font-medium">{label}{required && '*'}</label>
+  {
+    type === 'textarea' ? (
+      <textarea id={id} name={name} maxlength="2000" placeholder={placeholder} required={required} aria-describedby={`${id}-error`} class:list={[inputClass, 'h-full min-h-(--textarea-min-height) resize-y']} />
+    ) : (
+      <div class="relative flex w-full items-center justify-start">
+        <input
+          id={id}
+          name={name}
+          type={type}
+          maxlength="256"
+          placeholder={placeholder}
+          required={required}
+          autocomplete={autocomplete}
+          aria-describedby={`${id}-error`}
+          class:list={[inputClass, icon && 'pl-(--field-icon-pad)']}
+        />
+        {icon && <Icon name={icon} class="pointer-events-none absolute left-(--field-pad-x) size-(--button-icon) text-(--label-color)" />}
+      </div>
+    )
+  }
+  {hint && <p class="text-xsmall text-(--label-color)">{hint}</p>}
+  <p id={`${id}-error`} data-error-for={name} hidden class="text-xsmall font-medium text-orange" aria-live="polite"></p>
+</div>

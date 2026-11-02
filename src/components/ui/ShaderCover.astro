@@ -1,0 +1,38 @@
+---
+/**
+ * Couverture animée d'un article sans image : deux couleurs (palette N des tokens) en voiles qui ondulent,
+ * rendues en WebGL (src/scripts/shader-cover.ts, port du « aurora veil »), dégradé statique en repli.
+ */
+interface Props {
+  palette: number;
+  class?: string;
+}
+const { palette, class: className } = Astro.props;
+/* Classes complètes pour que Tailwind les compile : la palette pose --shader-a / --shader-b sur l'élément. */
+const PALETTE_CLASS: Record<number, string> = {
+  1: '[--shader-a:var(--shader-1-a)] [--shader-b:var(--shader-1-b)]',
+  2: '[--shader-a:var(--shader-2-a)] [--shader-b:var(--shader-2-b)]',
+  3: '[--shader-a:var(--shader-3-a)] [--shader-b:var(--shader-3-b)]',
+  4: '[--shader-a:var(--shader-4-a)] [--shader-b:var(--shader-4-b)]',
+  5: '[--shader-a:var(--shader-5-a)] [--shader-b:var(--shader-5-b)]',
+  6: '[--shader-a:var(--shader-6-a)] [--shader-b:var(--shader-6-b)]',
+  7: '[--shader-a:var(--shader-7-a)] [--shader-b:var(--shader-7-b)]',
+  8: '[--shader-a:var(--shader-8-a)] [--shader-b:var(--shader-8-b)]',
+  9: '[--shader-a:var(--shader-9-a)] [--shader-b:var(--shader-9-b)]',
+  10: '[--shader-a:var(--shader-10-a)] [--shader-b:var(--shader-10-b)]',
+  11: '[--shader-a:var(--shader-11-a)] [--shader-b:var(--shader-11-b)]',
+  12: '[--shader-a:var(--shader-12-a)] [--shader-b:var(--shader-12-b)]',
+  13: '[--shader-a:var(--shader-13-a)] [--shader-b:var(--shader-13-b)]',
+  14: '[--shader-a:var(--shader-14-a)] [--shader-b:var(--shader-14-b)]',
+  15: '[--shader-a:var(--shader-15-a)] [--shader-b:var(--shader-15-b)]',
+  16: '[--shader-a:var(--shader-16-a)] [--shader-b:var(--shader-16-b)]',
+};
+---
+
+<div data-shader-cover class:list={['relative overflow-hidden bg-(image:--shader-fallback)', PALETTE_CLASS[palette] ?? PALETTE_CLASS[1], className]} aria-hidden="true">
+  <canvas class="pointer-events-none absolute inset-0 size-full opacity-0 transition-opacity duration-(--duration-surface-slow) data-[ready]:opacity-100"></canvas>
+</div>
+
+<script>
+  import '../../scripts/shader-cover';
+</script>

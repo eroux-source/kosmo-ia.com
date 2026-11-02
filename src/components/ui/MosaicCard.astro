@@ -1,0 +1,81 @@
+---
+/**
+ * Carte projet (référence de Mehdi du 22/10/2026) : le film au format natif (9:16, 16:9 ou 1:1, coins 4 px), lu au
+ * survol, avec le logo de la marque en gris dans une petite étiquette blanche collée au bord droit, un peu sous le haut
+ * (pas de nom de marque au-dessus : le logo suffit). Le titre du projet,
+ * la ville et le format n'apparaissent dans le film qu'au survol. Même attributs data-* qu'avant pour les filtres de /work.
+ * `layout="row"` : tuile d'une rangée à hauteur de film commune (WorkRow) ; `grid` : mosaïque de /work (16:9 sur deux
+ * colonnes, 9:16 et 1:1 sur une, hauteur exacte calculée par src/scripts/mosaic.ts).
+ * Écran tactile (pas de survol) : le titre, la ville et le format restent affichés dans le film. L'affiche du film se
+ * charge à l'approche de l'écran (src/scripts/hover-video.ts) : /work en a 67.
+ */
+import BrandLogo from './BrandLogo.astro';
+
+export interface MosaicItem {
+  href: string;
+  video: string;
+  poster?: string;
+  ratio: '9:16' | '16:9' | '1:1';
+  brand: string;
+  logo?: string;
+  category: string;
+  categoryLabel: string;
+  industry: string;
+  city?: string;
+  title: string;
+  metric?: { value: string; label: string };
+}
+interface Props {
+  item: MosaicItem;
+  /** grid = mosaïque dense de /work ; row = rangée à hauteur commune. */
+  layout?: 'grid' | 'row';
+}
+const { item, layout = 'grid' } = Astro.props;
+const landscape = item.ratio === '16:9';
+/* Films carrés (reels 1:1) : une colonne, hauteur entre portrait et paysage. */
+const square = item.ratio === '1:1';
+---
+
+<li
+  data-case
+  data-category={item.category}
+  data-industry={item.industry}
+  data-city={item.city}
+  data-ratio={item.ratio}
+  data-layout={layout}
+  class:list={[
+    layout === 'grid' && ['pb-(--mosaic-gap)', landscape ? 'col-span-2 row-span-(--mosaic-span-landscape)' : square ? 'row-span-(--mosaic-span-square)' : 'row-span-(--mosaic-span-portrait)'],
+    layout === 'row' && ['min-w-0 basis-(--tile-basis)', landscape ? 'grow-(--tile-landscape) max-md:col-span-2' : square ? 'grow-(--tile-square)' : 'grow-(--tile-portrait)'],
+  ]}
+>
+  <a
+    href={item.href}
+    data-hover-video
+    aria-label={`${item.brand}: ${item.title}`}
+    class="group flex size-full flex-col text-black"
+  >
+    <span
+      data-tile-media
+      class:list={[
+        'relative block min-h-0 overflow-hidden rounded-default bg-black text-white',
+        layout === 'grid' ? 'flex-1' : landscape ? 'aspect-video' : square ? 'aspect-square' : 'aspect-portrait',
+      ]}
+    >
+      <video class="absolute inset-0 size-full object-cover" data-src={item.video} data-poster={item.poster} muted loop playsinline preload="none" />
+      <span data-case-tag class="absolute top-(--case-tag-top) right-0 z-1 flex h-(--case-tag-h) items-center rounded-l-default bg-white px-(--case-tag-pad-x) text-black">
+        <BrandLogo name={item.brand} fallbackSrc={item.logo} ink="black" wordmark="text-(length:--case-wordmark) tracking-(--h3-tracking)" class="h-(--case-logo) max-w-(--case-tag-logo-w) opacity-(--case-tag-logo-opacity) [--logo-detail:var(--kosmo-white)] [&>svg]:h-full [&>svg]:max-w-full" />
+      </span>
+      <span class="absolute inset-x-0 bottom-0 isolate flex flex-col gap-1 p-3 opacity-0 transition-opacity duration-(--duration-color) before:absolute before:inset-0 before:-z-1 before:bg-(image:--overlay-caption) group-hover:opacity-100 group-focus-visible:opacity-100 pointer-coarse:opacity-100">
+        <span class="flex flex-wrap gap-x-3 font-mono text-xsmall tracking-tagline uppercase opacity-80">
+          {item.city && <span>{item.city}</span>}
+          <span>{item.categoryLabel}</span>
+        </span>
+        <span class="text-body-small font-medium text-balance pointer-coarse:line-clamp-2">{item.title}</span>
+      </span>
+    </span>
+  </a>
+</li>
+
+<script>
+  import '../../scripts/hover-video';
+</script>

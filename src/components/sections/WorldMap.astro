@@ -1,0 +1,131 @@
+---
+/**
+ * Map monde en pixels (Natural Earth, src/data/world-dots.json) dessinée sur un canvas :
+ * les pixels s'allument sous le pointeur et s'éteignent lentement derrière lui (traînée).
+ * Les villes sont des repères HTML : au survol, l'étiquette s'élargit et une flèche apparaît à droite du nom
+ * (même pattern que le menu Services) ; au clic, la page ville, sinon /work filtré par ville (quand un projet publié s'y trouve).
+ */
+import Section from '../ui/Section.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+import Icon from '../ui/Icon.astro';
+import Button from '../ui/Button.astro';
+import TwoTone from '../ui/TwoTone.astro';
+import world from '../../data/world-dots.json';
+import { worldMap, type MapCity } from '../../data/world';
+import { getPublishedCases } from '../../lib/cases';
+import { cityOf, foohProjects } from '../../lib/fooh';
+import { cityByName } from '../../data/cities';
+
+interface Props {
+  id?: string;
+  /** Surtitre : « work » sur la home, « compatibility » sur /3dooh. */
+  overline?: string;
+  /** Home : un bouton à la place du texte d'intro, calé en haut à droite du titre. */
+  cta?: { label: string; href: string };
+  /** Carte d'une autre page (ex. /fooh) : villes, titre, intro, et liens vers /work filtré (`work`) plutôt que vers les pages villes. */
+  cities?: MapCity[];
+  heading?: string;
+  intro?: string;
+  links?: 'city-pages' | 'work';
+  /** Préfixe du nom accessible des liens (« 3DOOH in Paris »). */
+  linkLabel?: string;
+}
+const { id, overline = worldMap.overline, cta, cities: cityList = worldMap.cities, heading = worldMap.heading, intro = worldMap.intro, links = 'city-pages', linkLabel = '3DOOH' } = Astro.props;
+const { cols, rows, latMax, latMin } = world;
+/* Taille intrinsèque du canvas avant que le script ne le redimensionne : seul le ratio compte. */
+const CELL = 8;
+const project = (lat: number, lon: number) => ({
+  x: ((lon + 180) / 360) * cols,
+  y: ((latMax - lat) / (latMax - latMin)) * rows,
+});
+/* Position de l'étiquette autour du repère (le point est à l'origine de l'ancre). */
+const SIDE = {
+  right: 'top-0 left-(--map-label-gap) -translate-y-1/2',
+  left: 'top-0 right-(--map-label-gap) -translate-y-1/2',
+  top: 'bottom-(--map-label-gap) left-0 -translate-x-1/2',
+  bottom: 'top-(--map-label-gap) left-0 -translate-x-1/2',
+};
+const published = await getPublishedCases();
+const worksIn = (name: string) => published.filter((c) => c.data.city === name).length + foohProjects.filter((p) => cityOf(p) === name).length;
+const cities = cityList.map((city) => {
+  const p = project(city.lat, city.lon);
+  /* Page ville quand elle existe, sinon /work filtré par ville quand un projet s'y trouve. */
+  const page = links === 'city-pages' ? cityByName(city.name) : undefined;
+  const href = page ? `/3dooh/${page.slug}` : worksIn(city.name) ? `/work?city=${encodeURIComponent(city.name)}` : undefined;
+  return { ...city, href, x: (p.x / cols) * 100, y: (p.y / rows) * 100 };
+});
+---
+
+<Section id={id} data-fade="trigger" class="overflow-hidden scroll-mt-(--nav-inset)">
+  <div class="flex flex-col">
+    <Eyebrow label={overline} />
+    <div class:list={['mt-(--head-gap) grid grid-cols-2 gap-10 max-lg:grid-cols-1', cta ? 'items-start' : 'items-end']}>
+      <h2 data-stagger-text class="heading-h3"><TwoTone text={heading} /></h2>
+      {
+        cta ? (
+          <div data-fade="target" class="justify-self-end max-lg:justify-self-start">
+            <Button href={cta.href} label={cta.label} variant="dark" />
+          </div>
+        ) : (
+          <p data-fade="target" class="max-w-(--head-intro-max) justify-self-end text-body-medium text-(--body-soft) max-lg:justify-self-start">{intro}</p>
+        )
+      }
+    </div>
+    <div data-world-map class="relative mt-12 w-full touch-pan-y">
+      <canvas data-map-canvas width={cols * CELL} height={rows * CELL} class="block h-auto w-full" aria-hidden="true"></canvas>
+      <ul class="pointer-events-none absolute inset-0" aria-label="Cities">
+        {
+          cities.map((city) => (
+            <li>
+              <a
+                href={city.href}
+                data-map-city={city.name}
+                data-x={city.x}
+                data-y={city.y}
+                aria-label={city.href ? `${linkLabel} in ${city.name}` : city.name}
+                class="group pointer-events-auto absolute size-0 hover:z-10"
+              >
+                <span class="absolute top-0 left-0 size-(--map-pin) -translate-1/2 rounded-pill bg-black max-md:size-(--map-pin-mobile)" />
+                <span
+                  data-map-label={city.name}
+                  class:list={[
+                    'absolute flex h-(--map-label-height) items-center rounded-default bg-white px-1.5 text-tiny font-medium whitespace-nowrap text-black shadow-(--card-ring) transition-colors duration-(--duration-color) group-hover:bg-acid max-md:hidden',
+                    SIDE[city.labelSide ?? 'right'],
+                  ]}
+                >
+                  {city.name}
+                  {
+                    city.href && (
+                      <span class="flex max-w-0 overflow-hidden opacity-0 transition-all duration-(--duration-surface) ease-(--ease-kosmo) group-hover:ml-1 group-hover:max-w-(--case-arrow) group-hover:opacity-100">
+                        <Icon name="arrow-right" class="size-(--case-arrow) shrink-0" />
+                      </span>
+                    )
+                  }
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <ul class="hidden flex-wrap gap-2 max-md:flex" aria-label="Cities">
+      {
+        cities.map((city) => (
+          <li>
+            <a
+              href={city.href}
+              class="card flex items-center gap-2 rounded-default px-2.5 py-1.5 text-xsmall font-medium"
+            >
+              <span class="size-(--map-pin) rounded-pill bg-black" />
+              {city.name}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</Section>
+
+<script>
+  import '../../scripts/world-map';
+</script>

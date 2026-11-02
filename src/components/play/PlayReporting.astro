@@ -1,0 +1,103 @@
+---
+/**
+ * Reporting : texte à gauche, maquette de tableau de bord à droite (compteurs [data-counter], histogramme des parties
+ * par jour, entonnoir « du jeu au lead »). Barres animées par src/scripts/play-page.ts depuis data-value (pourcentage).
+ * Chiffres fictifs, signalés comme tels sur la maquette.
+ */
+import Section from '../ui/Section.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+import Icon from '../ui/Icon.astro';
+import TwoTone from '../ui/TwoTone.astro';
+import { play } from '../../data/play';
+
+interface Props {
+  id?: string;
+}
+const { id } = Astro.props;
+const { reporting } = play;
+const { dashboard } = reporting;
+const mono = 'text-tagline';
+const peak = Math.max(...dashboard.chart.bars);
+---
+
+<Section id={id} spacing="lg" data-fade="trigger" class="scroll-mt-(--nav-inset)">
+  <Eyebrow label={reporting.overline} />
+  <div class="mt-(--head-gap)">
+    <div class="grid grid-cols-(--process-card-cols) gap-12 max-lg:grid-cols-1">
+      <div class="flex flex-col gap-5">
+        <h2 data-stagger-text class="heading-h3"><TwoTone text={reporting.heading} /></h2>
+        <p data-fade="target" class="max-w-(--head-intro-max) text-body-medium text-(--body-soft)">{reporting.intro}</p>
+        <ul class="mt-3 flex flex-col gap-3">
+          {
+            reporting.points.map((point) => (
+              <li data-fade="target" class="flex items-center gap-3 border-b border-line pb-3 text-body-medium">
+                <span class="grid size-6 shrink-0 place-items-center rounded-default bg-acid text-black">
+                  <Icon name="check" class="size-4" />
+                </span>
+                {point}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div data-fade="target" data-play-dashboard class="card overflow-hidden">
+        <div class="flex items-center justify-between gap-4 bg-black px-5 py-3 text-white">
+          <span class="flex items-center gap-3">
+            <span class="text-small font-bold">{dashboard.title}</span>
+            <span class:list={[mono, 'text-on-dark-soft']}>{dashboard.campaign}</span>
+          </span>
+          <span class:list={[mono, 'flex items-center gap-2 text-acid']}>
+            <span class="size-2 rounded-pill bg-acid" aria-hidden="true" />
+            {dashboard.live}
+          </span>
+        </div>
+
+        <div class="flex flex-col gap-6 p-5">
+          <ul class="grid grid-cols-4 gap-3 max-md:grid-cols-2">
+            {
+              dashboard.kpis.map((kpi) => (
+                <li class="flex flex-col gap-1 rounded-default bg-paper p-3">
+                  <span class:list={[mono, 'text-ink-soft']}>{kpi.label}</span>
+                  <span data-counter={kpi.value} class="text-xlarge font-extrabold tabular-nums">
+                    {kpi.value}
+                  </span>
+                </li>
+              ))
+            }
+          </ul>
+
+          <div class="grid grid-cols-2 gap-6 max-md:grid-cols-1">
+            <div class="flex flex-col gap-3">
+              <span class:list={[mono, 'text-ink-soft']}>{dashboard.chart.label}</span>
+              <div class="flex h-(--play-chart-h) items-end gap-1 border-b border-line-strong" aria-hidden="true">
+                {dashboard.chart.bars.map((bar, i) => <span data-play-bar="y" data-value={Math.round((bar / peak) * 100)} class:list={['h-0 flex-1 rounded-t-default', i === dashboard.chart.bars.length - 3 ? 'bg-acid' : 'bg-black']} />)}
+              </div>
+            </div>
+            <div class="flex flex-col gap-3">
+              <span class:list={[mono, 'text-ink-soft']}>{dashboard.funnel.label}</span>
+              <ol class="flex flex-col gap-1">
+                {
+                  dashboard.funnel.steps.map((step, i) => (
+                    <li class="relative flex h-(--play-funnel-h) items-center overflow-hidden rounded-default bg-paper">
+                      <span data-play-bar="x" data-value={step.value} class:list={['absolute inset-y-0 left-0 w-0', i === dashboard.funnel.steps.length - 2 ? 'bg-acid' : 'bg-grey-400']} />
+                      <span class="relative flex w-full justify-between px-2 font-mono text-xsmall">
+                        <span>{step.label}</span>
+                        <span>{step.value} %</span>
+                      </span>
+                    </li>
+                  ))
+                }
+              </ol>
+            </div>
+          </div>
+          <p class:list={[mono, 'text-ink-soft']}>{dashboard.note}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</Section>
+
+<script>
+  import '../../scripts/counters';
+</script>

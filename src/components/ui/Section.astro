@@ -1,0 +1,44 @@
+---
+/**
+ * Section + container (DESIGN-SYSTEM.md) : container 1052 px, gouttière 20 px, padding vertical « md » (deux sections
+ * qui se suivent = 112 px) ou « lg ». Claire = fond papier. Sombre = noir + trame « Dark Dot Matrix », textes inversés
+ * (tone-dark) et lisières en pixels tramés vers les voisines claires (Dither, retirées si la voisine est sombre).
+ */
+import Dither from './Dither.astro';
+
+interface Props {
+  as?: 'section' | 'div' | 'footer' | 'header';
+  spacing?: 'md' | 'lg' | 'none';
+  tone?: 'light' | 'dark';
+  /** Section sombre : lisières tramées en haut et en bas (défaut : oui). */
+  dither?: boolean;
+  id?: string;
+  class?: string;
+  containerClass?: string;
+  [key: `data-${string}`]: string | undefined;
+}
+
+const { as: Tag = 'section', spacing = 'md', tone = 'light', dither = true, id, class: className, containerClass, ...attrs } = Astro.props;
+const dark = tone === 'dark';
+const edges = dark && dither;
+---
+
+<Tag
+  id={id}
+  class:list={[
+    'relative px-(--gutter)',
+    !edges && spacing === 'md' && 'py-(--section-md-y) max-lg:py-(--section-md-y-tablet)',
+    !edges && spacing === 'lg' && 'py-(--section-lg-y) max-lg:py-(--section-lg-y-tablet)',
+    edges && spacing === 'md' && 'py-(--section-dark-md-y) max-lg:py-(--section-dark-md-y-tablet)',
+    edges && spacing === 'lg' && 'py-(--section-dark-lg-y) max-lg:py-(--section-dark-lg-y-tablet)',
+    dark ? 'bg-dot-matrix tone-dark' : 'bg-paper text-black',
+    className,
+  ]}
+  {...attrs}
+>
+  {edges && <Dither edge="top" />}
+  <div class:list={['relative z-1 mx-auto w-full max-w-page', containerClass]}>
+    <slot />
+  </div>
+  {edges && <Dither edge="bottom" />}
+</Tag>

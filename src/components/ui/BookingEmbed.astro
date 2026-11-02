@@ -1,0 +1,38 @@
+---
+/**
+ * Prise de rendez-vous : l'agenda Google Calendar (par défaut) ou HubSpot Meetings (PUBLIC_BOOKING_URL)
+ * en iframe dans une carte blanche, avec les chemins de secours toujours visibles : ouvrir l'agenda dans un onglet,
+ * WhatsApp, email.
+ */
+import Button from './Button.astro';
+import { publicEnv, whatsappHref } from '../../lib/env';
+import { contact } from '../../data/site';
+
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+const url = publicEnv.bookingUrl!;
+const google = url.includes('calendar.google.com');
+const embedUrl = google ? url : `${url}${url.includes('?') ? '&' : '?'}embed=true`;
+---
+
+<div class:list={['flex flex-col gap-3', className]} data-booking>
+  {
+    google ? (
+      <div class="card w-full overflow-hidden p-(--card-pad)">
+        <iframe src={embedUrl} title="Book a call with KOSMO® (Google Calendar)" loading="lazy" class="block min-h-(--booking-min-height) w-full rounded-default bg-white" />
+      </div>
+    ) : (
+      <div class="card w-full overflow-hidden p-(--card-pad)">
+        <div class="meetings-iframe-container min-h-(--booking-min-height) overflow-hidden rounded-default" data-src={embedUrl} />
+        <script is:inline src="https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js" />
+      </div>
+    )
+  }
+  <div class="flex flex-wrap items-center gap-2">
+    <Button href={url} label="open the calendar" variant="light" target="_blank" rel="noopener" data-track-click="booking_open" />
+    <Button href={whatsappHref('Hi KOSMO, I would like to book a call about an AI production.')} label="whatsapp us" variant="dark" data-track-click="whatsapp_click" />
+    <Button href={`mailto:${contact.email}?subject=${encodeURIComponent('Book a call: AI production')}`} label={contact.email} icon="mail" variant="light" go={false} verbatim />
+  </div>
+</div>

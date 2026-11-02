@@ -1,0 +1,93 @@
+---
+/**
+ * Témoignages en éventail (cartes décalées et légèrement inclinées, la carte centrale en avant, noire), bordure
+ * « spotlight » qui s'allume sous le pointeur. Clic sur une carte, sur les flèches ou glissé au doigt pour faire tourner la pile. Logo du client à la place d'une photo,
+ * message court, auteur. DÉMO tant que les vrais messages ne sont pas fournis (src/data/testimonials.ts).
+ */
+import Section from '../ui/Section.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+import Demo from '../ui/Demo.astro';
+import Icon from '../ui/Icon.astro';
+import BrandLogo from '../ui/BrandLogo.astro';
+import TwoTone from '../ui/TwoTone.astro';
+import { testimonials } from '../../data/testimonials';
+
+interface Props {
+  id?: string;
+}
+const { id } = Astro.props;
+const arrow =
+  'grid size-(--button-height) cursor-pointer place-items-center rounded-sm bg-white text-black shadow-(--card-ring-strong) transition-colors duration-(--duration-color) hover:bg-acid focus-visible:bg-acid focus-visible:outline-none';
+---
+
+<Section id={id} data-fade="trigger" class="overflow-hidden">
+  <Eyebrow label={testimonials.overline} />
+  <Demo inline when={testimonials.heading.demo} note="titre de la section témoignages">
+    <h2 data-stagger-text class="mt-(--head-gap) heading-h3 max-w-(--testimonials-title-max)"><TwoTone text={testimonials.heading.text} soft={testimonials.heading.soft} /></h2>
+  </Demo>
+  <div data-fade="target" data-stagger-testimonials class="relative mt-10 h-(--stagger-height) w-full touch-pan-y max-md:h-(--stagger-height-mobile)">
+    <ul class="absolute inset-0" aria-live="polite">
+      {
+        testimonials.items.map((item) => (
+          <li
+            data-stagger-card
+            data-fan-card
+            class="stagger-card absolute top-1/2 left-1/2 flex size-(--stagger-card) cursor-pointer flex-col gap-4 p-6 text-black transition-[transform,color] duration-(--duration-surface-slow) ease-(--ease-kosmo) max-md:size-(--stagger-card-mobile) max-md:p-5"
+          >
+            <Demo when={item.demo} note="message d'exemple : à remplacer par un vrai message reçu, attribution à confirmer" class="flex h-full flex-col gap-4">
+              <BrandLogo name={item.company} class="h-(--stagger-logo) self-start text-(length:--stagger-logo)" />
+              <blockquote class="text-(length:--quote-size) leading-(--quote-leading) font-medium tracking-(--quote-tracking) max-md:text-(length:--quote-size-mobile)">“{item.quote}”</blockquote>
+              <p class="mt-auto font-mono text-xsmall tracking-tagline uppercase opacity-60">
+                {item.author} · {item.role}
+              </p>
+            </Demo>
+          </li>
+        ))
+      }
+    </ul>
+    <div class="absolute bottom-0 left-1/2 flex -translate-x-1/2 gap-2">
+      <button type="button" data-stagger-prev aria-label="Previous testimonial" class={arrow}><Icon name="arrow-right" class="size-(--button-icon) rotate-180" /></button>
+      <button type="button" data-stagger-next aria-label="Next testimonial" class={arrow}><Icon name="arrow-right" class="size-(--button-icon)" /></button>
+    </div>
+  </div>
+</Section>
+
+<style>
+  /* Carte à coin coupé, effet « spotlight » : la carte est peinte de la couleur de la bordure (3 px, qui s'allume en
+     dégradé de teinte sous le pointeur), ::before pose le fond en retrait, coupé en parallèle (coin intérieur =
+     coupe − 0,586 × épaisseur, pour un trait d'épaisseur constante sur la diagonale). La carte centrale passe en noir. */
+  .stagger-card {
+    --bd: var(--stagger-border);
+    --bc: var(--stagger-border-rest);
+    --cbg: var(--kosmo-white);
+    --logo-detail: var(--kosmo-white);
+    isolation: isolate;
+    clip-path: polygon(0 0, calc(100% - var(--stagger-cut)) 0, 100% var(--stagger-cut), 100% 100%, 0 100%);
+    background: radial-gradient(calc(var(--stagger-spot) * 0.75) calc(var(--stagger-spot) * 0.75) at var(--stagger-spot-at), var(--stagger-glow), transparent 100%), var(--bc);
+  }
+  .stagger-card::before {
+    content: '';
+    position: absolute;
+    inset: var(--bd);
+    z-index: -1;
+    background: radial-gradient(var(--stagger-spot) var(--stagger-spot) at var(--stagger-spot-at-inner), var(--stagger-glow-fill), transparent), var(--cbg);
+    clip-path: polygon(0 0, calc(100% - var(--stagger-cut) + var(--bd) * 0.586) 0, 100% calc(var(--stagger-cut) - var(--bd) * 0.586), 100% 100%, 0 100%);
+  }
+  .stagger-card[data-center] {
+    --bc: var(--stagger-border-rest-dark);
+    --cbg: var(--kosmo-black);
+    --spot-fill: var(--stagger-spot-fill-center);
+    --logo-detail: var(--kosmo-black);
+    color: var(--kosmo-white);
+    z-index: 1;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .stagger-card {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  import '../../scripts/stagger-testimonials';
+</script>

@@ -1,0 +1,61 @@
+---
+/**
+ * Bouton « Get started » (DESIGN-SYSTEM.md) : libellé à gauche, bloc chevron à droite (¼ du bouton) qui s'élargit sur
+ * tout le bouton au survol pendant que le libellé s'efface, et se tasse au clic. Casse normale, rayon 4 px, à plat.
+ *  - dark          : fond noir, CTA principal sur fond clair
+ *  - light         : fond blanc + liseré, secondaire sur fond clair, principal sur fond sombre (défaut)
+ *  - acid          : fond acide (footer, bandeau partenaires)
+ *  - outline       : verre clair sur fond sombre ou image (secondaire sur fond sombre)
+ *  - outline-black : blanc + liseré, secondaire sur fond clair (même rendu que light)
+ * `icon` : icône avant le libellé (email, téléphone) ; `go={false}` : sans bloc chevron ; `verbatim` : libellé tel quel
+ * (sinon la première lettre passe en capitale, les libellés de src/data étant en minuscules).
+ */
+import Icon from './Icon.astro';
+
+type Variant = 'dark' | 'light' | 'acid' | 'outline' | 'outline-black';
+
+interface Props {
+  label: string;
+  variant?: Variant;
+  href?: string;
+  type?: 'button' | 'submit';
+  target?: string;
+  rel?: string;
+  icon?: string;
+  go?: boolean;
+  verbatim?: boolean;
+  class?: string;
+  [key: `data-${string}`]: string | undefined;
+}
+
+const { label, variant = 'light', href, type = 'button', target, rel, icon, go = true, verbatim = false, class: className, ...attrs } = Astro.props;
+const Tag = href ? 'a' : 'button';
+const tagAttrs = href ? { href, target, rel } : { type };
+---
+
+<Tag
+  {...tagAttrs}
+  {...attrs}
+  class:list={[
+    'group/btn relative inline-flex h-(--button-height) max-w-full shrink-0 cursor-pointer items-center gap-2 overflow-hidden rounded-sm pl-(--button-pad-x) whitespace-nowrap transition-opacity duration-(--duration-color) disabled:cursor-wait disabled:opacity-(--footer-logo-opacity)',
+    go ? 'pr-(--button-pad-go)' : 'pr-(--button-pad-x) hover:opacity-(--button-hover-opacity)',
+    variant === 'dark' && 'bg-black text-white',
+    (variant === 'light' || variant === 'outline-black') && 'bg-white text-black shadow-(--card-ring-strong)',
+    variant === 'acid' && 'bg-acid text-black',
+    variant === 'outline' && 'bg-glass-dark text-white',
+    className,
+  ]}
+>
+  {icon && <Icon name={icon} class="size-(--button-icon)" />}
+  <span class:list={['text-button inline-block min-w-0 truncate', verbatim && 'first-letter:normal-case', go && 'transition-opacity duration-(--duration-surface-slow) group-hover/btn:opacity-0']}>{label}</span>
+  {
+    go && (
+      <span
+        aria-hidden="true"
+        class="absolute inset-y-(--button-go-inset) right-(--button-go-inset) z-1 grid w-(--button-go) place-items-center rounded-default bg-(--button-go-surface) transition-[width,scale] duration-(--duration-surface-slow) ease-(--ease-kosmo) group-hover/btn:w-(--button-go-full) group-active/btn:scale-(--button-go-press)"
+      >
+        <Icon name="chevron-right" class="size-(--button-icon)" data-button-arrow="" />
+      </span>
+    )
+  }
+</Tag>

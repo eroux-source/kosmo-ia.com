@@ -1,0 +1,23 @@
+---
+/**
+ * Figure interactive « Hairline » (dessin isométrique au trait qui répond au pointeur).
+ * Le moteur et la figure sont des fichiers statiques dans public/hairline (non modifiés : ils
+ * se régénèrent avec le skill hairline-create). Les couleurs viennent des tokens --hairline-*.
+ * Tant que le script n'a pas tourné (ou s'il échoue), l'image `fallback` reste affichée.
+ * Le moteur se charge une fois par page avec <HairlineRuntime />.
+ */
+interface Props {
+  /** Nom de la figure = nom du fichier public/hairline/<name>.js */
+  name: string;
+  alt: string;
+  fallback: string;
+  class?: string;
+}
+const { name, alt, fallback, class: className } = Astro.props;
+---
+
+<div data-hairline-host={name} role="img" aria-label={alt} class:list={['aspect-5/4 max-w-full', className]}>
+  <img src={fallback} alt="" loading="lazy" width="1200" height="800" class="h-full w-full object-contain" />
+</div>
+
+<script is:inline type="module" src={`/hairline/${name}.js`}></script>

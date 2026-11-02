@@ -1,0 +1,55 @@
+---
+/**
+ * Gabarit des pages légales : date en étiquette mono, titre en capitales, sections en prose séparées par des filets
+ * --line (titre de carte, corps 15 px en texte secondaire). Contenu DÉMO à valider.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageTop from './PageTop.astro';
+import Footer from './Footer.astro';
+import Section from '../ui/Section.astro';
+import Demo from '../ui/Demo.astro';
+import TwoTone from '../ui/TwoTone.astro';
+import type { LegalSection } from '../../data/legal';
+
+interface Props {
+  title: string;
+  description: string;
+  updated: string;
+  sections: LegalSection[];
+}
+const { title, description, updated, sections } = Astro.props;
+---
+
+<BaseLayout title={`${title} | KOSMO®`} description={description} chrome={false}>
+  <PageTop />
+  <main>
+    <Section spacing="lg">
+      <div class="prose-kosmo flex flex-col gap-8">
+        <div class="flex flex-col gap-(--head-gap)">
+          <div class="text-tagline text-(--label-color)">Last updated {updated}</div>
+          <h1 class="heading-h3"><TwoTone text={title} /></h1>
+        </div>
+        {
+          sections.map((section) =>
+            section.demo ? (
+              <Demo note="texte juridique à valider" class="border-t border-line pt-6">
+                <h2 class="heading-h6 pr-16 normal-case">{section.heading}</h2>
+                {section.paragraphs.map((p) => (
+                  <p class="mt-3 text-body-medium text-(--body-soft)">{p}</p>
+                ))}
+              </Demo>
+            ) : (
+              <div class="border-t border-line pt-6">
+                <h2 class="heading-h6 normal-case">{section.heading}</h2>
+                {section.paragraphs.map((p) => (
+                  <p class="mt-3 text-body-medium text-(--body-soft)">{p}</p>
+                ))}
+              </div>
+            ),
+          )
+        }
+      </div>
+    </Section>
+  </main>
+  <Footer />
+</BaseLayout>

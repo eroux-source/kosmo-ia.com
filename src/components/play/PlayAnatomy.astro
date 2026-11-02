@@ -1,0 +1,147 @@
+---
+/**
+ * Anatomie d'une partie : storyboard en cinq écrans de mobile (titre, partie, score, récompense, partage), dessinés
+ * en HTML avec les sprites pixel. Les écrans entrent l'un après l'autre (data-fade, stagger 0.25s) : on lit le parcours
+ * de gauche à droite. Sur mobile, défilement horizontal. Puis les quatre propriétés du produit.
+ */
+import Section from '../ui/Section.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+import Icon from '../ui/Icon.astro';
+import PixelSprite from '../ui/PixelSprite.astro';
+import TwoTone from '../ui/TwoTone.astro';
+import { play } from '../../data/play';
+
+interface Props {
+  id?: string;
+}
+const { id } = Astro.props;
+const { anatomy } = play;
+const { mock } = anatomy;
+const mono = 'text-tagline';
+const screen =
+  'relative flex aspect-portrait w-full flex-col items-center justify-center gap-3 overflow-hidden rounded-sm border-(length:--industries-card-border-tablet) border-black bg-black p-4 text-center text-white';
+const leaderboard = [
+  { name: 'Léa', score: 31 },
+  { name: 'Vous', score: 24, you: true },
+  { name: 'Tom', score: 19 },
+];
+---
+
+<Section id={id} data-fade="trigger" class="scroll-mt-(--nav-inset)">
+  <Eyebrow label={anatomy.overline} />
+  <div class="mt-(--head-gap) grid grid-cols-2 items-end gap-10 max-lg:grid-cols-1">
+    <h2 data-stagger-text class="heading-h3"><TwoTone text={anatomy.heading} soft="d’une partie" /></h2>
+    <p data-fade="target" class="max-w-(--head-intro-max) justify-self-end text-body-medium text-(--body-soft) max-lg:justify-self-start">{anatomy.intro}</p>
+  </div>
+  <div class="mt-12 flex flex-col gap-12">
+    <ol class="grid grid-cols-5 gap-6 max-lg:grid-cols-3 max-md:flex max-md:snap-x max-md:snap-mandatory max-md:overflow-x-auto max-md:pb-2">
+      {
+        anatomy.screens.map((step, i) => (
+          <li data-fade="target" class="flex flex-col gap-4 max-md:w-(--gallery-slide-width-mobile) max-md:shrink-0 max-md:snap-start">
+            <div class="flex items-center gap-3">
+              <span class:list={[mono, 'text-ink-soft']}>0{i + 1}</span>
+              <span class="h-px flex-1 bg-line-strong" />
+              <span class={mono}>{step.label}</span>
+            </div>
+
+            {i === 0 && (
+              <div class={screen}>
+                <div class="pointer-events-none absolute inset-0 bg-(image:--play-scanline) bg-size-(--play-scanline-size)" />
+                <span class:list={[mono, 'rounded-default border border-dashed border-on-dark-soft px-2 py-1 text-on-dark-soft']}>{mock.brand}</span>
+                <PixelSprite name="cube" class="size-16" data-play-bob="" />
+                <span class:list={[mono, 'rounded-default bg-acid px-4 py-2 text-black']}>{mock.start}</span>
+              </div>
+            )}
+            {i === 1 && (
+              <div class:list={[screen, 'justify-end']}>
+                <div class="pointer-events-none absolute inset-0 bg-(image:--play-scanline) bg-size-(--play-scanline-size)" />
+                <span class:list={[mono, 'absolute inset-x-0 top-0 flex justify-between px-3 pt-3']}>
+                  <span>
+                    {mock.score} <span class="text-acid">12</span>
+                  </span>
+                  <span>0:14</span>
+                </span>
+                <PixelSprite name="cube" class="absolute top-12 left-6 size-6" data-play-bob="" />
+                <PixelSprite name="trap" class="absolute top-24 right-6 size-5" data-play-bob="" />
+                <PixelSprite name="star" class="absolute top-36 left-1/2 size-5" data-play-bob="" />
+                <PixelSprite name="cube" class="absolute top-1/2 right-10 size-6" data-play-bob="" />
+                <PixelSprite name="tray" class="relative mb-2 w-16" />
+              </div>
+            )}
+            {i === 2 && (
+              <div class={screen}>
+                <div class="pointer-events-none absolute inset-0 bg-(image:--play-scanline) bg-size-(--play-scanline-size)" />
+                <span class:list={[mono, 'text-on-dark-soft']}>{mock.score}</span>
+                <span class="text-(length:--stat-size) leading-(--stat-leading) font-extrabold text-acid">24</span>
+                <span class={mono}>
+                  {mock.best} 31
+                </span>
+                <ol class="flex w-full flex-col gap-1 pt-2 font-mono text-xsmall">
+                  <li class:list={[mono, 'pb-1 text-left text-on-dark-soft']}>{mock.rank}</li>
+                  {leaderboard.map((row, r) => (
+                    <li class:list={['flex justify-between rounded-default px-2 py-1', row.you ? 'bg-acid text-black' : 'bg-(--input-surface)']}>
+                      <span>
+                        {r + 1}. {row.name}
+                      </span>
+                      <span>{row.score}</span>
+                    </li>
+                  ))}
+                </ol>
+                <span class:list={[mono, 'rounded-default border border-white px-3 py-1']}>{mock.replay}</span>
+              </div>
+            )}
+            {i === 3 && (
+              <div class={screen}>
+                <div class="pointer-events-none absolute inset-0 bg-(image:--play-scanline) bg-size-(--play-scanline-size)" />
+                <PixelSprite name="gift" class="size-12" data-play-bob="" />
+                <span class="text-small font-bold">{mock.reward}</span>
+                <span class="w-full rounded-default bg-(--input-surface) px-2 py-2 text-left font-mono text-xsmall text-on-dark-soft">{mock.email}</span>
+                <span class:list={[mono, 'w-full rounded-default bg-acid px-2 py-2 text-black']}>{mock.claim}</span>
+                <span class="flex items-center gap-2 font-mono text-xsmall text-on-dark-soft">
+                  <Icon name="check" class="size-3 text-acid" /> {mock.optin}
+                </span>
+              </div>
+            )}
+            {i === 4 && (
+              <div class={screen}>
+                <div class="pointer-events-none absolute inset-0 bg-(image:--play-scanline) bg-size-(--play-scanline-size)" />
+                <div class="flex w-full flex-col items-center gap-3 rounded-default bg-acid p-4 text-black">
+                  <PixelSprite name="trophy" tile class="size-12" data-play-bob="" />
+                  <span class="text-small font-bold text-balance">{mock.share}</span>
+                </div>
+                <span class:list={[mono, 'flex items-center gap-2 rounded-default border border-white px-3 py-1']}>
+                  <Icon name="share" class="size-3" />
+                  {mock.shareCta}
+                </span>
+                <span class="flex gap-3 text-on-dark-soft">
+                  <Icon name="brand-instagram" class="size-4" />
+                  <Icon name="brand-tiktok" class="size-4" />
+                  <Icon name="brand-whatsapp" class="size-4" />
+                </span>
+              </div>
+            )}
+
+            <div class="flex flex-col gap-2">
+              <h3 class="heading-h6 text-balance">{step.title}</h3>
+              <p class="text-small text-ink-soft">{step.text}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+
+    <ul class="grid grid-cols-4 gap-3 max-lg:grid-cols-2 max-sm:grid-cols-1">
+      {
+        anatomy.features.map((feature) => (
+          <li data-fade="target" class="card flex flex-col p-(--way-pad)">
+            <span class="grid size-(--way-icon) place-items-center rounded-default bg-acid text-black">
+              <Icon name={feature.icon} class="size-(--button-icon)" />
+            </span>
+            <h3 class="mt-5 heading-h6">{feature.title}</h3>
+            <p class="mt-2 text-small text-ink-soft">{feature.text}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</Section>

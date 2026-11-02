@@ -1,0 +1,74 @@
+---
+/**
+ * Page d'un service de la 3D anamorphique (/3dooh/billboards, /in-store, /events, /architecture), créée le 22/10/2026.
+ * Un assemblage de sections : hero (photo du service) → logos → trois lieux où le service se montre (Formats) →
+ * chiffres de marché sourcés (Stats) → méthode en quatre étapes et livrables (ServiceMethod) → projets anamorphiques
+ * publiés → chiffres KOSMO → carte (billboards seulement) → formes d'écran → frise → témoignages → FAQ du service →
+ * services → contact. Textes : src/data/anamorphic-services.ts.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from './Nav.astro';
+import Footer from './Footer.astro';
+import Hero from '../sections/Hero.astro';
+import LogoStrip from '../sections/LogoStrip.astro';
+import Formats from '../sections/Formats.astro';
+import FeaturedCases from '../sections/FeaturedCases.astro';
+import Stats from '../sections/Stats.astro';
+import WorldMap from '../sections/WorldMap.astro';
+import ScreenTypes from '../sections/ScreenTypes.astro';
+import Process from '../sections/Process.astro';
+import Testimonials from '../sections/Testimonials.astro';
+import Faq from '../sections/Faq.astro';
+import ServiceMethod from '../sections/ServiceMethod.astro';
+import Services from '../sections/Services.astro';
+import Contact from '../sections/Contact.astro';
+import { serviceBySlug, type ServiceSlug } from '../../data/anamorphic-services';
+import { processAnamorphic } from '../../data/3dooh';
+import { faqAnamorphic } from '../../data/faq';
+import { ctaLabel, ctaHref } from '../../data/site';
+import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from '../../lib/seo';
+
+interface Props {
+  slug: ServiceSlug;
+}
+const service = serviceBySlug(Astro.props.slug);
+const path = `/3dooh/${service.slug}`;
+const hero = `/images/services/${service.hero.image}`;
+const jsonLd = [
+  serviceJsonLd(service.name, service.seo.description, path),
+  faqJsonLd(service.faq),
+  breadcrumbJsonLd([
+    { name: 'KOSMO®', path: '/' },
+    { name: 'Anamorphic 3D', path: '/3dooh' },
+    { name: service.name, path },
+  ]),
+];
+---
+
+<BaseLayout title={service.seo.title} description={service.seo.description} path={path} jsonLd={jsonLd} image={`${hero}.webp`}>
+  <Nav />
+  <main>
+    <Hero
+      title={service.hero.title}
+      subtitle={{ demo: false, text: service.hero.subtitle }}
+      fallback={{ src: `${hero}.webp`, srcset: `${hero}-1200.webp 1200w, ${hero}.webp 2304w` }}
+      brightImage
+      primary={{ label: ctaLabel, href: ctaHref }}
+      secondary={{ label: 'our work', href: '/work?category=3dooh' }}
+    />
+    <LogoStrip />
+    <Formats id="places" data={service.places} />
+    <Stats id="research" items={service.research} overline="the research" talk={false} />
+    <ServiceMethod id="method" data={service.method} />
+    <FeaturedCases id="work" category="3dooh" />
+    <Stats id="numbers" />
+    {service.slug === 'billboards' && <WorldMap id="compatibility" overline="compatibility" />}
+    <ScreenTypes id="screens" />
+    <Process id="process" data={processAnamorphic} />
+    <Testimonials id="testimonials" />
+    <Faq id="faq" items={service.faq} card={faqAnamorphic.card} />
+    <Services id="services" current="/3dooh" />
+    <Contact id="contact" />
+  </main>
+  <Footer />
+</BaseLayout>

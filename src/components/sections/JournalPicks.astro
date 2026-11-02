@@ -1,0 +1,41 @@
+---
+/**
+ * Sélection d'articles du journal sur une page service (ex. /fooh) : en-tête de section (surtitre, titre deux tons,
+ * bouton vers /journal en haut à droite), puis les cartes pochette du journal (PostCard). Liens internes pour le SEO
+ * et pour le lecteur encore en phase de recherche. Sur mobile (≤ 767 px), rail qui défile au doigt (global.css [data-rail]).
+ */
+import { getCollection } from 'astro:content';
+import Section from '../ui/Section.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+import Button from '../ui/Button.astro';
+import TwoTone from '../ui/TwoTone.astro';
+import PostCard from '../ui/PostCard.astro';
+
+interface Props {
+  id?: string;
+  overline: string;
+  heading: string;
+  /** Articles à montrer, dans cet ordre (identifiants de src/content/posts). */
+  slugs: string[];
+}
+const { id, overline, heading, slugs } = Astro.props;
+const all = await getCollection('posts', ({ data }) => data.published);
+const posts = slugs.map((slug) => all.find((p) => p.id === slug)).filter((p): p is (typeof all)[number] => Boolean(p));
+---
+
+<Section id={id} data-fade="trigger" class="scroll-mt-(--nav-inset)">
+  <Eyebrow label={overline} />
+  <div class="mt-(--head-gap) flex flex-wrap items-start justify-between gap-6">
+    <h2 data-stagger-text class="heading-h3 max-w-(--gallery-heading-max)"><TwoTone text={heading} /></h2>
+    <Button data-fade="target" href="/journal" label="all articles" variant="dark" />
+  </div>
+  <ul data-fade="target" data-rail class="grid grid-cols-3 gap-x-4 gap-y-(--journal-row-gap) pt-(--journal-grid-top) max-lg:grid-cols-2 max-sm:grid-cols-1">
+    {
+      posts.map((post) => (
+        <li>
+          <PostCard post={post} />
+        </li>
+      ))
+    }
+  </ul>
+</Section>

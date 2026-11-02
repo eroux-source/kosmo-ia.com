@@ -1,0 +1,36 @@
+---
+/**
+ * Offre d'entrée « concept gratuit » (DESIGN-SYSTEM.md) : section sombre à trame de points ; titre deux tons, intro et
+ * réassurance à gauche, formulaire dans un panneau card-dark à droite.
+ * Un concept pour votre écran, sans détail de livrables ni urgence, et l'invitation à réserver un call.
+ */
+import Section from '../ui/Section.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+import TwoTone from '../ui/TwoTone.astro';
+import Demo from '../ui/Demo.astro';
+import FreeConceptForm from '../ui/FreeConceptForm.astro';
+import { offer } from '../../data/3dooh';
+
+interface Props {
+  id?: string;
+}
+const { id } = Astro.props;
+---
+
+<Section id={id} tone="dark" data-fade="trigger" class="scroll-mt-(--nav-inset)">
+  <Eyebrow label={offer.overline} />
+  <div class="mt-(--head-gap) grid grid-cols-(--process-card-cols) gap-12 max-lg:grid-cols-1 max-lg:gap-8">
+    <div class="flex flex-col gap-6">
+      <h2 data-stagger-text class="heading-h3"><TwoTone text={offer.heading} /></h2>
+      <Demo inline note="intro de l'offre">
+        <p data-fade="target" class="max-w-(--head-intro-max) text-body-medium text-(--body-soft)">{offer.intro.text}</p>
+      </Demo>
+      <Demo inline note="phrase de réassurance">
+        <p data-fade="target" class="max-w-(--head-intro-max) border-t border-line pt-4 text-small text-(--label-color)">{offer.reassurance.text}</p>
+      </Demo>
+    </div>
+    <div data-fade="target" class="card-dark p-6 max-sm:p-4">
+      <FreeConceptForm submitLabel={offer.submit} />
+    </div>
+  </div>
+</Section>

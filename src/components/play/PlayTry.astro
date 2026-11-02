@@ -1,0 +1,111 @@
+---
+/**
+ * « À vous de jouer » (juste sous le hero) : le mini-jeu jouable dans un mobile (src/scripts/play-game.ts). Le visiteur
+ * teste le produit : écran titre → partie → fin de partie avec la capture d'email en aperçu. Les trois annotations
+ * s'allument avec l'état du jeu (univers, score, lead). Dès la deuxième partie, un message souligne l'effet « on rejoue ».
+ * Desktop : texte et annotations à gauche, mobile à droite. Mobile : texte, jeu, puis annotations.
+ */
+import Section from '../ui/Section.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+import TwoTone from '../ui/TwoTone.astro';
+import { play } from '../../data/play';
+
+interface Props {
+  id?: string;
+}
+const { id } = Astro.props;
+const { tryGame, game } = play;
+const mono = 'text-tagline';
+const acidChip = 'chip [--chip-surface:var(--kosmo-acid)] [--label-color:var(--kosmo-black)]';
+---
+
+<Section id={id} spacing="lg" data-fade="trigger" data-play-try class="scroll-mt-(--nav-inset)">
+  <Eyebrow label={tryGame.overline} />
+  <div class="mt-(--head-gap)">
+    <div class="grid grid-cols-2 items-center gap-x-12 gap-y-8 max-lg:grid-cols-1">
+      <div class="flex flex-col gap-5 self-end">
+        <h2 data-stagger-text class="heading-h3"><TwoTone text={tryGame.heading} soft="qu’un long discours." /></h2>
+        <p data-fade="target" class="max-w-(--head-intro-max) text-body-medium text-(--body-soft)">{tryGame.intro}</p>
+      </div>
+
+      {/* Mobile + jeu */}
+      <div data-fade="target" class="flex flex-col items-center gap-3 lg:col-start-2 lg:row-span-2 lg:row-start-1">
+        <div
+          data-play-game
+          data-state="title"
+          tabindex="0"
+          role="application"
+          aria-label={game.ariaLabel}
+          class="group/game relative aspect-portrait w-(--play-phone-w) shrink-0 overflow-hidden rounded-sm border-(length:--play-phone-bezel) border-black bg-black text-white outline-none focus-visible:border-acid max-sm:w-(--play-phone-w-mobile)"
+        >
+          <canvas data-play-canvas class="absolute inset-0 size-full [image-rendering:pixelated] group-data-[state=playing]/game:touch-none" aria-hidden="true"></canvas>
+          <div class="pointer-events-none absolute inset-0 bg-(image:--play-scanline) bg-size-(--play-scanline-size)" aria-hidden="true"></div>
+
+          {/* HUD */}
+          <div class:list={['pointer-events-none absolute inset-x-0 top-0 flex items-center justify-between px-4 pt-4 opacity-0 transition-opacity duration-(--duration-color) group-data-[state=playing]/game:opacity-100', mono]}>
+            <span>{game.hud.score} <span data-play-score class="text-acid">0</span></span>
+            <span>{game.hud.time} <span data-play-time>20</span></span>
+          </div>
+
+          {/* Écran titre */}
+          <div class="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6 text-center group-data-[state=over]/game:hidden group-data-[state=playing]/game:hidden">
+            <span class:list={[mono, 'rounded-default border border-line-dark px-2 py-1 text-on-dark-soft']}>{game.brand}</span>
+            <p class="text-mono-label font-bold text-balance">{game.title}</p>
+            <p class="font-mono text-xsmall text-on-dark-soft">{game.instructions}</p>
+            <Button label={game.start} variant="light" data-play-start data-track-click="play_game_start" />
+          </div>
+
+          {/* Fin de partie : score + aperçu de la capture d'email */}
+          <div class="absolute inset-0 hidden flex-col justify-center gap-4 bg-black px-5 group-data-[state=over]/game:flex">
+            <div class="flex flex-col gap-1 text-center">
+              <span class:list={[mono, 'text-on-dark-soft']}>{game.over.title}</span>
+              <span data-play-final class="text-(length:--stat-size) leading-(--stat-leading) font-extrabold text-acid">0</span>
+              <span class:list={[mono]}>
+                <span data-play-newbest hidden class="text-acid">{game.over.newBest} · </span>{game.hud.best} <span data-play-best>0</span>
+              </span>
+            </div>
+            <div data-play-reward class="flex flex-col gap-2 rounded-default border border-dashed border-acid p-3" aria-hidden="true">
+              <span class="flex items-center gap-2 text-small font-bold">
+                <Icon name="sparkles" class="size-4 text-acid" />
+                {game.over.reward}
+              </span>
+              <span class="rounded-default bg-(--input-surface) px-3 py-2 font-mono text-xsmall text-on-dark-soft">{game.over.email}</span>
+              <span class:list={[mono, 'rounded-default bg-acid px-3 py-2 text-center text-black']}>{game.over.claim}</span>
+              <span class="flex items-start gap-2 font-mono text-xsmall text-on-dark-soft">
+                <span class="mt-0.5 size-3 shrink-0 rounded-default border border-on-dark-soft"></span>
+                {game.over.consent}
+              </span>
+            </div>
+            <Button label={game.replay} variant="outline" data-play-start class="self-center" data-track-click="play_game_replay" />
+          </div>
+        </div>
+        <p class:list={[mono, 'text-ink-soft max-lg:hidden']}>{game.keys}</p>
+        <p data-play-nudge hidden class={acidChip} aria-live="polite">{game.replayNudge}</p>
+      </div>
+
+      {/* Annotations : s'allument avec l'état du jeu */}
+      <ol data-fade="target" class="flex flex-col gap-2 self-start">
+        {
+          game.callouts.map((callout, i) => (
+            <li data-play-callout={String(i + 1)} data-active={i === 0 ? 'true' : 'false'} class="group/callout card flex gap-4 p-(--way-pad) transition-[opacity,box-shadow] duration-(--duration-surface) ease-(--ease-kosmo) data-[active=false]:opacity-(--footer-logo-opacity) data-[active=true]:shadow-(--card-ring-acid)">
+              <span class="grid size-(--way-icon) shrink-0 place-items-center rounded-default bg-black font-mono text-small text-acid transition-colors duration-(--duration-color) group-data-[active=true]/callout:bg-acid group-data-[active=true]/callout:text-black">
+                0{i + 1}
+              </span>
+              <span class="flex flex-col gap-1">
+                <span class="heading-h6">{callout.title}</span>
+                <span class="text-small text-ink-soft">{callout.text}</span>
+                {i === 2 && <span class="font-mono text-xsmall text-ink-faint">{game.previewNote}</span>}
+              </span>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </div>
+</Section>
+
+<script>
+  import '../../scripts/play-game';
+</script>

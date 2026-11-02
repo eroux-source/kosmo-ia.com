@@ -1,0 +1,85 @@
+---
+/**
+ * Process en trois niveaux (idées, production, reporting). Une barre de progression suit le scroll et « valide »
+ * chaque niveau au passage (src/scripts/play-page.ts, motion.play.progress). Sous chaque niveau, une carte : ce que fait
+ * le client (presque rien) et ce qu'il reçoit (étiquette acide, comme le « what you get » du process 3DOOH).
+ */
+import Section from '../ui/Section.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+import Icon from '../ui/Icon.astro';
+import TwoTone from '../ui/TwoTone.astro';
+import { play } from '../../data/play';
+
+interface Props {
+  id?: string;
+}
+const { id } = Astro.props;
+const { process } = play;
+---
+
+<Section id={id} spacing="lg" data-fade="trigger" class="scroll-mt-(--nav-inset)">
+  <div data-play-levels>
+    <Eyebrow label={process.overline} />
+    <div class="mt-(--head-gap) grid grid-cols-2 items-end gap-10 max-lg:grid-cols-1">
+      <h2 data-stagger-text class="heading-h3"><TwoTone text={process.heading} /></h2>
+      <p data-fade="target" class="max-w-(--head-intro-max) justify-self-end text-body-medium text-(--body-soft) max-lg:justify-self-start">{process.intro}</p>
+    </div>
+
+    {/* Barre de progression : trois niveaux sur une ligne */}
+    <div class="relative mt-12 max-md:hidden" aria-hidden="true">
+      <div class="absolute inset-x-0 top-1/2 h-(--play-progress-h) -translate-y-1/2 rounded-default bg-white shadow-(--card-ring)">
+        <div data-play-progress-fill class="h-full w-0 rounded-default bg-acid"></div>
+      </div>
+      <ol class="relative grid grid-cols-3">
+        {
+          process.steps.map((_, i) => (
+            <li class="flex justify-center">
+              <span
+                data-play-level
+                class="group/level flex h-(--button-height) items-center gap-2 rounded-sm bg-black px-4 text-white transition-colors duration-(--duration-color) data-[reached=true]:bg-acid data-[reached=true]:text-black"
+              >
+                <span class="text-tagline">
+                  {process.labels.level} {i + 1}
+                </span>
+                <span class="hidden group-data-[reached=true]/level:flex">
+                  <Icon name="check" class="size-4" />
+                </span>
+              </span>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+
+    <ol class="mt-6 grid grid-cols-3 gap-3 max-md:mt-12 max-md:grid-cols-1">
+      {
+        process.steps.map((step, i) => (
+          <li data-fade="target" class="card flex flex-col p-(--way-pad)">
+            <div class="flex items-center justify-between">
+              <span class="grid size-(--way-icon) place-items-center rounded-default bg-acid text-black">
+                <Icon name={step.icon} class="size-(--button-icon)" />
+              </span>
+              <span class="text-tagline text-ink-soft">
+                {process.labels.level} {i + 1}/{process.steps.length}
+              </span>
+            </div>
+            <h3 class="mt-5 heading-h6">{step.title}</h3>
+            <p class="mt-2 text-small text-ink-soft">{step.text}</p>
+            <div class="mt-auto flex flex-col gap-3 pt-5">
+              <div class="flex flex-col gap-3 border-t border-line pt-4">
+                <p class="flex items-center gap-2 text-small font-semibold">
+                  <Icon name="users" class="size-4 text-ink-soft" />
+                  {step.you}
+                </p>
+                <p class="flex flex-col gap-1.5 text-tagline">
+                  <span class="text-ink-soft">{process.labels.deliverable}</span>
+                  <span class="self-start rounded-default bg-acid px-2 py-1 text-black">{step.deliverable}</span>
+                </p>
+              </div>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</Section>

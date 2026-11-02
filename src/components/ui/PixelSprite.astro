@@ -1,0 +1,28 @@
+---
+/**
+ * Icône en pixel art (sprites de src/lib/play-sprites.ts), rendue en SVG net (crispEdges). Taille : classe `size-*`.
+ * `tile` pose le sprite sur une tuile noire, comme les icônes du process (bg-black, rounded-default).
+ */
+import { spriteRuns, type SpriteName } from '../../lib/play-sprites';
+
+interface Props {
+  name: SpriteName;
+  tile?: boolean;
+  class?: string;
+  label?: string;
+  hidden?: boolean;
+  [key: `data-${string}`]: string | undefined;
+}
+const { name, tile = false, class: className, label, hidden, ...attrs } = Astro.props;
+const { width, height, runs } = spriteRuns(name);
+const side = Math.max(width, height);
+const ox = (side - width) / 2;
+const oy = (side - height) / 2;
+const FILL = { A: 'fill-acid', W: 'fill-white', G: 'fill-grey-400', L: 'fill-grey-200', O: 'fill-orange', K: 'fill-black' } as const;
+---
+
+<span class:list={['inline-flex shrink-0 items-center justify-center', tile && 'rounded-default bg-black', className]} hidden={hidden} {...attrs}>
+  <svg viewBox={`0 0 ${side} ${side}`} shape-rendering="crispEdges" class={tile ? 'size-(--play-sprite-inner)' : 'size-full'} role={label ? 'img' : undefined} aria-label={label} aria-hidden={label ? undefined : 'true'}>
+    {runs.map((r) => <rect x={r.x + ox} y={r.y + oy} width={r.w} height="1" class={FILL[r.color]} />)}
+  </svg>
+</span>

@@ -1,0 +1,4014 @@
+[
+  {
+    "slug": "below-statue-of-liberty",
+    "title": "Below: Statue of Liberty",
+    "subtitle": "A tentacle takes a patrol boat in front of the Statue of Liberty",
+    "client": "netflix",
+    "clientName": "Netflix",
+    "commissioned": true,
+    "series": "below",
+    "year": 2026,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Entertainment",
+    "date": "2026-10-12",
+    "location": {
+      "city": "New York",
+      "country": "United States",
+      "confidence": "high"
+    },
+    "description": [
+      "For the launch of *Below*, Netflix’s creature series set off the coast of Newfoundland, the monster had to surface where everyone would see it. From the deck of a ferry in New York Harbor, a red patrol boat passes Liberty Island. A tentacle breaks the surface, wraps the hull, flips it and takes it under, propellers still spinning in the air.",
+      "Posted on Netflix’s main Instagram account on 12 October 2026, four days after the premiere: 56.8 million views in eight days. The boat, the tentacles and every wave and splash around them are 3D: animation first, then water, foam and spray simulations, frame by frame."
+    ],
+    "metrics": {
+      "views": {
+        "raw": "56.8M views on the @netflix reel (20/10/2026)",
+        "value": 56800000,
+        "display": "56.8M"
+      }
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "/video/fooh/below-statue-of-liberty.mp4",
+      "thumbnail": {
+        "desktop": {
+          "poster": "/images/fooh/below-statue-of-liberty.jpg"
+        },
+        "mobile": {
+          "poster": "/images/fooh/below-statue-of-liberty.jpg"
+        }
+      },
+      "projectLogo": "/images/logos/netflix.svg",
+      "duration": "PT9S"
+    },
+    "restrictedClient": false,
+    "toCheck": [
+      "Projet ajouté le 20/10/2026. Sources : fichiers livrés fournis par Mehdi le 20/10/2026, channels Slack #1-, #2-, #3-below-netflix-intern et #below-ooh-netflix-intern (septembre-octobre 2026), Tudum / What's on Netflix pour la série (6 épisodes, sortie le 08/10/2026, Terre-Neuve). Reel @netflix DeZ3RDsCrNc publié le 12/10/2026 (heure US). 56,8 M de vues au 20/10 (capture de Mehdi)."
+    ]
+  },
+  {
+    "slug": "below-niagara-falls",
+    "title": "Below: Niagara Falls",
+    "subtitle": "The same creature, under the Horseshoe Falls",
+    "client": "netflix",
+    "clientName": "Netflix",
+    "commissioned": true,
+    "series": "below",
+    "year": 2026,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Entertainment",
+    "date": "2026-10-12",
+    "location": {
+      "city": "Niagara Falls",
+      "country": "Canada",
+      "confidence": "high"
+    },
+    "description": [
+      "The second sighting, at the foot of the Horseshoe Falls. From the rail of a boat in the spray, a patrol boat flying the Canadian flag is caught between two tentacles, dragged under and thrown back up, engines out of the water.",
+      "Posted on Netflix Canada’s Instagram account the same day as the New York film: 456K views. Two countries, two landmarks, one creature. The series is set in a small Newfoundland town; the films took it to the places people already film on their phones."
+    ],
+    "metrics": {
+      "views": {
+        "raw": "456K views on the @netflixca reel (20/10/2026)",
+        "value": 456000,
+        "display": "456K"
+      }
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "/video/fooh/below-niagara-falls.mp4",
+      "thumbnail": {
+        "desktop": {
+          "poster": "/images/fooh/below-niagara-falls.jpg"
+        },
+        "mobile": {
+          "poster": "/images/fooh/below-niagara-falls.jpg"
+        }
+      },
+      "projectLogo": "/images/logos/netflix.svg",
+      "duration": "PT9S"
+    },
+    "restrictedClient": false,
+    "toCheck": [
+      "Projet ajouté le 20/10/2026. Sources : fichiers livrés fournis par Mehdi le 20/10/2026, channels Slack #1-, #2-, #3-below-netflix-intern et #below-ooh-netflix-intern (septembre-octobre 2026), Tudum / What's on Netflix pour la série (6 épisodes, sortie le 08/10/2026, Terre-Neuve). Reel @netflixca DeZ8aBAj49u publié le 12/10/2026. 456K vues au 20/10 (capture de Mehdi). Drapeau canadien demandé par Netflix (Slack, 15/09)."
+    ]
+  },
+  {
+    "slug": "zalando-lounge-balance",
+    "title": "Zalando Lounge",
+    "subtitle": "A whole season’s finds, balanced on a Paris bench",
+    "client": "zalando",
+    "clientName": "Zalando",
+    "commissioned": true,
+    "date": "2026-09-15",
+    "year": 2026,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Fashion",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "For Zalando Lounge’s seasonal campaign, a model stands on a Paris bench and pours tea into a cup that sits on a vase, on a glass, on a pair of sneakers, on a handbag, on a pair of glasses, on a red bag, on a speaker. Fashion, accessories and homeware in one impossible stack, on a real street, in the autumn light.",
+      "A film built to say one thing: it is surprising what you can find when you know where to look. Real shoot, CGI stack, no cut. Close to a million views and still climbing."
+    ],
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "/video/fooh/zalando-lounge-balance.mp4?v=2",
+      "thumbnail": {
+        "desktop": {
+          "poster": "/images/fooh/zalando-lounge-balance.jpg?v=2"
+        },
+        "mobile": {
+          "poster": "/images/fooh/zalando-lounge-balance.jpg?v=2"
+        }
+      },
+      "projectLogo": "/images/logos/zalando.svg",
+      "duration": "PT7S"
+    },
+    "restrictedClient": false,
+    "toCheck": [
+      "Projet ajouté le 28/09/2026 hors export Framer, fichier fourni par Mehdi. Campagne saisonnière Zalando Lounge (Mehdi a dit « Printemps Hiver », feuilles mortes à l’image : saison non nommée dans le texte). Date de publication à confirmer (mise au 15/09/2026). 844K vues au 28/09, bientôt 1M : pas de chiffre affiché sur la tuile tant que le million n’est pas atteint, à ajouter ensuite dans metrics.",
+      "Première seconde coupée le 28/09 (écran noir au début), fichier et poster en ?v=2."
+    ]
+  },
+  {
+    "slug": "avatar-earth-kingdom-public-works",
+    "title": "AVATAR: THE LAST AIRBENDER",
+    "subtitle": "Earth Kingdom Public Works: a cracked Los Angeles sidewalk, fixed by earthbenders",
+    "client": "netflix",
+    "clientName": "Netflix",
+    "commissioned": true,
+    "date": "2026-06-20",
+    "year": 2026,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Entertainment",
+    "location": {
+      "city": "Los Angeles",
+      "country": "United States",
+      "confidence": "high"
+    },
+    "description": [
+      "Five days before season 2 of *Avatar: The Last Airbender*, a green stencil appeared on a broken Los Angeles sidewalk: Earth Kingdom Public Works. The tag was real, sprayed on a real crack. Then the film: a foot steps on it, the concrete splits, the earth shifts, and the sidewalk opens onto the Earth Kingdom before the season’s footage takes over.",
+      "Posted on the Netflix Avatar account as the launch of the earthbenders. People went to find the tag in the street. The post passed 30K likes, the account went past 650K followers, and the comments did the rest."
+    ],
+    "metrics": {
+      "engagement": {
+        "raw": "+30K likes on the Netflix post",
+        "value": 30000,
+        "display": "30K+"
+      }
+    },
+    "videoRatio": "1:1",
+    "media": {
+      "mainVideo": "/video/fooh/avatar-earth-kingdom-public-works.mp4",
+      "thumbnail": {
+        "desktop": {
+          "poster": "/images/fooh/avatar-earth-kingdom-public-works.jpg"
+        },
+        "mobile": {
+          "poster": "/images/fooh/avatar-earth-kingdom-public-works.jpg"
+        }
+      },
+      "projectLogo": "/images/logos/netflix.svg",
+      "duration": "PT29S"
+    },
+    "restrictedClient": false,
+    "toCheck": [
+      "Projet ajouté le 28/09/2026 hors export Framer, reel fourni par Mehdi (post @avatarnetflix du 20/06/2026, format carré 28 s : le tag, le trottoir qui s’ouvre, puis les images de la saison 2). Faits donnés par Mehdi, non vérifiés : +30K likes, compte à +650K abonnés, des gens sont allés chercher le tag. Le poster de la tuile est un plan du reel (le tag, la fissure)."
+    ]
+  },
+  {
+    "slug": "miele-hydroclean",
+    "title": "Miele HydroClean",
+    "subtitle": "The oven that cleans itself, on a Paris facade",
+    "client": "miele",
+    "clientName": "Miele",
+    "commissioned": true,
+    "date": "2026-06-09",
+    "year": 2026,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Home appliances",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "The social version of Miele's HydroClean launch: the CGI building from the DOOH campaign placed in a real Paris street, filmed as if it were there. The oven door opens in the facade, the cleaning cycle runs, and the oven ends clean.",
+      "Delivered in five languages and three social formats (9:16, 1:1 and 2:3) to carry the campaign beyond the 81 screens of the media plan."
+    ],
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "/video/fooh/miele-hydroclean.mp4",
+      "thumbnail": {
+        "desktop": {
+          "poster": "/images/fooh/miele-hydroclean.jpg"
+        },
+        "mobile": {
+          "poster": "/images/fooh/miele-hydroclean.jpg"
+        }
+      },
+      "projectLogo": "/images/logos/miele.svg",
+      "duration": "PT12S"
+    },
+    "restrictedClient": false,
+    "toCheck": [
+      "Projet ajouté le 27/09/2026 hors export Framer (film social sans logo fourni par Mehdi). Version publiée : 720p, 5 Mo, hébergée sur le site."
+    ]
+  },
+  {
+    "slug": "zalando-prive-tennis",
+    "title": "Privé by Zalando",
+    "subtitle": "A giant tennis ball on the Fontaine de l’Observatoire, for the tennis season",
+    "client": "zalando",
+    "clientName": "Zalando",
+    "commissioned": true,
+    "date": "2026-06-07",
+    "year": 2026,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Fashion",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "Privé by Zalando’s first event activation, with one objective: make the Paris tennis season feel like a Privé by Zalando moment. Our film puts a giant tennis ball on top of the Fontaine de l’Observatoire, at the foot of the Luxembourg gardens, a scoreboard in the brand’s purple, and a player serving from the edge of the basin. Strategy, concept, production and seeding by KOSMO®.",
+      "The FOOH film was one piece of a wider campaign we ran across social: vox pops in the street, behind-the-scenes video, joybaiting, an influence layer with Anekdote agency, and five sponsored players with P11 agency (Marina Bassols, Quentin Halys, Adrian Mannarino, Corentin Moutet, Luca Van Assche). Across the campaign: 7M+ estimated broadcast reach, 300K+ earned media impressions, 25K+ engagements."
+    ],
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "/video/fooh/zalando-prive-tennis.mp4",
+      "thumbnail": {
+        "desktop": {
+          "poster": "/images/fooh/zalando-prive-tennis.jpg"
+        },
+        "mobile": {
+          "poster": "/images/fooh/zalando-prive-tennis.jpg"
+        }
+      },
+      "projectLogo": "/images/logos/zalando.svg",
+      "duration": "PT8S"
+    },
+    "restrictedClient": false,
+    "toCheck": [
+      "Projet ajouté le 28/09/2026 hors export Framer : post @kosmocgi du 07/06/2026 et one-pager DOC_2026-06-09_zalando-rg-use-case.pdf. Les chiffres (7M+ broadcast reach estimé, 300K+ earned media impressions, 25K+ engagements) sont ceux de toute la campagne, pas du seul film : mis dans le texte, pas sur la tuile. Les autres assets social (vox pop, BTS, joybaiting, influence, joueurs) sont à ajouter quand Mehdi les ressort. Fontaine de l’Observatoire confirmée par Mehdi le 28/09."
+    ]
+  },
+  {
+    "slug": "super-mario-galaxy-yoshi-eggs",
+    "title": "The Super Mario Galaxy Movie",
+    "subtitle": "Yoshi eggs on the shelf of a New York grocery store",
+    "client": "kosmo",
+    "clientName": "KOSMO",
+    "commissioned": false,
+    "brand": "nintendo",
+    "brandName": "Nintendo",
+    "date": "2026-03-30",
+    "year": 2026,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Entertainment",
+    "location": {
+      "city": "New York",
+      "country": "United States",
+      "confidence": "high"
+    },
+    "description": [
+      "Imagined by the agency for the release of *The Super Mario Galaxy Movie*: a carton of Yoshi eggs, green spots and all, sitting in the egg aisle of a New York grocery store. The carton carries the film’s artwork and its release date, 1 April 2026, and the film is shot like someone who just found it.",
+      "One product that never existed, filmed as if it did. The video reached 5 million views on its own, was picked up across the internet with 15 million earned media impressions and 500K engagements, and cost nothing in paid media. The comment that came back most: “wish it was real”."
+    ],
+    "metrics": {
+      "earnedMedia": {
+        "raw": "15M earned media impressions",
+        "value": 15000000,
+        "display": "15M"
+      },
+      "engagement": {
+        "raw": "500K total engagements",
+        "value": 500000,
+        "display": "500K"
+      }
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "/video/fooh/super-mario-galaxy-yoshi-eggs.mp4",
+      "thumbnail": {
+        "desktop": {
+          "poster": "/images/fooh/super-mario-galaxy-yoshi-eggs.jpg"
+        },
+        "mobile": {
+          "poster": "/images/fooh/super-mario-galaxy-yoshi-eggs.jpg"
+        }
+      },
+      "duration": "PT7S",
+      "projectLogo": "/images/logos/nintendo.svg"
+    },
+    "restrictedClient": false,
+    "toCheck": [
+      "Projet ajouté le 28/09/2026 hors export Framer, fichier et tableau de résultats fournis par Mehdi (15M earned media impressions, 500K engagements, 5M vues, 0 $ de paid). Projet à l’initiative de KOSMO® (client = KOSMO) : à confirmer, la marque Nintendo n’a pas commandé le film selon ce que je sais. Date de publication à confirmer (fin mars 2026, avant la sortie du 01/04)."
+    ]
+  },
+  {
+    "slug": "big-mistakes-ii",
+    "title": "BIG MISTAKES II",
+    "subtitle": "The getaway, seen from a car on Sunset Boulevard",
+    "client": "netflix",
+    "clientName": "Netflix",
+    "commissioned": true,
+    "series": "big-mistakes",
+    "year": 2026,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Entertainment",
+    "location": {
+      "city": "Los Angeles",
+      "country": "United States",
+      "confidence": "high"
+    },
+    "videoRatio": "9:16",
+    "restrictedClient": false,
+    "date": "2026-03-11",
+    "description": [
+      "The second film of the heist, from the street this time: a passenger films the billboard from a car, points, and the necklace is already being dragged off the edge of the board.",
+      "Same real billboard, same CGI necklace, a different witness. Two angles on one theft gave the story two posts, before the cast showed up wearing the necklace in their selfies."
+    ],
+    "media": {
+      "mainVideo": "/video/fooh/big-mistakes-ii.mp4",
+      "thumbnail": {
+        "desktop": {
+          "poster": "/images/fooh/big-mistakes-ii.jpg"
+        },
+        "mobile": {
+          "poster": "/images/fooh/big-mistakes-ii.jpg"
+        }
+      },
+      "projectLogo": "/images/logos/netflix.svg",
+      "duration": "PT11S"
+    },
+    "toCheck": [
+      "Projet ajouté le 28/09/2026 hors export Framer, fichier « 👀 👀 👀.mp4 » fourni par Mehdi. Ordre des deux films (I = caméra de surveillance, II = vue depuis la voiture) choisi par moi."
+    ]
+  },
+  {
+    "slug": "big-mistakes-i",
+    "title": "BIG MISTAKES I",
+    "subtitle": "The night the 4.9.26 necklace was stolen from a Sunset Boulevard billboard",
+    "client": "netflix",
+    "clientName": "Netflix",
+    "commissioned": true,
+    "series": "big-mistakes",
+    "year": 2026,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Entertainment",
+    "location": {
+      "city": "Los Angeles",
+      "country": "United States",
+      "confidence": "high"
+    },
+    "videoRatio": "9:16",
+    "restrictedClient": false,
+    "date": "2026-03-10",
+    "description": [
+      "On 10 March 2026 a billboard went up on Sunset Boulevard with no logo and no explanation: a diamond necklace spelling 4.9.26. That same night, this film appeared on the Big Mistakes account: security-camera footage of a thief climbing the structure and walking off with the necklace.",
+      "The billboard is real. The theft is CGI, built on our own night footage of the site and graded like a CCTV feed, timestamp included. It was the first post on the series account."
+    ],
+    "media": {
+      "mainVideo": "/video/fooh/big-mistakes-i.mp4",
+      "thumbnail": {
+        "desktop": {
+          "poster": "/images/fooh/big-mistakes-i.jpg"
+        },
+        "mobile": {
+          "poster": "/images/fooh/big-mistakes-i.jpg"
+        }
+      },
+      "projectLogo": "/images/logos/netflix.svg",
+      "duration": "PT8S"
+    },
+    "toCheck": [
+      "Projet ajouté le 28/09/2026 hors export Framer, à partir des fichiers fournis par Mehdi (post @kosmocgi du 11/03/2026). Faits : billboard réel sur Sunset Boulevard posé le 10/03/2026 (Netflix Tudum) ; première vidéo du compte Instagram Big Mistakes et 35K abonnés organiques (dit par Mehdi, non vérifié)."
+    ]
+  },
+  {
+    "slug": "proman-ii",
+    "title": "Proman II",
+    "subtitle": "Rethinking recruitment: Proman goes mixed reality",
+    "client": "proman",
+    "clientName": "Proman",
+    "commissioned": true,
+    "series": "proman",
+    "date": "2026-01-15",
+    "year": 2026,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "HR",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "For its 2026 back-to-work campaign, Proman wanted to make a bold statement and boost brand awareness. The objective was to position Proman as an innovative, forward-thinking leader in recruitment.",
+      "Our approach was to create a mixed reality video that brought the brand to life, showcasing its values and opportunities in a visually striking and immersive way. By combining engaging storytelling with interactive visuals, the campaign captured attention, reinforced the brand’s presence, and maximized visibility among its target audience."
+    ],
+    "quote": {
+      "text": "Through a mixed reality experience, Proman transforms its back-to-work campaign into an innovative and memorable showcase that elevates brand awareness.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/PROMAN%20X%20KOSMO%20Video.mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/proman-2.mp4",
+      "wideImage": "https://framerusercontent.com/images/HZAEOiVQBXUW5tRWyJdHCMESJbc.png",
+      "locationCard": "https://framerusercontent.com/images/vielkGSUq694006b5Zu9tmNC7M.png"
+    },
+    "restrictedClient": false,
+    "toCheck": [
+      "Le logo projet dans Framer est celui d'ASUS : logo retiré, à fournir.",
+      "Pas de vignette dédiée : utiliser la vidéo principale ou le hook."
+    ]
+  },
+  {
+    "slug": "maisons-du-monde-v",
+    "originalSlug": "maisonsdumonde-5",
+    "title": "MAISONS DU MONDE V",
+    "subtitle": "A viral content for a viral moment",
+    "client": "maisons-du-monde",
+    "clientName": "Maisons du monde",
+    "commissioned": true,
+    "series": "maisons-du-monde",
+    "date": "2025-12-02",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Retail / Home",
+    "location": {
+      "city": "Milan",
+      "country": "Italy",
+      "confidence": "high"
+    },
+    "description": [
+      "The client wanted to celebrate the holiday season with a video that would capture the magic of Christmas and highlight Maisons du Monde’s brand. Objectives included creating a memorable festive experience and engaging the audience.",
+      "Our approach was to craft a video that combined the brand’s unique style with the iconic setting of the Duomo in Italy, creating a visually striking and emotionally engaging story that brought the Christmas spirit to life."
+    ],
+    "metrics": {
+      "earnedMedia": {
+        "raw": "+1.000.000",
+        "value": 1000000,
+        "display": "1M+"
+      },
+      "engagement": {
+        "raw": "+250.000",
+        "value": 250000,
+        "display": "250K+"
+      }
+    },
+    "quote": {
+      "text": "By combining product expertise and Maisons du Monde’s brand DNA, this Christmas video tells a festive story and creates a warm, emotional brand experience.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/Projet_FOOH_MDM-Milan/MdM-5_cut.mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/Projet_FOOH_MDM-Milan/MDM-5-HOOK-2.mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/Projet_FOOH_MDM-Milan/MdM-5_cut.mp4",
+          "poster": "https://framerusercontent.com/images/Rxls9c4rK0xCof8WvKHJ5UA6lQ.jpg"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/Projet_FOOH_MDM-Milan/MdM-5_cut.mp4",
+          "poster": "https://framerusercontent.com/images/Rxls9c4rK0xCof8WvKHJ5UA6lQ.jpg"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/Projet_FOOH_MDM-Milan/MdM-5_cut.mp4",
+          "poster": "https://framerusercontent.com/images/Rxls9c4rK0xCof8WvKHJ5UA6lQ.jpg"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/Projet_FOOH_MDM-Milan/MdM-5_cut.mp4",
+          "poster": "https://framerusercontent.com/images/Rxls9c4rK0xCof8WvKHJ5UA6lQ.jpg"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/1oyr5Ev5vsu4cwvC9OyvHAvw.png",
+      "wideImage": "https://framerusercontent.com/images/x2cCvHMcNSZkl9z6NzDMsRKgqbc.png",
+      "finalWideImage": "https://framerusercontent.com/images/KvA2zgqM1hh5maoe9FrcyoVwkcg.png",
+      "locationCard": "https://framerusercontent.com/images/op3CXnYTdyPzKFscF3QVHksy8.png"
+    },
+    "restrictedClient": false,
+    "toCheck": [
+      "Carte de localisation « Milan » identique à Oysho II : à vérifier."
+    ]
+  },
+  {
+    "slug": "france-tv",
+    "title": "FRANCE TV",
+    "subtitle": "A prehistoric journey brought to life in mixed reality",
+    "client": "france-tv",
+    "clientName": "France TV",
+    "commissioned": true,
+    "date": "2025-11-20",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Entertainment",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "France TV wanted to announce the launch of their new series *Sur la terre des dinosaures* through a visually striking activation that would captivate audiences and generate excitement online. The goal was to highlight the series while creating an engaging, shareable experience.",
+      "Our approach was to craft a mixed reality experience that immersed viewers in the prehistoric world of the series. By combining realistic visuals with interactive storytelling, the activation brought the dinosaurs to life, reinforced the program’s appeal, and amplified engagement across social media."
+    ],
+    "metrics": {
+      "earnedMedia": {
+        "raw": "+25.000.000 🔥",
+        "value": 25000000,
+        "display": "25M+"
+      }
+    },
+    "quote": {
+      "text": "By bringing the prehistoric world of Sur la terre des dinosaures to life in mixed reality, this activation engages audiences and amplifies the excitement around France TV’s new series.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/francetv_05-1.mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/France%20TV/af19b72d-797a-4c02-aea9-bfbaf948f743.mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/francetv_05-1.mp4",
+          "poster": "https://framerusercontent.com/images/VRl1B2SPUemZlFMWCsIP5cafeM.jpg"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/francetv_05-1.mp4",
+          "poster": "https://framerusercontent.com/images/VRl1B2SPUemZlFMWCsIP5cafeM.jpg"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/francetv_05-1.mp4",
+          "poster": "https://framerusercontent.com/images/VRl1B2SPUemZlFMWCsIP5cafeM.jpg"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/Final%20Video%20Fini%20X%20Kosmo.mp4",
+          "poster": "https://framerusercontent.com/images/VRl1B2SPUemZlFMWCsIP5cafeM.jpg",
+          "image": "https://framerusercontent.com/images/VRl1B2SPUemZlFMWCsIP5cafeM.jpg"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/8WzQKxBmDCT7kdI2TlO1dV106uI.png",
+      "wideImage": "https://framerusercontent.com/images/BsPGhDpB4aPgC4KUjHTZhHkjXc8.png",
+      "locationCard": "https://framerusercontent.com/images/vielkGSUq694006b5Zu9tmNC7M.png"
+    },
+    "restrictedClient": false,
+    "toCheck": []
+  },
+  {
+    "slug": "heavent-iii",
+    "originalSlug": "heavent",
+    "title": "HEAVENT III",
+    "subtitle": "A mixed reality countdown to the leading event in live experiences",
+    "client": "weyou-group",
+    "clientName": "Weyou Group",
+    "commissioned": true,
+    "series": "weyou-group",
+    "date": "2025-11-04",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Events / Agencies",
+    "description": [
+      "Heavent wanted to announce the dates of its upcoming event, one of the key gatherings in the live event industry, while generating engagement on social media. The goal was to create buzz and anticipation for the salon through a visually striking and interactive approach.",
+      "Our approach was to craft a mixed reality experience set at the iconic Centre Pompidou, blending the energy of the event with immersive visuals that captured the imagination of the audience. By combining creativity and technology, the activation encouraged social interaction and amplified awareness for Heavent’s upcoming edition."
+    ],
+    "quote": {
+      "text": "By bringing Heavent to life in mixed reality at the Centre Pompidou, this activation engages audiences and builds excitement ahead of the event.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/KOSMO%20X%20HEAVENT%20Video%202025.mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/KOSMO%20X%20HEAVENT%20Video%202025.mp4",
+          "poster": "https://framerusercontent.com/images/ORiVZ9f2pqGwvPjbyTAjzstk.jpg"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/KOSMO%20X%20HEAVENT%20Video%202025.mp4",
+          "poster": "https://framerusercontent.com/images/ORiVZ9f2pqGwvPjbyTAjzstk.jpg"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/KOSMO%20X%20HEAVENT%20Video%202025.mp4",
+          "poster": "https://framerusercontent.com/images/ORiVZ9f2pqGwvPjbyTAjzstk.jpg"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/KOSMO%20X%20HEAVENT%20Video%202025.mp4",
+          "poster": "https://framerusercontent.com/images/ORiVZ9f2pqGwvPjbyTAjzstk.jpg",
+          "image": "https://framerusercontent.com/images/ORiVZ9f2pqGwvPjbyTAjzstk.jpg"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/sSQ0mtABIG2BrVHeps1E5cCOW28.png",
+      "wideImage": "https://framerusercontent.com/images/sGNsKm2GXkWssAoGIDFaC6Idg.jpg",
+      "locationCard": "https://framerusercontent.com/images/CLUvqoZlsgNcR9rTVrVU8vD9E.png"
+    },
+    "restrictedClient": false,
+    "toCheck": [
+      "Pas de ville renseignée."
+    ],
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    }
+  },
+  {
+    "slug": "nrj-x-fini",
+    "title": "NRJ X FINI",
+    "subtitle": "A playful mixed reality experience around a major music event",
+    "client": "nrj",
+    "clientName": "NRJ",
+    "commissioned": true,
+    "date": "2025-10-22",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Entertainment",
+    "location": {
+      "city": "Cannes",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "FINI aimed to promote its contest created for the NRJ Music Awards through a creative activation designed to capture attention during one of the most anticipated music events of the year. The objective was to drive engagement while reinforcing the brand’s fun and colorful universe.",
+      "Our approach was to design a mixed reality experience that virtually brought FINI to Cannes, blending the energy of the NRJ Music Awards with the brand’s playful DNA. By combining immersive visuals and creativity, the activation built a strong connection with the audience and encouraged participation in the contest."
+    ],
+    "quote": {
+      "text": "By merging FINI’s playful universe with the excitement of the NRJ Music Awards, this mixed reality activation drives engagement and highlights the brand’s creative spirit.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/Final%20Video%20Fini%20X%20Kosmo.mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/0207%20(1)(19).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/Final%20Video%20Fini%20X%20Kosmo.mp4",
+          "poster": "https://framerusercontent.com/images/QdQaKUYMJWynzgWCFcCznY8Ps.jpg"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/Final%20Video%20Fini%20X%20Kosmo.mp4",
+          "poster": "https://framerusercontent.com/images/QdQaKUYMJWynzgWCFcCznY8Ps.jpg"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/Final%20Video%20Fini%20X%20Kosmo.mp4",
+          "poster": "https://framerusercontent.com/images/QdQaKUYMJWynzgWCFcCznY8Ps.jpg"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/Final%20Video%20Fini%20X%20Kosmo.mp4",
+          "poster": "https://framerusercontent.com/images/QdQaKUYMJWynzgWCFcCznY8Ps.jpg"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/SxNdmaOsQjaPdB6nX8TMFwnnECU.png",
+      "wideImage": "https://framerusercontent.com/images/traaIDGa6j5CE91sJWK2dnGIbzg.png",
+      "locationCard": "https://framerusercontent.com/images/xIdghEZFKQCfnNRQKBN6wmqhx5Q.png"
+    },
+    "restrictedClient": false,
+    "toCheck": []
+  },
+  {
+    "slug": "neoness",
+    "title": "NEONESS",
+    "subtitle": "Kickstart the new season with a dynamic mixed reality experience",
+    "client": "neoness",
+    "clientName": "Neoness",
+    "commissioned": true,
+    "date": "2025-09-19",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Sports",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "Neoness wanted to launch its back-to-school offer with a campaign designed to capture attention and boost awareness. The objective was to generate engagement while reinforcing the brand’s energetic and approachable image.",
+      "Our approach was to create a mixed reality experience that brought Neoness’ vibrant universe to life. By combining immersive visuals with playful storytelling, the activation encouraged audience interaction, increased brand visibility, and highlighted the excitement of starting a new fitness season."
+    ],
+    "quote": {
+      "text": "By turning Neoness’ back-to-school campaign into an immersive mixed reality experience, we drive engagement and elevate the brand’s visibility.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/neoness_11-2_snd%20(2).mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/0207%20(1)(20).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/neoness_11-2_snd%20(2).mp4",
+          "poster": "https://framerusercontent.com/images/9vf5CT8WEIdAOzKhtffKfvM2k.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/neoness_11-2_snd%20(2).mp4",
+          "poster": "https://framerusercontent.com/images/9vf5CT8WEIdAOzKhtffKfvM2k.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/neoness_11-2_snd%20(2).mp4",
+          "poster": "https://framerusercontent.com/images/9vf5CT8WEIdAOzKhtffKfvM2k.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/neoness_11-2_snd%20(2).mp4",
+          "poster": "https://framerusercontent.com/images/1hOE0Z0gefVenM7H75AQaCCU7gg.png",
+          "image": "https://framerusercontent.com/images/9vf5CT8WEIdAOzKhtffKfvM2k.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/M692ah5Wql8yXqI9dYH27ljJnfk.png",
+      "wideImage": "https://framerusercontent.com/images/d3MSgGpB27JyZvMCHwosI9gDw2U.png",
+      "locationCard": "https://framerusercontent.com/images/vielkGSUq694006b5Zu9tmNC7M.png"
+    },
+    "restrictedClient": false,
+    "toCheck": []
+  },
+  {
+    "slug": "keepcool",
+    "title": "KEEPCOOL",
+    "subtitle": "A nationwide mixed reality activation to energize the season",
+    "client": "keepcool",
+    "clientName": "Keepcool",
+    "commissioned": true,
+    "date": "2025-09-18",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Sports",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "Keepcool aimed to launch its back-to-school offer with a campaign designed to reach audiences across the country and increase brand awareness. The goal was to drive engagement while reinforcing Keepcool’s fun, approachable, and energetic image.",
+      "Our approach was to create a mixed reality experience that brought Keepcool’s vibrant world to life on a national scale. By combining immersive visuals with playful storytelling, the activation encouraged interaction, amplified brand visibility, and positioned Keepcool as the go-to choice for starting the season strong."
+    ],
+    "metrics": {
+      "earnedMedia": {
+        "raw": "+1.500.000",
+        "value": 1500000,
+        "display": "1.5M+"
+      },
+      "engagement": {
+        "raw": "+10.000",
+        "value": 10000,
+        "display": "10K+"
+      }
+    },
+    "quote": {
+      "text": "By transforming Keepcool’s back-to-school campaign into a nationwide mixed reality experience, we boost engagement and showcase the brand’s energetic spirit.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/KEEPCOOL%20X%20KOSMO%209-16.mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/0207%20(1)(21).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/KEEPCOOL%20X%20KOSMO%209-16.mp4",
+          "poster": "https://framerusercontent.com/images/xOZZUN9Gcmer3bcTonvM4c8jEnw.jpeg"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/KEEPCOOL%20X%20KOSMO%209-16.mp4",
+          "poster": "https://framerusercontent.com/images/xOZZUN9Gcmer3bcTonvM4c8jEnw.jpeg"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/KEEPCOOL%20X%20KOSMO%209-16.mp4",
+          "poster": "https://framerusercontent.com/images/xOZZUN9Gcmer3bcTonvM4c8jEnw.jpeg"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/KEEPCOOL%20X%20KOSMO%209-16.mp4",
+          "poster": "https://framerusercontent.com/images/xOZZUN9Gcmer3bcTonvM4c8jEnw.jpeg",
+          "image": "https://framerusercontent.com/images/xOZZUN9Gcmer3bcTonvM4c8jEnw.jpeg"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/fLz6lvG6QfHtJlMtk7qT80y0ikk.png",
+      "wideImage": "https://framerusercontent.com/images/7OCQsXNc41mss4HAzAQaNhGvCI.png",
+      "locationCard": "https://framerusercontent.com/images/vielkGSUq694006b5Zu9tmNC7M.png"
+    },
+    "restrictedClient": false,
+    "toCheck": []
+  },
+  {
+    "slug": "apple-iphone-17-pro-max",
+    "originalSlug": "apple",
+    "title": "Iphone 17 Pro Max",
+    "subtitle": "A visionary mixed reality concept imagined to unveil innovation",
+    "client": "kosmo",
+    "clientName": "KOSMO",
+    "commissioned": false,
+    "date": "2025-09-10",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Tech",
+    "location": {
+      "city": "Dubai",
+      "country": "UAE",
+      "confidence": "high"
+    },
+    "description": [
+      "Imagined by the agency, this concept explores how Apple could generate buzz around the release of the iPhone 17 by spotlighting its latest features through a bold mixed reality activation. The objective was to design a launch moment capable of capturing attention and sparking conversation at scale across social platforms.",
+      "Our approach was to envision an immersive mixed reality experience that brings the iPhone 17’s innovations to life in a striking and product-focused way. By combining cutting-edge visuals with a strong narrative, the concept demonstrated the viral power of mixed reality, generating over 50 million views across TikTok and Instagram."
+    ],
+    "metrics": {
+      "earnedMedia": {
+        "raw": "+46.000.000 🔥",
+        "value": 46000000,
+        "display": "46M+"
+      },
+      "engagement": {
+        "raw": "+1.200.000 ❤️‍🔥",
+        "value": 1200000,
+        "display": "1.2M+"
+      }
+    },
+    "quote": {
+      "text": "Imagined as a mixed reality launch moment, this concept turns Apple’s innovation into a highly viral storytelling experience, reaching over 50 million views on social media.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/Projet_FOOH_Iphone/iphone_05_blue%20(2).mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/Projet_FOOH_Iphone/Viewport-Iphone_2.mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/Projet_FOOH_Iphone/iphone_05_blue%20(2).mp4",
+          "poster": "https://framerusercontent.com/images/lWODlpnoW8O3WxxKuI9r4WEBnc.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/Projet_FOOH_Iphone/iphone_05_blue%20(2).mp4",
+          "poster": "https://framerusercontent.com/images/lWODlpnoW8O3WxxKuI9r4WEBnc.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/Projet_FOOH_Iphone/iphone_05_blue%20(2).mp4",
+          "poster": "https://framerusercontent.com/images/lWODlpnoW8O3WxxKuI9r4WEBnc.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/Projet_FOOH_Iphone/iphone_05_blue%20(2).mp4",
+          "poster": "https://framerusercontent.com/images/lWODlpnoW8O3WxxKuI9r4WEBnc.png",
+          "image": "https://framerusercontent.com/images/lWODlpnoW8O3WxxKuI9r4WEBnc.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/eCzm7ZbahGU48ZzIkmgZzysw8.png",
+      "wideImage": "https://framerusercontent.com/images/wMsUix3NCGSY65qPwWB78Or4F4M.png",
+      "finalWideImage": "https://framerusercontent.com/images/OtIrcfNVoZDWSxwiVj1sVee9ZM.jpg",
+      "locationCard": "https://framerusercontent.com/images/NuamJqAz98GD8wtDbfMvPXgX8.png"
+    },
+    "restrictedClient": false,
+    "brand": "apple",
+    "brandName": "Apple",
+    "toCheck": [
+      "Projet à l'initiative de KOSMO® (client = KOSMO), pas une commande de la marque citée."
+    ]
+  },
+  {
+    "slug": "hermes",
+    "title": "HERMES",
+    "subtitle": "A refined visual statement celebrating harmony and excellence",
+    "client": "hermes",
+    "clientName": "Hermes",
+    "commissioned": true,
+    "date": "2025-08-15",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Real Estate",
+    "location": {
+      "city": "Seoul",
+      "country": "South Korea",
+      "confidence": "high"
+    },
+    "description": [
+      "Hermès wanted to announce the achievement of the Harmonie certification for its new buildings through a video that reflects the brand’s values of excellence and craftsmanship. The objective was to communicate this milestone in a subtle, elegant, and meaningful way.",
+      "Our approach was to produce a cinematic video shot in front of Hermès’ iconic boutique in Seoul, blending architectural precision with a sense of harmony and balance. By anchoring the message in a symbolic and prestigious location, the film reinforces the brand’s commitment to sustainable and thoughtful design while preserving its timeless identity."
+    ],
+    "quote": {
+      "text": "By unveiling the Harmonie certification through a refined video set in Seoul, Hermès highlights its commitment to harmony, architecture, and excellence.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/hermes_14%20(2).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/hermes_14%20(2).mp4"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/hermes_14%20(2).mp4"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/hermes_14%20(2).mp4"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/hermes_14%20(2).mp4"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/YpqhwpWnEZpfyyQhrHJdfLI.png",
+      "locationCard": "https://framerusercontent.com/images/25hIY8qIVqGZTddJ6nQ87QAnEg.png"
+    },
+    "restrictedClient": false,
+    "toCheck": [
+      "Industrie « Real Estate » pour Hermes : à vérifier."
+    ]
+  },
+  {
+    "slug": "macsf-ii",
+    "title": "MACSF II",
+    "subtitle": "A giant immersive experience to kick off the back-to-school season",
+    "client": "macsf",
+    "clientName": "MACSF",
+    "commissioned": true,
+    "series": "macsf",
+    "date": "2025-08-10",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Insurance / Finance",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "MACSF wanted to promote its back-to-school offer for healthcare students through an engaging and memorable activation. The objective was to increase brand awareness while driving audience interaction and excitement around the offer.",
+      "Our approach was to create a mixed reality experience featuring a giant “Docteur Maboul,” combining playful visuals with immersive storytelling. By bringing the activation to life in a fun and surprising way, we captured attention, encouraged engagement, and reinforced MACSF’s presence among future healthcare professionals."
+    ],
+    "quote": {
+      "text": "By turning MACSF’s back-to-school campaign into a giant mixed reality experience, we drive engagement and strengthen the brand’s visibility among healthcare students.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/MACSF%20X%20KOSMO%20Video%209%2016.mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/MACSFdqsD.mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/MACSF%20X%20KOSMO%20Video%209%2016.mp4",
+          "poster": "https://framerusercontent.com/images/GmJt2fBPGtOeIx5JUhzvMXucdzk.jpg"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/MACSF%20X%20KOSMO%20Video%209%2016.mp4",
+          "poster": "https://framerusercontent.com/images/GmJt2fBPGtOeIx5JUhzvMXucdzk.jpg"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/MACSF%20X%20KOSMO%20Video%209%2016.mp4",
+          "poster": "https://framerusercontent.com/images/GmJt2fBPGtOeIx5JUhzvMXucdzk.jpg"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/MACSF%20X%20KOSMO%20Video%209%2016.mp4",
+          "poster": "https://framerusercontent.com/images/GmJt2fBPGtOeIx5JUhzvMXucdzk.jpg",
+          "image": "https://framerusercontent.com/images/GmJt2fBPGtOeIx5JUhzvMXucdzk.jpg"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/oaSGAsBO1w9lUoam6Tn4tOHBqxI.png",
+      "wideImage": "https://framerusercontent.com/images/xrsnx8tj5pi3dNBvKcUkMFO4aQ.png",
+      "locationCard": "https://framerusercontent.com/images/vielkGSUq694006b5Zu9tmNC7M.png"
+    },
+    "restrictedClient": false,
+    "toCheck": []
+  },
+  {
+    "slug": "coyote",
+    "title": "COYOTE",
+    "subtitle": "A mixed reality celebration for 20 years of innovation",
+    "client": "coyote",
+    "clientName": "Coyote",
+    "commissioned": true,
+    "date": "2025-07-15",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Automotive",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "To celebrate its 20th anniversary, Coyote wanted to create a memorable activation that would highlight the brand’s spirit of innovation while engaging its community. The experience was designed to be broadcast during the anniversary event, held on a barge along the Seine.",
+      "Our approach was to design a mixed reality experience that blended the physical setting with immersive digital elements, transforming the barge into a spectacular stage. By combining technology and storytelling, the activation celebrated 20 years of innovation and reinforced Coyote’s forward-thinking image while driving strong audience engagement."
+    ],
+    "quote": {
+      "text": "By unveiling the iPhone 17 through a mixed reality experience, this activation turns innovation into a viral moment.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/Final%20Video%20Artefact%203000%20KOSMO%20Coyote.mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/tower.mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/Final%20Video%20Artefact%203000%20KOSMO%20Coyote%20(1).mp4",
+          "poster": "https://framerusercontent.com/images/JKSksWEuL3Yy8IIDOblHTXvCThA.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/Final%20Video%20Artefact%203000%20KOSMO%20Coyote%20(1).mp4",
+          "poster": "https://framerusercontent.com/images/JKSksWEuL3Yy8IIDOblHTXvCThA.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/Final%20Video%20Artefact%203000%20KOSMO%20Coyote%20(1).mp4",
+          "poster": "https://framerusercontent.com/images/JKSksWEuL3Yy8IIDOblHTXvCThA.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/Final%20Video%20Artefact%203000%20KOSMO%20Coyote%20(1).mp4",
+          "poster": "https://framerusercontent.com/images/JKSksWEuL3Yy8IIDOblHTXvCThA.png",
+          "image": "https://framerusercontent.com/images/JKSksWEuL3Yy8IIDOblHTXvCThA.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/8s4wqQ0XGhKaKKUBYs7O5aT8K5Q.png",
+      "wideImage": "https://framerusercontent.com/images/Lcf9mUPmzz9rDRPApiW3CG1750k.png",
+      "locationCard": "https://framerusercontent.com/images/vielkGSUq694006b5Zu9tmNC7M.png"
+    },
+    "restrictedClient": false,
+    "toCheck": [
+      "Ratio Framer « 16:9 » corrigé en 9:16 le 27/09 : la vidéo principale est verticale (720×1280)."
+    ]
+  },
+  {
+    "slug": "squid-game-iii",
+    "originalSlug": "netflix",
+    "title": "SQUID GAME III",
+    "subtitle": "A mixed reality series bringing Squid Game Season 3 to life",
+    "client": "netflix",
+    "clientName": "Netflix",
+    "commissioned": true,
+    "series": "netflix",
+    "date": "2025-07-10",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Entertainment",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "For the launch of *Squid Game* Season 3, Netflix and the agency created a series of bold mixed reality videos designed to immerse audiences in the universe of the show and drive viral engagement. The objective was to captivate fans and spark ongoing conversation online through multiple, impactful content drops.",
+      "Our approach was to develop a cohesive video series in mixed reality that brought the iconic world of *Squid Game* to life. Each video offered a unique, immersive perspective, combining striking visuals with interactive storytelling, which collectively generated over 150 million views across TikTok and Instagram."
+    ],
+    "metrics": {
+      "earnedMedia": {
+        "raw": "+150.000.000 🔥",
+        "value": 150000000,
+        "display": "150M+"
+      },
+      "engagement": {
+        "raw": "+10.000.000 🎇",
+        "value": 10000000,
+        "display": "10M+"
+      },
+      "scope": "campaign"
+    },
+    "quote": {
+      "text": "By creating a series of mixed reality videos for Squid Game Season 3, this activation captivates fans and achieves massive viral reach, with over 150 million views across social platforms.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/Mirror2_chf3%20(1).mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/0207%20(1)(18).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/Mirror2_chf3%20(1).mp4",
+          "poster": "https://framerusercontent.com/images/dnNyAXciYnnE4pUYPfU2hI7JKxQ.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/Mirror2_chf3%20(1).mp4",
+          "poster": "https://framerusercontent.com/images/dnNyAXciYnnE4pUYPfU2hI7JKxQ.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/Mirror2_chf3%20(1).mp4",
+          "poster": "https://framerusercontent.com/images/dnNyAXciYnnE4pUYPfU2hI7JKxQ.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/Mirror2_chf3%20(1).mp4",
+          "poster": "https://framerusercontent.com/images/dnNyAXciYnnE4pUYPfU2hI7JKxQ.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/NsKOXheFboc2bMpHeA8KdlTe5Y.png",
+      "wideImage": "https://framerusercontent.com/images/94GVjPMlGV4BlaGAm0M4JIg0s.png",
+      "locationCard": "https://framerusercontent.com/images/vielkGSUq694006b5Zu9tmNC7M.png"
+    },
+    "restrictedClient": true,
+    "toCheck": [
+      "Client « Netflix » dans la liste des marques à ne pas citer sans accord.",
+      "Mêmes chiffres que squid-game-i, squid-game-ii : probablement le total de la campagne, pas de ce volet."
+    ]
+  },
+  {
+    "slug": "squid-game-ii",
+    "originalSlug": "netflix-ii",
+    "title": "SQUID GAME II",
+    "subtitle": "A mixed reality series bringing Squid Game Season 3 to life",
+    "client": "netflix",
+    "clientName": "Netflix",
+    "commissioned": true,
+    "series": "netflix",
+    "date": "2025-07-05",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Entertainment",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "For the launch of *Squid Game* Season 3, Netflix and the agency created a series of bold mixed reality videos designed to immerse audiences in the universe of the show and drive viral engagement. The objective was to captivate fans and spark ongoing conversation online through multiple, impactful content drops.",
+      "Our approach was to develop a cohesive video series in mixed reality that brought the iconic world of *Squid Game* to life. Each video offered a unique, immersive perspective, combining striking visuals with interactive storytelling, which collectively generated over 150 million views across TikTok and Instagram."
+    ],
+    "metrics": {
+      "earnedMedia": {
+        "raw": "+150.000.000 🔥",
+        "value": 150000000,
+        "display": "150M+"
+      },
+      "engagement": {
+        "raw": "+10.000.000 🎇",
+        "value": 10000000,
+        "display": "10M+"
+      },
+      "scope": "campaign"
+    },
+    "quote": {
+      "text": "By creating a series of mixed reality videos for Squid Game Season 3, this activation captivates fans and achieves massive viral reach, with over 150 million views across social platforms.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/SQUID%20GAME%20II.mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/sq2%20(1)(18).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/SQUID%20GAME%20II.mp4",
+          "poster": "https://framerusercontent.com/images/Y0Djp59uIg7ZcsiNMJ13Q1Fflc.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/SQUID%20GAME%20II.mp4",
+          "poster": "https://framerusercontent.com/images/Y0Djp59uIg7ZcsiNMJ13Q1Fflc.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/SQUID%20GAME%20II.mp4",
+          "poster": "https://framerusercontent.com/images/Y0Djp59uIg7ZcsiNMJ13Q1Fflc.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/SQUID%20GAME%20II.mp4",
+          "poster": "https://framerusercontent.com/images/Y0Djp59uIg7ZcsiNMJ13Q1Fflc.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/NsKOXheFboc2bMpHeA8KdlTe5Y.png",
+      "wideImage": "https://framerusercontent.com/images/78Oj303n7Rj9ew66MCjWZqZMods.png",
+      "locationCard": "https://framerusercontent.com/images/vielkGSUq694006b5Zu9tmNC7M.png"
+    },
+    "restrictedClient": true,
+    "toCheck": [
+      "Client « Netflix » dans la liste des marques à ne pas citer sans accord.",
+      "Mêmes chiffres que squid-game-i, squid-game-iii : probablement le total de la campagne, pas de ce volet."
+    ]
+  },
+  {
+    "slug": "squid-game-i",
+    "originalSlug": "netflix-i",
+    "title": "SQUID GAME I",
+    "subtitle": "A mixed reality series bringing Squid Game Season 3 to life",
+    "client": "netflix",
+    "clientName": "Netflix",
+    "commissioned": true,
+    "series": "netflix",
+    "date": "2025-06-30",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Entertainment",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "For the launch of *Squid Game* Season 3, Netflix and the agency created a series of bold mixed reality videos designed to immerse audiences in the universe of the show and drive viral engagement. The objective was to captivate fans and spark ongoing conversation online through multiple, impactful content drops.",
+      "Our approach was to develop a cohesive video series in mixed reality that brought the iconic world of *Squid Game* to life. Each video offered a unique, immersive perspective, combining striking visuals with interactive storytelling, which collectively generated over 150 million views across TikTok and Instagram."
+    ],
+    "metrics": {
+      "earnedMedia": {
+        "raw": "+150.000.000 🔥",
+        "value": 150000000,
+        "display": "150M+"
+      },
+      "engagement": {
+        "raw": "+10.000.000 🎇",
+        "value": 10000000,
+        "display": "10M+"
+      },
+      "scope": "campaign"
+    },
+    "quote": {
+      "text": "By creating a series of mixed reality videos for Squid Game Season 3, this activation captivates fans and achieves massive viral reach, with over 150 million views across social platforms.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/SQUID%20GAME%20I.mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/sq.mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/SQUID%20GAME%20I.mp4",
+          "poster": "https://framerusercontent.com/images/oDvepqh7h7gXIGuWPbNDhV1zMU.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/SQUID%20GAME%20I.mp4",
+          "poster": "https://framerusercontent.com/images/oDvepqh7h7gXIGuWPbNDhV1zMU.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/SQUID%20GAME%20I.mp4",
+          "poster": "https://framerusercontent.com/images/oDvepqh7h7gXIGuWPbNDhV1zMU.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/SQUID%20GAME%20I.mp4",
+          "poster": "https://framerusercontent.com/images/oDvepqh7h7gXIGuWPbNDhV1zMU.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/NsKOXheFboc2bMpHeA8KdlTe5Y.png",
+      "wideImage": "https://framerusercontent.com/images/qdAlgCPers9D93vPMH3jZ0yHVs.png",
+      "locationCard": "https://framerusercontent.com/images/vielkGSUq694006b5Zu9tmNC7M.png"
+    },
+    "restrictedClient": true,
+    "toCheck": [
+      "Client « Netflix » dans la liste des marques à ne pas citer sans accord.",
+      "Mêmes chiffres que squid-game-ii, squid-game-iii : probablement le total de la campagne, pas de ce volet."
+    ]
+  },
+  {
+    "slug": "rhode",
+    "title": "Rhode",
+    "subtitle": "A mixed reality showcase of Rhode’s best seller in the heart of Paris",
+    "client": "kosmo",
+    "clientName": "KOSMO",
+    "commissioned": false,
+    "date": "2025-06-25",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Beauty",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "Rhode wanted to highlight their best-selling product through an engaging mixed reality activation that captured attention across the city. The objective was to boost engagement while reinforcing brand awareness in a creative and memorable way.",
+      "Our approach was to design an immersive experience set in iconic Parisian locations, combining Rhode’s product with striking visuals in mixed reality. By blending innovation and creativity, the activation encouraged audience interaction, amplified the brand’s presence, and showcased the product in a unique and memorable way."
+    ],
+    "quote": {
+      "text": "By bringing Rhode’s best seller to life in mixed reality across Paris, this activation drives engagement and elevates brand awareness.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/-5914984363112940893%20(1).MP4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/rodessss.mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/-5914984363112940893%20(1).MP4",
+          "poster": "https://framerusercontent.com/images/LDZhaLtxRoNlj392nCcfDw962c.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/-5914984363112940893%20(1).MP4",
+          "poster": "https://framerusercontent.com/images/LDZhaLtxRoNlj392nCcfDw962c.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/-5914984363112940893%20(1).MP4",
+          "poster": "https://framerusercontent.com/images/LDZhaLtxRoNlj392nCcfDw962c.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/-5914984363112940893%20(1).MP4",
+          "poster": "https://framerusercontent.com/images/LDZhaLtxRoNlj392nCcfDw962c.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/wxsyjKfHl2sCQKUFO3lSNtLkJo4.png",
+      "wideImage": "https://framerusercontent.com/images/mU2GgRzx7r2tPT6K71742A3CQ.png",
+      "locationCard": "https://framerusercontent.com/images/vielkGSUq694006b5Zu9tmNC7M.png"
+    },
+    "restrictedClient": false,
+    "brand": "rhode",
+    "brandName": "Rhode",
+    "toCheck": [
+      "Projet à l'initiative de KOSMO® (client = KOSMO), pas une commande de la marque citée."
+    ]
+  },
+  {
+    "slug": "psg",
+    "title": "Paris Saint-Germain",
+    "subtitle": "A mixed reality celebration of PSG’s Champions League triumph",
+    "client": "uefa",
+    "clientName": "UEFA",
+    "commissioned": true,
+    "series": "uefa",
+    "date": "2025-06-22",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Sports",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "To celebrate PSG’s victory in the Champions League, the agency created an immersive mixed reality video designed to engage fans and generate viral excitement. The objective was to capture the energy of the moment and amplify fan enthusiasm across social platforms.",
+      "Our approach was to bring the celebration to life through striking mixed reality visuals, combining the team’s iconic imagery with dynamic, interactive storytelling. The activation captured the passion of PSG supporters, drove engagement, and created a memorable digital celebration of the historic win."
+    ],
+    "metrics": {
+      "earnedMedia": {
+        "raw": "+15.000.000",
+        "value": 15000000,
+        "display": "15M+"
+      },
+      "engagement": {
+        "raw": "+350.000",
+        "value": 350000,
+        "display": "350K+"
+      }
+    },
+    "quote": {
+      "text": "By turning PSG’s Champions League victory into a mixed reality experience, this activation engages fans worldwide and creates a viral celebration of the triumph.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/PSG%202%20VF%20(1).mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/0207%20(1)(17).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/PSG%202%20VF%20(1).mp4",
+          "poster": "https://framerusercontent.com/images/HbzAvfx7p4BnYpaJoScWHWf1i7A.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/PSG%202%20VF%20(1).mp4",
+          "poster": "https://framerusercontent.com/images/HbzAvfx7p4BnYpaJoScWHWf1i7A.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/PSG%202%20VF%20(1).mp4",
+          "poster": "https://framerusercontent.com/images/HbzAvfx7p4BnYpaJoScWHWf1i7A.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/PSG%202%20VF%20(1).mp4",
+          "poster": "https://framerusercontent.com/images/HbzAvfx7p4BnYpaJoScWHWf1i7A.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/QIEkpZMDniwk3B2rpTQQmZqKs.png",
+      "wideImage": "https://framerusercontent.com/images/73aUfZ9QG87oBS7r1p8WEzQSYmY.png",
+      "locationCard": "https://framerusercontent.com/images/vielkGSUq694006b5Zu9tmNC7M.png"
+    },
+    "restrictedClient": false,
+    "toCheck": []
+  },
+  {
+    "slug": "uefa",
+    "title": "UEFA Champions League",
+    "subtitle": "A mixed reality teaser to ignite fan excitement",
+    "client": "uefa",
+    "clientName": "UEFA",
+    "commissioned": true,
+    "series": "uefa",
+    "date": "2025-06-15",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Sports",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "To hype the upcoming match between PSG and Inter Milan, the agency created an immersive mixed reality teaser designed to engage fans and generate viral buzz. The objective was to build anticipation and amplify excitement across social platforms ahead of the game.",
+      "Our approach was to craft a dynamic mixed reality experience that brought the intensity of the matchup to life. By combining striking visuals with interactive storytelling, the teaser captured fans’ attention, encouraged sharing, and heightened engagement around one of the season’s most anticipated clashes."
+    ],
+    "quote": {
+      "text": "By turning the PSG vs Inter Milan matchup into a mixed reality teaser, this activation engages fans and creates viral excitement ahead of the game.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/SFX60FPS%20(2).mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/0207%20(1)(16).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/SFX60FPS%20(2).mp4",
+          "poster": "https://framerusercontent.com/images/9ZkhkxXwIhs54mOF7KgDWzXZnbo.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/SFX60FPS%20(2).mp4",
+          "poster": "https://framerusercontent.com/images/9ZkhkxXwIhs54mOF7KgDWzXZnbo.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/SFX60FPS%20(2).mp4",
+          "poster": "https://framerusercontent.com/images/9ZkhkxXwIhs54mOF7KgDWzXZnbo.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/SFX60FPS%20(2).mp4",
+          "poster": "https://framerusercontent.com/images/9ZkhkxXwIhs54mOF7KgDWzXZnbo.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/QIEkpZMDniwk3B2rpTQQmZqKs.png",
+      "wideImage": "https://framerusercontent.com/images/IcsrCIzqoYo6hPUxwwxlSIiQc.png",
+      "locationCard": "https://framerusercontent.com/images/vielkGSUq694006b5Zu9tmNC7M.png"
+    },
+    "restrictedClient": false,
+    "toCheck": []
+  },
+  {
+    "slug": "porsche",
+    "title": "Porsche",
+    "subtitle": "A mixed reality concept showcasing the Porsche Taycan",
+    "client": "porsche",
+    "clientName": "Porsche",
+    "commissioned": true,
+    "date": "2025-06-12",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Automotive",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "Imagined by the agency, this concept highlights the Porsche Taycan through a bold mixed reality activation designed to captivate audiences and generate buzz. The objective was to combine innovation and visual impact to drive engagement and amplify the vehicle’s presence across digital platforms.",
+      "Our approach was to create an immersive mixed reality experience that brought the Taycan’s performance and design to life. By blending striking visuals with interactive storytelling, the concept engaged viewers, encouraged sharing, and demonstrated the Taycan’s cutting-edge appeal in a unique and memorable way."
+    ],
+    "quote": {
+      "text": "Imagined as a mixed reality experience, this concept brings the Porsche Taycan to life, driving engagement and creating viral impact.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/SFX_Porshe.mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/0207%20(1)(15).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/SFX_Porshe.mp4",
+          "poster": "https://framerusercontent.com/images/cT7xxOL4m95dIZnZCrcqNNgh4.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/RG%20Marketing.mp4",
+          "poster": "https://framerusercontent.com/images/cT7xxOL4m95dIZnZCrcqNNgh4.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/SFX_Porshe.mp4",
+          "poster": "https://framerusercontent.com/images/cT7xxOL4m95dIZnZCrcqNNgh4.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/SFX_Porshe.mp4",
+          "poster": "https://framerusercontent.com/images/cT7xxOL4m95dIZnZCrcqNNgh4.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/wKgmneoJAKnE8Xn6upclg7rZck.png",
+      "wideImage": "https://framerusercontent.com/images/X7UoliSqo88vpXuRzrbe0CFFrts.png",
+      "locationCard": "https://framerusercontent.com/images/vielkGSUq694006b5Zu9tmNC7M.png"
+    },
+    "restrictedClient": false,
+    "toCheck": []
+  },
+  {
+    "slug": "roland-garros",
+    "title": "Roland Garros",
+    "subtitle": "A mixed reality concept to tease Roland-Garros in the heart of Paris",
+    "client": "roland-garros",
+    "clientName": "Roland Garros",
+    "commissioned": true,
+    "date": "2025-06-07",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Sports",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "Imagined by the agency, this concept explores how Roland-Garros could create anticipation for the tournament through an innovative mixed reality activation. The objective was to engage audiences and generate excitement ahead of the event while highlighting the prestige of the tournament.",
+      "Our approach was to design an immersive mixed reality experience set in iconic Parisian locations, blending the energy of Roland-Garros with striking visuals. By combining creativity and interactivity, the concept teases the event in a memorable way and encourages fan engagement across social platforms."
+    ],
+    "quote": {
+      "text": "Imagined as a mixed reality activation in the heart of Paris, this concept brings Roland-Garros to life and drives fan excitement ahead of the tournament.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/RG%20Marketing.mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/0207%20(1)(14).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/RG%20Marketing.mp4",
+          "poster": "https://framerusercontent.com/images/INoSG4NV9Lab1DWKGbwgN5r4c.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/RG%20Marketing.mp4",
+          "poster": "https://framerusercontent.com/images/INoSG4NV9Lab1DWKGbwgN5r4c.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/RG%20Marketing.mp4",
+          "poster": "https://framerusercontent.com/images/INoSG4NV9Lab1DWKGbwgN5r4c.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/RG%20Marketing.mp4",
+          "poster": "https://framerusercontent.com/images/INoSG4NV9Lab1DWKGbwgN5r4c.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/UL35OzHI3F3hEYY2pBZwiJ56NSg.png",
+      "wideImage": "https://framerusercontent.com/images/8odVYg5P1V8BdCwX5unhC2sPo.png",
+      "locationCard": "https://framerusercontent.com/images/vielkGSUq694006b5Zu9tmNC7M.png"
+    },
+    "restrictedClient": false,
+    "toCheck": []
+  },
+  {
+    "slug": "minecraft",
+    "title": "Minecraft",
+    "subtitle": "Step into the blocky universe of the Minecraft movie",
+    "client": "mojang-studios",
+    "clientName": "Mojang Studios",
+    "commissioned": true,
+    "date": "2025-06-01",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Entertainment",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "For the launch of the *Minecraft* movie, the agency created an immersive mixed reality activation designed to engage the global Minecraft community and generate viral excitement. The objective was to connect fans with the film’s universe in a playful and interactive way, amplifying anticipation ahead of the release.",
+      "Our approach was to craft a mixed reality experience that transported audiences into the iconic blocky world of Minecraft. By combining striking visuals with interactive storytelling, the activation captivated fans, encouraged sharing, and boosted engagement across social platforms, making the film’s launch a memorable digital event."
+    ],
+    "metrics": {
+      "earnedMedia": {
+        "raw": "+350.000",
+        "value": 350000,
+        "display": "350K+"
+      }
+    },
+    "quote": {
+      "text": "By turning the Minecraft movie launch into a mixed reality experience, this activation engages the community and drives viral excitement worldwide.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/MINECRAFT.mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/0207%20(1)(13).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/MINECRAFT.mp4",
+          "poster": "https://framerusercontent.com/images/eDdvKq3CO4HFVdsr3qINXoJx2jo.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/MINECRAFT.mp4",
+          "poster": "https://framerusercontent.com/images/eDdvKq3CO4HFVdsr3qINXoJx2jo.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/MINECRAFT.mp4",
+          "poster": "https://framerusercontent.com/images/eDdvKq3CO4HFVdsr3qINXoJx2jo.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/MINECRAFT.mp4",
+          "poster": "https://framerusercontent.com/images/eDdvKq3CO4HFVdsr3qINXoJx2jo.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/Dv51IgOGrGmG3yBMmzQcHvryjs.png",
+      "wideImage": "https://framerusercontent.com/images/vk8Vblp5uD4IZa47mWNbY6a5DGM.png",
+      "locationCard": "https://framerusercontent.com/images/vielkGSUq694006b5Zu9tmNC7M.png"
+    },
+    "restrictedClient": false,
+    "toCheck": []
+  },
+  {
+    "slug": "disney-lilo-and-stitch",
+    "originalSlug": "disney-ii",
+    "title": "Lilo & Stitch",
+    "subtitle": "When AI meets the aloha spirit",
+    "client": "kosmo",
+    "clientName": "KOSMO",
+    "commissioned": false,
+    "date": "2025-05-21",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Entertainment",
+    "location": {
+      "city": "Bangkok",
+      "country": "Thailand",
+      "confidence": "high"
+    },
+    "description": [
+      "Imagined by the agency, this activation reimagines the world of *Lilo & Stitch* entirely through AI and mixed reality. The objective was to create an engaging and shareable experience that would captivate fans and generate viral excitement.",
+      "Our approach was to craft an immersive mixed reality journey, bringing the beloved characters and vibrant Hawaiian universe to life in a way that feels fresh, playful, and futuristic. By blending AI-generated visuals with interactive storytelling, the activation invited audiences to explore, engage, and share, amplifying both engagement and visibility."
+    ],
+    "metrics": {
+      "earnedMedia": {
+        "raw": "+555.000",
+        "value": 555000,
+        "display": "555K+"
+      },
+      "engagement": {
+        "raw": "+50.000",
+        "value": 50000,
+        "display": "50K+"
+      }
+    },
+    "quote": {
+      "text": "By combining AI creativity and mixed reality, this concept transforms Lilo & Stitch into an interactive, viral experience that delights and engages fans worldwide.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/DRAFT_LILO.mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/0207%20(1)(12).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/DRAFT_LILO.mp4",
+          "poster": "https://framerusercontent.com/images/GlvRkf3OMLGCE3RUMpkMQydkptY.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/DRAFT_LILO.mp4",
+          "poster": "https://framerusercontent.com/images/GlvRkf3OMLGCE3RUMpkMQydkptY.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/DRAFT_LILO.mp4",
+          "poster": "https://framerusercontent.com/images/GlvRkf3OMLGCE3RUMpkMQydkptY.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/DRAFT_LILO.mp4",
+          "poster": "https://framerusercontent.com/images/GlvRkf3OMLGCE3RUMpkMQydkptY.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/vg6ThQ7Tq7BUqdBztBrtng9CxlQ.png",
+      "wideImage": "https://framerusercontent.com/images/gJyeDdiB364oq6pmD7xDzC8g9c4.png",
+      "locationCard": "https://framerusercontent.com/images/hLuj5TTlyhimXsBYc14rzKv2k.png"
+    },
+    "restrictedClient": false,
+    "brand": "disney",
+    "brandName": "Disney+",
+    "toCheck": [
+      "Projet à l'initiative de KOSMO® (client = KOSMO), pas une commande de la marque citée."
+    ]
+  },
+  {
+    "slug": "sogelym-dixence-iii",
+    "title": "La Clairière III",
+    "subtitle": "A biophilic mixed reality video series showcasing Clairière",
+    "client": "sogelym-dixence",
+    "clientName": "Sogelym Dixence",
+    "commissioned": true,
+    "series": "sogelym-dixence",
+    "date": "2025-05-12",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Real Estate",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "Sogelym Dixence wanted to highlight their latest office project, *Clairière*, through a series of three immersive mixed reality videos that emphasize biophilic design, well-being, and innovative architecture. The objective was to engage audiences, generate awareness, and convey the project’s unique connection between nature and urban workspaces.",
+      "Our approach was to craft a cohesive video series that brought *Clairière* to life, combining realistic visuals with immersive storytelling. Each video offered a unique perspective on the verdant façade, biosourced materials, and inviting workspaces, creating engagement and reinforcing Sogelym Dixence’s reputation for innovative, sustainable developments."
+    ],
+    "quote": {
+      "text": "By showcasing Clairière through a series of three mixed reality videos, this activation engages audiences and highlights Sogelym Dixence’s vision for biophilic and innovative workspaces.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/TACTILE%20III.mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/0207%20(1)(11).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/TACTILE%20III.mp4",
+          "poster": "https://framerusercontent.com/images/ClPa8CaPx8CMAKL7UemPkvBZ6o.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/TACTILE%20III.mp4",
+          "poster": "https://framerusercontent.com/images/ClPa8CaPx8CMAKL7UemPkvBZ6o.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/TACTILE%20III.mp4",
+          "poster": "https://framerusercontent.com/images/ClPa8CaPx8CMAKL7UemPkvBZ6o.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/TACTILE%20III.mp4",
+          "poster": "https://framerusercontent.com/images/ClPa8CaPx8CMAKL7UemPkvBZ6o.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/z31ftJI299LfivktzWbKxGXPQM.png",
+      "wideImage": "https://framerusercontent.com/images/gnoAN052u3mz1ZD1f85bYMQvAlQ.png",
+      "locationCard": "https://framerusercontent.com/images/vielkGSUq694006b5Zu9tmNC7M.png"
+    },
+    "restrictedClient": false,
+    "toCheck": []
+  },
+  {
+    "slug": "sogelym-dixence-ii",
+    "title": "La Clairière II",
+    "subtitle": "A biophilic mixed reality video series showcasing Clairière",
+    "client": "sogelym-dixence",
+    "clientName": "Sogelym Dixence",
+    "commissioned": true,
+    "series": "sogelym-dixence",
+    "date": "2025-05-11",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Real Estate",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "Sogelym Dixence wanted to highlight their latest office project, *Clairière*, through a series of three immersive mixed reality videos that emphasize biophilic design, well-being, and innovative architecture. The objective was to engage audiences, generate awareness, and convey the project’s unique connection between nature and urban workspaces.",
+      "Our approach was to craft a cohesive video series that brought *Clairière* to life, combining realistic visuals with immersive storytelling. Each video offered a unique perspective on the verdant façade, biosourced materials, and inviting workspaces, creating engagement and reinforcing Sogelym Dixence’s reputation for innovative, sustainable developments."
+    ],
+    "quote": {
+      "text": "By showcasing Clairière through a series of three mixed reality videos, this activation engages audiences and highlights Sogelym Dixence’s vision for biophilic and innovative workspaces.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/TACTILE%20II.mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/0207%20(1)(10).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/TACTILE%20II.mp4",
+          "poster": "https://framerusercontent.com/images/JYm8ZdYCR5O1PDPBSh9sVF74.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/TACTILE%20II.mp4",
+          "poster": "https://framerusercontent.com/images/JYm8ZdYCR5O1PDPBSh9sVF74.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/TACTILE%20II.mp4",
+          "poster": "https://framerusercontent.com/images/JYm8ZdYCR5O1PDPBSh9sVF74.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/TACTILE%20II.mp4",
+          "poster": "https://framerusercontent.com/images/JYm8ZdYCR5O1PDPBSh9sVF74.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/z31ftJI299LfivktzWbKxGXPQM.png",
+      "wideImage": "https://framerusercontent.com/images/XPsZiRihnWIYnMiQoHug7tEHE.png",
+      "locationCard": "https://framerusercontent.com/images/vielkGSUq694006b5Zu9tmNC7M.png"
+    },
+    "restrictedClient": false,
+    "toCheck": []
+  },
+  {
+    "slug": "sogelym-dixence-i",
+    "title": "La Clairière I",
+    "subtitle": "A biophilic mixed reality video series showcasing Clairière",
+    "client": "sogelym-dixence",
+    "clientName": "Sogelym Dixence",
+    "commissioned": true,
+    "series": "sogelym-dixence",
+    "date": "2025-05-10",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Real Estate",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "Sogelym Dixence wanted to highlight their latest office project, *Clairière*, through a series of three immersive mixed reality videos that emphasize biophilic design, well-being, and innovative architecture. The objective was to engage audiences, generate awareness, and convey the project’s unique connection between nature and urban workspaces.",
+      "Our approach was to craft a cohesive video series that brought *Clairière* to life, combining realistic visuals with immersive storytelling. Each video offered a unique perspective on the verdant façade, biosourced materials, and inviting workspaces, creating engagement and reinforcing Sogelym Dixence’s reputation for innovative, sustainable developments."
+    ],
+    "quote": {
+      "text": "By showcasing Clairière through a series of three mixed reality videos, this activation engages audiences and highlights Sogelym Dixence’s vision for biophilic and innovative workspaces.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/TACTILE%20I.mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/0207%20(1)(9).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/TACTILE%20I.mp4",
+          "poster": "https://framerusercontent.com/images/Mr8afntuCGjHK5MlWEI8CU7F1h4.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/TACTILE%20I.mp4",
+          "poster": "https://framerusercontent.com/images/Mr8afntuCGjHK5MlWEI8CU7F1h4.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/TACTILE%20I.mp4",
+          "poster": "https://framerusercontent.com/images/Mr8afntuCGjHK5MlWEI8CU7F1h4.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/TACTILE%20I.mp4",
+          "poster": "https://framerusercontent.com/images/Mr8afntuCGjHK5MlWEI8CU7F1h4.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/z31ftJI299LfivktzWbKxGXPQM.png",
+      "wideImage": "https://framerusercontent.com/images/TStMGMz2bSEF44tyoZEJ9B6asQ.png",
+      "locationCard": "https://framerusercontent.com/images/vielkGSUq694006b5Zu9tmNC7M.png"
+    },
+    "restrictedClient": false,
+    "toCheck": []
+  },
+  {
+    "slug": "renault-ii",
+    "title": "RENAULT II",
+    "subtitle": "When electric innovation meets the clay court",
+    "client": "renault",
+    "clientName": "Renault",
+    "commissioned": true,
+    "series": "renault",
+    "date": "2025-05-06",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Automotive",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "To celebrate its partnership with Roland-Garros, Renault wanted to highlight the new electric R5 through a bold and engaging activation. The objective was to strengthen brand awareness while creating a viral moment that connected innovation, sport, and culture.",
+      "Our approach was to design a mixed reality experience that seamlessly blended the electric R5 into the iconic world of Roland-Garros. By combining striking visuals with immersive storytelling, the activation captured attention, drove engagement, and amplified Renault’s presence across social platforms."
+    ],
+    "metrics": {
+      "earnedMedia": {
+        "raw": "+2.000.000",
+        "value": 2000000,
+        "display": "2M+"
+      },
+      "engagement": {
+        "raw": "+65.000",
+        "value": 65000,
+        "display": "65K+"
+      },
+      "scope": "campaign"
+    },
+    "quote": {
+      "text": "By blending the electric R5 with the iconic atmosphere of Roland-Garros in mixed reality, this activation drives engagement and elevates Renault’s brand visibility.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "16:9",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/renault-1-horiz_12.mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/0207%20(1)(8).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/renault-1-horiz_12.mp4",
+          "poster": "https://framerusercontent.com/images/aVQmuIFEKZcnAE16TgM6tUJi9Nw.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/renault-1-horiz_12.mp4",
+          "poster": "https://framerusercontent.com/images/aVQmuIFEKZcnAE16TgM6tUJi9Nw.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/renault-1-horiz_12.mp4",
+          "poster": "https://framerusercontent.com/images/aVQmuIFEKZcnAE16TgM6tUJi9Nw.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/renault-1-horiz_12.mp4",
+          "poster": "https://framerusercontent.com/images/aVQmuIFEKZcnAE16TgM6tUJi9Nw.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/VHiEVPcqjUJUpejo8vFjVPIISE.png",
+      "wideImage": "https://framerusercontent.com/images/tnqO0ypWaWC4bVzcxf8Vxui4.png",
+      "locationCard": "https://framerusercontent.com/images/vielkGSUq694006b5Zu9tmNC7M.png"
+    },
+    "restrictedClient": false,
+    "toCheck": [
+      "Mêmes chiffres que renault-i : probablement le total de la campagne, pas de ce volet."
+    ]
+  },
+  {
+    "slug": "renault-i",
+    "title": "RENAULT I",
+    "subtitle": "Where tennis heritage meets electric mobility",
+    "client": "renault",
+    "clientName": "Renault",
+    "commissioned": true,
+    "series": "renault",
+    "date": "2025-05-05",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Automotive",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "To celebrate its partnership with Roland-Garros, Renault wanted to highlight the new electric R5 through a bold and engaging activation. The objective was to strengthen brand awareness while creating a viral moment that connected innovation, sport, and culture.",
+      "Our approach was to design a mixed reality experience that seamlessly blended the electric R5 into the iconic world of Roland-Garros. By combining striking visuals with immersive storytelling, the activation captured attention, drove engagement, and amplified Renault’s presence across social platforms."
+    ],
+    "metrics": {
+      "earnedMedia": {
+        "raw": "+2.000.000",
+        "value": 2000000,
+        "display": "2M+"
+      },
+      "engagement": {
+        "raw": "+65.000",
+        "value": 65000,
+        "display": "65K+"
+      },
+      "scope": "campaign"
+    },
+    "quote": {
+      "text": "By blending the electric R5 with the iconic atmosphere of Roland-Garros in mixed reality, this activation drives engagement and elevates Renault’s brand visibility.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "16:9",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/renault-2-horiz_12.mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/0207%20(1)(7).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/renault-2-horiz_12.mp4",
+          "poster": "https://framerusercontent.com/images/QBsRMYZcG2PnGJnxkhlXWr9Gj2k.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/renault-2-horiz_12.mp4",
+          "poster": "https://framerusercontent.com/images/QBsRMYZcG2PnGJnxkhlXWr9Gj2k.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/renault-2-horiz_12.mp4",
+          "poster": "https://framerusercontent.com/images/QBsRMYZcG2PnGJnxkhlXWr9Gj2k.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/renault-2-horiz_12.mp4",
+          "poster": "https://framerusercontent.com/images/QBsRMYZcG2PnGJnxkhlXWr9Gj2k.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/VHiEVPcqjUJUpejo8vFjVPIISE.png",
+      "wideImage": "https://framerusercontent.com/images/Rw2vSAssD3KLCphdYCmZo62G2c.png",
+      "locationCard": "https://framerusercontent.com/images/vielkGSUq694006b5Zu9tmNC7M.png"
+    },
+    "restrictedClient": false,
+    "toCheck": [
+      "Mêmes chiffres que renault-ii : probablement le total de la campagne, pas de ce volet."
+    ]
+  },
+  {
+    "slug": "maisons-du-monde-iv",
+    "title": "MAISONS DU MONDE IV",
+    "subtitle": "Tangerine comes to life in the heart of Bordeaux",
+    "client": "maisons-du-monde",
+    "clientName": "Maisons du monde",
+    "commissioned": true,
+    "series": "maisons-du-monde",
+    "date": "2025-04-25",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Retail / Home",
+    "location": {
+      "city": "Bordeaux",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "Maisons du Monde wanted to turn the launch of its *Tangerine* collection into a moment that would stop people in their tracks. The goal was to spark curiosity, engage audiences, and celebrate the collection’s bold colors and contemporary energy.",
+      "Our approach was to blend the collection with Bordeaux’s iconic theater using mixed reality, creating playful, immersive visuals that made the furniture feel alive in the city’s heart. Each interaction invited viewers to explore, share, and connect with the brand in a surprising and memorable way."
+    ],
+    "metrics": {
+      "earnedMedia": {
+        "raw": "+1.000.000",
+        "value": 1000000,
+        "display": "1M+"
+      },
+      "engagement": {
+        "raw": "+10.000",
+        "value": 10000,
+        "display": "10K+"
+      }
+    },
+    "quote": {
+      "text": "Through a playful mixed reality activation, the Tangerine collection comes alive, captivating audiences and making Maisons du Monde impossible to ignore.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/mdm-4_06%20(4).mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/0207%20(1)(5).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/mdm-4_06%20(4).mp4",
+          "poster": "https://framerusercontent.com/images/EWgxCNlRwJn305pRU0x7uu811yc.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/mdm-4_06%20(4).mp4",
+          "poster": "https://framerusercontent.com/images/EWgxCNlRwJn305pRU0x7uu811yc.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/mdm-4_06%20(4).mp4",
+          "poster": "https://framerusercontent.com/images/EWgxCNlRwJn305pRU0x7uu811yc.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/mdm-4_06%20(4).mp4",
+          "poster": "https://framerusercontent.com/images/EWgxCNlRwJn305pRU0x7uu811yc.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/X6ABySjY0yhJ7m6xSnBzQfu5WVM.png",
+      "wideImage": "https://framerusercontent.com/images/jVlFtigQUHyvIjSxJQuppzxHfg0.png",
+      "locationCard": "https://framerusercontent.com/images/RLCtAC5NXPHv3kIkk16l6u6wr48.png"
+    },
+    "restrictedClient": false,
+    "toCheck": []
+  },
+  {
+    "slug": "hiscox",
+    "title": "HISCOX",
+    "subtitle": "Hiscox brings entrepreneurship to life in 3D",
+    "client": "hiscox",
+    "clientName": "Hiscox",
+    "commissioned": true,
+    "date": "2025-04-21",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Insurance / Finance",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "Hiscox wanted to make a striking impression at the Go Entrepreneur salon by creating an activation that would engage visitors and highlight the brand’s forward-thinking approach. The goal was to connect with ambitious entrepreneurs in a memorable and interactive way.",
+      "Our approach was to design a mixed reality experience that brought Hiscox’s values to life, transforming the booth into an engaging digital playground. Visitors could explore, interact, and immerse themselves in the brand story, creating meaningful connections while amplifying engagement both on-site and online."
+    ],
+    "quote": {
+      "text": "By turning the Go Entrepreneur experience into a mixed reality journey, Hiscox engages entrepreneurs in a fresh, interactive, and memorable way.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/hiscox_06_sound_v3%20(4).mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/0207%20(1)(6).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/hiscox_06_sound_v3%20(4).mp4",
+          "poster": "https://framerusercontent.com/images/9hzc58XtrbiGYVrrx1zcIGpQsS4.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/hiscox_06_sound_v3%20(4).mp4",
+          "poster": "https://framerusercontent.com/images/9hzc58XtrbiGYVrrx1zcIGpQsS4.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/hiscox_06_sound_v3%20(4).mp4",
+          "poster": "https://framerusercontent.com/images/9hzc58XtrbiGYVrrx1zcIGpQsS4.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/hiscox_06_sound_v3%20(4).mp4",
+          "poster": "https://framerusercontent.com/images/9hzc58XtrbiGYVrrx1zcIGpQsS4.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/9IP2v3O1Q45Yq8v38gzaDVA4NI.png",
+      "wideImage": "https://framerusercontent.com/images/RYp8P6Re58xoRHBPEoy7eDCfANg.png",
+      "locationCard": "https://framerusercontent.com/images/vielkGSUq694006b5Zu9tmNC7M.png"
+    },
+    "restrictedClient": false,
+    "toCheck": []
+  },
+  {
+    "slug": "fk-agency-x-jardin-d-acclimatation",
+    "title": "FK AGENCY X JARDIN D'ACCLIMATATION",
+    "subtitle": "Step into the legend: the Dragon Challenge awakens",
+    "client": "jardin-d-acclimatation",
+    "clientName": "Jardin d'acclimatation",
+    "commissioned": true,
+    "date": "2025-04-20",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Entertainment",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "In collaboration with FK Agency, the Jardin d’Acclimatation wanted to announce its thrilling new attraction, *Le Défi du Dragon*, in a way that would captivate audiences and spark online excitement. The objective was to create engagement and amplify the park’s presence across social platforms.",
+      "Our approach was to craft a mixed reality experience that brought the dragon to life, blending immersive visuals with playful storytelling. Visitors could explore, interact, and feel the thrill of the challenge before even stepping into the park, generating anticipation and viral buzz around the launch."
+    ],
+    "metrics": {
+      "earnedMedia": {
+        "raw": "+150.000",
+        "value": 150000,
+        "display": "150K+"
+      }
+    },
+    "quote": {
+      "text": "By transforming Le Défi du Dragon into a mixed reality adventure, this activation captures imaginations and drives engagement, making the Jardin d’Acclimatation impossible to ignore.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/JARDIN%20D'ACC.mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/0207%20(1)(3).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/JARDIN%20D'ACC.mp4",
+          "poster": "https://framerusercontent.com/images/9E5Y6bYFfQwDdf2Doohc07hBo.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/JARDIN%20D'ACC.mp4",
+          "poster": "https://framerusercontent.com/images/9E5Y6bYFfQwDdf2Doohc07hBo.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/JARDIN%20D'ACC.mp4",
+          "poster": "https://framerusercontent.com/images/9E5Y6bYFfQwDdf2Doohc07hBo.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/JARDIN%20D'ACC.mp4",
+          "poster": "https://framerusercontent.com/images/9E5Y6bYFfQwDdf2Doohc07hBo.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/vLOKK7RqjruFQmpgOov6SkU3yk.png",
+      "wideImage": "https://framerusercontent.com/images/Ovpn3XjYvlbuQ7RyMHKKgKMCQBw.png",
+      "locationCard": "https://framerusercontent.com/images/vielkGSUq694006b5Zu9tmNC7M.png"
+    },
+    "restrictedClient": false,
+    "toCheck": []
+  },
+  {
+    "slug": "oysho-iii",
+    "title": "OYSHO III",
+    "subtitle": "Experience the energy of padel like never before",
+    "client": "oysho",
+    "clientName": "Oysho",
+    "commissioned": true,
+    "series": "oysho",
+    "date": "2025-04-15",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Fashion",
+    "location": {
+      "city": "Valladolid",
+      "country": "Spain",
+      "confidence": "high"
+    },
+    "description": [
+      "Oysho wanted to celebrate its sponsorship and naming partnership with the Premier Padel League through a dynamic series of mixed reality videos. The objective was to engage fans, increase brand awareness, and generate viral excitement around the partnership.",
+      "Our approach was to create a cohesive video series that brought the energy of the padel court to life, blending immersive visuals with Oysho’s stylish, sporty identity. Each video offered a unique perspective, inviting audiences to interact, share, and feel part of the action, amplifying engagement and establishing a memorable connection with the brand."
+    ],
+    "metrics": {
+      "earnedMedia": {
+        "raw": "+6.000.000",
+        "value": 6000000,
+        "display": "6M+"
+      },
+      "engagement": {
+        "raw": "+550.000",
+        "value": 550000,
+        "display": "550K+"
+      },
+      "scope": "campaign"
+    },
+    "quote": {
+      "text": "Through mixed reality, Oysho turns its Premier Padel League partnership into an engaging and viral experience that resonates with fans worldwide.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/oysho-4_4%20(6).mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/0207%20(1)(3).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/oysho-4_4%20(6).mp4",
+          "poster": "https://framerusercontent.com/images/tKvpyh8KLeueqO8R8PzjZLkcX4.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/oysho-4_4%20(6).mp4",
+          "poster": "https://framerusercontent.com/images/tKvpyh8KLeueqO8R8PzjZLkcX4.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/oysho-4_4%20(6).mp4",
+          "poster": "https://framerusercontent.com/images/tKvpyh8KLeueqO8R8PzjZLkcX4.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/oysho-4_4%20(6).mp4",
+          "poster": "https://framerusercontent.com/images/tKvpyh8KLeueqO8R8PzjZLkcX4.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/c8WrSYWRnjWgRD0YvS2IRjg3iAE.png",
+      "wideImage": "https://framerusercontent.com/images/cx0cd5LgPizM3gqLG8KdLJpMK0c.png",
+      "locationCard": "https://framerusercontent.com/images/uozeyiIKvqn5UelzSOKFrldV4.png"
+    },
+    "restrictedClient": false,
+    "toCheck": [
+      "Mêmes chiffres que oysho-i, oysho-ii : probablement le total de la campagne, pas de ce volet."
+    ]
+  },
+  {
+    "slug": "oysho-ii",
+    "originalSlug": "oysho-iii-copy",
+    "title": "OYSHO II",
+    "subtitle": "Experience the energy of padel like never before",
+    "client": "oysho",
+    "clientName": "Oysho",
+    "commissioned": true,
+    "series": "oysho",
+    "date": "2025-04-10",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Fashion",
+    "location": {
+      "city": "Milan",
+      "country": "Italy",
+      "confidence": "high"
+    },
+    "description": [
+      "Oysho wanted to celebrate its sponsorship and naming partnership with the Premier Padel League through a dynamic series of mixed reality videos. The objective was to engage fans, increase brand awareness, and generate viral excitement around the partnership.",
+      "Our approach was to create a cohesive video series that brought the energy of the padel court to life, blending immersive visuals with Oysho’s stylish, sporty identity. Each video offered a unique perspective, inviting audiences to interact, share, and feel part of the action, amplifying engagement and establishing a memorable connection with the brand."
+    ],
+    "metrics": {
+      "earnedMedia": {
+        "raw": "+6.000.000",
+        "value": 6000000,
+        "display": "6M+"
+      },
+      "engagement": {
+        "raw": "+550.000",
+        "value": 550000,
+        "display": "550K+"
+      },
+      "scope": "campaign"
+    },
+    "quote": {
+      "text": "Through mixed reality, Oysho turns its Premier Padel League partnership into an engaging and viral experience that resonates with fans worldwide.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/OYSHO%20II.mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/0207%20(1)(2).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/OYSHO%20II.mp4",
+          "poster": "https://framerusercontent.com/images/6cig6H3ULralNIgV2GWdI80p0.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/OYSHO%20II.mp4",
+          "poster": "https://framerusercontent.com/images/6cig6H3ULralNIgV2GWdI80p0.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/OYSHO%20II.mp4",
+          "poster": "https://framerusercontent.com/images/6cig6H3ULralNIgV2GWdI80p0.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/OYSHO%20II.mp4",
+          "poster": "https://framerusercontent.com/images/6cig6H3ULralNIgV2GWdI80p0.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/c8WrSYWRnjWgRD0YvS2IRjg3iAE.png",
+      "wideImage": "https://framerusercontent.com/images/umVkkp0UMjmkSKeqiEYKANK4w.png",
+      "locationCard": "https://framerusercontent.com/images/op3CXnYTdyPzKFscF3QVHksy8.png"
+    },
+    "restrictedClient": false,
+    "toCheck": [
+      "Mêmes chiffres que oysho-i, oysho-iii : probablement le total de la campagne, pas de ce volet."
+    ]
+  },
+  {
+    "slug": "oysho-i",
+    "title": "OYSHO I",
+    "subtitle": "Experience the energy of padel like never before",
+    "client": "oysho",
+    "clientName": "Oysho",
+    "commissioned": true,
+    "series": "oysho",
+    "date": "2025-04-05",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Fashion",
+    "location": {
+      "city": "Rome",
+      "country": "Italy",
+      "confidence": "high"
+    },
+    "description": [
+      "Oysho wanted to celebrate its sponsorship and naming partnership with the Premier Padel League through a dynamic series of mixed reality videos. The objective was to engage fans, increase brand awareness, and generate viral excitement around the partnership.",
+      "Our approach was to create a cohesive video series that brought the energy of the padel court to life, blending immersive visuals with Oysho’s stylish, sporty identity. Each video offered a unique perspective, inviting audiences to interact, share, and feel part of the action, amplifying engagement and establishing a memorable connection with the brand."
+    ],
+    "metrics": {
+      "earnedMedia": {
+        "raw": "+6.000.000",
+        "value": 6000000,
+        "display": "6M+"
+      },
+      "engagement": {
+        "raw": "+550.000",
+        "value": 550000,
+        "display": "550K+"
+      },
+      "scope": "campaign"
+    },
+    "quote": {
+      "text": "Through mixed reality, Oysho turns its Premier Padel League partnership into an engaging and viral experience that resonates with fans worldwide.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/OYSHO%20I.mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/0207%20(1)(1).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/OYSHO%20I.mp4",
+          "poster": "https://framerusercontent.com/images/Vbti9Z8FGVAiOmow5xcP626AzQ.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/OYSHO%20I.mp4",
+          "poster": "https://framerusercontent.com/images/Vbti9Z8FGVAiOmow5xcP626AzQ.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/OYSHO%20I.mp4",
+          "poster": "https://framerusercontent.com/images/Vbti9Z8FGVAiOmow5xcP626AzQ.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/OYSHO%20I.mp4",
+          "poster": "https://framerusercontent.com/images/Vbti9Z8FGVAiOmow5xcP626AzQ.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/c8WrSYWRnjWgRD0YvS2IRjg3iAE.png",
+      "wideImage": "https://framerusercontent.com/images/mwhMTJZFYUiqbUMLy3ytsk3Pi0.png",
+      "locationCard": "https://framerusercontent.com/images/0Wf36djpYUBVESkni5jQejv0.png"
+    },
+    "restrictedClient": false,
+    "toCheck": [
+      "Mêmes chiffres que oysho-ii, oysho-iii : probablement le total de la campagne, pas de ce volet."
+    ]
+  },
+  {
+    "slug": "maisons-du-monde-iii",
+    "title": "MAISONS DU MONDE III",
+    "subtitle": "Spring blooms in the heart of the Luxembourg Garden",
+    "client": "maisons-du-monde",
+    "clientName": "Maisons du monde",
+    "commissioned": true,
+    "series": "maisons-du-monde",
+    "date": "2025-03-30",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Retail / Home",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "Maisons du Monde wanted to bring their Spring collection to life with an immersive activation that would captivate audiences and generate buzz. The objective was to increase brand awareness while encouraging interaction and engagement around the vibrant new designs.",
+      "Our approach was to create a mixed reality experience in the iconic Luxembourg Garden, blending the collection’s colors, textures, and pieces with playful, immersive visuals. Online audiences alike were invited to explore, share, and connect with the brand in a fresh and memorable way."
+    ],
+    "metrics": {
+      "earnedMedia": {
+        "raw": "+2.000.000",
+        "value": 2000000,
+        "display": "2M+"
+      },
+      "engagement": {
+        "raw": "+20.000",
+        "value": 20000,
+        "display": "20K+"
+      }
+    },
+    "quote": {
+      "text": "By transforming the Spring collection into a mixed reality experience, Maisons du Monde engages audiences and celebrates the season in the heart of Paris.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/MDM%20III.mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/MDM%20III.mp4",
+          "poster": "https://framerusercontent.com/images/sGTqmYv4v6LRSmwE3JmisdujAA.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/MDM%20III.mp4",
+          "poster": "https://framerusercontent.com/images/sjVX8fvRG1Pjcb34QxGkOZiwNeE.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/MDM%20III.mp4",
+          "poster": "https://framerusercontent.com/images/sjVX8fvRG1Pjcb34QxGkOZiwNeE.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/MDM%20III.mp4",
+          "poster": "https://framerusercontent.com/images/sjVX8fvRG1Pjcb34QxGkOZiwNeE.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/X6ABySjY0yhJ7m6xSnBzQfu5WVM.png",
+      "wideImage": "https://framerusercontent.com/images/zAJPeOsh8o2YhXRAETSjZERvA.webp",
+      "locationCard": "https://framerusercontent.com/images/vielkGSUq694006b5Zu9tmNC7M.png"
+    },
+    "restrictedClient": false,
+    "toCheck": []
+  },
+  {
+    "slug": "uber-eats",
+    "title": "UBER EATS",
+    "subtitle": "Extending the winning partnership: Uber Eats x Team France",
+    "client": "uber-eats",
+    "clientName": "Uber Eats",
+    "commissioned": true,
+    "date": "2025-03-20",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Food & Beverage",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "To celebrate the extension of its partnership with the French national football team, Uber Eats wanted to create a bold activation that would engage fans and generate viral buzz. The objective was to showcase the continued collaboration in a playful and memorable way, reinforcing the brand’s connection to French football.",
+      "Our approach was to craft a news-hacking mixed reality experience at Clairefontaine, blending immersive visuals with the energy and spirit of the team. By highlighting the extended partnership, the activation captured attention, encouraged sharing, and strengthened Uber Eats’ role as a dynamic and culturally relevant partner."
+    ],
+    "metrics": {
+      "earnedMedia": {
+        "raw": "+25.000.000 🔥",
+        "value": 25000000,
+        "display": "25M+"
+      },
+      "engagement": {
+        "raw": "TV Diffusion",
+        "note": "TV Diffusion"
+      }
+    },
+    "quote": {
+      "text": "By celebrating the extended partnership with Team France through mixed reality, Uber Eats drives engagement, creates buzz, and reinforces its winning connection with fans.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "16:9",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/uber_08_NEW%20(2).mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/0207%20(1).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/uber_08_NEW%20(2).mp4",
+          "poster": "https://framerusercontent.com/images/PLjZX61KPzq2iacV5kGMQMbSow.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/uber_08_NEW%20(2).mp4",
+          "poster": "https://framerusercontent.com/images/PLjZX61KPzq2iacV5kGMQMbSow.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/uber_08_NEW%20(2).mp4",
+          "poster": "https://framerusercontent.com/images/PLjZX61KPzq2iacV5kGMQMbSow.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/uber_08_NEW%20(2).mp4",
+          "poster": "https://framerusercontent.com/images/PLjZX61KPzq2iacV5kGMQMbSow.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/qehaohlV2IU3v2LOjkcURxcHkz8.png",
+      "wideImage": "https://framerusercontent.com/images/3bmKMq6LSiZB6Hyi04gqt12yY9g.png",
+      "locationCard": "https://framerusercontent.com/images/vielkGSUq694006b5Zu9tmNC7M.png"
+    },
+    "restrictedClient": false,
+    "toCheck": []
+  },
+  {
+    "slug": "asus-ii",
+    "title": "ASUS II",
+    "subtitle": "Discover the world’s lightest laptop like never before",
+    "client": "asus",
+    "clientName": "Asus",
+    "commissioned": true,
+    "series": "asus",
+    "date": "2025-03-10",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Tech",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "To launch the Zenbook A14, Asus wanted to showcase the PC’s groundbreaking lightness while generating engagement and boosting brand awareness. The goal was to demonstrate innovation in a way that would captivate audiences and highlight the Zenbook’s unmatched portability.",
+      "Our approach was to create a mixed reality experience that brought the Zenbook A14 to life, visually emphasizing its ultra-light design. By blending striking visuals with immersive storytelling, the activation allowed audiences to feel the difference, interact with the product digitally, and share the experience, amplifying reach and engagement."
+    ],
+    "metrics": {
+      "earnedMedia": {
+        "raw": "+530.000",
+        "value": 530000,
+        "display": "530K+"
+      },
+      "engagement": {
+        "raw": "+35.000",
+        "value": 35000,
+        "display": "35K+"
+      }
+    },
+    "quote": {
+      "text": "By turning the Zenbook A14 into an immersive mixed reality experience, Asus highlights its world-leading lightness while engaging and inspiring audiences.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/asus-2_09_sfx%20(4).mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/ASUS%20II/1230(19).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/asus-2_09_sfx%20(4).mp4",
+          "poster": "https://framerusercontent.com/images/NbVrgCUJyHWlqRcCKkBrGLikMc.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/asus-2_09_sfx%20(4).mp4",
+          "poster": "https://framerusercontent.com/images/NbVrgCUJyHWlqRcCKkBrGLikMc.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/asus-2_09_sfx%20(4).mp4",
+          "poster": "https://framerusercontent.com/images/NbVrgCUJyHWlqRcCKkBrGLikMc.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/asus-2_09_sfx%20(4).mp4",
+          "poster": "https://framerusercontent.com/images/NbVrgCUJyHWlqRcCKkBrGLikMc.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/KBfEf4vUjkhrPkWIk4M2q8Emk.png",
+      "wideImage": "https://framerusercontent.com/images/9PXeSu5tpcifk1wRyUqFmHp6PKU.png",
+      "locationCard": "https://framerusercontent.com/images/vielkGSUq694006b5Zu9tmNC7M.png"
+    },
+    "restrictedClient": true,
+    "toCheck": [
+      "Client « Asus » dans la liste des marques à ne pas citer sans accord."
+    ]
+  },
+  {
+    "slug": "la-baleine",
+    "title": "LA BALEINE",
+    "subtitle": "When an everyday icon makes a splash",
+    "client": "la-baleine",
+    "clientName": "La Baleine",
+    "commissioned": true,
+    "date": "2025-03-05",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Food & Beverage",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "La Baleine wanted to turn a familiar household product into a viral moment. The objective was to boost brand awareness by surprising audiences with a creative activation that reimagines salt through an unexpected and visually striking experience.",
+      "Our approach was to design a mixed reality video that brings La Baleine’s iconic identity to life in a playful and memorable way. By blending the brand’s heritage with immersive visuals, the activation captured attention, encouraged sharing, and transformed an everyday staple into a cultural moment."
+    ],
+    "quote": {
+      "text": "By reimagining La Baleine through mixed reality, this activation turns a simple product into a viral and unforgettable brand experience.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/baleine_12-2%20(3).mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/LA%20BALEINE/1230(18).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/baleine_12-2%20(3).mp4",
+          "poster": "https://framerusercontent.com/images/p4FxIw5sITeknTS67Gz30KQHss.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/baleine_12-2%20(3).mp4",
+          "poster": "https://framerusercontent.com/images/p4FxIw5sITeknTS67Gz30KQHss.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/baleine_12-2%20(3).mp4",
+          "poster": "https://framerusercontent.com/images/p4FxIw5sITeknTS67Gz30KQHss.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/baleine_12-2%20(3).mp4",
+          "poster": "https://framerusercontent.com/images/p4FxIw5sITeknTS67Gz30KQHss.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/B5DpEUXEaU6mrX2hNGcNMCQMVw.png",
+      "wideImage": "https://framerusercontent.com/images/KwI9B8YV9aveyAKk9WTV0xOp448.png",
+      "locationCard": "https://framerusercontent.com/images/z13VCzcc9yik4RvHOzJWxnrQ.png"
+    },
+    "restrictedClient": false,
+    "toCheck": []
+  },
+  {
+    "slug": "astorg",
+    "title": "Astorg x Fondation Louis Vuitton",
+    "subtitle": "Reinventing the general meeting experience",
+    "client": "astorg",
+    "clientName": "Astorg",
+    "commissioned": true,
+    "date": "2025-02-19",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Insurance / Finance",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "Astorg wanted to transform its annual general meeting into a moment that reflects the firm’s innovative mindset. The objective was to invite participants through a video experience that goes beyond traditional corporate communication, while reinforcing engagement and anticipation.",
+      "Our approach was to design a mixed reality invitation that blended clarity, elegance, and innovation. By combining immersive visuals with a refined narrative, the experience modernized the AG announcement and positioned Astorg as a forward-thinking organization embracing new ways to connect with its audience."
+    ],
+    "quote": {
+      "text": "By reimagining the annual general meeting invitation through mixed reality, Astorg delivers an innovative and engaging corporate experience.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "16:9",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/astorg_07%20(1).mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/ASTORG/1230(14).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/astorg_07%20(1).mp4",
+          "poster": "https://framerusercontent.com/images/leVxieMzp2jUZmSOEUDAQPRvoI.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/Disney_2_VF.mp4",
+          "poster": "https://framerusercontent.com/images/leVxieMzp2jUZmSOEUDAQPRvoI.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/astorg_07%20(1).mp4",
+          "poster": "https://framerusercontent.com/images/leVxieMzp2jUZmSOEUDAQPRvoI.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/astorg_07%20(1).mp4",
+          "poster": "https://framerusercontent.com/images/leVxieMzp2jUZmSOEUDAQPRvoI.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/gRqItaZDpcrxC0GySISuVeeddY.png",
+      "wideImage": "https://framerusercontent.com/images/OEDsiOn5ss9yhaAv4SLKO5zq1pA.png",
+      "locationCard": "https://framerusercontent.com/images/vielkGSUq694006b5Zu9tmNC7M.png"
+    },
+    "restrictedClient": false,
+    "toCheck": []
+  },
+  {
+    "slug": "pringles",
+    "title": "Pringles",
+    "subtitle": "Press play on flavor",
+    "client": "pringles",
+    "clientName": "Pringles",
+    "commissioned": true,
+    "date": "2025-02-10",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Entertainment",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "To celebrate the launch of its new can created in collaboration with Nintendo and the iconic *Super Mario Bros* franchise, Pringles wanted to create a bold activation designed to spark excitement and drive engagement. The objective was to turn the collaboration into a highly shareable moment across social platforms.",
+      "Our approach was to design a playful mixed reality experience that blended Pringles’ iconic can with the colorful world of *Super Mario Bros*. By combining immersive visuals, pop culture references, and interactive storytelling, the activation captured attention, encouraged sharing, and generated strong viral momentum."
+    ],
+    "quote": {
+      "text": "By merging Pringles’ iconic can with the world of Super Mario Bros through mixed reality, this activation turns a brand collaboration into a viral pop culture moment.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/pringles_SCO_06.mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/pringles_SCO_06.mp4"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/pringles_SCO_06.mp4"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/pringles_SCO_06.mp4"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/pringles_SCO_06.mp4"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/7Dc1LltP33wB7zcRvZEbM03UuM.png",
+      "locationCard": "https://framerusercontent.com/images/vielkGSUq694006b5Zu9tmNC7M.png"
+    },
+    "restrictedClient": true,
+    "toCheck": [
+      "Client « Pringles » dans la liste des marques à ne pas citer sans accord."
+    ]
+  },
+  {
+    "slug": "disney-la-haut",
+    "originalSlug": "disney-i",
+    "title": "Là-Haut",
+    "subtitle": "Adventure takes flight in AI-powered reality",
+    "client": "kosmo",
+    "clientName": "KOSMO",
+    "commissioned": false,
+    "date": "2025-02-10",
+    "year": 2025,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Entertainment",
+    "description": [
+      "Imagined by the agency, this activation reinterprets *Là‑Haut* entirely through AI and mixed reality. The objective was to create an immersive experience that sparks engagement, invites exploration, and generates viral excitement around the beloved story.",
+      "Our approach was to craft a mixed reality journey that lifts audiences into the colorful, whimsical world of *Là‑Haut*. By combining AI-generated visuals with interactive storytelling, the activation captures the spirit of adventure, encourages sharing, and creates a memorable, emotionally engaging connection with fans."
+    ],
+    "quote": {
+      "text": "By bringing Là‑Haut to life through AI and mixed reality, this activation turns adventure into an interactive, viral experience that delights audiences everywhere.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/Disney_2_VF.mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/Disney_2_VF.mp4"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/Disney_2_VF.mp4"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/Disney_2_VF.mp4"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/Disney_2_VF.mp4"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/vg6ThQ7Tq7BUqdBztBrtng9CxlQ.png",
+      "wideImage": "https://framerusercontent.com/images/h9487nfQ0De4w4ZBEsC6xezXis.png",
+      "locationCard": "https://framerusercontent.com/images/q1u6E5lw2QAYKArBdAIAyBVrbyo.png"
+    },
+    "restrictedClient": false,
+    "brand": "disney",
+    "brandName": "Disney+",
+    "toCheck": [
+      "Pas de ville renseignée.",
+      "Projet à l'initiative de KOSMO® (client = KOSMO), pas une commande de la marque citée."
+    ],
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    }
+  },
+  {
+    "slug": "maisons-du-monde-ii",
+    "title": "MAISONS DU MONDE II",
+    "subtitle": "When Christmas baubles take over Paris",
+    "client": "maisons-du-monde",
+    "clientName": "Maisons du monde",
+    "commissioned": true,
+    "series": "maisons-du-monde",
+    "date": "2024-12-24",
+    "year": 2024,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Retail / Home",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "Alongside their most popular video, Maisons du Monde wanted to further showcase the charm of its Christmas collection with a second immersive mixed reality experience. The objective was to engage audiences, amplify brand presence, and celebrate the festive season in a creative, shareable way.",
+      "Our approach was to craft a visually rich and playful video that highlighted the collection’s warm and joyful spirit. While slightly less viewed than its counterpart, this activation still captured attention, encouraged interaction, and reinforced the festive narrative across social platforms."
+    ],
+    "metrics": {
+      "earnedMedia": {
+        "raw": "+5.000.000 🔥",
+        "value": 5000000,
+        "display": "5M+"
+      },
+      "engagement": {
+        "raw": "+40.000",
+        "value": 40000,
+        "display": "40K+"
+      }
+    },
+    "quote": {
+      "text": "By letting Christmas baubles take over Paris in mixed reality, Maisons du Monde creates a playful, engaging experience that spreads festive joy across audiences.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/MAISONS%20II.mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/MDM/1230(15).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/MAISONS%20II.mp4",
+          "poster": "https://framerusercontent.com/images/s7h41p7yJtO5e47ylHxZL7iDWvA.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/MAISONS%20II.mp4",
+          "poster": "https://framerusercontent.com/images/s7h41p7yJtO5e47ylHxZL7iDWvA.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/MAISONS%20II.mp4",
+          "poster": "https://framerusercontent.com/images/s7h41p7yJtO5e47ylHxZL7iDWvA.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/MAISONS%20II.mp4",
+          "poster": "https://framerusercontent.com/images/s7h41p7yJtO5e47ylHxZL7iDWvA.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/X6ABySjY0yhJ7m6xSnBzQfu5WVM.png",
+      "wideImage": "https://framerusercontent.com/images/Q4dKEJtkbm9T2pC36KsWOqvB1o.png",
+      "locationCard": "https://framerusercontent.com/images/RLCtAC5NXPHv3kIkk16l6u6wr48.png"
+    },
+    "restrictedClient": false,
+    "toCheck": [
+      "Ville corrigée le 28/09/2026 : Paris (Sacré-Cœur, tour Eiffel), pas Bordeaux comme dans l’export Framer (dit par Mehdi)."
+    ]
+  },
+  {
+    "slug": "maisons-du-monde-i",
+    "title": "MAISONS DU MONDE I",
+    "subtitle": "When Christmas baubles take over Paris",
+    "client": "maisons-du-monde",
+    "clientName": "Maisons du monde",
+    "commissioned": true,
+    "series": "maisons-du-monde",
+    "date": "2024-12-17",
+    "year": 2024,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Retail / Home",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "Maisons du Monde wanted to celebrate the launch of its Christmas collection with an activation that would enchant audiences and spark engagement. The objective was to create a festive experience that would resonate online and generate viral excitement.",
+      "Our approach was to produce two immersive mixed reality videos, combining the brand’s signature style with the warmth and magic of the holiday season. One of the videos quickly became the most viewed and most liked on the brand’s account, capturing hearts and encouraging sharing across social platforms."
+    ],
+    "metrics": {
+      "earnedMedia": {
+        "raw": "+12.000.000 🔥",
+        "value": 12000000,
+        "display": "12M+"
+      },
+      "engagement": {
+        "raw": "+150.000 🚨",
+        "value": 150000,
+        "display": "150K+"
+      }
+    },
+    "quote": {
+      "text": "By turning the Christmas collection into a mixed reality celebration, Maisons du Monde created a viral, engaging experience that delighted audiences and amplified the holiday spirit.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "/video/fooh/maisons-du-monde-i.mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "/video/fooh/maisons-du-monde-i.mp4"
+        },
+        "mobile": {
+          "video": "/video/fooh/maisons-du-monde-i.mp4"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "/video/fooh/maisons-du-monde-i.mp4"
+        },
+        "mobile": {
+          "video": "/video/fooh/maisons-du-monde-i.mp4"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/X6ABySjY0yhJ7m6xSnBzQfu5WVM.png",
+      "locationCard": "https://framerusercontent.com/images/RLCtAC5NXPHv3kIkk16l6u6wr48.png"
+    },
+    "restrictedClient": false,
+    "toCheck": [
+      "Film servi depuis public/video/fooh/maisons-du-monde-i.mp4 (remux du .MOV Framer, sans son) : le seul projet hébergé localement, à rapatrier sur Bunny avec les autres.",
+      "Ville corrigée le 28/09/2026 : Paris (Sacré-Cœur, tour Eiffel), pas Bordeaux comme dans l’export Framer (dit par Mehdi)."
+    ]
+  },
+  {
+    "slug": "betclic-civ",
+    "title": "Betclic CIV",
+    "subtitle": "Unwrap the thrill of the holidays",
+    "client": "betclic",
+    "clientName": "Betclic",
+    "commissioned": true,
+    "series": "betclic",
+    "date": "2024-12-12",
+    "year": 2024,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Betting",
+    "location": {
+      "city": "Abidjan",
+      "country": "Ivory Coast",
+      "confidence": "high"
+    },
+    "description": [
+      "To celebrate the festive season, Betclic wanted to launch a playful and innovative Christmas contest that would capture attention and drive engagement. The objective was to create a shareable experience that combined the excitement of the holidays with the brand’s passion for sports and gaming.",
+      "Our approach was to design a mixed reality activation that immersed participants in a festive and interactive environment, where they could engage with the contest in a fun and memorable way. By blending innovative visuals with interactive storytelling, the campaign sparked sharing, amplified engagement, and generated viral buzz across social platforms."
+    ],
+    "quote": {
+      "text": "By turning the holiday contest into a mixed reality experience, Betclic engages fans in a playful and innovative way while creating viral excitement.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/KOSMO_BETCLIC.mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/BETCLIC/1230(13).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/KOSMO_BETCLIC.mp4",
+          "poster": "https://framerusercontent.com/images/Kik2xnm86IbXMyf3cJ0zvJz1G0.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/KOSMO_BETCLIC.mp4",
+          "poster": "https://framerusercontent.com/images/Kik2xnm86IbXMyf3cJ0zvJz1G0.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/KOSMO_BETCLIC.mp4",
+          "poster": "https://framerusercontent.com/images/Kik2xnm86IbXMyf3cJ0zvJz1G0.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/KOSMO_BETCLIC.mp4",
+          "poster": "https://framerusercontent.com/images/Kik2xnm86IbXMyf3cJ0zvJz1G0.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/79hGFCc3JM9h2CTKw9DidiFthE.png",
+      "wideImage": "https://framerusercontent.com/images/Lal42Svb3NrIiDLJfE0WtMWQYR4.png",
+      "locationCard": "https://framerusercontent.com/images/0kFYxkDoPaUnbMb6IpDmhJ5St0c.png"
+    },
+    "restrictedClient": false,
+    "toCheck": [
+      "Client « icade » dans l'export, corrigé en « betclic » (le titre et l'industrie parlent de Betclic)."
+    ]
+  },
+  {
+    "slug": "icade",
+    "title": "Icade",
+    "subtitle": "Pulse reopens: step into the future of work",
+    "client": "icade",
+    "clientName": "Icade",
+    "commissioned": true,
+    "series": "icade",
+    "date": "2024-12-12",
+    "year": 2024,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Real Estate",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "Icade wanted to announce the reopening of its Pulse offices with an activation that would highlight innovation and capture attention. The objective was to generate buzz, drive engagement, and showcase the modern, flexible workspaces in a memorable way.",
+      "Our approach was to design a mixed reality experience that brought Pulse to life, blending immersive visuals with interactive storytelling. By giving audiences a virtual taste of the office’s cutting-edge design and dynamic environment, the activation encouraged sharing, amplified visibility, and positioned Pulse as a forward-thinking destination for businesses."
+    ],
+    "quote": {
+      "text": "By reimagining the Pulse offices in mixed reality, Icade delivers an innovative, engaging, and viral experience that showcases the future of work.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/KOSMO_ICADE.mov",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/ICADE/1230(16).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/KOSMO_ICADE.mov",
+          "poster": "https://framerusercontent.com/images/7DZ8B3F5k5JMuJVaP5XGf6IRPxQ.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/KOSMO_ICADE.mov",
+          "poster": "https://framerusercontent.com/images/7DZ8B3F5k5JMuJVaP5XGf6IRPxQ.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/KOSMO_ICADE.mov",
+          "poster": "https://framerusercontent.com/images/7DZ8B3F5k5JMuJVaP5XGf6IRPxQ.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/KOSMO_ICADE.mov",
+          "poster": "https://framerusercontent.com/images/7DZ8B3F5k5JMuJVaP5XGf6IRPxQ.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/X0xJCckAR9foe1HxQq17LgYtZA.png",
+      "wideImage": "https://framerusercontent.com/images/FQthj8ANSfPU6DgWy4EwIhT31HQ.png",
+      "locationCard": "https://framerusercontent.com/images/vielkGSUq694006b5Zu9tmNC7M.png"
+    },
+    "restrictedClient": false,
+    "toCheck": []
+  },
+  {
+    "slug": "asus-i",
+    "title": "ASUS I",
+    "subtitle": "The Zenbook S14, a masterpiece in your hands",
+    "client": "asus",
+    "clientName": "Asus",
+    "commissioned": true,
+    "series": "asus",
+    "date": "2024-12-12",
+    "year": 2024,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Tech",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "For the launch of the Zenbook S14, Asus wanted to showcase the laptop not just as a device, but as a work of art worthy of admiration. The objective was to drive engagement and create viral buzz by presenting the product in an unexpected and visually striking way.",
+      "Our approach was to design a mixed reality experience that positioned the Zenbook S14 in a museum-like setting, blending immersive visuals with elegant storytelling. By highlighting its sleek design and craftsmanship, the activation invited audiences to explore, interact, and share, turning the laptop into a culturally celebrated object."
+    ],
+    "metrics": {
+      "earnedMedia": {
+        "raw": "+210.000",
+        "value": 210000,
+        "display": "210K+"
+      },
+      "engagement": {
+        "raw": "+4.800",
+        "value": 4800,
+        "display": "4.8K+"
+      }
+    },
+    "quote": {
+      "text": "By presenting the Zenbook S14 as a digital masterpiece in mixed reality, this activation transforms tech into art and captivates audiences worldwide.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/asus_2-10%20(1).mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/ASUS%20I/1230(17).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/MAISONS_1.MOV",
+          "poster": "https://framerusercontent.com/images/xwZmJjhj9OY59S8YeqO330tDl90.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/asus_2-10%20(1).mp4",
+          "poster": "https://framerusercontent.com/images/xwZmJjhj9OY59S8YeqO330tDl90.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/asus_2-10%20(1).mp4",
+          "poster": "https://framerusercontent.com/images/xwZmJjhj9OY59S8YeqO330tDl90.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/asus_2-10%20(1).mp4",
+          "poster": "https://framerusercontent.com/images/xwZmJjhj9OY59S8YeqO330tDl90.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/KBfEf4vUjkhrPkWIk4M2q8Emk.png",
+      "wideImage": "https://framerusercontent.com/images/yHGnoQg6tMNm5BBGiN3teJ2PFk.png",
+      "locationCard": "https://framerusercontent.com/images/vielkGSUq694006b5Zu9tmNC7M.png"
+    },
+    "restrictedClient": true,
+    "toCheck": [
+      "Client « Asus » dans la liste des marques à ne pas citer sans accord."
+    ]
+  },
+  {
+    "slug": "proman-i",
+    "originalSlug": "proman",
+    "title": "Proman I",
+    "subtitle": "Shaping the future of work, one talent at a time",
+    "client": "proman",
+    "clientName": "Proman",
+    "commissioned": true,
+    "series": "proman",
+    "date": "2024-11-10",
+    "year": 2024,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "HR",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "For its 2024 recruitment campaign, Proman wanted to stand out by highlighting innovation and reinforcing its brand presence. The objective was to attract top talent while creating an engaging and memorable experience that reflects the company’s forward-thinking approach.",
+      "Our approach was to design a mixed reality activation that brought Proman’s values and opportunities to life. By combining immersive visuals with interactive storytelling, the campaign captured attention, encouraged participation, and amplified the company’s reputation as an innovative and desirable employer."
+    ],
+    "quote": {
+      "text": "By turning recruitment into an immersive mixed reality experience, Proman engages talent, amplifies brand awareness, and showcases its innovative spirit.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/0207%20(1)(22).mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/0207%20(1)(22).mp4",
+      "thumbnail": {
+        "desktop": {
+          "poster": "https://framerusercontent.com/images/Z9bnOtjZLofQ7Tqxf9aNz6aZZo.png"
+        },
+        "mobile": {
+          "poster": "https://framerusercontent.com/images/Z9bnOtjZLofQ7Tqxf9aNz6aZZo.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "poster": "https://framerusercontent.com/images/Z9bnOtjZLofQ7Tqxf9aNz6aZZo.png"
+        },
+        "mobile": {
+          "poster": "https://framerusercontent.com/images/Z9bnOtjZLofQ7Tqxf9aNz6aZZo.png"
+        }
+      },
+      "wideImage": "https://framerusercontent.com/images/zCwJjkex4HIqqY5eQMZVbaqcgbc.png",
+      "locationCard": "https://framerusercontent.com/images/vielkGSUq694006b5Zu9tmNC7M.png"
+    },
+    "restrictedClient": false,
+    "toCheck": [
+      "Le logo projet dans Framer est celui d'ASUS : logo retiré, à fournir.",
+      "Pas de vignette dédiée : utiliser la vidéo principale ou le hook.",
+      "Champ « vidéo principale » Framer contenait la citation Bose : remplacé par la seule vidéo du projet (hook). Film complet à fournir."
+    ]
+  },
+  {
+    "slug": "bose",
+    "title": "Bose",
+    "subtitle": "Feel the sound, see the experience",
+    "client": "bose",
+    "clientName": "Bose",
+    "commissioned": true,
+    "date": "2024-11-10",
+    "year": 2024,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Tech",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "Bose wanted to elevate its advertising by creating a mixed reality activation that would immerse audiences in the world of premium audio. The objective was to showcase the brand’s innovation and generate engagement by turning sound into a visually captivating experience.",
+      "Our approach was to design immersive MR ads that allowed viewers to experience Bose’s signature sound in a new, interactive way. By blending stunning visuals with the power of audio, the campaign captured attention, encouraged interaction, and reinforced Bose’s position as a leader in high-quality, cutting-edge audio technology."
+    ],
+    "quote": {
+      "text": "By turning the holiday contest into a mixed reality experience, Betclic engages fans in a playful and innovative way while creating viral excitement.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/BOSE/FNAC%20Bose%20Audio%20V8.mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/BOSE/1230(12).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/BOSE/FNAC%20Bose%20Audio%20V8.mp4",
+          "poster": "https://framerusercontent.com/images/mj2pebjoDMreEozxCx4noa3eIw.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/BOSE/FNAC%20Bose%20Audio%20V8.mp4",
+          "poster": "https://framerusercontent.com/images/mj2pebjoDMreEozxCx4noa3eIw.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/BOSE/FNAC%20Bose%20Audio%20V8.mp4",
+          "poster": "https://framerusercontent.com/images/mj2pebjoDMreEozxCx4noa3eIw.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/BOSE/FNAC%20Bose%20Audio%20V8.mp4",
+          "poster": "https://framerusercontent.com/images/mj2pebjoDMreEozxCx4noa3eIw.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/gbjumux4ARYceuHuLlnQePJTdM.png",
+      "wideImage": "https://framerusercontent.com/images/nNvyr6aL0zWoMMLOmkBDVS6TeGQ.png",
+      "locationCard": "https://framerusercontent.com/images/vielkGSUq694006b5Zu9tmNC7M.png"
+    },
+    "restrictedClient": true,
+    "toCheck": [
+      "Client « Bose » dans la liste des marques à ne pas citer sans accord.",
+      "Champ « vidéo principale » Framer contenait la citation : remplacé par la vidéo de la vignette (FNAC Bose Audio V8)."
+    ]
+  },
+  {
+    "slug": "macsf-i",
+    "originalSlug": "macsf",
+    "title": "Macsf I",
+    "subtitle": "Sailing into innovation: MACSF at the Vendée Globe",
+    "client": "macsf",
+    "clientName": "MACSF",
+    "commissioned": true,
+    "series": "macsf",
+    "date": "2024-10-10",
+    "year": 2024,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Insurance / Finance",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "To celebrate the start of the Vendée Globe 2024 and highlight the participation of their athlete and vessel, MACSF wanted to create a standout activation that combines innovation and engagement. The objective was to boost brand awareness, generate viral excitement, and connect audiences to the thrill of the race.",
+      "Our approach was to design a mixed reality experience that brought the athlete and the boat to life in an immersive, visually striking way. By blending interactive storytelling with cutting-edge visuals, the activation captivated audiences, encouraged sharing, and reinforced MACSF’s reputation as a forward-thinking and adventurous brand."
+    ],
+    "quote": {
+      "text": "By bringing the Vendée Globe to life in mixed reality, MACSF creates an innovative, engaging, and viral experience that celebrates both the race and their athlete’s journey.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/FOOH%20MACSF%20VF.mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/MACSF/1230(1).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/FOOH%20MACSF%20VF.mp4",
+          "poster": "https://framerusercontent.com/images/BqaVYD0oQaEFWaC2iiwCQIG8Xa8.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/FOOH%20MACSF%20VF.mp4",
+          "poster": "https://framerusercontent.com/images/BqaVYD0oQaEFWaC2iiwCQIG8Xa8.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/FOOH%20MACSF%20VF.mp4",
+          "poster": "https://framerusercontent.com/images/BqaVYD0oQaEFWaC2iiwCQIG8Xa8.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/FOOH%20MACSF%20VF.mp4",
+          "poster": "https://framerusercontent.com/images/BqaVYD0oQaEFWaC2iiwCQIG8Xa8.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/oaSGAsBO1w9lUoam6Tn4tOHBqxI.png",
+      "wideImage": "https://framerusercontent.com/images/kdEIOcgbPkpOjdSQfvXCnwTktw.png",
+      "locationCard": "https://framerusercontent.com/images/vielkGSUq694006b5Zu9tmNC7M.png"
+    },
+    "restrictedClient": false,
+    "toCheck": []
+  },
+  {
+    "slug": "heavent-i",
+    "title": "HEAVENT I",
+    "subtitle": "Step into the future of events",
+    "client": "weyou-group",
+    "clientName": "Weyou Group",
+    "commissioned": true,
+    "series": "weyou-group",
+    "date": "2024-10-04",
+    "year": 2024,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Events / Agencies",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "For the 2024 Heavent event, the goal was to announce the dates and showcase the salon as a hub of innovation in the event industry. The objective was to engage professionals, create buzz, and highlight the cutting-edge nature of the exhibition.",
+      "Our approach was to design a mixed reality activation that brought the event to life, blending immersive visuals with interactive storytelling. By combining innovation and creativity, the campaign captured attention, encouraged sharing, and positioned Heavent as the unmissable event for the industry."
+    ],
+    "quote": {
+      "text": "By announcing the 2024 salon through mixed reality, Heavent creates an innovative, engaging experience that excites and connects event professionals.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/HEAVENT/Heaven%20Lightshow%20Audio%20V2.mov",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/HEAVENT/1230(11).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/HEAVENT/Heaven%20Lightshow%20Audio%20V2.mov",
+          "poster": "https://framerusercontent.com/images/EKBD0wj5rzD2jRtxSCzns4lIylQ.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/HEAVENT/Heaven%20Lightshow%20Audio%20V2.mov",
+          "poster": "https://framerusercontent.com/images/EKBD0wj5rzD2jRtxSCzns4lIylQ.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/HEAVENT/Heaven%20Lightshow%20Audio%20V2.mov",
+          "poster": "https://framerusercontent.com/images/EKBD0wj5rzD2jRtxSCzns4lIylQ.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/FOOH%20Heavent.mp4",
+          "poster": "https://framerusercontent.com/images/EKBD0wj5rzD2jRtxSCzns4lIylQ.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/sSQ0mtABIG2BrVHeps1E5cCOW28.png",
+      "wideImage": "https://framerusercontent.com/images/VsFzC9p8oeazXG69SzQE1dLf4M.png",
+      "locationCard": "https://framerusercontent.com/images/z13VCzcc9yik4RvHOzJWxnrQ.png"
+    },
+    "restrictedClient": false,
+    "toCheck": []
+  },
+  {
+    "slug": "heavent-ii",
+    "title": "HEAVENT II",
+    "subtitle": "Step into the future of events",
+    "client": "weyou-group",
+    "clientName": "Weyou Group",
+    "commissioned": true,
+    "series": "weyou-group",
+    "date": "2024-10-04",
+    "year": 2024,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Events / Agencies",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "For the 2024 Heavent event, the goal was to announce the dates and showcase the salon as a hub of innovation in the event industry. The objective was to engage professionals, create buzz, and highlight the cutting-edge nature of the exhibition.",
+      "Our approach was to design a mixed reality activation that brought the event to life, blending immersive visuals with interactive storytelling. By combining innovation and creativity, the campaign captured attention, encouraged sharing, and positioned Heavent as the unmissable event for the industry."
+    ],
+    "quote": {
+      "text": "By announcing the 2024 salon through mixed reality, Heavent creates an innovative, engaging experience that excites and connects event professionals.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/FOOH%20Heavent.mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/HEAVENT/1230(10).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/FOOH%20Heavent.mp4",
+          "poster": "https://framerusercontent.com/images/E3rbLoXdOFhppEDFvDVR7sKcAY.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/FOOH%20Heavent.mp4",
+          "poster": "https://framerusercontent.com/images/E3rbLoXdOFhppEDFvDVR7sKcAY.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/FOOH%20Heavent.mp4",
+          "poster": "https://framerusercontent.com/images/E3rbLoXdOFhppEDFvDVR7sKcAY.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/FOOH%20Heavent.mp4",
+          "poster": "https://framerusercontent.com/images/E3rbLoXdOFhppEDFvDVR7sKcAY.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/sSQ0mtABIG2BrVHeps1E5cCOW28.png",
+      "wideImage": "https://framerusercontent.com/images/SzyzZszu5azG6nybvjSKHfUm4.png",
+      "locationCard": "https://framerusercontent.com/images/z13VCzcc9yik4RvHOzJWxnrQ.png"
+    },
+    "restrictedClient": false,
+    "toCheck": []
+  },
+  {
+    "slug": "bolero",
+    "title": "Bolero",
+    "subtitle": "Catch the rhythm of the opening ceremony",
+    "client": "bolero",
+    "clientName": "Bolero",
+    "commissioned": true,
+    "date": "2024-10-01",
+    "year": 2024,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Entertainment",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "Bolero wanted to leverage Aya Nakamura’s participation in the Olympic Games opening ceremony to promote its platform in a bold and engaging way. The objective was to generate viral buzz and position Bolero as an innovative, culturally connected brand.",
+      "Our approach was to create a mixed reality activation that blended immersive visuals with Aya Nakamura’s performance, turning the energy and excitement of the ceremony into a shareable, interactive experience. By combining music, motion, and technology, the campaign captured attention, encouraged engagement, and amplified the platform’s visibility."
+    ],
+    "quote": {
+      "text": "By transforming Aya Nakamura’s Olympic performance into a mixed reality experience, Bolero creates a viral, engaging activation that resonates with audiences worldwide.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/FOOH%20Bolero.mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/BOLERO/1230(7).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/FOOH%20Bolero.mp4",
+          "poster": "https://framerusercontent.com/images/MYHDcDuXy56zgJJ9GwkEKIV3s.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/FOOH%20Bolero.mp4",
+          "poster": "https://framerusercontent.com/images/MYHDcDuXy56zgJJ9GwkEKIV3s.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/FOOH%20Bolero.mp4",
+          "poster": "https://framerusercontent.com/images/MYHDcDuXy56zgJJ9GwkEKIV3s.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/FOOH%20Bolero.mp4",
+          "poster": "https://framerusercontent.com/images/MYHDcDuXy56zgJJ9GwkEKIV3s.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/Sx03Spjv6jQzlUnKgFrUwZZ7Bpw.png",
+      "wideImage": "https://framerusercontent.com/images/FtaRtrhW5WHkaERtuIn4p4R501w.png",
+      "locationCard": "https://framerusercontent.com/images/vielkGSUq694006b5Zu9tmNC7M.png"
+    },
+    "restrictedClient": false,
+    "toCheck": []
+  },
+  {
+    "slug": "havas-africa",
+    "title": "Havas Africa",
+    "subtitle": "Havas Play debuts: innovation meets connection",
+    "client": "havas-africa",
+    "clientName": "Havas Africa",
+    "commissioned": true,
+    "date": "2024-10-01",
+    "year": 2024,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Events / Agencies",
+    "location": {
+      "city": "Abidjan",
+      "country": "Ivory Coast",
+      "confidence": "high"
+    },
+    "description": [
+      "To launch Havas Play in Africa, the agency wanted to create an activation that would highlight innovation while engaging audiences across the continent. The objective was to showcase Havas Play as a dynamic and forward-thinking platform that connects people, ideas, and creativity.",
+      "Our approach was to design a mixed reality experience that brought Havas Play to life, blending interactive visuals with immersive storytelling. By combining cutting-edge digital creativity with culturally resonant content, the activation sparked engagement and positioned Havas Play as a must-follow innovation hub in Africa."
+    ],
+    "quote": {
+      "text": "By introducing Havas Play through an innovative mixed reality activation, Havas Africa engages audiences and establishes a dynamic, forward-looking presence on the continent.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/KOSMO_HAVASPLAY.mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/HAVAS_PLAY/1230(8).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/KOSMO_JYLOR.mp4",
+          "poster": "https://framerusercontent.com/images/KsEetVBGwzoxC0zVirjKJhKg.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/KOSMO_HAVASPLAY.mp4",
+          "poster": "https://framerusercontent.com/images/KsEetVBGwzoxC0zVirjKJhKg.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/KOSMO_HAVASPLAY.mp4",
+          "poster": "https://framerusercontent.com/images/KsEetVBGwzoxC0zVirjKJhKg.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/KOSMO_HAVASPLAY.mp4",
+          "poster": "https://framerusercontent.com/images/KsEetVBGwzoxC0zVirjKJhKg.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/baRDeartROd6nQQGe3Yc4sKLeBs.png",
+      "wideImage": "https://framerusercontent.com/images/FgJsnW2U5exIpDfuTx10lxiz3I.png",
+      "locationCard": "https://framerusercontent.com/images/0kFYxkDoPaUnbMb6IpDmhJ5St0c.png"
+    },
+    "restrictedClient": false,
+    "toCheck": []
+  },
+  {
+    "slug": "jylor",
+    "title": "Jylor",
+    "subtitle": "Beauty takes over Paris: the Jylor pop-up",
+    "client": "jylor",
+    "clientName": "Jylor",
+    "commissioned": true,
+    "date": "2024-10-01",
+    "year": 2024,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Beauty",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "For the opening of its Paris pop-up store, Jessica Thinnevin partnered with KOSMO to create a video activation that would showcase Jylor’s beauty products while driving engagement. The objective was to generate viral buzz and highlight the brand’s presence in the heart of the city.",
+      "Our approach was to craft an immersive mixed reality video that brought the pop-up to life, combining vibrant visuals, beauty product highlights, and playful storytelling. The activation quickly became the most viewed video on the brand’s account, captivating audiences and amplifying excitement around the launch."
+    ],
+    "metrics": {
+      "earnedMedia": {
+        "raw": "+2.500.000 🔥",
+        "value": 2500000,
+        "display": "2.5M+"
+      },
+      "engagement": {
+        "raw": "+100.000",
+        "value": 100000,
+        "display": "100K+"
+      }
+    },
+    "quote": {
+      "text": "By turning the Paris pop-up into a mixed reality beauty experience, Jylor creates a viral moment that engages audiences and celebrates the brand’s creativity.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/KOSMO_JYLOR.mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/KOSMO_JYLOR.mp4"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/KOSMO_JYLOR.mp4"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/KOSMO_JYLOR.mp4"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/KOSMO_JYLOR.mp4"
+        }
+      },
+      "locationCard": "https://framerusercontent.com/images/vielkGSUq694006b5Zu9tmNC7M.png"
+    },
+    "restrictedClient": false,
+    "toCheck": [
+      "Le logo projet dans Framer est celui d'ASUS : logo retiré, à fournir."
+    ]
+  },
+  {
+    "slug": "extreme",
+    "originalSlug": "extrême",
+    "title": "Extrême",
+    "subtitle": "Summer vibes, Extreme style",
+    "client": "extreme",
+    "clientName": "Extrême",
+    "commissioned": true,
+    "date": "2024-07-01",
+    "year": 2024,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Entertainment",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "To celebrate the launch of its new summer packaging, Extreme wanted to create a playful and engaging activation that would capture attention and boost brand visibility. The objective was to generate viral excitement while reinforcing the brand’s energetic and fun image.",
+      "Our approach was to design a mixed reality experience that brought the new packaging to life, blending vibrant visuals, summer energy, and interactive storytelling. By encouraging sharing and interaction, the campaign amplified engagement and positioned Extreme as a standout brand for the season."
+    ],
+    "metrics": {
+      "earnedMedia": {
+        "raw": "+15.000.000 🔥",
+        "value": 15000000,
+        "display": "15M+"
+      },
+      "engagement": {
+        "raw": "+50.000",
+        "value": 50000,
+        "display": "50K+"
+      }
+    },
+    "quote": {
+      "text": "By turning its summer packaging into a mixed reality experience, Extreme creates a viral, engaging moment that captures the spirit of the season and delights audiences.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/KOSMO_EXTREME*.mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/EXTREME/1230(6).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/KOSMO_EXTREME*.mp4",
+          "poster": "https://framerusercontent.com/images/e5atbmXxSgRG3ywrCaC4Raef38.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/KOSMO_EXTREME*.mp4",
+          "poster": "https://framerusercontent.com/images/e5atbmXxSgRG3ywrCaC4Raef38.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/KOSMO_EXTREME*.mp4",
+          "poster": "https://framerusercontent.com/images/e5atbmXxSgRG3ywrCaC4Raef38.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/KOSMO_EXTREME*.mp4",
+          "poster": "https://framerusercontent.com/images/e5atbmXxSgRG3ywrCaC4Raef38.png"
+        }
+      },
+      "projectLogo": "https://framerusercontent.com/images/YqSAxhMtNmnv2OCHp20Sok3Q.png",
+      "wideImage": "https://framerusercontent.com/images/GAjSUpTdM0aO72J5zVusIHJ17w.png",
+      "locationCard": "https://framerusercontent.com/images/vielkGSUq694006b5Zu9tmNC7M.png"
+    },
+    "restrictedClient": false,
+    "toCheck": []
+  },
+  {
+    "slug": "icemoon",
+    "title": "Icemoon",
+    "subtitle": "Icemoon on the Eiffel Tower",
+    "client": "icemoon",
+    "clientName": "Icemoon",
+    "commissioned": true,
+    "date": "2024-05-01",
+    "year": 2024,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Fashion",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "To launch its new collection, Icemoon wanted to highlight its standout product while creating a buzzworthy, immersive experience. The objective was to showcase the best product in a way that would captivate audiences, drive engagement, and generate viral excitement.",
+      "Our approach was to design a mixed reality activation that brought the hero product to life, blending dynamic visuals, interactive storytelling, and the signature Icemoon aesthetic. By transforming the product into a shareable, immersive moment, the activation amplified reach and positioned Icemoon as an innovative and trend-forward brand."
+    ],
+    "quote": {
+      "text": "By putting the spotlight on the best product of the collection through mixed reality, Icemoon creates a viral, engaging experience that delights audiences and elevates the brand.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/FOOH%20ICEMOON%20(1).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/FOOH%20ICEMOON%20(1).mp4",
+          "poster": "https://framerusercontent.com/images/CMviiG9SyeDogAwwr963N1OKow.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/FOOH%20ICEMOON%20(1).mp4",
+          "poster": "https://framerusercontent.com/images/CMviiG9SyeDogAwwr963N1OKow.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/FOOH%20ICEMOON%20(1).mp4",
+          "poster": "https://framerusercontent.com/images/CMviiG9SyeDogAwwr963N1OKow.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/FOOH%20ICEMOON%20(1).mp4",
+          "poster": "https://framerusercontent.com/images/CMviiG9SyeDogAwwr963N1OKow.png"
+        }
+      },
+      "wideImage": "https://framerusercontent.com/images/QlfHTxOcJutFAWfIvT6naLchOoE.png",
+      "locationCard": "https://framerusercontent.com/images/vielkGSUq694006b5Zu9tmNC7M.png"
+    },
+    "restrictedClient": false,
+    "toCheck": []
+  },
+  {
+    "slug": "doumbe-vs-zebo",
+    "originalSlug": "doumbé-vs-zebo",
+    "title": "DOUMBÉ VS ZEBO",
+    "subtitle": "When the fight comes alive in mixed reality",
+    "client": "kosmo",
+    "clientName": "KOSMO",
+    "commissioned": false,
+    "date": "2024-04-01",
+    "year": 2024,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Events / Agencies",
+    "location": {
+      "city": "Paris",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "Imagined by the agency, this activation leveraged the buzz around the anticipated fight between Cédric Doumbé and Zebo. The objective was to engage audiences and create viral impact through a striking visual experience.",
+      "Our approach was to produce a mixed reality video that brought the intensity and energy of the fight to life, blending immersive visuals with a playful yet powerful narrative. The video quickly went viral, amassing over 50 million views and even earning airtime on television, amplifying engagement and visibility across platforms."
+    ],
+    "metrics": {
+      "earnedMedia": {
+        "raw": "+50.000.000 🔥",
+        "value": 50000000,
+        "display": "50M+"
+      },
+      "engagement": {
+        "raw": "2.000.000",
+        "value": 2000000,
+        "display": "2M+"
+      }
+    },
+    "quote": {
+      "text": "By transforming the Doumbé vs Zebo fight into a mixed reality video, we created a viral, immersive experience that captivated audiences worldwide.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/KOSMO_DOUMBE%CC%81.mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/Doumb%C3%A9/1230(2).mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/KOSMO_DOUMBE%CC%81.mp4",
+          "poster": "https://framerusercontent.com/images/4bfQpv8vPHwE0D9YhFvfIIWAZ84.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/KOSMO_DOUMBE%CC%81.mp4",
+          "poster": "https://framerusercontent.com/images/4bfQpv8vPHwE0D9YhFvfIIWAZ84.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/KOSMO_DOUMBE%CC%81.mp4",
+          "poster": "https://framerusercontent.com/images/4bfQpv8vPHwE0D9YhFvfIIWAZ84.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/KOSMO_DOUMBE%CC%81.mp4",
+          "poster": "https://framerusercontent.com/images/4bfQpv8vPHwE0D9YhFvfIIWAZ84.png"
+        }
+      },
+      "wideImage": "https://framerusercontent.com/images/Btj33uCjCDi2zV31lA2PjgrM.png",
+      "locationCard": "https://framerusercontent.com/images/vielkGSUq694006b5Zu9tmNC7M.png"
+    },
+    "restrictedClient": false,
+    "toCheck": [
+      "Projet à l'initiative de KOSMO® (client = KOSMO), pas une commande de la marque citée."
+    ]
+  },
+  {
+    "slug": "kof",
+    "title": "KOF",
+    "subtitle": "Lille becomes the arena of champions",
+    "client": "kof",
+    "clientName": "KOF",
+    "commissioned": true,
+    "date": "2024-04-01",
+    "year": 2024,
+    "category": "fooh",
+    "format": "Mixed Reality",
+    "industry": "Events / Agencies",
+    "location": {
+      "city": "Lille",
+      "country": "France",
+      "confidence": "high"
+    },
+    "description": [
+      "For the King of Fighters event in Lille, the objective was to create a thrilling activation that would engage fans and generate viral excitement. The goal was to position the event as a must-see experience for the fighting game community.",
+      "Our approach was to craft a mixed reality experience that brought the energy, intensity, and iconic characters of KOF to life. By combining immersive visuals with interactive storytelling, the activation captured attention, encouraged sharing, and amplified engagement both on-site and online."
+    ],
+    "quote": {
+      "text": "By transforming Lille into a KOF arena through mixed reality, this activation engages fans, sparks excitement, and creates a viral moment for the fighting game community.",
+      "author": "Eugène Roux",
+      "role": "Founder",
+      "internal": true
+    },
+    "videoRatio": "9:16",
+    "media": {
+      "mainVideo": "https://framer-bg-videos.b-cdn.net/KOSMO_KOF.mp4",
+      "hookVideo": "https://framer-bg-videos.b-cdn.net/KOF/1230.mp4",
+      "thumbnail": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/KOSMO_KOF.mp4",
+          "poster": "https://framerusercontent.com/images/kgWiWFgwhjz3sZg1LQ4YlSGBdQ.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/KOSMO_KOF.mp4",
+          "poster": "https://framerusercontent.com/images/kgWiWFgwhjz3sZg1LQ4YlSGBdQ.png"
+        }
+      },
+      "header": {
+        "desktop": {
+          "video": "https://framer-bg-videos.b-cdn.net/KOSMO_KOF.mp4",
+          "poster": "https://framerusercontent.com/images/kgWiWFgwhjz3sZg1LQ4YlSGBdQ.png"
+        },
+        "mobile": {
+          "video": "https://framer-bg-videos.b-cdn.net/KOSMO_KOF.mp4",
+          "poster": "https://framerusercontent.com/images/kgWiWFgwhjz3sZg1LQ4YlSGBdQ.png"
+        }
+      },
+      "wideImage": "https://framerusercontent.com/images/btjH66QsJ4DBkBZk1sYTUZdwIxI.png",
+      "locationCard": "https://framerusercontent.com/images/BhCiXlwjCphWJEQaScZtPDvI4.png"
+    },
+    "restrictedClient": false,
+    "toCheck": []
+  }
+]

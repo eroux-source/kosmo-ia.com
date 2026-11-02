@@ -1,0 +1,20 @@
+---
+/**
+ * Rangée de tuiles au format natif : chaque tuile garde son ratio (9:16 ou 16:9) et toutes ont la même hauteur
+ * (largeur proportionnelle au ratio). Sur mobile (≤ 767 px), rail qui défile au doigt (global.css [data-rail]) : plus
+ * de trou quand trois films 9:16 et un 16:9 se partagent deux colonnes.
+ */
+import MosaicCard, { type MosaicItem } from './MosaicCard.astro';
+
+interface Props {
+  items: MosaicItem[];
+  /** flat : sur mobile la rangée se fond dans le rail du parent (plusieurs rangées → un seul rail). */
+  flat?: boolean;
+  class?: string;
+}
+const { items, flat = false, class: className } = Astro.props;
+---
+
+<ul data-rail={flat ? undefined : ''} data-rail-group={flat ? '' : undefined} class:list={['flex items-start gap-3', flat && 'max-md:contents', className]}>
+  {items.map((item) => <MosaicCard item={item} layout="row" />)}
+</ul>

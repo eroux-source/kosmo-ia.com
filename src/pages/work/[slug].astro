@@ -1,0 +1,171 @@
+---
+/**
+ * /work/fooh/[slug] — page projet FOOH construite depuis src/data/fooh/projects.json : logo client, titre, chiffres,
+ * le film une seule fois (vertical à largeur fixe ou large) et la fiche. Pas de visuels Framer en dessous.
+ * Rien d'inventé : titre, accroche, texte, chiffres, médias et client viennent du fichier ; les règles
+ * (citations internes, ville incertaine, chiffres de série) sont dans src/lib/fooh.ts.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageTop from '../../components/layout/PageTop.astro';
+import Footer from '../../components/layout/Footer.astro';
+import Section from '../../components/ui/Section.astro';
+import Icon from '../../components/ui/Icon.astro';
+import ProjectPicks from '../../components/ai/ProjectPicks.astro';
+import TalkCta from '../../components/ui/TalkCta.astro';
+import Contact from '../../components/sections/Contact.astro';
+import { cityOf, clientOf, featuredName, foohHref, foohProjects, formatDate, inline, metricsOf, poster, seriesOf, type FoohProject } from '../../lib/fooh';
+import { breadcrumbJsonLd, videoJsonLd } from '../../lib/seo';
+
+export function getStaticPaths() {
+  return foohProjects.map((project) => ({ params: { slug: project.slug }, props: { project } }));
+}
+
+interface Props {
+  project: FoohProject;
+}
+const { project: p } = Astro.props;
+const name = featuredName(p);
+const city = cityOf(p);
+const client = clientOf(p);
+const metrics = metricsOf(p);
+const series = seriesOf(p);
+const portrait = p.videoRatio === '9:16';
+const square = p.videoRatio === '1:1';
+const cover = poster(p) ?? '';
+/* Trois autres films du même secteur, sinon les plus récents. */
+const others = foohProjects.filter((o) => o.slug !== p.slug && !series.some((x) => x.slug === o.slug));
+const related = [...others.filter((o) => o.industry === p.industry), ...others].map((o) => o.slug).filter((v, i, a) => a.indexOf(v) === i).slice(0, 3);
+/* Projets à l'initiative de KOSMO (client = KOSMO) : le logo de la marque visée, sinon celui du client. */
+const logo = p.brand ? (p.media.projectLogo ?? client?.logo) : client?.logo;
+const meta = [
+  logo ? null : ['Client', name],
+  ['Date', formatDate(p.date)],
+  ['Industry', p.industry],
+  city ? ['Location', p.location?.country ? `${city}, ${p.location.country}` : city] : null,
+  ['Format', p.format],
+  ['Film', portrait ? 'Vertical, made for social' : square ? 'Square, made for social' : 'Widescreen'],
+].filter(Boolean) as [string, string][];
+/* Titre unique par projet (les séries partagent leur accroche), ≤ 60 caractères. Les titres Framer sont en capitales : passés en casse de titre, chiffres romains conservés. */
+const ROMAN = /^(i|ii|iii|iv|v|vi|vii|viii|ix|x)$/;
+const titleCase = (t: string) =>
+  t
+    .toLowerCase()
+    .split(/\s+/)
+    .map((w) => (ROMAN.test(w) ? w.toUpperCase() : w.charAt(0).toUpperCase() + w.slice(1)))
+    .join(' ');
+const projectTitle = p.title === p.title.toUpperCase() ? titleCase(p.title) : p.title;
+const base = `${name} film: ${projectTitle}`;
+const title = `${base} | KOSMO®`.length <= 60 ? `${base} | KOSMO®` : base.slice(0, 60);
+const description = `${projectTitle}: ${p.subtitle}. ${(p.description[0] ?? '').replace(/\*/g, '')}`.slice(0, 157).replace(/\s+\S*$/, '') + '…';
+const jsonLd = [
+  breadcrumbJsonLd([
+    { name: 'KOSMO® AI', path: '/' },
+    { name: 'Work', path: '/work' },
+    { name, path: foohHref(p) },
+  ]),
+  videoJsonLd({ name: `${name}: ${p.subtitle}`, description, thumbnailUrl: cover, contentUrl: p.media.mainVideo, uploadDate: p.date, duration: p.media.duration }),
+];
+---
+
+<BaseLayout title={title} description={description} path={foohHref(p)} image={cover} video={p.media.mainVideo} jsonLd={jsonLd}>
+  <PageTop />
+  <main>
+    <Section spacing="lg" data-fade="trigger">
+      <div class="flex flex-col gap-12">
+        <nav aria-label="Breadcrumb" class="text-tagline">
+          <a href="/work" class="text-(--label-color) transition-colors duration-(--duration-color) hover:text-black">← All work</a>
+        </nav>
+        <div class="grid grid-cols-2 items-end gap-8 max-lg:grid-cols-1">
+          <div class="flex flex-col gap-4">
+            <div class="flex flex-wrap gap-1.5">
+              <span class="chip [--chip-surface:var(--kosmo-black)] [--label-color:var(--kosmo-white)]">{p.industry}</span>
+              <span class="chip">{p.format}</span>
+              {city && <span class="chip">{city}</span>}
+            </div>
+            <h1 class="heading-h3">{p.title}</h1>
+            <p class="text-body-large">{p.subtitle}</p>
+          </div>
+          {
+            metrics && (
+              <div class="flex flex-col gap-3">
+                <ul class="grid grid-cols-2 gap-4 max-sm:grid-cols-1">
+                  {metrics.items.map((m) => (
+                    <li class="card flex flex-col gap-1 p-4">
+                      <span class="text-(length:--stat-size) leading-(--stat-leading) font-extrabold tracking-(--stat-tracking) tabular-nums">{m.display}</span>
+                      <span class="text-tagline">{m.label}</span>
+                    </li>
+                  ))}
+                </ul>
+                {metrics.scope === 'series' && (
+                  <p class="font-mono text-xsmall text-ink-soft">Across the {metrics.parts} films of the series, TikTok and Instagram combined.</p>
+                )}
+              </div>
+            )
+          }
+        </div>
+
+        <div class:list={['grid gap-8 max-lg:grid-cols-1', portrait || square ? 'grid-cols-(--project-cols)' : 'grid-cols-1']}>
+          <div
+            class:list={[
+              'relative overflow-hidden rounded-sm bg-black',
+              portrait ? 'aspect-portrait w-full max-lg:mx-auto max-lg:max-w-(--gallery-slide-width)' : square ? 'aspect-square w-full max-lg:mx-auto max-lg:max-w-(--gallery-slide-width)' : 'aspect-video w-full',
+            ]}
+          >
+            <video class="size-full object-cover" data-lazy data-src={p.media.mainVideo} muted loop playsinline preload="none" poster={cover} controls></video>
+          </div>
+          <div class="flex flex-col gap-8">
+            {logo && <img src={logo} alt={name} class="h-(--project-logo-height) w-auto max-w-(--cta-image-max) self-start object-contain object-left" />}
+            <dl class="grid grid-cols-2 gap-x-8 gap-y-4 max-sm:grid-cols-1">
+              {
+                meta.map(([label, value]) => (
+                  <div class="flex flex-col gap-1 border-b border-line pb-3">
+                    <dt class="text-tagline text-(--label-color)">{label}</dt>
+                    <dd class="text-medium font-medium">{value}</dd>
+                  </div>
+                ))
+              }
+            </dl>
+            <div class="prose-kosmo text-body-medium">
+              {p.description.map((paragraph) => <p set:html={inline(paragraph)} />)}
+            </div>
+          </div>
+        </div>
+
+
+        {
+          series.length > 1 && (
+            <div class="card flex flex-col gap-6 p-6 max-sm:p-4">
+              <div class="flex flex-wrap items-baseline justify-between gap-4">
+                <h2 class="heading-h6">A series of {series.length} films</h2>
+                <span class="text-tagline text-(--label-color)">{name}</span>
+              </div>
+              <ul class="grid grid-cols-(--case-grid-cols) gap-4 max-lg:grid-cols-(--case-grid-cols-tablet) max-sm:grid-cols-(--case-grid-cols-mobile)">
+                {series.map((part, i) => (
+                  <li>
+                    <a
+                      href={foohHref(part)}
+                      aria-current={part.slug === p.slug ? 'page' : undefined}
+                      class="group flex items-center justify-between gap-3 rounded-default bg-paper px-4 py-3 shadow-(--card-ring) transition-[background-color,box-shadow] duration-(--duration-color) ease-(--ease-kosmo) hover:shadow-(--card-ring-acid) aria-[current=page]:bg-black aria-[current=page]:text-white aria-[current=page]:shadow-none"
+                    >
+                      <span class="flex min-w-0 flex-col">
+                        <span class="text-tagline opacity-60">Film {i + 1} · {formatDate(part.date)}</span>
+                        <span class="truncate text-small font-semibold">{part.title}</span>
+                      </span>
+                      <Icon name="arrow-right-small" class="size-4 shrink-0 transition-transform duration-(--duration-surface) ease-(--ease-kosmo) group-hover:translate-x-0.5" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )
+        }
+
+        <TalkCta />
+      </div>
+    </Section>
+
+    <ProjectPicks slugs={related} overline="more work" heading="More films from the studio." />
+    <Contact id="contact" />
+  </main>
+  <Footer />
+</BaseLayout>

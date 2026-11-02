@@ -1,0 +1,151 @@
+---
+/**
+ * Modèle de campagne de la home (maquette Cofounder validée le 21/10/2026) : surtitre, titre en deux tons + intro,
+ * puis un dossier noir à onglets (« Campaign » + quatre intercalaires de couleur) qui range trois timbres à bords
+ * perforés (service en gros titre, texte en Inconsolata, illustration en haut ou en bas, en alternance). Au survol, le
+ * timbre s'incline vers le pointeur et l'image prend un reflet holo pixelisé autour du pointeur (src/scripts/campaign-tickets.ts).
+ * Dessous, un appel discret : photo de Mehdi, une phrase, Book a call + Contact.
+ * Tablette : trois timbres côte à côte (plus de trou à 2 + 1). Mobile (≤ 767 px) : timbres couchés, image et texte côte à
+ * côte (l'image passe à gauche ou à droite selon son côté), les trois couches restent visibles d'un coup d'œil.
+ */
+import Section from '../ui/Section.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+import TalkCta from '../ui/TalkCta.astro';
+import TwoTone from '../ui/TwoTone.astro';
+import Demo from '../ui/Demo.astro';
+import { home } from '../../data/home';
+
+interface Props {
+  id?: string;
+}
+const { id } = Astro.props;
+const { model } = home;
+const extraTabs = ['02', '03', '04', '05'];
+---
+
+<Section id={id} data-fade="trigger" class="scroll-mt-(--nav-inset)">
+  <Eyebrow label={model.overline} />
+  <div class="mt-(--head-gap) grid grid-cols-2 items-end gap-10 max-lg:grid-cols-1">
+    <Demo inline when={model.heading.demo} note="titre de la section modèle de campagne">
+      <h2 data-stagger-text class="heading-h3"><TwoTone text={model.heading.text} /></h2>
+    </Demo>
+    <Demo inline when={model.intro.demo} note="intro de la section modèle de campagne">
+      <p data-fade="target" class="max-w-(--head-intro-max) justify-self-end text-body-medium text-(--body-soft) max-lg:justify-self-start">{model.intro.text}</p>
+    </Demo>
+  </div>
+
+  <div data-fade="target" class="campaign-folder relative mt-(--campaign-folder-gap) rounded-sm rounded-tl-none bg-black p-(--campaign-folder-pad) max-lg:p-(--campaign-folder-pad-tablet) max-md:p-(--campaign-folder-pad-mobile)">
+    <div class="absolute bottom-full left-0 flex items-end">
+      <span class="campaign-tab campaign-tab--main"><b>01</b>{model.tab}</span>
+      {extraTabs.map((n, i) => <span class:list={['campaign-tab', i > 1 && 'max-md:hidden', i > 0 && 'max-sm:hidden']} aria-hidden="true"><b>{n}</b></span>)}
+    </div>
+    <ul class="grid grid-cols-3 gap-(--campaign-tickets-gap) max-lg:gap-(--campaign-tickets-gap-tablet) max-md:grid-cols-1 max-md:gap-(--campaign-tickets-gap-mobile)">
+      {
+        model.tickets.map((ticket) => {
+          const img = (
+            <div class:list={['ticket__img holo holo--spot relative min-h-0 overflow-hidden', ticket.imageSide === 'top' ? 'ticket__img--top' : 'ticket__img--bottom']}>
+              <img src={ticket.image.src} alt={ticket.image.alt} loading="lazy" class="size-full object-cover" />
+            </div>
+          );
+          const body = (
+            <div class:list={['relative flex min-h-0 flex-col p-(--ticket-pad)', ticket.imageSide === 'top' ? 'justify-start' : 'justify-end']}>
+              <span class:list={['absolute right-3.5 text-(length:--ticket-number) leading-none font-regular tracking-(--h6-tracking) text-ink-soft', ticket.imageSide === 'top' ? 'bottom-3.5' : 'top-3.5']}>{ticket.number}</span>
+              <h3 class="text-(length:--ticket-title) leading-none font-extrabold tracking-(--h3-tracking) uppercase max-md:text-(length:--ticket-title-mobile)">{ticket.title}</h3>
+              <p class="mt-2.5 text-mono-body text-ink-soft">{ticket.text}</p>
+            </div>
+          );
+          return (
+            <li data-ticket class="ticket grid h-(--ticket-height) grid-rows-2 bg-white text-black max-md:h-auto max-md:min-h-(--ticket-height-row) max-md:grid-cols-2 max-md:grid-rows-1">
+              {ticket.imageSide === 'top' ? [img, body] : [body, img]}
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
+
+  <TalkCta class="mt-5" />
+</Section>
+
+<style is:global>
+  /* Couche « components » : les utilitaires Tailwind du markup (max-lg:hidden…) gardent la main. */
+  @layer components {
+    /* Timbre : bords perforés (masque radial « round »), coins de l'image rognés par les perforations. */
+    .ticket {
+      padding: calc(2 * var(--ticket-perforation));
+      -webkit-mask: var(--ticket-mask);
+      mask: var(--ticket-mask);
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+    .ticket__img--bottom {
+      margin: 0 calc(-2 * var(--ticket-perforation)) calc(-2 * var(--ticket-perforation));
+    }
+    .ticket__img--top {
+      margin: calc(-2 * var(--ticket-perforation)) calc(-2 * var(--ticket-perforation)) 0;
+    }
+    /* Timbre couché (mobile) : l'image « du haut » passe à gauche, celle « du bas » à droite, jusqu'aux perforations. */
+    @media (max-width: 767px) {
+      .ticket__img--top {
+        margin: calc(-2 * var(--ticket-perforation)) 0 calc(-2 * var(--ticket-perforation)) calc(-2 * var(--ticket-perforation));
+      }
+      .ticket__img--bottom {
+        margin: calc(-2 * var(--ticket-perforation)) calc(-2 * var(--ticket-perforation)) calc(-2 * var(--ticket-perforation)) 0;
+      }
+    }
+    /* Reflet holo de l'image : classes .holo .holo--spot (global.css), pixels allumés autour du pointeur seulement. */
+    /* Onglets : taille fixe, forme en masque SVG, chacun glissé sous le précédent ; seul « Campaign » se soude au dossier. */
+    .campaign-tab {
+      position: relative;
+      display: flex;
+      flex: none;
+      align-items: center;
+      gap: var(--chip-pad);
+      width: var(--campaign-tab-w);
+      height: var(--campaign-tab-h);
+      margin-left: var(--campaign-tab-overlap);
+      padding-left: var(--campaign-tab-pad);
+      font-family: var(--font-family-mono);
+      font-size: var(--text-caption-size);
+      letter-spacing: var(--tagline-tracking);
+      color: var(--kosmo-black);
+      -webkit-mask: var(--campaign-tab-mask) 0 0 / 100% 100% no-repeat;
+      mask: var(--campaign-tab-mask) 0 0 / 100% 100% no-repeat;
+    }
+    .campaign-tab b {
+      font-weight: var(--font-weight-regular);
+      opacity: var(--campaign-tab-number-opacity);
+    }
+    .campaign-tab--main {
+      z-index: 6;
+      width: var(--campaign-tab-w-main);
+      height: calc(var(--campaign-tab-h) + var(--hairline));
+      margin-bottom: calc(-1 * var(--hairline));
+      margin-left: 0;
+      background-color: var(--kosmo-black);
+      color: var(--on-dark);
+      -webkit-mask-image: var(--campaign-tab-mask-main);
+      mask-image: var(--campaign-tab-mask-main);
+    }
+    .campaign-tab:nth-child(2) {
+      z-index: 5;
+      background-color: var(--tag-orange);
+    }
+    .campaign-tab:nth-child(3) {
+      z-index: 4;
+      background-color: var(--tag-pink);
+    }
+    .campaign-tab:nth-child(4) {
+      z-index: 3;
+      background-color: var(--tag-amber);
+    }
+    .campaign-tab:nth-child(5) {
+      z-index: 2;
+      background-color: var(--tag-sky);
+    }
+  }
+</style>
+
+<script>
+  import '../../scripts/campaign-tickets';
+</script>

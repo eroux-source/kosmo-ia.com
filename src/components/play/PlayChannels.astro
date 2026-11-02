@@ -1,0 +1,68 @@
+---
+/**
+ * Diffusion : schéma « six canaux → votre jeu → vos leads ». Desktop : canaux à gauche et à droite, le jeu au centre,
+ * liaisons en pointillés acides qui défilent vers le jeu puis vers le CRM (tracées en SVG par src/scripts/play-page.ts,
+ * recalculées au redimensionnement). Tablette et mobile : grille de canaux, puis flèches verticales.
+ */
+import Section from '../ui/Section.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+import Icon from '../ui/Icon.astro';
+import PixelSprite from '../ui/PixelSprite.astro';
+import TwoTone from '../ui/TwoTone.astro';
+import { play } from '../../data/play';
+
+interface Props {
+  id?: string;
+}
+const { id } = Astro.props;
+const { channels } = play;
+const left = channels.items.slice(0, 3);
+const right = channels.items.slice(3);
+---
+
+<Section id={id} tone="dark" spacing="lg" data-fade="trigger" class="scroll-mt-(--nav-inset)">
+  <Eyebrow label={channels.overline} />
+  <div class="mt-(--head-gap) grid grid-cols-2 items-end gap-10 max-lg:grid-cols-1">
+    <h2 data-stagger-text class="heading-h3"><TwoTone text={channels.heading} /></h2>
+    <p data-fade="target" class="max-w-(--head-intro-max) justify-self-end text-body-medium text-(--body-soft) max-lg:justify-self-start">{channels.intro}</p>
+  </div>
+  <div class="mt-12">
+    <div data-play-flow class="relative grid grid-cols-(--play-flow-cols) gap-x-(--play-flow-gap) max-lg:grid-cols-2 max-lg:gap-6 max-lg:gap-x-6 max-sm:grid-cols-1">
+      <svg data-play-flow-lines class="pointer-events-none absolute inset-0 size-full overflow-visible max-lg:hidden" aria-hidden="true"></svg>
+      {
+        [left, right].map((group, g) => (
+          <ul class:list={['relative flex flex-col justify-center gap-6 max-lg:contents', g === 0 ? 'order-1' : 'order-3']}>
+            {group.map((item) => (
+              <li data-fade="target" data-flow-from={g === 0 ? 'left' : 'right'} class="card-dark flex items-start gap-4 p-(--way-pad)">
+                <span class="grid size-(--way-icon) shrink-0 place-items-center rounded-default bg-acid text-black">
+                  <Icon name={item.icon} class="size-(--button-icon)" />
+                </span>
+                <span class="flex flex-col gap-1">
+                  <span class="heading-h6">{item.title}</span>
+                  <span class="text-small text-(--body-soft)">{item.text}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        ))
+      }
+
+      <div class="relative order-2 flex flex-col items-center justify-center gap-16 max-lg:order-last max-lg:col-span-2 max-lg:gap-6 max-sm:col-span-1">
+        <span class="hidden text-acid max-lg:flex"><Icon name="chevron-down" class="size-6" /></span>
+        <div data-fade="target" data-flow-hub class="flex w-full flex-col items-center gap-3 rounded-sm bg-acid p-6 text-center text-black max-lg:max-w-(--measure-xs)">
+          <PixelSprite name="joystick" tile class="size-14" data-play-bob="" />
+          <span class="text-tagline">{channels.hub.label}</span>
+          <span class="text-small">{channels.hub.text}</span>
+        </div>
+        <span class="hidden text-acid max-lg:flex"><Icon name="chevron-down" class="size-6" /></span>
+        <div data-fade="target" data-flow-out class="card flex w-full flex-col items-center gap-3 p-6 text-center text-black max-lg:max-w-(--measure-xs)">
+          <span class="grid size-(--way-icon) place-items-center rounded-default bg-black text-acid">
+            <Icon name="mail" class="size-(--button-icon)" />
+          </span>
+          <span class="text-tagline">{channels.output.label}</span>
+          <span class="text-small text-ink-soft">{channels.output.text}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</Section>

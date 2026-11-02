@@ -1,0 +1,19 @@
+---
+/**
+ * Captcha des formulaires : widget Cloudflare Turnstile, rendu seulement si PUBLIC_TURNSTILE_SITE_KEY est renseignée.
+ * Apparence « always » : la boîte Cloudflare est visible (vérification automatique puis coche « Succès »), pour que le
+ * visiteur voie que le formulaire est protégé (demande du 04/10 : en mode invisible, « y a pas sur le site »). Le script est chargé une fois par page
+ * dans BaseLayout. Le widget ajoute lui-même un champ caché `cf-turnstile-response` au formulaire ; lead-form.ts l'envoie
+ * à /api/lead sous `captcha` et réarme le widget après chaque envoi (un jeton ne sert qu'une fois).
+ * Thème : sombre par défaut (formulaires posés sur un fond noir), clair pour un formulaire sur carte blanche.
+ */
+import { publicEnv } from '../../lib/env';
+
+interface Props {
+  tone?: 'light' | 'dark';
+}
+const { tone = 'dark' } = Astro.props;
+const key = publicEnv.turnstileSiteKey;
+---
+
+{key && <div data-captcha class="cf-turnstile" data-sitekey={key} data-size="flexible" data-theme={tone} data-appearance="always" data-language="auto" />}

@@ -1,0 +1,94 @@
+---
+/**
+ * « Our services » (DESIGN-SYSTEM.md) : les deux disciplines en deux cartes côte à côte, version minimaliste des cartes
+ * de services anamorphiques (coin coupé, titre en capitales, flèche qui pivote vers le coin au survol, texte, image
+ * pleine largeur en bas, légère montée au survol) ; la page courante marquée « you are here » en étiquette mono.
+ * Bandeau partenaires noir en dessous (bouton acide).
+ */
+import Section from '../ui/Section.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+import Demo from '../ui/Demo.astro';
+import Icon from '../ui/Icon.astro';
+import TwoTone from '../ui/TwoTone.astro';
+import { about } from '../../data/about';
+
+interface Props {
+  id?: string;
+  /** Page courante : le service reste listé, marqué comme la page en cours. */
+  current?: string;
+  showPartner?: boolean;
+  /** Titre et intro propres à la page (la home présente les deux disciplines comme deux portes d'entrée). */
+  heading?: { demo: boolean; text: string };
+  intro?: { demo: boolean; text: string };
+}
+const { id, current, showPartner = true, heading = about.disciplines.heading, intro = about.disciplines.intro } = Astro.props;
+const { disciplines } = about;
+---
+
+<Section id={id} data-fade="trigger" class="scroll-mt-(--nav-inset)">
+  <Eyebrow label={disciplines.overline} />
+  <div class="mt-(--head-gap) grid grid-cols-2 items-end gap-10 max-lg:grid-cols-1">
+    <Demo inline note="titre de la section services">
+      <h2 data-stagger-text class="heading-h3"><TwoTone text={heading.text} /></h2>
+    </Demo>
+    <Demo inline note="intro de la section services">
+      <p data-fade="target" class="max-w-(--head-intro-max) justify-self-end text-body-medium text-(--body-soft) max-lg:justify-self-start">{intro.text}</p>
+    </Demo>
+  </div>
+  <ol class="mt-12 grid grid-cols-2 gap-3 max-md:grid-cols-1">
+    {
+      disciplines.items.map((item) => {
+        const isCurrent = item.href === current;
+        return (
+          <li data-fade="target" class="flex">
+            <Demo when={item.demo} note="texte du service" class="flex w-full">
+              <a
+                href={item.href}
+                aria-current={isCurrent ? 'page' : undefined}
+                class="service-card group relative isolate flex w-full flex-col text-black transition-transform duration-(--duration-surface) ease-(--ease-kosmo) hover:-translate-y-1"
+              >
+                <span class="flex flex-col p-(--service-card-pad)">
+                  <span class="flex items-start justify-between gap-4">
+                    <h3 class="heading-h6 font-extrabold tracking-(--h3-tracking) uppercase">{item.title}</h3>
+                    <span class="flex shrink-0 items-center gap-2">
+                      {isCurrent && <span class="text-tagline text-(--label-color)">you are here</span>}
+                      <span aria-hidden="true" class="grid size-(--button-sm-height) place-items-center transition-[scale] duration-(--duration-color) group-active:scale-(--button-go-press)">
+                        <Icon name="arrow-right" class="size-(--case-arrow) transition-transform duration-(--duration-surface) ease-(--ease-kosmo) group-hover:-rotate-45" />
+                      </span>
+                    </span>
+                  </span>
+                  <p class="mt-(--service-card-text-gap-mobile) max-w-(--head-intro-max) text-body-small text-(--body-soft)">{item.text}</p>
+                </span>
+                <span class="mx-(--hairline) mt-auto mb-(--hairline) block aspect-video overflow-hidden bg-paper">
+                  <img src={item.image.src} alt={item.image.alt} loading="lazy" class="size-full object-cover" />
+                </span>
+              </a>
+            </Demo>
+          </li>
+        );
+      })
+    }
+  </ol>
+  {
+    showPartner && current !== disciplines.partner.href && (
+      <Demo when={disciplines.partner.demo} note="texte du bloc partenaires">
+        <a
+          data-fade="target"
+          href={disciplines.partner.href}
+          class="group mt-2 flex items-center justify-between gap-6 rounded-sm bg-black py-4 pr-4 pl-5 text-white max-md:gap-4"
+        >
+          <span class="flex items-center gap-3.5">
+            <Icon name="users" class="size-(--partner-icon) shrink-0 text-acid" />
+            <span class="flex flex-col">
+              <span class="text-large font-medium">{disciplines.partner.title}</span>
+              <span class="text-small text-on-dark-soft">{disciplines.partner.text}</span>
+            </span>
+          </span>
+          <span class="grid size-(--button-height) shrink-0 place-items-center rounded-sm bg-acid text-black transition-opacity duration-(--duration-color) group-hover:opacity-(--button-hover-opacity)">
+            <Icon name="arrow-right" class="size-(--button-icon)" />
+          </span>
+        </a>
+      </Demo>
+    )
+  }
+</Section>

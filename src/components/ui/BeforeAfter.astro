@@ -1,0 +1,77 @@
+---
+/**
+ * Comparateur avant / après de /reference (.bas-*, booster Flowbase), à plat (DESIGN-SYSTEM.md) : étiquettes en `chip`
+ * blanches, poignée acide 2 px de rayon. `inset` : posé dans une carte fenêtre (rayon 2 px au lieu de 4).
+ * Images ou vidéos synchronisées quand `before.video` / `after.video` sont fournis (les deux côtés en couleur : ce sont deux vrais films).
+ */
+import Icon from './Icon.astro';
+
+interface Side {
+  label: string;
+  src?: string;
+  srcset?: string;
+  video?: { src: string; poster: string };
+}
+interface Props {
+  before: Side;
+  after: Side;
+  inset?: boolean;
+  class?: string;
+}
+const { before, after, inset = false, class: className } = Astro.props;
+const label =
+  'chip absolute top-(--compare-label-inset) z-3 cursor-pointer [--chip-surface:var(--kosmo-white)] [--label-color:var(--kosmo-black)]';
+const isVideo = Boolean(before.video && after.video);
+---
+
+<div
+  data-compare
+  class:list={[
+    'relative h-(--compare-height) w-full touch-pan-y overflow-hidden bg-black select-none [--compare-position:var(--compare-start)]',
+    inset ? 'rounded-default' : 'rounded-sm',
+    className,
+  ]}
+>
+  {
+    isVideo ? (
+      <>
+        <video class="block size-full object-cover" data-lazy data-src={before.video!.src} muted loop playsinline preload="none" poster={before.video!.poster} />
+        <video
+          class="absolute inset-0 z-1 block size-full object-cover [clip-path:inset(0_0_0_var(--compare-position))]"
+          data-lazy
+          data-src={after.video!.src}
+          muted
+          loop
+          playsinline
+          preload="none"
+          poster={after.video!.poster}
+        />
+      </>
+    ) : (
+      <>
+        <img src={before.src} srcset={before.srcset} sizes="100vw" alt="" loading="lazy" class="block size-full object-cover" />
+        <img
+          src={after.src}
+          srcset={after.srcset}
+          sizes="(max-width: 1765px) 100vw, 1765px"
+          alt=""
+          loading="lazy"
+          class="absolute inset-0 z-1 block size-full object-cover [clip-path:inset(0_0_0_var(--compare-position))]"
+        />
+      </>
+    )
+  }
+  <div class="absolute inset-y-0 left-(--compare-position) z-1 w-(--compare-line) -translate-x-1/2 bg-white"></div>
+  <div
+    class="absolute top-1/2 left-(--compare-position) z-2 flex size-(--compare-handle) -translate-1/2 items-center justify-center rounded-default bg-acid text-black"
+  >
+    <Icon name="before-after-handle" class="size-(--compare-icon)" />
+  </div>
+  <button type="button" data-compare-label="before" class:list={[label, 'left-(--compare-label-inset)']}>{before.label}</button>
+  <button type="button" data-compare-label="after" class:list={[label, 'right-(--compare-label-inset)']}>{after.label}</button>
+  <input type="range" min="0" max="100" value="50" data-compare-range aria-label={`${before.label} / ${after.label}`} class="sr-only" />
+</div>
+
+<script>
+  import '../../scripts/before-after';
+</script>

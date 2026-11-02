@@ -1,0 +1,29 @@
+---
+/**
+ * Grille + faisceau (« Background Grid Beam », 21st.dev, refait sans React ni framer-motion) pour les petits blocs CTA
+ * noirs : quadrillage fin qui s'efface en dégradé depuis le coin du faisceau et, en haut à droite, un tracé sur les lignes de la grille qu'un faisceau balaie en diagonale
+ * toutes les 3,8 s, en changeant de vitesse (couleurs du composant d'origine). À poser en premier enfant d'un bloc `relative isolate overflow-hidden`.
+ * Réglages --grid-* dans tokens.css, styles grid-beam / grid-beam-path dans global.css.
+ */
+interface Props {
+  /** end = en haut à droite (défaut) ; center = en haut au milieu, quand une image occupe la droite du bloc. */
+  at?: 'end' | 'center';
+}
+const { at = 'end' } = Astro.props;
+/* Dégradé propre à chaque instance (plusieurs blocs par page). */
+const gradient = `grid-beam-${Math.random().toString(36).slice(2, 9)}`;
+---
+
+<span aria-hidden="true" class:list={['grid-beam pointer-events-none absolute inset-0 -z-1', at === 'center' && '[--grid-fade-at:var(--grid-fade-center)] max-lg:[--grid-fade-at:var(--grid-fade)]']}>
+  <svg viewBox="0 0 11 4" preserveAspectRatio="none" fill="none" class:list={['grid-beam-path absolute top-(--grid-beam-top) h-(--grid-beam-h) w-(--grid-beam-w)', at === 'center' ? 'left-(--grid-beam-left-center) max-lg:left-(--grid-beam-left)' : 'left-(--grid-beam-left)']}>
+    <defs>
+      <linearGradient id={gradient} x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" />
+        <stop offset="0.4" />
+        <stop offset="1" />
+      </linearGradient>
+    </defs>
+    {/* Escalier sur les lignes de la grille, en carrés : 4 à droite, 2 en bas, 4 à droite, 2 en bas, 3 à droite. */}
+    <path d="M0 0H4V2H8V4H11" stroke={`url(#${gradient})`} />
+  </svg>
+</span>

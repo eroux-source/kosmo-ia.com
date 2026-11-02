@@ -1,0 +1,94 @@
+---
+/**
+ * Objectifs → mécaniques : onglets à gauche (six objectifs), à droite la mécanique de jeu qui sert l'objectif,
+ * son fonctionnement en trois temps et ce qu'on mesure. Onglets accessibles (flèches haut / bas), bascule dans
+ * src/scripts/play-page.ts.
+ */
+import Section from '../ui/Section.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+import Icon from '../ui/Icon.astro';
+import PixelSprite from '../ui/PixelSprite.astro';
+import TwoTone from '../ui/TwoTone.astro';
+import { play } from '../../data/play';
+import type { SpriteName } from '../../lib/play-sprites';
+
+interface Props {
+  id?: string;
+}
+const { id } = Astro.props;
+const { objectives } = play;
+const mono = 'text-tagline';
+---
+
+<Section id={id} spacing="lg" data-fade="trigger" class="scroll-mt-(--nav-inset)">
+  <Eyebrow label={objectives.overline} />
+  <div class="mt-(--head-gap) grid grid-cols-2 items-end gap-10 max-lg:grid-cols-1">
+    <h2 data-stagger-text class="heading-h3"><TwoTone text={objectives.heading} soft="pour faire un jeu." /></h2>
+    <p data-fade="target" class="max-w-(--head-intro-max) justify-self-end text-body-medium text-(--body-soft) max-lg:justify-self-start">{objectives.intro}</p>
+  </div>
+  <div class="mt-12">
+    <div data-play-tabs class="grid grid-cols-(--play-objectives-cols) gap-3 max-lg:grid-cols-1">
+      <div role="tablist" aria-label={objectives.overline} aria-orientation="vertical" class="flex flex-col gap-2 max-lg:grid max-lg:grid-cols-2 max-sm:grid-cols-1">
+        {
+          objectives.items.map((item, i) => (
+            <button
+              type="button"
+              role="tab"
+              id={`objective-tab-${item.id}`}
+              aria-controls={`objective-panel-${item.id}`}
+              aria-selected={i === 0 ? 'true' : 'false'}
+              tabindex={i === 0 ? 0 : -1}
+              data-fade="target"
+              class="group/tab card flex cursor-pointer items-center gap-3 px-4 py-3 text-left transition-[background-color,color,box-shadow] duration-(--duration-color) ease-(--ease-kosmo) hover:shadow-(--card-ring-acid) aria-selected:bg-black aria-selected:text-white aria-selected:shadow-none"
+            >
+              <span class:list={[mono, 'text-ink-soft group-aria-selected/tab:text-acid']}>0{i + 1}</span>
+              <span class="flex-1 text-small font-semibold">{item.label}</span>
+              <Icon name={item.icon} class="size-(--button-icon) text-ink-soft group-aria-selected/tab:text-acid" />
+            </button>
+          ))
+        }
+      </div>
+
+      <div data-fade="target" class="card">
+        {
+          objectives.items.map((item, i) => (
+            <div role="tabpanel" id={`objective-panel-${item.id}`} aria-labelledby={`objective-tab-${item.id}`} data-play-panel hidden={i !== 0} class="flex h-full flex-col gap-8 p-8 max-md:p-5">
+              <div class="flex items-center gap-5">
+                <PixelSprite name={item.sprite as SpriteName} tile class="size-20 shrink-0 max-md:size-16" data-play-bob="" />
+                <div class="flex flex-col gap-1">
+                  <span class:list={[mono, 'text-ink-soft']}>{objectives.labels.mechanic}</span>
+                  <h3 class="heading-h5">{item.mechanic}</h3>
+                </div>
+              </div>
+              <p class="max-w-(--measure-2xl) text-body-large text-ink-soft">{item.text}</p>
+
+              <div class="flex flex-col gap-3">
+                <span class:list={[mono, 'text-ink-soft']}>{objectives.labels.how}</span>
+                <ol class="flex flex-wrap items-center gap-2">
+                  {item.how.map((step, s) => (
+                    <li class="flex items-center gap-2">
+                      <span class:list={['rounded-default px-3 py-2 text-small font-semibold', s === item.how.length - 1 ? 'bg-acid text-black' : 'bg-paper shadow-(--card-ring)']}>{step}</span>
+                      {s < item.how.length - 1 && <Icon name="arrow-right" class="size-4 text-ink-soft" />}
+                    </li>
+                  ))}
+                </ol>
+              </div>
+
+              <div class="mt-auto flex flex-col gap-3 border-t border-line pt-5">
+                <span class:list={[mono, 'text-ink-soft']}>{objectives.labels.kpis}</span>
+                <ul class="flex flex-wrap gap-2">
+                  {item.kpis.map((kpi) => (
+                    <li class="chip">
+                      <Icon name="trending-up" class="size-3" />
+                      {kpi}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</Section>

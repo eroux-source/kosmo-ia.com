@@ -1,0 +1,84 @@
+---
+/**
+ * Sous-offres d'une page service (/fooh, « four ways ») en cartes à coin coupé, comme les services anamorphiques
+ * (.service-card) : titre en capitales, flèche qui pivote vers le coin au survol, texte, puis en pleine largeur en bas
+ * la vidéo du projet FOOH (lue au survol, la carte mène à la page projet) ou, à défaut, une image. Sans numéro.
+ * Sur mobile (≤ 767 px), les cartes forment un rail qui défile au doigt (global.css [data-rail]).
+ */
+import Section from '../ui/Section.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+import Demo from '../ui/Demo.astro';
+import TwoTone from '../ui/TwoTone.astro';
+import Icon from '../ui/Icon.astro';
+import type { Shape } from '../../data/services';
+import { cardVideo, foohBySlug, foohHref, poster } from '../../lib/fooh';
+
+interface Props {
+  id?: string;
+  overline: string;
+  heading: string;
+  text?: string;
+  shapes: Shape[];
+  demo?: boolean;
+}
+const { id, overline, heading, text, shapes, demo = true } = Astro.props;
+---
+
+<Section id={id} data-fade="trigger" class="scroll-mt-(--nav-inset)">
+  <Eyebrow label={overline} />
+  <div class="mt-(--head-gap) grid grid-cols-2 items-end gap-10 max-lg:grid-cols-1">
+    <Demo inline when={demo} note="titre de la section">
+      <h2 data-stagger-text class="heading-h3"><TwoTone text={heading} /></h2>
+    </Demo>
+    {
+      text && (
+        <Demo inline when={demo} note="texte de la section">
+          <p data-fade="target" class="max-w-(--head-intro-max) justify-self-end text-body-medium text-(--body-soft) max-lg:justify-self-start">{text}</p>
+        </Demo>
+      )
+    }
+  </div>
+  <ul data-fade="target" data-rail class="mt-12 grid grid-cols-4 gap-3 max-lg:grid-cols-2 max-sm:grid-cols-1">
+    {
+      shapes.map((shape) => {
+        const project = shape.project ? foohBySlug(shape.project) : undefined;
+        const Tag = project ? 'a' : 'div';
+        return (
+          <li class="flex">
+            <Demo when={demo} note="sous-offre à valider" class="flex w-full">
+              <Tag
+                href={project ? foohHref(project) : undefined}
+                data-hover-video={project ? '' : undefined}
+                aria-label={project ? `${shape.title}: see the ${project.clientName} project` : undefined}
+                class="service-card group relative isolate flex w-full flex-col text-black transition-transform duration-(--duration-surface) ease-(--ease-kosmo) hover:-translate-y-1"
+              >
+                <span class="flex flex-col p-(--service-card-pad)">
+                  <span class="flex items-start justify-between gap-4">
+                    <h3 class="min-h-(--service-card-title-h) heading-h6 font-extrabold tracking-(--h3-tracking) uppercase max-lg:min-h-0">{shape.title}</h3>
+                    {project && (
+                      <span aria-hidden="true" class="grid size-(--button-sm-height) shrink-0 place-items-center transition-[scale] duration-(--duration-color) group-active:scale-(--button-go-press)">
+                        <Icon name="arrow-right" class="size-(--case-arrow) transition-transform duration-(--duration-surface) ease-(--ease-kosmo) group-hover:-rotate-45" />
+                      </span>
+                    )}
+                  </span>
+                  <p class="mt-(--service-card-text-gap-mobile) text-body-small text-(--body-soft)">{shape.text}</p>
+                </span>
+                <span class="relative mx-(--hairline) mt-auto mb-(--hairline) block aspect-card overflow-hidden bg-black">
+                  {project ? (
+                    <video class="absolute inset-0 size-full object-cover" data-src={cardVideo(project)} muted loop playsinline preload="none" poster={poster(project)} />
+                  ) : (
+                    <img src={shape.image.src} alt={shape.image.alt} loading="lazy" class="absolute inset-0 size-full object-cover" />
+                  )}
+                </span>
+              </Tag>
+            </Demo>
+          </li>
+        );
+      })
+    }
+  </ul>
+</Section>
+
+<script>
+  import '../../scripts/hover-video';
+</script>

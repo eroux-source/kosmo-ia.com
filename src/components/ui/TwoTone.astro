@@ -1,0 +1,16 @@
+---
+/**
+ * Texte d'un titre en deux tons (sans balise englobante) : à poser dans le h1/h2. La seconde partie va dans un <em>
+ * que global.css passe à 50 % de la couleur du texte. Règle de coupe : src/lib/two-tone.ts.
+ */
+import { twoTone } from '../../lib/two-tone';
+
+interface Props {
+  text: string;
+  soft?: string;
+}
+const { text, soft } = Astro.props;
+const [lead, rest] = twoTone(text, soft);
+---
+
+{rest ? <Fragment>{lead}{' '}<em>{rest}</em></Fragment> : lead}

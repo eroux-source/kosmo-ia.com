@@ -1,0 +1,19 @@
+---
+/**
+ * Lisière en pixels tramés entre une section sombre et sa voisine claire (les « herbes / nuages » de Cofounder).
+ * Posée en haut (edge="top", pixels qui descendent) ou en bas (edge="bottom", pixels qui montent) d'une section
+ * `relative`. Dessinée par src/scripts/dither.ts dans la couleur de la section voisine ; retirée si la voisine est
+ * sombre aussi.
+ */
+interface Props {
+  edge: 'top' | 'bottom';
+}
+const { edge } = Astro.props;
+---
+
+<div
+  data-dither={edge === 'top' ? 'down' : 'up'}
+  aria-hidden="true"
+  class:list={['pointer-events-none absolute inset-x-0 z-2 h-(--dither-height) [&>canvas]:size-full [&>canvas]:[image-rendering:pixelated]', edge === 'top' ? '-top-px' : '-bottom-px']}
+>
+</div>

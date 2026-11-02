@@ -1,0 +1,59 @@
+# KOSMO® crawler policy: default-open. Search engines, AI retrieval and AI training crawlers may all read the site;
+# only utility pages are excluded (in every language: /fr, /de, /nl). Change the AI section to Disallow to opt out of training.
+User-agent: *
+Allow: /
+Disallow: /todo
+Disallow: /styleguide
+Disallow: /thank-you
+Disallow: /checklist/thanks
+Disallow: /book
+Disallow: /api/
+Disallow: /*/merci
+Disallow: /*/danke
+Disallow: /*/bedankt
+Disallow: /fr/rendez-vous
+Disallow: /de/termin
+Disallow: /nl/afspraak
+
+# AI search and answer engines (retrieval, citations): allowed
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+Allow: /
+Disallow: /todo
+Disallow: /styleguide
+Disallow: /thank-you
+Disallow: /checklist/thanks
+Disallow: /book
+Disallow: /api/
+Disallow: /*/merci
+Disallow: /*/danke
+Disallow: /*/bedankt
+Disallow: /fr/rendez-vous
+Disallow: /de/termin
+Disallow: /nl/afspraak
+
+# AI training crawlers: allowed (default-open)
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: anthropic-ai
+User-agent: Google-Extended
+User-agent: CCBot
+Allow: /
+Disallow: /todo
+Disallow: /styleguide
+Disallow: /thank-you
+Disallow: /checklist/thanks
+Disallow: /book
+Disallow: /api/
+Disallow: /*/merci
+Disallow: /*/danke
+Disallow: /*/bedankt
+Disallow: /fr/rendez-vous
+Disallow: /de/termin
+Disallow: /nl/afspraak
+
+Sitemap: https://www.kosmocgi.com/sitemap-index.xml

@@ -1,0 +1,196 @@
+---
+/**
+ * CTA de /play : « démo jouable offerte ». À gauche, l'offre et la cartouche (aperçu en direct de la démo, remplie
+ * à chaque réponse). À droite, le formulaire en cinq étapes : quatre questions à cliquer (passage automatique après
+ * un choix unique), puis le contact. Barre « création de votre démo » en cases, comme un chargement de jeu.
+ * L'email vient en dernier : les clics d'abord, la saisie quand le visiteur est déjà engagé.
+ * Envoi : src/scripts/play-form.ts → send() de lead-form.ts → /api/lead (form « demo-game »), succès affiché sur place.
+ */
+import Section from '../ui/Section.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+import Icon from '../ui/Icon.astro';
+import Button from '../ui/Button.astro';
+import FormField from '../ui/FormField.astro';
+import Captcha from '../ui/Captcha.astro';
+import PixelSprite from '../ui/PixelSprite.astro';
+import TwoTone from '../ui/TwoTone.astro';
+import { play } from '../../data/play';
+import type { SpriteName } from '../../lib/play-sprites';
+import { motion } from '../../scripts/motion-tokens';
+
+interface Props {
+  id?: string;
+}
+const { id } = Astro.props;
+const { offer, form } = play;
+const { cartridge } = form;
+const mono = 'text-tagline';
+const choiceSteps = form.steps.filter((s) => s.type !== 'fields');
+const genreSprites = [...new Set(form.steps.find((s) => s.name === 'genre')!.options.map((o) => ('sprite' in o ? o.sprite : 'star')))] as SpriteName[];
+const cells = Array.from({ length: motion.play.form.cells });
+const tile =
+  'group/tile relative flex min-h-(--play-tile-min-h) cursor-pointer flex-col justify-between gap-3 rounded-default border border-line-dark bg-(--input-surface) p-4 text-left transition-colors duration-(--duration-color) hover:border-(--input-border-focus) has-checked:border-acid has-checked:bg-acid has-checked:text-black has-focus-visible:border-white';
+---
+
+<Section id={id} tone="dark" spacing="lg" data-fade="trigger" class="scroll-mt-(--nav-inset)">
+  <Eyebrow label={offer.overline} />
+  <div class="mt-(--head-gap)">
+    <div class="grid grid-cols-(--play-offer-cols) gap-12 max-lg:grid-cols-1 max-lg:gap-8">
+      {/* Offre + cartouche */}
+      <div class="flex flex-col gap-6">
+        <h2 data-stagger-text class="heading-h3"><TwoTone text={offer.heading} soft="avant de vous engager." /></h2>
+        <p data-fade="target" class="max-w-(--head-intro-max) text-body-medium text-(--body-soft)">{offer.intro}</p>
+        <div data-fade="target" class="flex flex-col gap-3">
+          <span class:list={[mono, 'text-(--label-color)']}>{offer.receive.label}</span>
+          <ul class="flex flex-col gap-2">
+            {
+              offer.receive.items.map((item) => (
+                <li class="flex items-center gap-3 text-body-medium">
+                  <span class="grid size-6 shrink-0 place-items-center rounded-default bg-acid text-black">
+                    <Icon name="check" class="size-4" />
+                  </span>
+                  {item}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <div data-fade="target" data-play-cartridge data-status="building" class="card flex max-w-(--measure-lg) flex-col overflow-hidden text-black max-lg:hidden lg:sticky lg:top-(--process-sticky-top)">
+          <div class="flex items-center justify-between gap-3 bg-black px-4 py-3 text-white">
+            <span class={mono}>KOSMO® PLAY</span>
+            <span data-cart-status class:list={[mono, 'flex items-center gap-2 text-on-dark-soft']}>
+              <span class="size-2 rounded-pill bg-orange in-[[data-status=ready]]:bg-acid in-[[data-status=sent]]:bg-acid" aria-hidden="true" />
+              <span data-cart-status-text>{cartridge.status.building}</span>
+            </span>
+          </div>
+          <div class="flex items-center gap-4 bg-acid p-5">
+            <span class="relative size-16 shrink-0">
+              {genreSprites.map((name, i) => <PixelSprite name={name} tile class="absolute inset-0 size-16" hidden={i !== genreSprites.length - 1} data-cart-sprite={name} />)}
+            </span>
+            <span class="flex min-w-0 flex-col gap-1">
+              <span class={mono}>{cartridge.subtitle}</span>
+              <span data-cart-brand class="truncate heading-h5">{cartridge.brandFallback}</span>
+            </span>
+          </div>
+          <dl class="grid grid-cols-2 gap-px bg-line">
+            {
+              Object.entries(cartridge.rows).map(([key, label]) => (
+                <div class="flex flex-col gap-1 bg-white p-4">
+                  <dt class:list={[mono, 'text-ink-soft']}>{label}</dt>
+                  <dd data-cart-field={key} data-empty="true" class="text-small font-semibold data-[empty=true]:text-ink-faint">
+                    {cartridge.empty}
+                  </dd>
+                </div>
+              ))
+            }
+          </dl>
+        </div>
+        <p data-fade="target" class="font-mono text-small text-(--body-soft)">{offer.reassurance}</p>
+      </div>
+
+      {/* Formulaire */}
+      <div data-fade="target" class="card-dark flex flex-col gap-6 self-start p-8 max-md:p-5">
+        <form
+          data-play-form
+          data-lead-form="demo-game"
+          data-lead-manual
+          data-empty={cartridge.empty}
+          data-brand-fallback={cartridge.brandFallback}
+          data-status-building={cartridge.status.building}
+          data-status-ready={cartridge.status.ready}
+          data-status-sent={cartridge.status.sent}
+          data-msg-required={form.errors.required}
+          data-msg-email={form.errors.email}
+          data-msg-choose={form.errors.choose}
+          data-msg-captcha={form.errors.captcha}
+          data-label-next={form.next}
+          data-label-submit={form.submit}
+          novalidate
+          class="flex flex-col gap-8"
+        >
+          {/* Progression */}
+          <div class="flex flex-col gap-3">
+            <div class:list={[mono, 'flex items-center justify-between gap-4']}>
+              <span>{form.progress}</span>
+              <span><span data-play-percent class="text-acid">0</span> %</span>
+            </div>
+            <div class="flex gap-1" aria-hidden="true">
+              {cells.map(() => <span data-play-cell-bar class="h-(--play-progress-h) flex-1 bg-(--input-surface) transition-colors duration-(--duration-color) data-[on=true]:bg-acid" />)}
+            </div>
+            <p class:list={[mono, 'text-(--label-color)']} aria-live="polite">
+              {form.step} <span data-play-step-index>1</span> {form.of} {form.steps.length}
+            </p>
+          </div>
+
+          {/* Étapes à choix */}
+          {
+            choiceSteps.map((step, i) => (
+              <div role="group" aria-labelledby={`play-q-${i}`} data-play-step={i} data-type={step.type} data-name={step.name} hidden={i !== 0} class="flex flex-col gap-5">
+                <h3 id={`play-q-${i}`} class="heading-h5 normal-case">{step.question}</h3>
+                {step.type === 'multi' && <p class:list={[mono, 'text-(--label-color)']}>{form.multiHint}</p>}
+                <div class:list={['grid gap-3 max-md:grid-cols-2', step.options.length === 4 ? 'grid-cols-2' : 'grid-cols-3']}>
+                  {step.options.map((option) => (
+                    <label class={tile}>
+                      <input type={step.type === 'multi' ? 'checkbox' : 'radio'} name={step.name} value={option.value} data-sprite={'sprite' in option ? option.sprite : undefined} class="sr-only" />
+                      <span class="flex items-start justify-between gap-2">
+                        {'sprite' in option ? (
+                          <PixelSprite name={option.sprite as SpriteName} class="size-8" />
+                        ) : (
+                          <Icon name={option.icon} class="size-6 text-acid group-has-checked/tile:text-black" />
+                        )}
+                        <span class="flex size-5 items-center justify-center rounded-default border border-on-dark-soft group-has-checked/tile:border-black group-has-checked/tile:bg-black group-has-checked/tile:text-acid">
+                          <span class="hidden group-has-checked/tile:flex"><Icon name="check" class="size-3" /></span>
+                        </span>
+                      </span>
+                      <span class="text-small font-semibold">{option.value}</span>
+                    </label>
+                  ))}
+                </div>
+                <p data-error-for={step.name} hidden class="font-mono text-xsmall text-orange" aria-live="polite" />
+              </div>
+            ))
+          }
+
+          {/* Étape contact */}
+          <div role="group" aria-labelledby="play-q-contact" data-play-step={choiceSteps.length} data-type="fields" hidden class="flex flex-col gap-5">
+            <h3 id="play-q-contact" class="heading-h5 normal-case">{form.steps[form.steps.length - 1].question}</h3>
+            <div class="grid grid-cols-2 gap-4 max-sm:grid-cols-1">
+              <FormField name="company" label={form.fields.company.label} placeholder={form.fields.company.placeholder} autocomplete="organization" />
+              <FormField name="email" type="email" label={form.fields.email.label} placeholder={form.fields.email.placeholder} autocomplete="email" />
+            </div>
+            <FormField name="name" label={form.fields.name.label} placeholder={form.fields.name.placeholder} autocomplete="name" required={false} />
+            <FormField name="detail" type="textarea" label={form.fields.message.label} placeholder={form.fields.message.placeholder} required={false} />
+            <Captcha />
+          </div>
+
+          <div class="hidden" aria-hidden="true">
+            <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+          </div>
+          <input type="hidden" name="message" />
+          <input type="hidden" name="campaignDate" />
+          <input type="hidden" name="language" value="fr" />
+
+          <p data-form-error hidden data-default={form.errors.server} class="font-mono text-small text-orange" aria-live="assertive"></p>
+
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <Button label={form.back} variant="outline" data-play-back class="[&_[data-button-arrow]]:rotate-180" />
+            <Button type="submit" label={form.next} variant="light" class="ml-auto" data-track-click="play_form_next" />
+          </div>
+        </form>
+
+        {/* Succès */}
+        <div data-form-done hidden class="flex flex-col items-start gap-5">
+          <PixelSprite name="trophy" tile class="size-20" data-play-bob="" />
+          <h3 class="heading-h4">{form.done.title}</h3>
+          <p class="text-body-medium text-(--body-soft)">{form.done.text}</p>
+          <Button href="/book" label={form.done.book} variant="light" data-track-click="play_form_book" />
+        </div>
+      </div>
+    </div>
+  </div>
+</Section>
+
+<script>
+  import '../../scripts/play-form';
+</script>

@@ -1,0 +1,31 @@
+---
+/**
+ * « Le problème / ce que change le 3DOOH » (DESIGN-SYSTEM.md) : surtitre, titre deux tons + intro, comparateur
+ * lenticulaire épuré (le film plat et le film 3D en lamelles qui pivotent), tableau à même le fond (le bandeau concept gratuit est passé sous les trois formats).
+ */
+import Section from '../ui/Section.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+import TwoTone from '../ui/TwoTone.astro';
+import LenticularCompare from '../ui/LenticularCompare.astro';
+import ComparisonTable from '../ui/ComparisonTable.astro';
+import { shift as defaultShift } from '../../data/3dooh';
+
+interface Props {
+  id?: string;
+  /** Textes d'une autre version de la page (ex. /3dooh générale : shiftAnamorphic). */
+  data?: typeof defaultShift;
+}
+const { id, data: shift = defaultShift } = Astro.props;
+---
+
+<Section id={id} data-fade="trigger">
+  <Eyebrow label={shift.overline} />
+  <div class="mt-(--head-gap) grid grid-cols-2 items-end gap-10 max-lg:grid-cols-1">
+    <h2 data-stagger-text class="heading-h3"><TwoTone text={shift.heading.join(' ')} /></h2>
+    <p data-fade="target" class="max-w-(--head-intro-max) justify-self-end text-body-medium text-(--body-soft) max-lg:justify-self-start">{shift.intro}</p>
+  </div>
+  <div data-fade="target" class="mt-12 flex flex-col gap-3">
+    <LenticularCompare before={shift.compare.before} after={shift.compare.after} />
+    <ComparisonTable head={shift.table.head} rows={shift.table.rows} />
+  </div>
+</Section>

@@ -1,0 +1,21 @@
+---
+/** Bouton WhatsApp flottant (bas droite, desktop). Sur mobile, WhatsApp est dans la barre CTA. */
+import Icon from './Icon.astro';
+import { whatsappHref } from '../../lib/env';
+
+interface Props {
+  message?: string;
+}
+const { message = 'Hi KOSMO, I would like to talk about an AI production.' } = Astro.props;
+---
+
+<a
+  href={whatsappHref(message)}
+  target="_blank"
+  rel="noopener"
+  aria-label="Chat on WhatsApp"
+  data-track-click="whatsapp_click"
+  class="fixed right-(--float-inset) bottom-(--float-inset) z-(--float-z) flex size-(--float-size) items-center justify-center rounded-sm bg-acid text-black transition-transform duration-(--duration-surface) ease-(--ease-kosmo) hover:-translate-y-0.5 max-md:hidden"
+>
+  <Icon name="brand-whatsapp" class="size-(--float-icon)" />
+</a>

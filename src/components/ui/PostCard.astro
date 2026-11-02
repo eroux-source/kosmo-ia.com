@@ -1,0 +1,74 @@
+---
+/**
+ * Carte d'article du journal, mécanique des cartes « Resources » de cofounder.co : une pochette. Derrière, un onglet
+ * aux coins du haut arrondis ; au milieu, la photo de l'article (ou la couverture animée ShaderCover) en timbre (les perforations découpent
+ * l'image elle-même, sans cadre blanc), rangée dans la pochette (seul son bord dépasse) ; devant, la carte de texte (type, date, titre, extrait, lien).
+ * Au survol, la photo sort de la pochette ; les études de cas l'ont déjà sortie, pour voir le projet avant de cliquer
+ * (et la sortent un peu plus au survol). Sur écran tactile, toutes les photos sont sorties. La carte de texte porte une
+ * trame de points en dégradé radial depuis le bas (utilitaire dots-bottom). Code couleur par type d'article.
+ */
+import Icon from './Icon.astro';
+import ShaderCover from './ShaderCover.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import { paletteFor } from '../../lib/shader';
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+  class?: string;
+}
+const { post, class: className } = Astro.props;
+/* Sans image : couverture animée, palette unique par article (rang parmi les articles sans image). */
+const uncovered = (await getCollection('posts', ({ data }) => data.published && !data.cover)).map((p) => p.id);
+const palette = paletteFor(post.id, uncovered);
+const format = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+const isCase = post.data.kind === 'case';
+/* Code couleur par type (tokens --kind-*) : carré devant le type et trame de points du bas. */
+const KIND = {
+  case: '[--kind-color:var(--kind-case)] [--dot-color:var(--kind-case-dots)]',
+  guide: '[--kind-color:var(--kind-guide)] [--dot-color:var(--kind-guide-dots)]',
+  explainer: '[--kind-color:var(--kind-explainer)] [--dot-color:var(--kind-explainer-dots)]',
+  trend: '[--kind-color:var(--kind-trend)] [--dot-color:var(--kind-trend-dots)]',
+} as const;
+---
+
+<a href={`/journal/${post.id}`} class:list={['group relative block h-full pt-(--sleeve-front-top) text-black', KIND[post.data.kind], className]}>
+  {/* Onglet arrière de la pochette */}
+  <span aria-hidden="true" class="absolute inset-x-0 top-0 z-1 h-(--sleeve-tab-h) rounded-t-sm bg-(--sleeve-back) shadow-(--card-ring)"></span>
+  {/* Photo rangée dans la pochette */}
+  <span
+    aria-hidden="true"
+    class:list={[
+      'stamp absolute inset-x-(--sleeve-photo-inset) top-(--sleeve-photo-top) z-2 block h-(--sleeve-photo-h) transition-transform duration-(--duration-surface) ease-(--ease-sleeve)',
+      isCase ? 'translate-y-(--sleeve-rise-case) group-hover:translate-y-(--sleeve-rise-more)' : 'group-hover:translate-y-(--sleeve-rise) pointer-coarse:translate-y-(--sleeve-rise)',
+    ]}
+  >
+    <span class="absolute inset-0 block overflow-hidden bg-black">
+      {
+        post.data.cover ? (
+          <img src={post.data.cover.src} alt="" loading="lazy" class="absolute inset-0 size-full object-cover object-top" />
+        ) : (
+          <ShaderCover palette={palette} class="absolute inset-0 size-full" />
+        )
+      }
+    </span>
+  </span>
+  {/* Carte de texte, devant */}
+  <span class="relative isolate z-3 flex h-full flex-col overflow-hidden rounded-b-sm bg-white px-(--sleeve-text-pad) pt-(--sleeve-text-pad-top) pb-(--sleeve-text-pad) shadow-(--card-ring) transition-shadow duration-(--duration-surface) group-hover:shadow-(--card-ring-strong)">
+    <span aria-hidden="true" class="dots-bottom pointer-events-none absolute inset-0 -z-1"></span>
+    <span class="flex items-center justify-between gap-3 text-tagline text-(--label-color)">
+      <span class="flex items-center gap-2"><span aria-hidden="true" class="size-(--kind-swatch) rounded-default bg-(--kind-color)"></span>{post.data.kind}</span>
+      <span>{format.format(post.data.date)}</span>
+    </span>
+    <span class="mt-4 flex flex-col gap-3">
+      <h2 class="heading-h6">{post.data.title}</h2>
+      <p class="line-clamp-3 text-body-small text-ink-soft">{post.data.excerpt}</p>
+    </span>
+    <span class="mt-auto flex items-center justify-between gap-3 pt-8 text-tagline">
+      <span class="relative inline-flex items-center gap-1.5 text-ink-soft transition-colors duration-(--duration-color) group-hover:text-black">
+        {isCase ? 'read full story' : 'read article'}
+        <Icon name="arrow-right" class="size-3 -translate-x-1 opacity-0 transition-[opacity,translate] duration-(--duration-surface) ease-(--ease-sleeve) group-hover:translate-x-0 group-hover:opacity-100" />
+      </span>
+      <span class="text-ink-faint">{post.data.readingMinutes} min read</span>
+    </span>
+  </span>
+</a>

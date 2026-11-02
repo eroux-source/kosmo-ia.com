@@ -1,0 +1,25 @@
+---
+/**
+ * Appel discret (DESIGN-SYSTEM.md) : carte blanche, photo carrée de Mehdi en noir et blanc, une phrase en capitales,
+ * Book a call + Contact. Sous le dossier de la home et sous les chiffres des autres pages.
+ */
+import Button from './Button.astro';
+import { talk, ctaLabel, ctaHref, bookLabel } from '../../data/site';
+
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<div data-fade="target" class:list={['card flex items-center gap-4.5 p-2.5 max-md:flex-wrap', className]}>
+  <img src={talk.image.src} alt={talk.image.alt} loading="lazy" class="size-(--talk-face) shrink-0 rounded-default object-cover filter-(--talk-face-filter)" />
+  <span class="flex min-w-0 flex-1 flex-col gap-1">
+    <span class="text-tagline text-ink-soft normal-case">{talk.who}</span>
+    <strong class="heading-h5 max-md:text-(length:--h6-size)">{talk.text}</strong>
+  </span>
+  <span class="flex shrink-0 gap-2 max-md:w-full max-md:[&>*]:flex-1">
+    <Button href="/book" label={bookLabel} variant="light" />
+    <Button href={ctaHref} label={ctaLabel} variant="dark" />
+  </span>
+</div>

@@ -1,0 +1,73 @@
+---
+/**
+ * Exemples : gabarit des futurs cas KOSMO® PLAY (Mehdi importe les vrais). Trois cartes « fenêtre » fictives, marquées
+ * « Exemple fictif », visuel en <Placeholder> (listé sur /todo), résultats en attente. Même structure que les vrais cas :
+ * secteur, objectif, le jeu, diffusion, trois chiffres.
+ */
+import Section from '../ui/Section.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+import Placeholder from '../ui/Placeholder.astro';
+import TwoTone from '../ui/TwoTone.astro';
+import { play } from '../../data/play';
+import type { AssetId } from '../../data/assets-needed';
+
+interface Props {
+  id?: string;
+}
+const { id } = Astro.props;
+const { examples } = play;
+const label = 'text-tagline text-ink-soft';
+---
+
+<Section id={id} data-fade="trigger" class="scroll-mt-(--nav-inset)">
+  <Eyebrow label={examples.overline} />
+  <div class="mt-(--head-gap) grid grid-cols-2 items-end gap-10 max-lg:grid-cols-1">
+    <h2 data-stagger-text class="heading-h3"><TwoTone text={examples.heading} soft="ça peut donner" /></h2>
+    <p data-fade="target" class="max-w-(--head-intro-max) justify-self-end text-body-medium text-(--body-soft) max-lg:justify-self-start">{examples.intro}</p>
+  </div>
+  <ul class="mt-12 grid grid-cols-3 gap-3 max-lg:grid-cols-2 max-md:grid-cols-1">
+    {
+      examples.items.map((item) => (
+        <li data-fade="target" class="card flex flex-col gap-5 p-(--card-pad) pb-(--way-pad)">
+          <div class="relative">
+            <Placeholder id={item.visual as AssetId} ratio="card" />
+            <span class="chip absolute top-3 left-3 [--chip-surface:var(--kosmo-black)] [--label-color:var(--kosmo-acid)]">{examples.note}</span>
+          </div>
+          <div class="flex flex-col gap-2 px-3">
+            <span class={label}>{item.sector}</span>
+            <h3 class="heading-h6">{item.title}</h3>
+          </div>
+          <dl class="flex flex-col gap-3 px-3 text-small">
+            <div class="flex flex-col gap-1">
+              <dt class={label}>{examples.labels.objective}</dt>
+              <dd class="font-semibold">{item.objective}</dd>
+            </div>
+            <div class="flex flex-col gap-1">
+              <dt class={label}>{examples.labels.game}</dt>
+              <dd class="text-ink-soft">{item.game}</dd>
+            </div>
+            <div class="flex flex-col gap-1">
+              <dt class={label}>{examples.labels.channels}</dt>
+              <dd class="flex flex-wrap gap-1.5">
+                {item.channels.map((channel) => (
+                  <span class="chip">{channel}</span>
+                ))}
+              </dd>
+            </div>
+          </dl>
+          <div class="mx-3 mt-auto flex flex-col gap-2 border-t border-line pt-4">
+            <span class={label}>{examples.labels.results}</span>
+            <ul class="grid grid-cols-3 gap-2">
+              {examples.metrics.map((metric) => (
+                <li class="flex flex-col gap-1 rounded-default bg-paper p-2">
+                  <span class="text-medium font-extrabold text-ink-faint">{examples.pending}</span>
+                  <span class="font-mono text-xsmall">{metric}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</Section>

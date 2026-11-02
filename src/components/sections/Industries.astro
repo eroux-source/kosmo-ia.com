@@ -1,0 +1,121 @@
+---
+/**
+ * Industries (DESIGN-SYSTEM.md, maquette Cofounder) : section sombre à trame de points et lisières tramées ; titre en
+ * deux tons et intro, puis un nuage de tags magnétiques (script officiel annnimate, src/scripts/magnetic-tag-cloud.js) :
+ * pastilles de couleur (palette de référence, hors charte à valider) et images de projets, à pousser, lancer, faire
+ * tourner. Coins 2 px (bloc posé dans un bloc). Écran tactile : glisser à l'horizontale seulement, la page défile au doigt.
+ */
+import Section from '../ui/Section.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+import TwoTone from '../ui/TwoTone.astro';
+import { industries } from '../../data/3dooh';
+import { motion } from '../../scripts/motion-tokens';
+
+interface Props {
+  id?: string;
+}
+const { id } = Astro.props;
+const T = motion.tagCloud;
+const COLORS = {
+  orange: 'bg-tag-orange text-black',
+  red: 'bg-tag-red text-black',
+  pink: 'bg-tag-pink text-black',
+  rose: 'bg-tag-rose text-black',
+  amber: 'bg-tag-amber text-black',
+  olive: 'bg-tag-olive text-black',
+  sky: 'bg-tag-sky text-black',
+  cream: 'bg-tag-cream text-black',
+  green: 'bg-tag-green text-tag-cream',
+  blue: 'bg-tag-blue text-tag-cream',
+  brown: 'bg-tag-brown text-tag-cream',
+} as const;
+---
+
+<Section id={id} tone="dark" data-fade="trigger" class="overflow-hidden">
+  <Eyebrow label={industries.overline} />
+  <div class="mt-(--head-gap) grid grid-cols-2 items-end gap-10 max-lg:grid-cols-1">
+    <h2 data-stagger-text class="heading-h3"><TwoTone text={industries.heading} /></h2>
+    <p data-fade="target" class="max-w-(--head-intro-max) justify-self-end text-body-medium text-(--body-soft) max-lg:justify-self-start">{industries.intro}</p>
+  </div>
+  <div
+    class="relative mt-6 h-(--tag-cloud-height) touch-pan-y max-md:h-(--tag-cloud-height-mobile)"
+    data-anm-magnetic-tag-cloud
+    data-anm-gap={T.gap}
+    data-anm-max-rows={T.maxRows}
+    data-anm-hover-radius={T.hoverRadius}
+    data-anm-hover-strength={T.hoverStrength}
+    data-anm-spin={T.spin}
+    data-anm-repel-radius={T.repelRadius}
+    data-anm-repel-strength={T.repelStrength}
+    data-anm-stiffness={T.stiffness}
+    data-anm-damping={T.damping}
+    data-anm-throw-strength={T.throwStrength}
+    aria-label="Industries"
+  >
+    <div class="absolute inset-0" data-anm-mtc-cloud>
+      <ul role="list">
+        {
+          industries.cloud.map((tag) => (
+            <li>
+              {'label' in tag ? (
+                <span data-anm-mtc-tag class:list={['tag-cloud__tag', COLORS[tag.color]]}>
+                  {tag.label}
+                </span>
+              ) : (
+                <span data-anm-mtc-tag class:list={['tag-cloud__tag tag-cloud__tag--img bg-surface-dark', tag.shape === 'rect' ? 'w-(--tag-image-wide)' : 'w-(--tag-image)']}>
+                  <img src={tag.image} alt={tag.alt} draggable="false" loading="lazy" class="pointer-events-none block size-full object-cover" />
+                </span>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</Section>
+
+<style is:global>
+  /* Couche « components » : les utilitaires Tailwind du markup (max-lg:hidden…) gardent la main. */
+  @layer components {
+    /* Pastilles du nuage : la taille suit --mtc-fit (posé par le script si une rangée dépasse la largeur). */
+    .tag-cloud__tag {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      display: flex;
+      align-items: center;
+      height: var(--tag-height);
+      padding: 0 var(--tag-pad);
+      border-radius: var(--rounded-default);
+      font-size: calc(var(--tag-size) * var(--mtc-fit, 1));
+      font-weight: var(--font-weight-medium);
+      letter-spacing: var(--h3-tracking);
+      white-space: nowrap;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-user-drag: none;
+      touch-action: none;
+      cursor: grab;
+      will-change: transform;
+      transform: translate(-50%, -50%);
+    }
+    .tag-cloud__tag:active {
+      cursor: grabbing;
+    }
+    /* Écran tactile : le glissé vertical fait défiler la page (le nuage en bloquait 380 px), l'horizontal lance la pastille. */
+    @media (pointer: coarse) {
+      .tag-cloud__tag {
+        touch-action: pan-y;
+      }
+    }
+    .tag-cloud__tag--img {
+      padding: 0;
+      height: var(--tag-image);
+      overflow: hidden;
+    }
+  }
+</style>
+
+<script>
+  import '../../scripts/magnetic-tag-cloud.js';
+</script>

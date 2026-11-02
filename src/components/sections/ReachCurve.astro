@@ -1,0 +1,201 @@
+---
+/**
+ * Courbe « impressions dans le temps » en phases (trois ou quatre), toujours croissante : la montée rapide de la campagne
+ * 3DOOH puis son palier, la montée continue de l'amplification FOOH (et du stunt OOH quand il y en a un), puis les relais RP, médias et réseaux
+ * sociaux. Aires en couches (trois anneaux d'opacité croissante, comme le funnel de référence), une phase survolée
+ * met les autres en retrait, entrée animée phase par phase à l'arrivée dans l'écran. Courbe illustrative : aucune
+ * valeur chiffrée. `band` = phases surlignées (par défaut la deuxième, l'amplification).
+ * À plat (DESIGN-SYSTEM.md) : dessin dans une carte blanche (aires acides, courbe noire, filets gris), légende en
+ * cartes blanches dont celle de la phase survolée prend le liseré acide.
+ */
+import Demo from '../ui/Demo.astro';
+
+export interface CurvePhase {
+  number: string;
+  title: string;
+  text: string;
+}
+export interface ReachCurveData {
+  demo: boolean;
+  axis: { x: string; y: string };
+  phases: CurvePhase[];
+  /** Phases surlignées, indices [de, à] inclus (défaut : [1, 1]). */
+  band?: [number, number];
+}
+interface Props {
+  data: ReachCurveData;
+  /** side = dessin à gauche, légende à droite (home, pleine largeur : le dessin seul serait trop haut). */
+  layout?: 'stacked' | 'side';
+}
+const { data, layout = 'stacked' } = Astro.props;
+const side = layout === 'side';
+
+/* Géométrie du dessin (unités du viewBox, comme la map monde). */
+const W = 1000;
+const H = 420;
+const BASE = 380;
+type Pt = [number, number];
+/* Courbe strictement croissante : montée rapide de l'écran, palier quand l'achat média s'arrête, puis chaque couche
+   relance la montée. Jamais de creux (demande du 28/09). */
+const points: Pt[] = [
+  [0, 380], [55, 312], [115, 238], [175, 214], [245, 206], [333, 202],
+  [400, 196], [470, 180], [540, 150], [610, 126], [666, 111],
+  [740, 99], [810, 86], [880, 71], [950, 56], [1000, 44],
+];
+const n = data.phases.length;
+const bounds = Array.from({ length: n + 1 }, (_, i) => Math.round((W / n) * i));
+const [bandFrom, bandTo] = data.band ?? [1, 1];
+const peak = points[2];
+const end = points[points.length - 1];
+
+/** Catmull-Rom → Bézier cubiques, pour une courbe lisse qui passe par les points. */
+function smooth(pts: Pt[]): string {
+  let d = `M ${pts[0][0]} ${pts[0][1]}`;
+  for (let i = 0; i < pts.length - 1; i++) {
+    const p0 = pts[Math.max(i - 1, 0)];
+    const p1 = pts[i];
+    const p2 = pts[i + 1];
+    const p3 = pts[Math.min(i + 2, pts.length - 1)];
+    const c1: Pt = [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6];
+    const c2: Pt = [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6];
+    d += ` C ${c1[0].toFixed(1)} ${c1[1].toFixed(1)}, ${c2[0].toFixed(1)} ${c2[1].toFixed(1)}, ${p2[0]} ${p2[1]}`;
+  }
+  return d;
+}
+/** Même courbe ramenée vers la ligne de base (anneaux intérieurs). */
+const scaled = (s: number): Pt[] => points.map(([x, y]) => [x, BASE - (BASE - y) * s]);
+const line = smooth(points);
+const rings = [
+  { scale: 1, cls: 'opacity-(--chart-ring-outer)' },
+  { scale: 0.72, cls: 'opacity-(--chart-ring-mid)' },
+  { scale: 0.46, cls: 'opacity-(--chart-ring-inner)' },
+].map((r) => ({ ...r, d: `${smooth(scaled(r.scale))} L ${W} ${BASE} L 0 ${BASE} Z` }));
+const gridY = [1, 2, 3, 4].map((i) => BASE - ((BASE - 40) / 4) * i);
+---
+
+<Demo when={data.demo} note="courbe illustrative et textes des phases" class="flex flex-col gap-8">
+  <div data-reach-curve data-phases={n} class:list={['group/curve relative w-full', side ? 'grid grid-cols-2 items-center gap-10 max-lg:grid-cols-1 max-lg:gap-4' : 'flex flex-col gap-2']}>
+    <div class="card flex flex-col gap-3 p-4">
+      <div class="flex items-center justify-between text-tagline text-(--label-color)">
+        <span>{data.axis.y} ↑</span>
+        <span>{data.axis.x} →</span>
+      </div>
+      <svg viewBox={`0 0 ${W} ${H}`} class="block h-auto w-full" role="img" aria-label={data.phases.map((p) => p.title).join(', then ')}>
+        <defs>
+          {bounds.slice(0, -1).map((x, i) => (
+            <clipPath id={`reach-phase-${i}`}>
+              <rect x={x} y="0" width={bounds[i + 1] - x} height={H} />
+            </clipPath>
+          ))}
+        </defs>
+        <rect x={bounds[bandFrom]} y="0" width={bounds[bandTo + 1] - bounds[bandFrom]} height={BASE} class="fill-paper" />
+        {gridY.map((y) => <line x1="0" x2={W} y1={y} y2={y} class="stroke-line-strong" stroke-dasharray="2 6" />)}
+        {bounds.slice(1, -1).map((x) => <line x1={x} x2={x} y1="0" y2={BASE} class="stroke-line-strong" stroke-dasharray="2 6" />)}
+        <line x1="0" x2={W} y1={BASE} y2={BASE} class="stroke-black" />
+        {
+          bounds.slice(0, -1).map((_, i) => (
+            <g data-phase={i} clip-path={`url(#reach-phase-${i})`} class="reach-phase transition-opacity duration-(--duration-color)">
+              {rings.map((ring) => (
+                <path d={ring.d} class:list={['reach-area fill-acid', ring.cls]} />
+              ))}
+              <path d={line} pathLength="1" class="reach-line fill-none stroke-black" stroke-width="3" stroke-linecap="round" />
+            </g>
+          ))
+        }
+        <circle cx={peak[0]} cy={peak[1]} r="7" class="reach-dot fill-black" />
+        <circle cx={end[0]} cy={end[1]} r="7" class="reach-dot fill-black" />
+        <circle cx={peak[0]} cy={peak[1]} r="3" class="reach-dot fill-acid" />
+        <circle cx={end[0]} cy={end[1]} r="3" class="reach-dot fill-acid" />
+        {
+          bounds.slice(0, -1).map((x, i) => (
+            <rect data-phase-trigger={i} x={x} y="0" width={bounds[i + 1] - x} height={H} class="cursor-pointer fill-transparent" />
+          ))
+        }
+      </svg>
+    </div>
+    <ol class="flex flex-col gap-2">
+      {
+        data.phases.map((phase, i) => (
+          <li
+            data-phase={i}
+            data-phase-trigger={i}
+            class="card grid cursor-default grid-cols-(--chart-legend-cols) gap-x-4 gap-y-1 px-4 py-3.5 transition-[box-shadow,translate] duration-(--duration-surface) ease-(--ease-kosmo) hover:-translate-x-1 hover:shadow-(--card-ring-acid) max-sm:grid-cols-1 [&.is-active]:-translate-x-1 [&.is-active]:shadow-(--card-ring-acid)"
+          >
+            <span class="flex items-start gap-2 text-tagline text-(--label-color)">
+              <span class="mt-1 size-2 shrink-0 rounded-default bg-acid" aria-hidden="true" />
+              {phase.number}
+            </span>
+            <span class="flex flex-col gap-1">
+              <h3 class="text-medium font-medium">{phase.title}</h3>
+              <p class="text-body-small text-(--body-soft)">{phase.text}</p>
+            </span>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</Demo>
+
+<style>
+  @layer components {
+  /* Une phase survolée (sur le dessin ou dans la légende) met les autres en retrait. */
+  [data-reach-curve][data-active] g.reach-phase:not(.is-active) {
+    opacity: var(--chart-dim);
+  }
+  /* Entrée : les aires montent depuis la ligne de base, la courbe se trace, phase après phase. */
+  .reach-area {
+    transform: scaleY(0);
+    transform-box: fill-box;
+    transform-origin: bottom;
+    transition: transform var(--duration-surface-slow) ease-out;
+  }
+  .reach-line {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    transition: stroke-dashoffset var(--duration-surface-slow) ease-out;
+  }
+  .reach-dot {
+    opacity: 0;
+    transition: opacity var(--duration-color);
+  }
+  [data-in] .reach-area {
+    transform: scaleY(1);
+  }
+  [data-in] .reach-line {
+    stroke-dashoffset: 0;
+  }
+  [data-in] .reach-dot {
+    opacity: 1;
+    transition-delay: calc(var(--chart-stagger) * 3);
+  }
+  [data-in] [data-phase='1'] .reach-area,
+  [data-in] [data-phase='1'] .reach-line {
+    transition-delay: var(--chart-stagger);
+  }
+  [data-in] [data-phase='2'] .reach-area,
+  [data-in] [data-phase='2'] .reach-line {
+    transition-delay: calc(var(--chart-stagger) * 2);
+  }
+  [data-in] [data-phase='3'] .reach-area,
+  [data-in] [data-phase='3'] .reach-line {
+    transition-delay: calc(var(--chart-stagger) * 3);
+  }
+  [data-in][data-phases='4'] .reach-dot {
+    transition-delay: calc(var(--chart-stagger) * 4);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reach-area,
+    .reach-line,
+    .reach-dot {
+      transition: none;
+      transform: none;
+      stroke-dashoffset: 0;
+      opacity: 1;
+    }
+  }
+  }
+</style>
+
+<script>
+  import '../../scripts/reach-curve';
+</script>

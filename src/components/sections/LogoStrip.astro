@@ -1,0 +1,42 @@
+---
+/**
+ * Bande de logos clients (DESIGN-SYSTEM.md) : étiquette centrée, grille de 7 colonnes (900 px max), logos gris à 42 %
+ * qui passent au noir et montent de 2 px au survol. Chaque logo reçoit la même surface (src/scripts/logo-strip.ts).
+ * Mobile (≤ 479 px) : 4 colonnes au lieu de 3 et cellules plus basses, logos un peu plus petits (motion.logosMobile).
+ */
+import Section from '../ui/Section.astro';
+import { logos } from '../../data/site';
+
+import { svgInstanceId, uniqueSvgIds } from '../../lib/svg';
+
+const files = import.meta.glob<string>('../../assets/logos/*.svg', { query: '?raw', import: 'default', eager: true });
+/* Id uniques par logo : le même SVG existe aussi dans le hero et les témoignages (masques Safari). */
+const svgs = Object.keys(files)
+  .sort()
+  .map((key) => uniqueSvgIds(files[key], svgInstanceId('strip')));
+
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<Section class={className}>
+  <div class="flex flex-col items-center gap-8">
+    <p class="text-center text-tagline text-(--label-color)">{logos.overline}</p>
+    <ul data-logo-strip class="mx-auto grid w-full max-w-(--logo-grid-max) grid-cols-7 gap-x-6 gap-y-2 max-lg:grid-cols-4 max-sm:gap-x-3">
+      {
+        svgs.map((svg) => (
+          <li
+            class="grid h-(--logo-cell) place-items-center max-sm:h-(--logo-cell-mobile) text-(--logo-ink) transition-[color,translate] duration-(--duration-surface) ease-(--ease-kosmo) hover:-translate-y-0.5 hover:text-black [&>svg]:h-(--logo-glyph) [&>svg]:w-auto [&>svg]:max-w-full"
+            set:html={svg}
+          />
+        ))
+      }
+    </ul>
+  </div>
+</Section>
+
+<script>
+  import '../../scripts/logo-strip';
+</script>

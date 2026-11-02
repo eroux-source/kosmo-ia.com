@@ -1,0 +1,281 @@
+---
+/**
+ * Guide local des pages villes (v2, 23/10/2026 : « un guide, pas un article Wikipédia »). Le Markdown reste la source
+ * (src/content/cities/<slug>.md), découpé à chaque intertitre `##` par src/lib/city-guide.ts, et chaque bloc reçoit une
+ * mise en page qui se lit en diagonale, avec les patterns existants :
+ *  - ouverture : titre deux tons + chapeau marché à gauche ; à droite, le sommaire en lignes numérotées à filet (pattern
+ *    de /checklist) avec le nombre d'éléments de chaque bloc en étiquette ;
+ *  - marché : titre à gauche (sticky), texte à droite ;
+ *  - écrans : cartes blanches numérotées, régie et format en lignes étiquetées (en-têtes du tableau Markdown), puis
+ *    « pourquoi ça marche en 3D » derrière une case cochée (case du +/− de la FAQ) ;
+ *  - campagnes 3D : section sombre, cartes card-dark ;
+ *  - régies, prix : lignes numérotées à filet sur deux colonnes ;
+ *  - règles : liste à cocher (case de la FAQ + coche) ;
+ *  - calendrier : cartes blanches avec pastille calendrier.
+ * Chaque élément de liste garde son HTML tel quel (gras, liens sources) : le moteur de traduction travaille sur le HTML
+ * rendu, et un découpage changerait les clés du dictionnaire. La section « How we work » n'est pas affichée : la frise
+ * Process de la page dit la même chose.
+ */
+import Section from '../ui/Section.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+import TwoTone from '../ui/TwoTone.astro';
+import Icon from '../ui/Icon.astro';
+import { parseGuide, type GuideSection } from '../../lib/city-guide';
+
+interface Props {
+  html: string;
+  /** Nom anglais de la ville (traduit par le dictionnaire). */
+  city: string;
+  /** Titre et chapeau du marché local (ancien bloc d'intro de la page, gardé tel quel). */
+  heading: string;
+  intro: string;
+  /** Photos libres de droits des écrans (frontmatter screenPhotos), rattachées par le nom de l'écran. */
+  photos?: { screen: string; file: string; alt: string; author: string; licence: string; source: string }[];
+}
+const { html, city, heading, intro, photos = [] } = Astro.props;
+const plain = (h: string) => h.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').trim();
+const photoOf = (name: string) => photos.find((p) => p.screen === plain(name));
+const sections = parseGuide(html)
+  .filter((s) => s.kind !== 'method')
+  .map((s, i) => ({ ...s, id: `guide-${s.kind === 'other' ? i : s.kind}` }));
+const OVERLINE: Record<GuideSection['kind'], string> = {
+  market: 'market',
+  screens: 'screens',
+  campaigns: '3D campaigns',
+  owners: 'media owners',
+  rules: 'rules',
+  costs: 'costs',
+  calendar: 'calendar',
+  method: 'method',
+  other: 'local guide',
+};
+/** Nombre d'éléments d'un bloc (sommaire) : lignes du tableau ou de la liste, rien pour un bloc de texte. */
+const count = (s: GuideSection) => s.table?.rows.length || s.items.length || 0;
+const pad = (n: number) => String(n).padStart(2, '0');
+/* Colonnes du tableau d'écrans : nom, régie ou lieu, format, pourquoi (avec source). En-têtes du tableau = étiquettes. */
+const screenCard = (head: string[], row: string[]) => ({
+  name: row[0],
+  facts: row.slice(1, -1).map((value, i) => ({ label: head[i + 1] ?? '', value })).filter((f) => f.value),
+  why: row[row.length - 1],
+  whyLabel: head[head.length - 1] ?? '',
+});
+const prose = 'prose-kosmo max-w-none text-body-medium text-(--body-soft) [&_strong]:text-black';
+---
+
+<div id="guide" class="scroll-mt-(--nav-inset)">
+  <Section data-fade="trigger">
+    <Eyebrow label={`${city} guide`} />
+    <div class="mt-(--head-gap) grid grid-cols-2 gap-12 max-lg:grid-cols-1 max-lg:gap-8">
+      <div class="flex flex-col gap-6">
+        <h2 data-stagger-text class="heading-h3"><TwoTone text={heading} /></h2>
+        <p data-fade="target" class="max-w-(--head-intro-max) text-body-medium text-(--body-soft)">{intro}</p>
+      </div>
+      <nav data-fade="target" aria-labelledby="guide-contents" class="self-end">
+        <div id="guide-contents" class="text-tagline text-(--label-color)">In this guide</div>
+        <ol class="mt-4 flex flex-col border-t border-line">
+          {
+            sections.map((s, i) => (
+              <li class="border-b border-line">
+                <a href={`#${s.id}`} class="group flex items-center gap-3 py-3">
+                  <span class="text-tagline text-(--label-color)">{pad(i + 1)}</span>
+                  <span class="min-w-0 flex-1 text-body-medium font-medium" set:html={s.heading} />
+                  {count(s) > 0 && <span class="chip shrink-0">{count(s)}</span>}
+                  <span class="grid size-(--button-sm-height) shrink-0 place-items-center rounded-sm bg-white shadow-(--card-ring-strong) transition-colors duration-(--duration-color) group-hover:bg-acid" aria-hidden="true">
+                    <Icon name="chevron-down" class="size-(--button-icon)" />
+                  </span>
+                </a>
+              </li>
+            ))
+          }
+        </ol>
+      </nav>
+    </div>
+  </Section>
+  {
+    sections.map((s, i) => {
+      const overline = OVERLINE[s.kind];
+      const head = (
+        <>
+          <Eyebrow label={overline} />
+          <h2 data-stagger-text class="mt-(--head-gap) heading-h3 max-w-(--measure-2xl)" set:html={s.heading} />
+        </>
+      );
+      const before = s.paragraphs.length > 0 && (
+        <div data-fade="target" class:list={[prose, 'mt-6 max-w-(--measure-2xl)']}>
+          {s.paragraphs.map((p) => <p set:html={p} />)}
+        </div>
+      );
+      const after = s.after.length > 0 && (
+        <div data-fade="target" class:list={[prose, 'mt-10 max-w-(--measure-2xl)']}>
+          {s.after.map((p) => <p set:html={p} />)}
+        </div>
+      );
+
+      if (s.kind === 'screens' && s.table)
+        return (
+          <Section id={s.id} data-fade="trigger" class="scroll-mt-(--nav-inset)">
+            {head}
+            {before}
+            <ol data-fade="target" class="mt-10 grid grid-cols-3 gap-4 max-lg:grid-cols-2 max-md:grid-cols-1">
+              {s.table.rows.map((row, n) => {
+                const card = screenCard(s.table!.head, row);
+                return (
+                  <li class="card flex flex-col p-5 max-sm:p-4">
+                    {(() => {
+                      const photo = photoOf(card.name);
+                      return (
+                        photo && (
+                          <figure class="mb-5">
+                            <div class="aspect-video overflow-hidden rounded-sm bg-black">
+                              <img
+                                src={`/images/cities/screens/${photo.file}-800.webp`}
+                                srcset={`/images/cities/screens/${photo.file}-800.webp 800w, /images/cities/screens/${photo.file}-1600.webp 1600w`}
+                                sizes="(max-width: 767px) 100vw, 340px"
+                                alt={photo.alt}
+                                loading="lazy"
+                                class="size-full object-cover"
+                              />
+                            </div>
+                            {/* Crédit : « Photo » traduit, auteur et licence jamais traduits (translate="no"). */}
+                            <figcaption class="mt-2 text-tiny text-(--label-color)">
+                              <span>Photo</span>{' '}
+                              <a translate="no" href={photo.source} target="_blank" rel="noopener" class="underline hover:text-black">
+                                {photo.author}, {photo.licence}
+                              </a>
+                            </figcaption>
+                          </figure>
+                        )
+                      );
+                    })()}
+                    <span class="text-tagline text-(--label-color)">{pad(n + 1)}</span>
+                    <h3 class="mt-3 heading-h6" set:html={card.name} />
+                    <dl class="mt-4 flex flex-col border-t border-line">
+                      {card.facts.map((fact) => (
+                        <div class="flex flex-col gap-1 border-b border-line py-3">
+                          <dt class="text-tagline text-(--label-color)" set:html={fact.label} />
+                          <dd class="text-small" set:html={fact.value} />
+                        </div>
+                      ))}
+                    </dl>
+                    <div class="mt-auto flex gap-3 pt-4">
+                      <span class="grid size-(--button-sm-height) shrink-0 place-items-center rounded-sm bg-acid" aria-hidden="true">
+                        <Icon name="check" class="size-(--button-icon)" />
+                      </span>
+                      <p class="prose-kosmo text-small text-(--body-soft)" set:html={card.why} />
+                    </div>
+                  </li>
+                );
+              })}
+            </ol>
+            {after}
+          </Section>
+        );
+
+      if (s.kind === 'campaigns')
+        return (
+          <Section id={s.id} tone="dark" data-fade="trigger" class="scroll-mt-(--nav-inset)">
+            {head}
+            {before}
+            <ol data-fade="target" class="mt-10 grid grid-cols-3 gap-4 max-lg:grid-cols-2 max-md:grid-cols-1">
+              {s.items.map((item, n) => (
+                <li class="card-dark flex flex-col gap-3 p-5 max-sm:p-4">
+                  <span class="text-tagline text-(--label-color)">{pad(n + 1)}</span>
+                  <p class="prose-kosmo text-body-medium text-(--body-soft) [&_strong]:text-white" set:html={item} />
+                </li>
+              ))}
+            </ol>
+            {after}
+          </Section>
+        );
+
+      if (s.kind === 'calendar')
+        return (
+          <Section id={s.id} data-fade="trigger" class="scroll-mt-(--nav-inset)">
+            {head}
+            {before}
+            <ol data-fade="target" class="mt-10 grid grid-cols-4 gap-4 max-lg:grid-cols-2 max-sm:grid-cols-1">
+              {s.items.map((item, n) => (
+                <li class="card flex flex-col gap-4 p-5 max-sm:p-4">
+                  <div class="flex items-center justify-between gap-3">
+                    <span class="grid size-(--way-icon) shrink-0 place-items-center rounded-sm bg-acid" aria-hidden="true">
+                      <Icon name="calendar" class="size-(--button-icon)" />
+                    </span>
+                    <span class="text-tagline text-(--label-color)">{pad(n + 1)}</span>
+                  </div>
+                  <p class="prose-kosmo text-small text-(--body-soft) [&_strong]:text-black" set:html={item} />
+                </li>
+              ))}
+            </ol>
+            {after}
+          </Section>
+        );
+
+      if (s.kind === 'rules' && s.items.length > 0)
+        return (
+          <Section id={s.id} data-fade="trigger" class="scroll-mt-(--nav-inset)">
+            {head}
+            {before}
+            <ul data-fade="target" class="mt-10 grid grid-cols-2 gap-x-10 border-t border-line max-lg:grid-cols-1">
+              {s.items.map((item) => (
+                <li class="flex gap-4 border-b border-line py-5">
+                  <span class="grid size-(--button-sm-height) shrink-0 place-items-center rounded-sm bg-white shadow-(--card-ring-strong)" aria-hidden="true">
+                    <Icon name="check" class="size-(--button-icon)" />
+                  </span>
+                  <p class={prose} set:html={item} />
+                </li>
+              ))}
+            </ul>
+            {after}
+          </Section>
+        );
+
+      if ((s.kind === 'owners' || s.kind === 'costs') && s.items.length > 0)
+        return (
+          <Section id={s.id} data-fade="trigger" class="scroll-mt-(--nav-inset)">
+            {head}
+            {before}
+            <ol data-fade="target" class="mt-10 grid grid-cols-2 gap-x-10 border-t border-line max-lg:grid-cols-1">
+              {s.items.map((item, n) => (
+                <li class="flex gap-4 border-b border-line py-5">
+                  <span class="w-6 shrink-0 pt-1 text-tagline text-(--label-color)">{pad(n + 1)}</span>
+                  <p class={prose} set:html={item} />
+                </li>
+              ))}
+            </ol>
+            {after}
+          </Section>
+        );
+
+      /* Marché et sections libres : titre à gauche, texte (et tableau éventuel) à droite. */
+      return (
+        <Section id={s.id} data-fade="trigger" class="scroll-mt-(--nav-inset)">
+          <Eyebrow label={overline} />
+          <div class="mt-(--head-gap) grid grid-cols-2 gap-10 max-lg:grid-cols-1 max-lg:gap-6">
+            <h2 data-stagger-text class="heading-h3 lg:sticky lg:top-(--process-sticky-top) lg:self-start" set:html={s.heading} />
+            <div data-fade="target" class={prose}>
+              {s.paragraphs.map((p) => <p set:html={p} />)}
+              {s.table && (
+                <table>
+                  <thead>
+                    <tr>{s.table.head.map((h) => <th set:html={h} />)}</tr>
+                  </thead>
+                  <tbody>
+                    {s.table.rows.map((row) => (
+                      <tr>{row.map((cell) => <td set:html={cell} />)}</tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
+              {s.items.length > 0 && (
+                <ul class="!list-none border-t border-line !p-0">
+                  {s.items.map((item) => <li class="!m-0 border-b border-line py-4" set:html={item} />)}
+                </ul>
+              )}
+              {s.after.map((p) => <p set:html={p} />)}
+            </div>
+          </div>
+        </Section>
+      );
+    })
+  }
+</div>

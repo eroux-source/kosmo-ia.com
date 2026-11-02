@@ -1,0 +1,1059 @@
+/*
+ * KOSMO® — Design tokens (système « Cofounder », 22/10/2026)
+ * ------------------------------------------------------------------
+ * SEUL fichier du projet autorisé à contenir des valeurs brutes
+ * (couleurs, tailles, espacements, rayons, durées…).
+ *
+ * A. Tokens de DESIGN-SYSTEM.md : nouveau système, relevé sur la maquette de la
+ *    home validée (docs/exports/redesign-cofounder/src/home.css).
+ * B. Compléments par composant. Les noms viennent souvent des classes Webflow
+ *    de /reference (export de l'ancien site) ; les valeurs suivent la charte A.
+ *    En cas de conflit entre la charte et /reference, la charte gagne.
+ *
+ * Tailwind lit ces variables via `@theme inline` (src/styles/global.css) :
+ * une seule source de vérité, pas de duplication.
+ */
+
+:root {
+  /* ================================================================
+   * A. DESIGN-SYSTEM.md : système « Cofounder » (maquette de la home validée
+   *    le 21/10/2026, docs/exports/redesign-cofounder) + DA KOSMO®.
+   *    Design à plat : ni ombre, ni relief, ni dégradé décoratif, ni flou.
+   * ================================================================ */
+
+  /* --- Couleurs --------------------------------------------------- */
+  --kosmo-acid: #D6F10E;
+  --kosmo-black: #1A1A1A;   /* noir KOSMO® (texte, fonds sombres, boutons) */
+  --kosmo-white: #FFFFFF;   /* cartes, boutons clairs */
+  --kosmo-paper: #F1F2F1;   /* fond de page (papier neutre) */
+  --surface-dark: #222222;  /* bloc posé sur un fond noir (footer, cartes sombres) */
+  --grey-400: #B0B0B0;
+  --grey-200: #E7E7E7;
+  --kosmo-orange: #FF5310;
+
+  /* Encres dérivées (texte secondaire, filets) */
+  --ink-soft: color-mix(in srgb, var(--kosmo-black) 50%, transparent);
+  --ink-faint: color-mix(in srgb, var(--kosmo-black) 34%, transparent);
+  --line: color-mix(in srgb, #000000 8%, transparent);
+  --line-strong: color-mix(in srgb, #000000 14%, transparent);
+  --on-dark: color-mix(in srgb, var(--kosmo-white) 92%, transparent);
+  --on-dark-soft: color-mix(in srgb, var(--kosmo-white) 55%, transparent);
+  --line-dark: color-mix(in srgb, var(--kosmo-white) 14%, transparent);
+  --glass-dark: color-mix(in srgb, var(--kosmo-white) 14%, transparent);  /* bouton « ghost » et segments de nav sur image */
+  --glass-dark-hover: color-mix(in srgb, var(--kosmo-white) 22%, transparent);
+  /* Deuxième ton des titres : la couleur du texte à 50 % (s'adapte au fond clair ou sombre) */
+  --tone-soft: color-mix(in srgb, currentColor 52%, transparent);
+
+  /* Palette des étiquettes et onglets (palette de référence de Mehdi, HORS CHARTE, à valider : décision tag-palette) */
+  --tag-orange: #FF340C;
+  --tag-red: #E0070F;
+  --tag-pink: #F03172;
+  --tag-rose: #E990A2;
+  --tag-amber: #FFAE00;
+  --tag-olive: #CAC307;
+  --tag-green: #0F4A42;
+  --tag-sky: #98B3EA;
+  --tag-cream: #F9F3DB;
+  --tag-blue: #273287;
+  --tag-brown: #441B07;
+
+  /* --- Typographie : familles -------------------------------------- */
+  --font-family-sans: "Hanken Grotesk", system-ui, sans-serif;
+  --font-family-mono: "Inconsolata", ui-monospace, monospace;
+
+  /* --- Typographie : styles (desktop / tablette 991px / mobile 767px)
+   * Titres en capitales, deux tons (le second à 50 %), interlignage serré. */
+  --h1-size: 3.5rem;          /* 56 px */
+  --h1-weight: 800;
+  --h1-leading: 1;
+  --h1-tracking: -0.03em;
+
+  --h2-size: 3rem;            /* titre de page intérieure mis en avant (contact, deck) */
+  --h2-weight: 800;
+  --h2-leading: 1.02;
+  --h2-tracking: -0.03em;
+
+  --h3-size: 2.5rem;          /* 40 px : titre de section (H2 de la maquette) */
+  --h3-size-tablet: 2rem;
+  --h3-size-mobile: 1.75rem;
+  --h3-weight: 800;
+  --h3-leading: 1.05;
+  --h3-tracking: -0.03em;
+
+  --h4-size: 2rem;
+  --h4-size-tablet: 1.75rem;
+  --h4-size-mobile: 1.5rem;
+  --h4-weight: 800;
+  --h4-leading: 1.05;
+  --h4-tracking: -0.03em;
+
+  --display-size: 3.5rem;     /* H1 du hero : 56 / 44 / 36 px */
+  --display-weight: 800;
+
+  --text-large-size: 1.0625rem; /* 17 px */
+  --text-medium-size: 0.9375rem; /* 15 px : texte courant */
+  --text-small-size: 0.875rem;  /* 14 px */
+  --text-body-weight: 500;
+  --text-body-leading: 1.4;
+  --text-body-tracking: 0.01em;
+
+  /* Étiquettes (surtitres, légendes) : Inconsolata capitales, lettres resserrées */
+  --tagline-size: 0.75rem;    /* 12 px */
+  --tagline-weight: 400;
+  --tagline-tracking: -0.025em;
+
+  /* --- Layout ------------------------------------------------------ */
+  --layout-container: 65.75rem; /* 1052 px */
+  --gutter: 1.25rem;            /* 20 px de chaque côté, à toutes les tailles */
+  --section-md-y: 3.5rem;       /* deux sections « md » qui se suivent = 112 px */
+  --section-lg-y: 7rem;
+  --section-md-y-tablet: 2.75rem;
+  --section-lg-y-tablet: 5.5rem;
+  --hero-height: 100svh;       /* svh : sur mobile, la hauteur visible avec la barre d'adresse (100vh passait dessous) */
+  --hero-min-height: 42.5rem;
+  --hero-pad-top: 20vh;
+  --hero-pad-bottom: 7.5rem;    /* texte et CTA posés 120 px au-dessus du bas */
+
+  /* Breakpoints Webflow 991 / 767 / 479px : déclarés plus bas dans @theme
+     (une media query ne peut pas lire une variable CSS). */
+
+  /* --- Rayons : 4 px maximum, 2 px pour un bloc posé dans un bloc ---- */
+  --rounded-default: 2px;   /* bloc imbriqué, étiquettes, pastilles, images dans une carte */
+  --rounded-sm: 4px;        /* boutons, cartes, panneaux */
+  --rounded-card-sm: 4px;
+  --rounded-card-md: 4px;
+  --rounded-card-lg: 4px;
+  --rounded-card-xl: 4px;
+  --rounded-pill: 99rem;    /* uniquement les points ronds (repères, puces) */
+
+  /* --- Boutons « Get started » -------------------------------------
+   * Texte à gauche, bloc chevron à droite (33 px, retrait 4 px, rayon 2 px) qui
+   * s'élargit sur tout le bouton au survol pendant que le texte s'efface. */
+  --button-height: 2.5625rem;   /* 41 px */
+  --button-pad-y: 0;
+  --button-pad-x: 0.875rem;     /* 14 px */
+  --button-font-size: 0.875rem; /* 14 px */
+  --button-font-weight: 500;
+  --button-tracking: -0.01em;
+  --button-go: 2.0625rem;       /* bloc chevron : 33 px */
+  --button-go-inset: 0.25rem;
+  --button-go-surface: color-mix(in srgb, currentColor 15%, transparent);
+  --button-icon: 1rem;
+  --button-sm-height: 1.875rem; /* 30 px : flèche des cartes cas */
+  --button-pad-go: calc(var(--button-go) + var(--button-go-inset) + var(--button-pad-x)); /* texte → bloc = marge gauche */
+  --button-go-full: calc(100% - 2 * var(--button-go-inset));
+  --button-go-press: 0.95;
+  --button-hover-opacity: 0.86;
+
+  /* --- Effets ------------------------------------------------------ */
+  --texture-noise: none;        /* design à plat : la texture noise de la charte Webflow est retirée */
+  --duration-color: 0.2s;
+  --duration-surface: 0.3s;
+  --duration-surface-slow: 0.5s;
+  --ease-kosmo: cubic-bezier(0.22, 1, 0.36, 1); /* sortie douce de la maquette (survols, menus, cartes) */
+
+  /* Cartes : blanches sur le papier, liseré 1 px intérieur (à plat) */
+  --card-ring: inset 0 0 0 1px var(--line);
+  --card-ring-strong: inset 0 0 0 1px var(--line-strong);
+  --card-ring-dark: inset 0 0 0 1px var(--line-dark);
+  --card-ring-acid: inset 0 0 0 1.5px var(--kosmo-acid);
+  --card-ring-black: inset 0 0 0 1.5px var(--kosmo-black);
+  --hairline: 1px;
+  --card-pad: 0.375rem;
+  --chip-height: 1.375rem;      /* étiquette : 22 px */
+  --chip-pad: 0.4375rem;
+  --chip-gap: 0.375rem;
+  --chip-tracking: 0.04em;
+  --chip-surface: color-mix(in srgb, var(--grey-200) 12%, var(--kosmo-white));         /* carte « fenêtre » : 6 px autour du média */
+
+  /* Fond « Dark Dot Matrix » des sections sombres : deux trames de points décalées, pas de 10 px */
+  --dot-matrix: radial-gradient(circle at 25% 25%, #323232 0.5px, transparent 1px), radial-gradient(circle at 75% 75%, #212121 0.5px, transparent 1px);
+  --dot-matrix-size: 10px 10px;
+
+  /* Bords pixel tramés entre une section claire et une section sombre (canvas, src/scripts/dither.ts) */
+  --dither-height: 4.5rem;      /* 72 px */
+  --dither-pixel: 2;            /* taille d'un pixel de la lisière (px CSS) */
+  --section-dark-md-y: calc(var(--section-md-y) + var(--dither-height)); /* section sombre : la lisière ne recouvre pas le contenu */
+  --section-dark-lg-y: calc(var(--section-lg-y) + var(--dither-height));
+  --section-dark-md-y-tablet: calc(var(--section-md-y-tablet) + var(--dither-height));
+  --section-dark-lg-y-tablet: calc(var(--section-lg-y-tablet) + var(--dither-height));
+
+  /* Surtitre : étiquette mono + filet qui se trace jusqu'au bord droit */
+  --eyebrow-gap: 1rem;
+  --head-gap: 1.75rem;          /* surtitre → titre */
+  --head-intro-max: 26.25rem;   /* intro à droite du titre : 420 px */
+
+  /* ================================================================
+   * B. Compléments relevés dans /reference (charte muette)
+   * ================================================================ */
+
+  /* Titres intermédiaires utilisés par les sections de la home */
+  --h5-size: 1.5rem;          /* titres de blocs en capitales (CTA sous le dossier, timbres) */
+  --h5-size-tablet: 1.375rem;
+  --h5-size-mobile: 1.25rem;
+  --h5-weight: 800;
+  --h5-leading: 1.1;
+  --h5-tracking: -0.03em;
+
+  --h6-size: 1.25rem;         /* titre de carte (.h3 de la maquette) : 20 px, casse normale */
+  --h6-size-mobile: 1.125rem;
+  --h6-weight: 500;
+  --h6-leading: 1.15;
+  --h6-tracking: -0.02em;
+
+  --h6-feature-size: 1.375rem; /* titre du bloc image du menu Services (22 px, capitales) */
+  --h6-feature-leading: 1.05;
+
+  --display-leading: 1;        /* H1 du hero */
+  --display-tracking: -0.03em;
+  --display-size-tablet: 2.75rem;
+  --display-size-mobile: 2.25rem;
+
+  --text-xlarge-size: 1.25rem; /* .text-size-xlarge (labels villes, mono) */
+  --text-xlarge-size-mobile: 1.125rem;
+  --text-xlarge-tracking: -0.03em;
+  --text-xsmall-size: 0.75rem;   /* 12 px */
+  --text-caption-size: 0.8125rem; /* 13 px : liens du footer, descriptions du menu */
+  --text-tiny-size: 0.6875rem;   /* 11 px : étiquettes de la carte, puces */
+  --text-nav-leading: 1.75;    /* .nav_link / .text-size-small-2 */
+  --text-control-leading: 1.5; /* .faq5_accordion-trigger, .button-2 */
+  --text-button-leading: 1.25rem; /* hérité du body Webflow (20px) */
+  --label-weight: 500;         /* libellés de boutons (casse normale) */
+  --medium-weight: 500;
+  --semibold-weight: 600;
+  --bold-weight: 700;
+  --heavy-weight: 800;
+
+  /* Largeurs max relevées */
+  --measure-2xs: 20rem;  /* .footer5_links */
+  --footer-links-max: 44rem; /* trois colonnes de liens + réseaux (référence : 28rem pour deux) */
+  --measure-xs: 24rem;   /* .max-width-xsmall */
+  --measure-sm: 29rem;   /* .faq5_heading-wrapper */
+  --measure-md: 30rem;   /* .hero4_content-wrapper */
+  --measure-lg: 32rem;   /* .footer5_cta */
+  --measure-xl: 35rem;   /* .process3_heading-wrapper */
+  --measure-2xl: 44rem;  /* .hero4_heading-wrapper, .process3_subheading-wrapper */
+  --measure-vsl: 60rem;  /* VSL 3DOOH en 4:3 : 960 px de large, 720 px de haut (pas d'équivalent Webflow, demande de Mehdi du 09/10/2026) */
+  --measure-dropdown: 37.5rem; /* .nav_dropdown-list.is-medium */
+
+  /* Nav fixe : transparente sur un hero sombre (logo blanc, segments vitrés), papier une fois la page défilée */
+  --nav-inset: 4.25rem;            /* marge de défilement des ancres : hauteur de la nav compacte */
+  --nav-height: 5.8125rem;         /* 93 px au-dessus du hero */
+  --nav-height-solid: 4.25rem;     /* 68 px une fois défilée, ou sur les pages intérieures */
+  --nav-pad: var(--gutter);
+  --nav-surface-solid: var(--kosmo-paper);
+  --nav-border: var(--line);
+  --nav-shadow: none;
+  --nav-seg-height: var(--button-height);
+  --nav-seg-pad: 0.25rem;
+  --nav-item-height: 2.0625rem;    /* 33 px : lien dans un segment */
+  --nav-item-pad: 0.625rem;
+  --nav-divider-height: 0.875rem;
+  --nav-divider-opacity: 0.2;
+  --lang-pill-height: calc(var(--footer-social) - var(--spacing)); /* 24 px : avec le cadre de 2 px, la hauteur des icônes réseaux du footer */
+  --lang-pill-height-menu: calc(var(--button-height) - var(--spacing)); /* menu mobile : segment à la hauteur des boutons (41 px) */
+  --lang-surface-dark: color-mix(in srgb, var(--kosmo-white) 8%, transparent);
+  --lang-on-dark: color-mix(in srgb, var(--kosmo-white) 16%, transparent);
+  --lang-icon: 0.875rem;
+  --lang-icon-opacity: 0.7;
+  --nav-rule: inset 0 -1px 0 var(--nav-border); /* filet sous la nav papier */
+  --nav-wordmark-height: 1.1875rem; /* logo KOSMO® en toutes lettres, à gauche de la barre */
+  --nav-group-gap: 0.5rem;         /* entre les segments et les boutons d'action */
+  --nav-dropdown-gap: 0.75rem;
+  --nav-dropdown-shift: -6px;
+  /* Menu Services en bandes photo (prototype docs/exports/nav-dropdown v01, variante C validée par Mehdi le 23/10/2026) */
+  --nav-mega-width: 56rem;
+  --nav-strip-height: 18rem;
+  --nav-strip-gap: 0.5rem;
+  --nav-strip-grow: 3.2;            /* la bande survolée prend 3,2 parts, les autres 1 */
+  --nav-strip-pad: 1rem;
+  --nav-strip-leading: 1.25;
+  --nav-strip-desc-opacity: 0.75;
+  --nav-strip-zoom: 1.06;
+  --nav-strip-dim: grayscale(1) brightness(0.7); /* bandes repliées : noir et blanc */
+  --nav-strip-go: 2rem;             /* carré acide avec flèche */
+  --nav-strip-go-from: 0.6;
+  --nav-strip-text-shift: 0.5rem;
+  --nav-strip-text-delay: 0.15s;
+  --nav-strip-ratio-mobile: 4 / 3;
+  --nav-more-icon: 2rem;
+  --nav-more-glyph: 1.125rem;
+  --nav-menu-button-size: var(--button-height);
+  --nav-z: 999;
+
+  /* Boutons « slide » (.button_slide) */
+  --button-slide-pad: 0.25rem;
+  --button-slide-track-end: 3.5rem;
+  --button-slide-circle: 2.5rem;
+  --button-slide-icon: 1rem;
+  --button-outline-width: 1px;
+  --button-alt-pad-y: 0.75rem;   /* .button-2 */
+  --button-alt-pad-x: 1.5rem;
+
+  /* Hero (.hero4_*) */
+  --hero-pad-top-tablet: 8rem;
+  --hero-pad-top-mobile: 7rem; /* la nav fixe (93 px) doit rester libre au-dessus du badge */
+  --float-bottom-mobile: calc(var(--cta-bar-height) + var(--float-inset)); /* WhatsApp au-dessus de la barre CTA */
+  --hero-pad-bottom-mobile: calc(var(--dither-height) + 2.5rem); /* boutons au-dessus de la lisière tramée (et de la barre CTA, même hauteur) */
+  --hero-overlay: linear-gradient(90deg, color-mix(in srgb, var(--kosmo-black) 55%, transparent), transparent 55%), linear-gradient(0deg, color-mix(in srgb, var(--kosmo-black) 60%, transparent), transparent 45%);
+  --hero-overlay-photo: linear-gradient(90deg, color-mix(in srgb, var(--kosmo-black) 78%, transparent), transparent 62%), linear-gradient(0deg, color-mix(in srgb, var(--kosmo-black) 72%, transparent), transparent 50%); /* photo claire (pages de service) : voile plus dense pour le titre en deux tons */
+  --hero-overlay-mobile: linear-gradient(0deg, color-mix(in srgb, var(--kosmo-black) 92%, transparent) 0%, color-mix(in srgb, var(--kosmo-black) 75%, transparent) 55%, color-mix(in srgb, var(--kosmo-black) 15%, transparent) 100%);
+  --hero-award-max: 30%;
+  --hero-award-max-mobile: 25%;
+  --hero-award-height: 3.25rem;    /* badge « Pioneer in mixed reality » : 52 px */
+  --hero-title-max: 35rem;         /* 560 px */
+  --hero-sub-max: 27.5rem;         /* 440 px */
+  --hero-image-position: 62% 40%;
+  --hero-image-position-right: 78% 50%; /* photos de header des pages villes : l'équipe est dans la moitié droite, gardée dans le cadre sur mobile */
+  --hero-cols: minmax(0, 1fr) auto;  /* texte à gauche, lecteur + CTA à droite */
+  --hero-chip-surface: color-mix(in srgb, var(--kosmo-black) 78%, transparent);
+  --hero-zoom: 1.08;               /* entrée : l'image se pose (1.08 → 1) */
+  /* Mini lecteur du showreel dans le hero (16:9, son + agrandir) */
+  --vsl-mini-width: 27.5rem;       /* 440 px */
+  --vsl-button: 2rem;
+  --vsl-button-big: 2.5rem;
+  --vsl-inset: 0.5rem;
+  --vsl-big-width: min(84vw, calc(84vh * 16 / 9));
+  --vsl-scrim: color-mix(in srgb, var(--kosmo-black) 86%, transparent);
+  --vsl-z: 1000;
+
+  /* Eyebrow (.eyebrow_base) */
+  --eyebrow-track: var(--line-strong);
+  --eyebrow-track-dark: var(--line-dark);
+  --label-color: var(--ink-soft);       /* étiquettes et textes secondaires, fond clair */
+  --body-soft: var(--ink-soft);         /* paragraphes d'intro, fond clair */
+
+  /* Bande de logos (.logo_grid / .logo_svg) */
+  --logo-cols: repeat(7, auto);
+  --logo-cols-mobile: repeat(4, auto);
+  --logo-cell: 3.5rem;
+  --logo-ink: color-mix(in srgb, var(--kosmo-black) 42%, transparent); /* logos clients au repos, noirs au survol */
+  --logo-grid-max: 56.25rem;  /* 900 px */
+  --logo-glyph-height: 1em; /* <style> .logo_wrapper svg { height: 1em } */
+  --logo-glyph: 2rem;
+  --logo-lift: -5px;
+  --logo-gap-x: 3.5rem;
+  --logo-gap-x-tablet: 2.3rem;
+  --logo-wordmark: 1.5rem;  /* nom de marque en lettres tant que le SVG officiel n'est pas déposé */
+  --proof-logo: 1rem;       /* logos des marques dans la ligne de preuve du hero et sur /careers */
+  --logo-detail: var(--kosmo-black); /* détails intérieurs des logos à plaque (lettres Pringles, fond derrière Miele / Lego) */
+
+  /* FAQ (.faq5_*) */
+  --faq-cta-gap: 6.5rem;
+  --faq-line: 2px;
+  --faq-divider: var(--line-dark);
+
+  /* Formulaire (.form_input.is-alternate) */
+  --input-min-height: 3.125rem;
+  --input-pad-y: 0.875rem;
+  --input-pad-x: 1.25rem;
+  --input-pad-icon: 2.75rem;
+  --input-icon-inset: 0.75rem;
+  --textarea-min-height: 10rem;
+  --input-surface: color-mix(in srgb, var(--kosmo-white) 8%, transparent);
+  --input-border-hover: color-mix(in srgb, var(--kosmo-white) 20%, transparent);
+  --input-border-focus: color-mix(in srgb, var(--kosmo-white) 35%, transparent);
+
+  /* Contact : bandeau « Got an idea? » entre deux filets, puis trois cartes blanches sur fond sombre */
+  --contact-cta-pad-tablet: 8%;
+  --contact-band-pad: 1.75rem;
+  --way-pad: 1.125rem;             /* cartes « canal » : 18 px */
+  --way-icon: 2rem;
+
+  /* Footer : bloc central #222 (colonnes + accroche), bande de points acides tramés dont le logo KOSMO® est le vide */
+  --footer-pad: 1.75rem;           /* 28 px */
+  --footer-band-height: 15rem;     /* 240 px */
+  --footer-band-height-mobile: 10rem;
+  --footer-band-gap: 2.5rem;
+  --footer-mark-sink: 5%;          /* 5 % de la hauteur du logo caché sous le bas du bloc */
+  --footer-mark-rise: 30%;         /* le logo monte en place quand la bande entre à l'écran */
+  --footer-spot: 190px;            /* projecteur qui suit la souris sur les points */
+  --footer-dots-mask: radial-gradient(circle, #000 0.9px, transparent 1.3px), url('data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27360%27%20height%3D%27240%27%3E%3Cdefs%3E%3ClinearGradient%20id%3D%27g%27%20x1%3D%270%27%20y1%3D%270%27%20x2%3D%270%27%20y2%3D%271%27%3E%3Cstop%20offset%3D%270.04%27%20stop-color%3D%27%23000%27%2F%3E%3Cstop%20offset%3D%270.96%27%20stop-color%3D%27%23fff%27%2F%3E%3C%2FlinearGradient%3E%3Cfilter%20id%3D%27f%27%20x%3D%270%27%20y%3D%270%27%20width%3D%27100%25%27%20height%3D%27100%25%27%20color-interpolation-filters%3D%27sRGB%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%270.45%27%20numOctaves%3D%272%27%20seed%3D%277%27%20stitchTiles%3D%27stitch%27%20result%3D%27n%27%2F%3E%3CfeColorMatrix%20in%3D%27n%27%20type%3D%27matrix%27%20values%3D%271%200%200%200%200%201%200%200%200%200%201%200%200%200%200%200%200%200%200%201%27%20result%3D%27ng%27%2F%3E%3CfeComposite%20in%3D%27SourceGraphic%27%20in2%3D%27ng%27%20operator%3D%27arithmetic%27%20k2%3D%270.5%27%20k3%3D%270.5%27%20result%3D%27s%27%2F%3E%3CfeComponentTransfer%20in%3D%27s%27%20result%3D%27t%27%3E%3CfeFuncR%20type%3D%27discrete%27%20tableValues%3D%270%201%27%2F%3E%3C%2FfeComponentTransfer%3E%3CfeColorMatrix%20in%3D%27t%27%20type%3D%27matrix%27%20values%3D%270%200%200%200%201%200%200%200%200%200.5%200%200%200%200%200%201%200%200%200%200%27%2F%3E%3C%2Ffilter%3E%3C%2Fdefs%3E%3Crect%20width%3D%27100%25%27%20height%3D%27100%25%27%20fill%3D%27url%28%23g%29%27%20filter%3D%27url%28%23f%29%27%2F%3E%3C%2Fsvg%3E');
+  --footer-dots-size: 4px 4px, 360px 240px;
+  --footer-dots-drift: 360px;      /* la trame dérive d'une tuile en 40 s */
+  --footer-cta-max: 23.75rem;      /* 380 px */
+  --footer-cols: repeat(4, auto) 1fr; /* quatre colonnes de liens, l'accroche à droite */
+  --footer-link-leading: 1.2;
+  --footer-social: 1.75rem;        /* 28 px */
+  --footer-drift-duration: 40s;
+  --footer-mark-range: entry 20% entry 100%;
+  --footer-noise-mask: linear-gradient(to top, var(--kosmo-black) 25%, transparent 100%);
+  --footer-logo-mask: linear-gradient(var(--kosmo-black) 25%, transparent 100%);
+  --footer-logo-opacity: 0.5;
+
+  /* Overlays */
+  --overlay-soft: color-mix(in srgb, var(--kosmo-black) 20%, transparent);
+  --overlay-caption: linear-gradient(transparent, color-mix(in srgb, var(--kosmo-black) 80%, transparent));
+  --overlay-caption-pad: 7.5%;
+
+  /* Process (.process3_*) */
+  --process-dot: 5px;
+  --process-card-cols: 0.75fr 1.25fr;
+  --project-cols: var(--gallery-slide-width) minmax(0, 1fr); /* page projet FOOH : film vertical à largeur fixe, fiche à droite */
+  --project-logo-height: 2rem; /* logo client au-dessus de la fiche */
+  --careers-cols: 2fr 1fr 1fr 1fr 1.6fr; /* /careers : rôle, équipe, type, lieu, candidature */
+  --careers-key: 9rem;
+  --process-slide-width: 90%;
+  --process-thumb-width: 18rem;
+  --process-thumb-width-tablet: 10rem;
+  --process-thumb-gap: 0.625rem;
+  --process-label-shift: 0.5rem;
+  --process-label-duration: 0.4s;
+
+  /* Réalisations (.gallery1_*) */
+  --gallery-slide-width: 23rem;
+  --gallery-slide-width-mobile: 80%;
+  --gallery-slide-height: 28rem;
+  --gallery-card-height: 25rem;
+  --gallery-mask-height: 100%; /* réécrit par slide (src/scripts/sliders.ts) */
+  --gallery-heading-max: 40rem;
+
+  /* Industries : nuage de tags magnétiques (pastilles de 2,3 em, images de 3,2 em, coins 2 px) */
+  --tag-cloud-height: 22.5rem;      /* 360 px */
+  --tag-cloud-height-mobile: 23.75rem;
+  --tag-size: clamp(1.125rem, 2.2vw, 1.875rem); /* 18 → 30 px */
+  --tag-height: 2.3em;
+  --tag-pad: 0.95em;
+  --tag-image: 3.2em;
+  --tag-image-wide: 4.8em;
+  --industries-card-border: 0.375rem; /* cadre noir des vidéos posées en biais (bloc concept), 6 px comme la marge des cartes */
+  --industries-card-border-tablet: 0.25rem;
+
+  /* Partenaires (.logo_carousel / .title-center / .logo_footnote) */
+  --partners-title-max: 49.5rem;
+  --partners-title-gap: 4rem;
+  --partners-title-gap-mobile: 3rem;
+  --partners-track-gap: 7.5rem;
+  --partners-track-margin: 7.5rem;
+  --partners-track-mask: linear-gradient(to right, transparent 0%, var(--kosmo-black) 20% 80%, transparent 100%);
+  --partners-footnote-max: 36.75rem;
+
+  /* Équipe (.team2_*) */
+  --team-pad-top: 4rem;
+  --team-pad-bottom: 2rem;
+  --team-header-max: 52rem; /* référence : 45rem ; élargi pour que « A MULTIDISCIPLINARY » tienne sur une ligne */
+  --team-header-gap: 4rem;
+  --team-header-gap-tablet: 2rem;
+  --team-card-width: 12.5rem;
+  --team-card-height: 15.625rem;
+  --team-card-gap: 1.5rem;
+  --team-card-gap-tablet: 1.25rem;
+  --team-overlay: linear-gradient(0deg, var(--kosmo-black), transparent 47%);
+  --team-overlay-rest: 0.6;   /* IX3 t-7b2a5b5d : 60 % → 100 % au survol */
+  --team-highlight-image: url("/images/hero/dino-black.png"); /* .text-span */
+
+  /* Avant / après (.bas-*) */
+  --compare-start: 50%;     /* fb-before-after-start="50" */
+  --compare-height: 460px;
+  --compare-handle: 42px;
+  --compare-line: 2px;
+  --compare-label-inset: 24px;
+  --compare-label-pad: 4px 12px;
+  --compare-icon: 24px;
+
+  /* Tableau comparatif (.table_*) */
+  --table-feature-col: 14rem;       /* colonne « caractéristique » : un peu d'air au-delà du mot le plus long */
+  --table-cols: minmax(var(--table-feature-col), max-content) minmax(0, 1fr) minmax(0, 1.3fr); /* ancienne / nouvelle façon larges */
+  --table-cols-tablet: max-content minmax(0, 1fr) minmax(0, 1fr);
+  --table-cols-mobile: 0.25fr 0.25fr 0.5fr;
+  --table-min-width: 37.5rem;
+  --table-icon: 16px;
+  /* Tableaux Markdown des articles (.prose-kosmo table) : même filet et même rythme que les lignes .table_row */
+  --prose-table-rule: 1px solid var(--grey-200); /* .table_row border-bottom */
+  --prose-table-cell-pad: 0.75rem 1rem 0.75rem 0; /* .table_row py-3 + gap-4 */
+  --prose-h3-gap: 2rem; /* .prose-kosmo h3 : FAQ et sous-parties, plus serré que les h2 (--section-md-y) */
+  --shift-title-max: 22rem; /* .content5_title-width */
+
+  /* Marqueur de copy manquante (outil interne, pas un style de marque) */
+  --placeholder-outline: 1px dashed var(--kosmo-orange);
+
+  /* Outils internes : badge DÉMO et placeholders visuels (règle 4 de CLAUDE.md) */
+  --demo-badge-pad-x: 0.375rem;
+  --placeholder-min-height: 12rem;
+
+  /* Barre CTA fixe mobile, bouton flottant WhatsApp */
+  --cta-bar-height: 4.5rem;
+  --cta-bar-z: 998;
+  --float-size: 3rem;            /* 48 px, carré acide rayon 4 px */
+  --float-icon: 1.375rem;
+  --float-inset: 1.25rem;
+  --float-z: 997;
+
+  /* Formulaire multi-étapes, embed de prise de rendez-vous */
+  --form-step-dot: 0.5rem;
+  --booking-min-height: 40rem;
+  --field-max: 32rem;
+
+  /* Bande de chiffres (.stat) — display de la charte, chiffres tabulaires */
+  --stat-size: 4rem;               /* 64 px */
+  --stat-leading: 1;
+  --stat-tracking: -0.04em;
+  --stat-tile-height: 13.25rem;    /* tuile de 212 px */
+  --stat-tile-height-mobile: 10.625rem;
+  --stat-label-max: 12.5rem;
+
+  /* Cartes cas / vidéos */
+  --case-card-radius: var(--rounded-sm);
+  --case-grid-cols: repeat(3, minmax(0, 1fr));
+  --case-grid-cols-tablet: repeat(2, minmax(0, 1fr));
+  --case-grid-cols-mobile: 1fr;
+  --testimonial-cols: repeat(3, minmax(0, 1fr));
+  --prose-max: 44rem;
+
+  /* Pages intérieures, process, blocs concept, deck */
+  --page-top-pad: 7.5rem;          /* hero /play : la nav fixe (93 px) + respiration */
+  --page-top-offset: calc(var(--nav-height-solid) + 1.5rem); /* pages intérieures : place de la nav papier, la première section ajoute son padding */
+  --footer-pad-top-tight: 0.75rem;
+  --footer-pad-top: calc(var(--dither-height) + 0.75rem); /* footer après une section claire : place de la lisière tramée */
+  --process-step-cols: 14rem minmax(0, 1fr);
+  /* Frise « how we work » (Process.astro) */
+  --timeline-min-width: 44rem;      /* en dessous, la frise défile horizontalement */
+  --timeline-row: 3.25rem;             /* hauteur d'une ligne de barre */
+  --timeline-bar: 2.75rem;
+  --timeline-pad: 3.5rem;           /* frise à même le fond : air au-dessus (sous le nom des semaines) et au-dessous des barres */
+  --timeline-guide: 1px dashed var(--grey-200);
+  --process-icon-size: 2.5rem;
+  --process-sticky-top: calc(var(--nav-inset) + 6rem);
+  /* « Our services » en liste : numéro, vignette réduite, texte, flèche */
+  --partner-icon: 1.375rem;
+    /* Cartes du journal (PostCard) */
+  --post-avatar: 2rem;
+  --post-image-scale: 1.08;
+  --post-overlay: 0.35;
+  --post-overlay-hover: 0.15;
+  /* Article du journal : texte à gauche, CTA sticky à droite */
+  --article-cols: minmax(0, 1fr) 20rem;
+  --contact-cols: minmax(0, 1fr) 26rem; /* /contact : contenu à gauche, formulaire sticky à droite */
+  --article-gap: 4rem;
+  /* Courbe impressions / temps (ReachCurve) : anneaux d'aire, retrait des phases non survolées, décalage d'entrée */
+  --chart-ring-outer: 0.15;
+  --chart-ring-mid: 0.35;
+  --chart-ring-inner: 0.85;
+  --chart-dim: 0.25;
+  --chart-band: color-mix(in srgb, var(--grey-200) 45%, transparent);
+  --chart-stagger: 0.35s;
+  --chart-legend-cols: 9rem minmax(0, 1fr); /* légende : phase à gauche, titre + texte à droite */
+  /* Témoignages en éventail (cartes décalées, la centrale en avant) */
+  --stagger-height: 34rem;
+  --stagger-height-mobile: 30rem;
+  --stagger-card: 22rem;
+  --stagger-card-mobile: 17rem;
+  --stagger-step: 0.66;      /* écart horizontal entre cartes, en fraction de carte */
+  --stagger-lift: 4rem;      /* la carte centrale monte */
+  --stagger-offset: 1rem;    /* les autres alternent haut / bas */
+  --stagger-tilt: 2.5deg;
+  --stagger-cut: 3rem;       /* coin coupé en haut à droite */
+  --stagger-shadow: none;
+  /* Effet « spotlight » : bordure de 3 px qui s'allume en dégradé de teinte sous le pointeur (bleu → rose → orange selon x) */
+  --stagger-border: 3px;
+  --stagger-border-rest: hsl(0 0% 60% / 0.12);
+  --stagger-border-rest-dark: hsl(0 0% 100% / 0.08);
+  --stagger-spot: 200px;
+  --stagger-spot-fill: 0.14;
+  --stagger-spot-fill-center: 0.1;
+
+  --stagger-logo: 1.5rem;
+  --stagger-button: 3.5rem;
+  --quote-size: 1.25rem;        /* 20 px */
+  --quote-size-mobile: 1.0625rem;
+  --quote-leading: 1.35;
+  --quote-tracking: -0.01em;
+  --testimonials-title-max: 40rem;
+    /* Mosaïque /work : unité de ligne telle qu'une tuile 9:16 = 8 lignes (gouttières comprises) et une 16:9 sur 2 colonnes = 5 lignes */
+  /* Vue liste de /work (WorkListRow) */
+  --worklist-cols: 8rem 12rem minmax(0, 1fr) 1.25rem; /* date, marque, étiquettes (à droite), flèche */
+  --worklist-pad-x: 1rem;            /* marge intérieure de la ligne : la flèche ne colle pas au bord */
+  --worklist-cols-mobile: auto minmax(0, 1fr) auto; /* date, marque, pastille format à droite */
+  --worklist-preview-width: 11rem;   /* aperçu vidéo qui suit la souris */
+  --worklist-cursor-offset: 1.25rem;
+  /* Couvertures animées du journal (ShaderCover) : une paire de couleurs par article, jamais la même
+     combinaison pour deux articles (attribution dans src/lib/shader.ts). Décision « journal-shader-covers ». */
+  --shader-1-a: #D6F10E; --shader-1-b: #1B1BFF;
+  --shader-2-a: #FF5310; --shader-2-b: #D6F10E;
+  --shader-3-a: #2AD4C6; --shader-3-b: #FF5310;
+  --shader-4-a: #FF3DBF; --shader-4-b: #FFB800;
+  --shader-5-a: #4C7DFF; --shader-5-b: #2AD4C6;
+  --shader-6-a: #FF3DBF; --shader-6-b: #1B1BFF;
+  --shader-7-a: #FFB800; --shader-7-b: #FF5310;
+  --shader-8-a: #7CFF6B; --shader-8-b: #1B1BFF;
+  --shader-9-a: #D6F10E; --shader-9-b: #FF3DBF;
+  --shader-10-a: #2AD4C6; --shader-10-b: #FFB800;
+  --shader-11-a: #A24BFF; --shader-11-b: #D6F10E;
+  --shader-12-a: #FF5310; --shader-12-b: #A24BFF;
+  --shader-13-a: #7CFF6B; --shader-13-b: #FF3DBF;
+  --shader-14-a: #4C7DFF; --shader-14-b: #FFB800;
+  --shader-15-a: #A24BFF; --shader-15-b: #2AD4C6;
+  --shader-16-a: #7CFF6B; --shader-16-b: #FF5310;
+  --shader-fallback: linear-gradient(140deg, var(--shader-a), var(--shader-b)); /* avant WebGL ou sans WebGL */
+  --shader-speed: 0.35;              /* vitesse de l'animation (1 = temps réel) */
+  --shader-grain: 0.05;              /* grain */
+  /* Modèle de campagne (home) : dossier noir à onglets qui range des timbres à bords perforés */
+  --campaign-folder-pad: 3.5rem 4rem;          /* 56 × 64 px */
+  --campaign-folder-pad-tablet: 2.5rem 2rem;
+  --campaign-folder-pad-mobile: 1.5rem 1rem;
+  --campaign-folder-gap: 5.75rem;             /* place des onglets au-dessus du dossier */
+  --campaign-tickets-gap: 3rem;
+  --campaign-tickets-gap-tablet: 2rem;
+  --campaign-tickets-gap-mobile: 1.5rem;
+  --ticket-height: 28.75rem;                  /* 460 px */
+  --ticket-perforation: 4px;                  /* rayon des perforations */
+  --stamp-pad: calc(2 * var(--ticket-perforation)); /* cadre d'un timbre : deux rayons de perforation */
+  --ticket-title: 1.875rem;                   /* 30 px */
+  --ticket-number: 1.75rem;                   /* 28 px */
+  --ticket-pad: 1.125rem 0.875rem;
+  --ticket-mask: radial-gradient(var(--ticket-perforation), #0000 98%, #000) round calc(-1.5 * var(--ticket-perforation)) calc(-1.5 * var(--ticket-perforation)) / calc(3 * var(--ticket-perforation)) calc(3 * var(--ticket-perforation)), linear-gradient(#000 0 0) content-box;
+  /* Reflet « holo » pixelisé au survol (repris de la carte du footer Cofounder) : dégradé qui suit le pointeur, vu à
+     travers une trame de pixels générée en JS (--holo-mask), seulement sur l'image */
+  --holo-gradient: radial-gradient(farthest-corner circle at var(--gx, 50%) var(--gy, 50%), lch(94% 22 240 / 1) 8%, lch(74% 32 240 / 1) 28%, lch(10% 18 240 / 0.9) 90%);
+  --holo-mask-size: 256px 256px;
+  --holo-opacity: 0.6;
+  --holo-spot: 11.25rem;       /* projecteur du reflet : rayon de 180 px autour du pointeur */
+  --holo-spot-core: 35%;
+  /* Onglets du dossier : forme dessinée par un masque SVG (coin arrondi en haut à gauche, pente adoucie à droite) */
+  --campaign-tab-w: 8rem;                       /* 128 px */
+  --campaign-tab-w-main: 10.5rem;               /* 168 px : « Campaign » */
+  --campaign-tab-h: 2.125rem;                   /* 34 px */
+  --campaign-tab-overlap: -1.125rem;            /* chaque onglet glisse sous le précédent */
+  --campaign-tab-pad: 0.875rem;
+  --campaign-tab-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 34' preserveAspectRatio='none'%3E%3Cpath d='M0 34V8a8 8 0 0 1 8-8h91c3 0 5.6 1.6 7 4.2l13.6 25.6c1.4 2.6 4 4.2 7 4.2h1.4z'/%3E%3C/svg%3E");
+  --campaign-tab-mask-main: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 168 34' preserveAspectRatio='none'%3E%3Cpath d='M0 34V8a8 8 0 0 1 8-8h131c3 0 5.6 1.6 7 4.2l13.6 25.6c1.4 2.6 4 4.2 7 4.2h1.4z'/%3E%3C/svg%3E");
+  --campaign-tab-number-opacity: 0.55;
+  /* Appel sous le dossier : photo carrée de Mehdi en noir et blanc */
+  --talk-face: 4rem;                          /* 64 px */
+  --talk-face-filter: grayscale(1) contrast(1.1);
+
+  /* Dossiers « a good brief has » (/contact, BriefFolder) : pochette qui s'ouvre au survol ou au clic */
+  --folder-w: 13rem;
+  --folder-h: 8.5rem;
+  --folder-inset: 0.25rem;
+  --folder-perspective: 1500px;
+  --folder-tab-w: 4.5rem;
+  --folder-tab-h: 0.9rem;
+  --folder-front-h: 92%;
+  --folder-tilt-1: -20deg;
+  --folder-tilt-2: -30deg;
+  --folder-tilt-3: -38deg;
+  --folder-tilt-front: -46deg;
+  --folder-shadow: none;
+  --folder-text-max: 12rem;         /* hauteur max du texte déplié */
+  --mosaic-gap: 1.5rem;
+  /* Mosaïque de /work (d'après whycgi.media/projects) : 4 colonnes (2 sur mobile), rangées de 1 px ; chaque film garde
+     son format natif (16:9 sur 2 colonnes, 9:16 et 1:1 sur 1) et occupe autant de rangées que sa hauteur, calculée par
+     src/scripts/mosaic.ts. Valeurs de départ (conteneur de 1052 px) avant le calcul : */
+  --mosaic-unit: 1px;
+  --mosaic-span-landscape: 313;
+  --mosaic-span-portrait: 460;
+  --mosaic-span-square: 269;
+  --mosaic-logo: 0.875rem;   /* hauteur max du logo blanc dans la pastille givrée */
+  --mosaic-logo-chip-w: 5.5rem; /* pastille logo : toujours la même taille, le logo s'adapte dedans */
+  --mosaic-logo-chip-h: 1.75rem;
+  --tile-portrait: 0.5625;   /* 9:16, aussi part de largeur dans une rangée (WorkRow) */
+  --tile-landscape: 1.7778;  /* 16:9 */
+  --tile-square: 1;          /* 1:1 */
+  --tile-basis: 0px;         /* rangée de cartes : films sans marge autour, la largeur se partage selon le ratio seul, tous les films ont la même hauteur */
+  --mosaic-logo-max: 5rem;
+  --case-bar-height: 2.5rem;       /* barre du haut des cartes projet (40 px) */
+  --case-logo: 0.875rem;           /* logo noir de la carte : 14 px de haut */
+  --case-arrow: 0.8125rem;
+  --case-tag-pad-x: 0.75rem;       /* étiquette blanche du logo, collée au bord droit du film (référence de Mehdi, 22/10/2026) */
+  --case-tag-logo-w: 6rem;
+  --case-wordmark: 0.8125rem;      /* marque sans logo : nom en capitales, à la hauteur des logos de l'étiquette */
+  --case-tag-h: calc(var(--case-logo) + 1.25rem); /* même hauteur d'étiquette pour tous les logos */
+  --case-tag-top: 0.75rem;         /* l'étiquette est collée au bord droit, un peu sous le haut du film */
+  --case-tag-logo-opacity: 0.5;    /* logo en gris sur l'étiquette blanche */
+  --case-metric-height: 1.5rem;    /* pastille chiffre : 24 px */
+  --overlay-chip: color-mix(in srgb, var(--kosmo-black) 45%, transparent);
+  /* Trois formats : illustration flottante au-dessus du bloc */
+  --format-icon-size: 15rem;
+  --float-distance: 0.75rem;
+  --float-duration: 4s;
+  /* Figure interactive du format « corner screen » (public/hairline) : palette du moteur ramenée à la charte.
+     Toujours claire, quel que soit le thème du système (fond blanc de la section). */
+  --hairline-plate: var(--kosmo-white);
+  --hairline-hi: var(--kosmo-black);
+  --hairline-edge: var(--grey-400);
+  --hairline-mid: var(--grey-400);
+  --hairline-lo: var(--grey-200);
+  --cta-image-max: 16rem;
+  --deck-slide-min: 28rem;
+  --faq-sticky-bottom: 1rem;
+  /* Map monde en pixels (canvas, src/scripts/world-map.ts) : tailles en fraction de cellule */
+  /* Effet « loupe » noir : autour du pointeur, les points grossissent et foncent, sans halo ; traînée courte. */
+  --map-dot: 0.5;          /* pixel au repos */
+  --map-rest-color: #C6C7C6; /* noir KOSMO® à 22 % sur le papier (le canvas ne lit pas color-mix) */
+  --map-dot-hover: 0.95;   /* pixel allumé sous le pointeur */
+  --map-hover-radius: 9;   /* portée du survol, en cellules */
+  --map-glow: 0;           /* à plat : pas de halo */
+  --map-rise: 0.3;         /* allumage : fraction rattrapée par image */
+  --map-decay: 0.08;       /* extinction : plus bas = traînée plus longue */
+  --map-trail-colors: var(--kosmo-black), #C6C7C6; /* du pointeur vers la fin de la traînée */
+  --map-pin: 5px;          /* point noir de 5 px */
+  --map-label-gap: 0.5rem; /* étiquette décalée de 8 px du repère */
+  --map-label-height: 1.25rem; /* étiquette blanche de 20 px */
+  --map-pin-mobile: 5px;
+  --team-scale: 1.05; /* IX3 t-7b2a5b5d */
+  /* KOSMO® PLAY (/play, wireframe du 19/10/2026) : sous-agence de jeux de marque. Pas d'équivalent Webflow :
+     tailles calées sur les cartes et blocs existants, couleurs de la charte uniquement. */
+  --play-violet: #6633EE;           /* #63e, hors charte : fond du hero /play demandé par Mehdi le 19/10/2026 (décision play-hero-violet) */
+  --play-hero-bg: radial-gradient(125% 125% at 50% 10%, var(--kosmo-black) 40%, var(--play-violet) 100%);
+  --play-phone-w: 19rem;            /* mobile du hero qui contient le mini-jeu jouable (9:16) */
+  --play-phone-w-mobile: 16rem;
+  --play-phone-bezel: var(--industries-card-border); /* bordure des cartes industries (0.5rem) */
+  --play-sprite-inner: 70%;         /* taille d'un sprite pixel posé sur sa tuile noire */
+  --play-callout-w: 14rem;          /* annotations autour du mobile du hero */
+  --play-callout-line: 2.5rem;
+  --play-track-cell: 6.5rem;        /* case de la frise « temps passé avec la marque » */
+  --play-hub-w: 15rem;              /* nœud central du schéma de diffusion */
+  --play-flow-cols: minmax(0, 1fr) var(--play-hub-w) minmax(0, 1fr); /* canaux · jeu · canaux */
+  --play-flow-gap: 6rem;            /* place des liaisons entre les canaux et le jeu */
+  --play-tile-min-h: 5.5rem;        /* tuiles de réponse du formulaire */
+  --play-progress-h: 0.75rem;       /* barre de chargement en cases du formulaire */
+  --play-chart-h: 8rem;             /* histogramme du tableau de bord */
+  --play-funnel-h: 1.75rem;
+  --play-objectives-cols: 20rem minmax(0, 1fr);
+  --play-offer-cols: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  --play-guide-dark: 1px dashed var(--grey-400); /* pendant sombre de --timeline-guide */
+  --play-scanline: linear-gradient(var(--input-surface) 50%, transparent 50%); /* lignes d'écran du mobile (blanc 8 %) */
+  --play-scanline-size: 100% 4px;
+}
+
+/* ==================================================================
+ * Tailwind v4 — thème (équivalent CSS-first de tailwind.config)
+ * Les palettes par défaut sont effacées (`initial`) : seules les
+ * valeurs de la charte existent, impossible d'utiliser un gris ou
+ * un rayon « Tailwind » qui n'est pas dans DESIGN-SYSTEM.md.
+ * ================================================================== */
+
+@theme {
+  --color-*: initial;
+  --font-*: initial;
+  --radius-*: initial;
+  --shadow-*: initial;
+  --text-*: initial;
+  --leading-*: initial;
+  --tracking-*: initial;
+  --font-weight-*: initial;
+  --container-*: initial;
+  --breakpoint-*: initial;
+
+  /* Grille de 4px de Tailwind : tous les gaps/paddings de /reference en sont des multiples */
+  --spacing: 0.25rem;
+
+  /* Breakpoints Webflow, en logique desktop-first :
+     max-lg = ≤ 991px (tablette) · max-md = ≤ 767px (mobile paysage) · max-sm = ≤ 479px (mobile) */
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1280px; /* max-xl: ≤ 1279px, barre de navigation compacte (bouton secondaire masqué) */
+
+  /* Ratios des médias */
+  --aspect-video: 16 / 9;
+  --aspect-portrait: 9 / 16;
+  --aspect-card: 4 / 5;
+  --aspect-square: 1 / 1;
+  --aspect-film: 4 / 3; /* VSL 3DOOH (film 4:3, video/out/kosmo-brand-film.mp4) */
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+}
+
+@theme inline {
+  --color-acid: var(--kosmo-acid);
+  --color-black: var(--kosmo-black);
+  --color-white: var(--kosmo-white);
+  --color-paper: var(--kosmo-paper);
+  --color-surface-dark: var(--surface-dark);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-line-dark: var(--line-dark);
+  --color-on-dark: var(--on-dark);
+  --color-on-dark-soft: var(--on-dark-soft);
+  --color-glass-dark: var(--glass-dark);
+  --color-tag-orange: var(--tag-orange);
+  --color-tag-red: var(--tag-red);
+  --color-tag-pink: var(--tag-pink);
+  --color-tag-rose: var(--tag-rose);
+  --color-tag-amber: var(--tag-amber);
+  --color-tag-olive: var(--tag-olive);
+  --color-tag-green: var(--tag-green);
+  --color-tag-sky: var(--tag-sky);
+  --color-tag-cream: var(--tag-cream);
+  --color-tag-blue: var(--tag-blue);
+  --color-tag-brown: var(--tag-brown);
+  --color-grey-400: var(--grey-400);
+  --color-grey-200: var(--grey-200);
+  --color-orange: var(--kosmo-orange);
+
+  --font-sans: var(--font-family-sans);
+  --font-mono: var(--font-family-mono);
+
+  --radius-default: var(--rounded-default);
+  --radius-sm: var(--rounded-sm);
+  --radius-card-sm: var(--rounded-card-sm);
+  --radius-card-md: var(--rounded-card-md);
+  --radius-card-lg: var(--rounded-card-lg);
+  --radius-card-xl: var(--rounded-card-xl);
+  --radius-pill: var(--rounded-pill);
+
+  --shadow-nav: var(--nav-shadow);
+
+  --text-xlarge: var(--text-xlarge-size);
+  --text-large: var(--text-large-size);
+  --text-medium: var(--text-medium-size);
+  --text-small: var(--text-small-size);
+  --text-xsmall: var(--text-xsmall-size);
+  --text-tiny: var(--text-tiny-size);
+  --text-caption: var(--text-caption-size);
+
+  --leading-body: var(--text-body-leading);
+  --leading-nav: var(--text-nav-leading);
+  --leading-control: var(--text-control-leading);
+  --leading-button: var(--text-button-leading);
+
+  --tracking-tagline: var(--tagline-tracking);
+  --tracking-body: var(--text-body-tracking);
+  --tracking-button: var(--button-tracking);
+
+  --container-page: var(--layout-container);
+}
+
+/* Mobile : la map monde est plus petite, les pixels au repos sont plus gros et plus foncés pour rester lisibles. */
+@media (max-width: 767px) {
+  :root {
+    --map-dot: 0.7;
+    --map-rest-color: var(--grey-400);
+  }
+}
+
+/* ==================================================================
+ * Tokens à portée locale : valeurs qui dépendent d'une variable posée
+ * par un script sur l'élément (position du pointeur). Déclarées sur
+ * :root, elles seraient figées à la valeur par défaut.
+ * ================================================================== */
+
+/* Témoignages « spotlight » : --x / --y (px) et --xp (0 → 1) posés par src/scripts/stagger-testimonials.ts */
+/* Liseré animé (« Border Beam », Hyperiux Vault / 21st.dev, refait en CSS) : un faisceau coloré fait le tour du bord
+   et un halo flouté le suit. Couleurs : acide KOSMO® + palette des étiquettes. Utilitaires `beam` et `beam-halo` (global.css). */
+.beam,
+.beam-halo {
+  --beam-width: 0.125rem;
+  --beam-duration: 3.3s;
+  --beam-duration-reduced: 10s;
+  --beam-blur: 0.75rem;
+  --beam-bloom-opacity: 0.55;
+  --beam-gradient: conic-gradient(
+    from var(--beam-angle),
+    transparent 0% 52%,
+    var(--tag-sky) 60%,
+    var(--kosmo-acid) 68%,
+    var(--tag-pink) 76%,
+    var(--tag-orange) 84%,
+    transparent 92% 100%
+  );
+}
+
+/* Grille + faisceau (« Background Grid Beam », 21st.dev, refait en CSS) sur les petits blocs CTA noirs : quadrillage
+   fin et discret, et un faisceau d'1 px posé exactement sur ses lignes, aux couleurs du composant d'origine (cyan,
+   violet, mauve : demande de Mehdi du 22/10/2026, hors charte, uniquement ici). Composant GridBeam.astro. */
+:root {
+  --grid-cell: 0.75rem;             /* carrés de 12 px */
+  --grid-line: color-mix(in srgb, var(--kosmo-white) 5%, transparent);
+  --grid-beam-cols: 11;             /* tracé en escalier : 11 × 4 carrés */
+  --grid-beam-rows: 4;
+  --grid-beam-w: calc(var(--grid-beam-cols) * var(--grid-cell));
+  --grid-beam-h: calc(var(--grid-beam-rows) * var(--grid-cell));
+  --grid-beam-nudge: 0.5px;         /* les lignes de la grille font 1 px depuis le bord du carré : le trait est centré dessus */
+  --grid-beam-top: calc(2 * var(--grid-cell) + var(--grid-beam-nudge));
+  --grid-beam-left: calc(round(down, 100% - var(--grid-beam-w) - 2 * var(--grid-cell), var(--grid-cell)) + var(--grid-beam-nudge)); /* en haut à droite */
+  --grid-beam-left-center: calc(round(down, 50%, var(--grid-cell)) + var(--grid-beam-nudge)); /* au milieu (bloc avec image à droite) */
+  --grid-fade: radial-gradient(ellipse 85% 120% at 100% 0%, black 0%, transparent 100%); /* la grille s'efface depuis le coin du faisceau */
+  --grid-fade-center: radial-gradient(ellipse 70% 120% at 55% 0%, black 0%, transparent 100%);
+  --grid-beam-stroke: 1px;
+  --grid-beam-cyan: #18CCFC;        /* couleurs du composant d'origine */
+  --grid-beam-violet: #6344F5;
+  --grid-beam-purple: #AE48FF;
+  --grid-beam-ease-out: cubic-bezier(0.2, 0.7, 0.4, 1);   /* changements de vitesse le long du trajet */
+  --grid-beam-ease-in-out: cubic-bezier(0.6, 0, 0.4, 1);
+  --grid-beam-ease-in: cubic-bezier(0.6, 0, 0.8, 0.3);
+  --grid-beam-cycle: 3.8s;          /* 1,8 s de balayage puis 2 s de pause, comme l'original */
+  --grid-beam-mask: linear-gradient(126deg, transparent 42%, black 48%, black 52%, transparent 58%); /* bande perpendiculaire au sens du balayage d'origine */
+}
+
+[data-fan-card] {
+  --stagger-hue: calc(220 + var(--xp, 0) * 200);
+  --stagger-glow: hsl(var(--stagger-hue) 100% 70%);
+  --stagger-glow-fill: hsl(var(--stagger-hue) 100% 70% / var(--spot-fill, 0.14));
+  --stagger-spot-at: calc(var(--x, -999) * 1px) calc(var(--y, -999) * 1px);
+  --stagger-spot-at-inner: calc(var(--x, -999) * 1px - var(--stagger-border)) calc(var(--y, -999) * 1px - var(--stagger-border));
+}
+
+/* Footer : projecteur qui suit la souris sur la bande de points (--df-x / --df-y posés par src/scripts/footer-band.ts) */
+[data-footer-field] {
+  --footer-dots-spot-mask: radial-gradient(circle var(--footer-spot) at var(--df-x, 50%) var(--df-y, 50%), #000 35%, color-mix(in srgb, #000 22%, transparent) 100%);
+}
+
+@media (max-width: 767px) {
+  :root {
+    --stat-size: 2.75rem;          /* 44 px */
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --tag-size: 1.125rem;
+  }
+}
+
+/* ==================================================================
+ * Compléments par lot de pages (refonte « Cofounder », 22/10/2026).
+ * Un bloc par lot pour que les retouches restent groupées.
+ * ================================================================== */
+
+/* --- Lot 3DOOH : Shift, Formats, Checklist, Partners, Showreel, ReachCurve, Shapes, pages 3DOOH / villes / FOOH --- */
+:root {
+  /* Services anamorphiques (cases à coin coupé, d'après la référence validée le 22/10/2026) */
+  --service-cut: 1.5rem;            /* coin coupé de 24 px */
+  --service-card-pad: 1.125rem;
+  --service-card-title-h: 2.3em;    /* deux lignes de titre : les textes partent tous à la même hauteur */
+  --service-card-text-gap: 3.5rem;  /* le texte descend, comme sur la référence */
+  --service-card-text-gap-mobile: 1.5rem;
+
+  /* Comparateur lenticulaire (section « The shift ») : lamelles en perspective, réglette courte posée sur l'image */
+  --lenticular-perspective: 850px;
+  --lenticular-perspective-mobile: 550px;
+  --lenticular-edge-light: color-mix(in srgb, var(--kosmo-white) 7%, transparent);
+  --lenticular-edge-dark: color-mix(in srgb, var(--kosmo-black) 12%, transparent);
+  --lenticular-bar-inset: 0.75rem;
+  --lenticular-bar-surface: color-mix(in srgb, var(--kosmo-black) 72%, transparent);
+  --lenticular-bar-pad: 0.75rem;
+  --lenticular-bar-w: 10rem;       /* réglette courte : 160 px à parcourir */
+  --lenticular-range-h: 2rem;
+  --lenticular-thumb-w: 1.75rem;
+  --lenticular-thumb-h: 0.875rem;
+  --lenticular-thumb-offset: calc(var(--lenticular-thumb-h) / -2);
+  --lenticular-focus-offset: 0.25rem;
+  /* Avant / après de la page FOOH, d'après « Compare » (Aceternity, 21st.dev) : ligne acide en dégradé, deux halos
+     acides à droite de la ligne, champ d'étincelles blanches, poignée blanche à trois points. L'indigo et le cyan
+     de l'original (ui.aceternity.com) sont remplacés par l'acide de la charte, à la demande de Mehdi (22/10). */
+  --spark-accent: var(--kosmo-acid);
+  --spark-x: 50%;                  /* position de la ligne, mise à jour par src/scripts/spark-compare.ts */
+  --spark-line: linear-gradient(to bottom, transparent 5%, var(--spark-accent) 50%, transparent 95%);
+  --spark-glow: linear-gradient(to right, var(--spark-accent) 0%, transparent 50%, transparent 100%);
+  --spark-glow-core: linear-gradient(to right, var(--spark-accent) 0%, transparent 50%, transparent 100%);
+  --spark-glow-mask: radial-gradient(100px at left, white, transparent);
+  --spark-glow-core-mask: radial-gradient(50px at left, white, transparent);
+  --spark-glow-w: 9rem;            /* w-36 */
+  --spark-glow-opacity: 0.5;
+  --spark-glow-core-w: 2.5rem;     /* w-10 */
+  --spark-field-w: 2.5rem;         /* w-10 */
+  --spark-handle: 1.25rem;         /* h-5 w-5 */
+  --spark-handle-icon: 1rem;       /* h-4 w-4 */
+  --spark-handle-shadow: 0 -1px 0 0 color-mix(in srgb, var(--kosmo-white) 25%, transparent);
+  --stat-source-opacity: 0.6;      /* source d'un chiffre de marché, sous son libellé (Stats, pages de service) */
+  --partners-logo-opacity: 0.5;     /* logos des régies au repos (gris), pleins au survol */
+  --partners-track-y: 4rem;         /* bande de logos des régies : 64 px au-dessus et au-dessous */
+  --partners-track-y-mobile: 3rem;
+}
+
+/* --- Lot formulaires et conversion : Process, Team, Offer, Faq, FoohProjects, formulaires, contact, partners, book --- */
+:root {
+  /* Champs de formulaire : 41 px comme les boutons, rayon 4 px, liseré 1 px ; focus noir (clair) ou acide (sombre) */
+  --field-pad-x: 0.75rem;          /* 12 px */
+  --field-pad-y: 0.625rem;
+  --field-label-gap: 0.375rem;     /* libellé → champ : 6 px */
+  --field-icon-pad: 2.25rem;       /* place de l'icône à gauche / du chevron à droite */
+  --field-ring-error: inset 0 0 0 1.5px var(--kosmo-orange); /* champ en erreur */
+  /* FAQ : lignes séparées par un filet, question en 17 px, +/− de 14 px */
+  --faq-row-pad: 1.125rem;         /* 18 px au-dessus et en dessous de la question */
+  --faq-icon: 0.875rem;
+  --faq-answer-max: 40rem;
+}
+
+/* --- Lot réalisations et journal : /work, /journal, about, careers, deck, pages légales, styleguide, todo --- */
+:root {
+  /* Cartes du journal en « pochette » (mécanique des cartes Resources de cofounder.co) : onglet arrière, photo rangée
+     qui sort au survol (déjà sortie pour les études de cas), carte de texte devant. */
+  --sleeve-back: color-mix(in srgb, var(--grey-200) 55%, var(--kosmo-white));
+  --sleeve-tab-h: 1.75rem;          /* onglet arrière : descend sous la carte de texte */
+  --sleeve-front-top: 1.375rem;     /* 22 px : haut de la carte de texte */
+  --sleeve-photo-top: 0.75rem;      /* 12 px : la photo dépasse de 10 px au repos */
+  --sleeve-photo-inset: 1.125rem;   /* 18 px de chaque côté */
+  --sleeve-photo-h: 10rem;          /* 160 px */
+  --sleeve-photo-pad: 0.625rem;     /* cadre blanc de 10 px autour de l'image */
+  --sleeve-rise: -4.5rem;           /* la photo sort de 72 px au survol */
+  --sleeve-rise-case: -6.25rem;     /* étude de cas : déjà sortie de 100 px, pour voir le projet avant de cliquer */
+  --sleeve-rise-more: -8rem;        /* étude de cas : sort davantage au survol */
+  --sleeve-text-pad: 1.125rem;
+  --sleeve-text-pad-top: 1.5rem;
+  --ease-sleeve: cubic-bezier(0.23, 1, 0.32, 1);
+  /* Trame de points des cartes d'articles (composant « Dot Pattern » de Magic UI refait en CSS) : points de 1 px au
+     pas de 16 px dans la couleur du type d'article, seulement en bas au centre, en dégradé qui s'estompe vite vers le haut. */
+  --post-dot-at: 1px 1px;
+  --post-dot-r: 1px;
+  --post-dot-fade: 1.5px;
+  --post-dots-size: 16px 16px;
+  --post-dots-mask: radial-gradient(ellipse 55% 32% at 50% 100%, #000 0%, transparent 100%);
+  --post-dot-strength: 55%;         /* points à 55 % de la couleur du type */
+  /* Code couleur par type d'article (palette des étiquettes, hors charte, décision tag-palette) */
+  --kind-case: var(--tag-orange);
+  --kind-guide: var(--tag-blue);
+  --kind-explainer: var(--tag-pink);
+  --kind-trend: var(--tag-amber);
+  --kind-swatch: 0.5rem;            /* carré de couleur devant le type */
+  --kind-case-dots: color-mix(in srgb, var(--kind-case) var(--post-dot-strength), transparent);
+  --kind-guide-dots: color-mix(in srgb, var(--kind-guide) var(--post-dot-strength), transparent);
+  --kind-explainer-dots: color-mix(in srgb, var(--kind-explainer) var(--post-dot-strength), transparent);
+  --kind-trend-dots: color-mix(in srgb, var(--kind-trend) var(--post-dot-strength), transparent);
+  --journal-row-gap: 4.75rem;      /* rangées d'articles : place de la photo sortie au survol (60 px au-dessus de la carte) */
+  --journal-case-offset: 3.25rem;   /* études de cas : leur photo sort plus haut, la rangée descend d'autant */          /* place des photos sorties entre deux rangées */
+  --journal-grid-top: 5rem;       /* place des photos sorties de la première rangée */
+  --featured-title: 1.75rem;        /* article mis en avant : titre en casse normale, 28 px */
+  --featured-cols: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  --prose-rule: 1px solid var(--line);                 /* filets des tableaux d'article (remplace le gris 200) */
+  --prose-link-offset: 0.2em;                          /* soulignement des liens d'article */
+  --prose-quote-rule: 3px solid var(--kosmo-acid);     /* citation d'article : filet acide à gauche */
+  --prose-quote-pad: 1rem;                             /* retrait du texte de la citation */
+  --prose-h2-gap: 3rem;                                /* espace au-dessus d'un intertitre d'article */
+  --prose-block-gap: 1em;                              /* rythme entre paragraphes, listes, tableaux */
+  --deck-slide-pad: 2.5rem;                            /* /deck : marge intérieure d'une slide-carte */
+  --deck-slide-pad-mobile: 1.5rem;
+  --filter-label-w: 4.5rem;                            /* /work : colonne des libellés de filtres (Format, Industry, City) */
+}
+
+/* --- Lot KOSMO® PLAY (/play) --- */
+:root {
+}
+
+/* --- Lot mobile (audit mobile du 23/10/2026) : uniquement sous 767 px ou sur écran tactile ; l'ordinateur ne change pas --- */
+:root {
+  /* Rail mobile (≤ 767 px, global.css [data-rail]) : une liste de cartes devient une rangée qui défile au doigt ;
+     la carte suivante dépasse à droite pour inviter au geste. Largeurs en part de l'écran, écart = celui des grilles. */
+  --rail-gap: calc(3 * var(--spacing));            /* 12 px, comme gap-3 des grilles de cartes */
+  --rail-card: var(--gallery-slide-width-mobile);  /* 80 % : slide mobile de la galerie de /reference */
+  --rail-tile: 42%;                                /* film 9:16 : deux films et le bord du troisième */
+  --rail-tile-square: 62%;                         /* film 1:1 */
+  --rail-tile-wide: 84%;                           /* film 16:9 */
+  /* Champs sur écran tactile : 16 px, sous cette taille Safari iOS zoome toute la page pendant la saisie */
+  --field-font-size-touch: 1rem;
+  /* Bande de logos (≤ 479 px) : 4 colonnes au lieu de 3, cellules à la hauteur d'un bouton */
+  --logo-cell-mobile: var(--button-height);
+  /* Timbres du modèle de campagne (≤ 767 px) : image et texte côte à côte au lieu de l'un sur l'autre */
+  --ticket-height-row: 12.5rem;                    /* 200 px */
+  --ticket-title-mobile: var(--h5-size);           /* 24 px */
+  /* Dossiers « a good brief has » (/contact, ≤ 767 px) : deux colonnes, pochette réduite */
+  --folder-w-mobile: min(calc(var(--folder-w) * 0.66), 100%);
+  --folder-h-mobile: calc(var(--folder-h) * 0.8);
+  --folder-tab-w-mobile: calc(var(--folder-tab-w) * 0.66);
+  /* Cartes « canal » de la section contact (≤ 767 px) : pastille d'icône à gauche, titre, texte et bouton à droite */
+  --way-cols-mobile: auto minmax(0, 1fr);
+  /* Pied de page (≤ 767 px) : groupes de liens en accordéon, lignes plus hautes pour le doigt (24 → 36 px) */
+  --footer-link-pad-mobile: calc(2 * var(--spacing));
+  /* Barre CTA mobile : sous l'écran tant que les boutons du hero sont visibles (pas deux « Contact » à la fois) */
+  --cta-bar-hidden: translateY(100%);
+}
+

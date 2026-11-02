@@ -1,0 +1,41 @@
+---
+/**
+ * Ligne de la vue liste de /work, minimaliste : date et marque à gauche, étiquettes justifiées à droite
+ * (format, industrie, ville, ratio), flèche. Pas de logo ni de vignette : l'aperçu vidéo suit la souris
+ * (src/scripts/work-preview.ts lit data-preview-* sur la ligne). Mêmes attributs data-* que MosaicCard pour les filtres.
+ * Style Cofounder : filets --line, étiquettes `chip` (format en noir),
+ * ligne qui passe en blanc au survol avec la flèche dans un bloc qui vire à l'acide.
+ */
+import Icon from './Icon.astro';
+import type { MosaicItem } from './MosaicCard.astro';
+import { formatDate } from '../../lib/fooh';
+
+interface Props {
+  item: MosaicItem & { date: string };
+}
+const { item } = Astro.props;
+const dateLabel = formatDate(item.date.length === 7 ? `${item.date}-01` : item.date);
+---
+
+<li data-case data-category={item.category} data-industry={item.industry} data-city={item.city}>
+  <a
+    href={item.href}
+    data-preview-video={item.video}
+    data-preview-poster={item.poster}
+    data-preview-ratio={item.ratio}
+    aria-label={`${item.brand}: ${item.title}`}
+    class="group grid grid-cols-(--worklist-cols) items-center gap-4 border-t border-line px-(--worklist-pad-x) py-3 text-black transition-colors duration-(--duration-color) ease-(--ease-kosmo) hover:bg-white max-md:grid-cols-(--worklist-cols-mobile) max-md:gap-3"
+  >
+    <span class="text-tagline text-(--label-color)">{dateLabel}</span>
+    <span class="truncate text-medium font-semibold whitespace-nowrap">{item.brand}</span>
+    <span class="flex flex-wrap items-center justify-end gap-1.5">
+      <span class="chip [--chip-surface:var(--kosmo-black)] [--label-color:var(--kosmo-white)]">{item.categoryLabel}</span>
+      <span class="chip max-md:hidden">{item.industry}</span>
+      {item.city && <span class="chip max-md:hidden">{item.city}</span>}
+      <span class="chip max-md:hidden">{item.ratio}</span>
+    </span>
+    <span class="grid size-5 place-items-center rounded-default opacity-0 transition-[opacity,background-color] duration-(--duration-color) group-hover:bg-acid group-hover:opacity-100 max-md:hidden">
+      <Icon name="arrow-right" class="size-(--case-arrow)" />
+    </span>
+  </a>
+</li>

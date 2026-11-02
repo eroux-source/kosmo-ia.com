@@ -1,0 +1,72 @@
+---
+/**
+ * Formulaire de brief du site IA, sur le modèle de FreeConceptForm (deux étapes, lead capturé dès la première) :
+ *  1. email + société
+ *  2. nom, service, date de lancement, budget de production, brief libre
+ * Envoi : src/scripts/lead-form.ts → /api/lead (form « ai-brief »). Redirection vers /thank-you.
+ */
+import FormField from './FormField.astro';
+import SelectField from './SelectField.astro';
+import Button from './Button.astro';
+import Captcha from './Captcha.astro';
+import { AI_BUDGET_RANGES } from '../../lib/lead';
+import { form as labels, bookLabel } from '../../data/site';
+import { services } from '../../data/ai';
+
+interface Props {
+  submitLabel?: string;
+  /** Service présélectionné (page de service). */
+  service?: string;
+  class?: string;
+}
+const { submitLabel = 'send my brief', service, class: className } = Astro.props;
+const steps = ['Your details', 'Your project'];
+const options = [...services.map((s) => ({ value: s.label, label: s.label })), { value: 'Not sure yet', label: 'Not sure yet' }];
+---
+
+<form data-lead-form="ai-brief" data-success="/thank-you?form=ai-brief" data-msg-required={labels.required} data-msg-email={labels.invalidEmail} data-msg-url={labels.invalidUrl} data-msg-captcha={labels.captcha} novalidate class:list={['tone-dark flex flex-col gap-5', className]}>
+  <ol class="flex flex-wrap items-center gap-x-4 gap-y-2 text-tagline text-(--label-color)" aria-label="Steps">
+    {
+      steps.map((label, i) => (
+        <li data-step-indicator aria-current={i === 0 ? 'step' : 'false'} class="flex items-center gap-2 aria-[current=step]:text-current">
+          <span class="size-(--form-step-dot) rounded-pill bg-(--label-color) in-[[aria-current=step]]:bg-acid" aria-hidden="true" />
+          <span>
+            {i + 1}/{steps.length} · {label}
+          </span>
+        </li>
+      ))
+    }
+  </ol>
+
+  <div data-step="1" data-step-label="continue" class="grid grid-cols-2 gap-3 max-sm:grid-cols-1">
+    <FormField name="email" type="email" label={labels.email.label} placeholder={labels.email.placeholder} autocomplete="email" />
+    <FormField name="company" label={labels.company.label} placeholder={labels.company.placeholder} autocomplete="organization" />
+  </div>
+
+  <div data-step="2" data-step-label={submitLabel} hidden class="flex flex-col gap-3">
+    <FormField name="name" label={labels.name.label} placeholder={labels.name.placeholder} autocomplete="name" required={false} />
+    <div class="grid grid-cols-2 gap-3 max-sm:grid-cols-1">
+      <SelectField name="service" label="What do you need?" options={options} placeholder="Choose a service" value={service} />
+      <FormField name="campaignDate" type="month" label="Launch date" required={false} />
+    </div>
+    <SelectField name="budget" label="Production budget" options={AI_BUDGET_RANGES} placeholder="Choose a range" />
+    <FormField name="message" type="textarea" label={labels.brief.label} placeholder={labels.brief.placeholder} required={false} />
+  </div>
+
+  <div class="hidden" aria-hidden="true">
+    <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+  </div>
+  <input type="hidden" name="language" value="en" />
+
+  <Captcha tone="dark" />
+  <p data-form-error hidden data-default={labels.serverError} class="text-small font-medium text-orange" aria-live="assertive"></p>
+
+  <div class="flex flex-wrap items-center gap-2">
+    <Button type="submit" variant="light" label="continue" data-label={submitLabel} />
+    <Button href="/book" variant="outline" label={bookLabel} data-track-click="form_book" />
+  </div>
+</form>
+
+<script>
+  import '../../scripts/lead-form';
+</script>

@@ -1,0 +1,40 @@
+---
+/**
+ * Hero de /play : plein écran, centré, réduit à l'essentiel (titre en deux tons, sous-titre court, deux CTA, pastilles).
+ * Fond : dégradé radial noir → violet (--play-hero-bg, demandé par Mehdi le 19/10/2026, hors charte, décision
+ * play-hero-violet). Pastilles et boutons du système (comme Hero.astro), lisière tramée vers la section suivante.
+ * Le mini-jeu jouable est juste en dessous (PlayTry.astro), le CTA secondaire y mène.
+ */
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+import Dither from '../ui/Dither.astro';
+import TwoTone from '../ui/TwoTone.astro';
+import { play } from '../../data/play';
+
+const { hero } = play;
+---
+
+<section
+  data-fade="trigger"
+  class="relative flex min-h-(--hero-height) items-center justify-center overflow-hidden bg-black bg-(image:--play-hero-bg) px-(--gutter) pt-(--page-top-pad) pb-(--hero-pad-bottom) text-white max-md:pb-(--hero-pad-bottom-mobile)"
+>
+  <div class="relative z-3 mx-auto flex w-full max-w-page flex-col items-center gap-6 text-center">
+    <h1 data-stagger-text class="display-heading text-balance text-on-dark"><TwoTone text={hero.title} /></h1>
+    <p data-fade="target" class="max-w-(--hero-sub-max) text-body-large text-on-dark-soft">{hero.subtitle}</p>
+    <div data-fade="target" class="mt-2 flex flex-wrap justify-center gap-3">
+      <Button href={hero.primary.href} label={hero.primary.label} variant="light" data-track-click="play_hero_demo" />
+      <Button href={hero.secondary.href} label={hero.secondary.label} variant="outline" data-track-click="play_hero_try" />
+    </div>
+    <ul data-fade="target" class="flex flex-wrap justify-center gap-2">
+      {
+        hero.chips.map((chip) => (
+          <li class="flex h-(--button-sm-height) items-center gap-2 rounded-default bg-(--hero-chip-surface) px-2.5 text-xsmall text-white">
+            <Icon name={chip.icon} class="size-(--lang-icon) text-acid" />
+            <span>{chip.label}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+  <Dither edge="bottom" />
+</section>

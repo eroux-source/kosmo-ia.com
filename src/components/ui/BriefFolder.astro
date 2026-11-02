@@ -1,0 +1,52 @@
+---
+/**
+ * Dossier « a good brief has » (/contact) : carte blanche avec une pochette noire à onglet, trois feuilles, rabat acide.
+ * Au survol (ou au clic / clavier, data-open) le rabat se baisse, les feuilles se soulèvent, le texte se déplie dessous
+ * et le liseré de la carte passe au noir. À plat, rayons 4 / 2 px. Réglages --folder-* dans tokens.css.
+ * Script : src/scripts/brief-folder.ts. Mobile (≤ 767 px) : pochette réduite, les dossiers restent sur deux colonnes.
+ */
+interface Props {
+  index: number;
+  title: string;
+  text: string;
+}
+const { index, title, text } = Astro.props;
+const sheet = 'absolute inset-(--folder-inset) rounded-default transition-transform duration-(--duration-surface) ease-(--ease-kosmo) origin-bottom';
+---
+
+<li>
+  <button
+    type="button"
+    data-brief-folder
+    aria-expanded="false"
+    class="group card flex w-full cursor-pointer flex-col items-center gap-4 p-5 text-left max-md:gap-3 max-md:p-3 transition-shadow duration-(--duration-color) hover:shadow-(--card-ring-black) data-[open]:shadow-(--card-ring-black)"
+  >
+    <span class="relative block h-(--folder-h) w-(--folder-w) [perspective:var(--folder-perspective)] max-md:h-(--folder-h-mobile) max-md:w-(--folder-w-mobile)">
+      {/* Dos de la pochette + onglet */}
+      <span class="absolute inset-0 rounded-default rounded-tl-none bg-black">
+        <span class="absolute bottom-full left-0 h-(--folder-tab-h) w-(--folder-tab-w) rounded-t-default bg-black max-md:w-(--folder-tab-w-mobile)" />
+      </span>
+      {/* Trois feuilles */}
+      <span class:list={[sheet, 'bg-grey-400 group-hover:[transform:rotateX(var(--folder-tilt-1))] group-data-[open]:[transform:rotateX(var(--folder-tilt-1))]']} />
+      <span class:list={[sheet, 'bg-grey-200 group-hover:[transform:rotateX(var(--folder-tilt-2))] group-data-[open]:[transform:rotateX(var(--folder-tilt-2))]']} />
+      <span class:list={[sheet, 'bg-paper group-hover:[transform:rotateX(var(--folder-tilt-3))] group-data-[open]:[transform:rotateX(var(--folder-tilt-3))]']} />
+      {/* Rabat avant */}
+      <span
+        class="absolute inset-x-0 bottom-0 flex h-(--folder-front-h) origin-bottom flex-col justify-end gap-1 rounded-default rounded-tr-none bg-acid p-4 text-black max-md:p-3 transition-transform duration-(--duration-surface) ease-(--ease-kosmo) group-hover:[transform:rotateX(var(--folder-tilt-front))] group-data-[open]:[transform:rotateX(var(--folder-tilt-front))]"
+      >
+        <span class="text-tagline">{String(index).padStart(2, '0')}</span>
+        <span class="text-medium font-semibold">{title}</span>
+      </span>
+    </span>
+    {/* Texte déplié */}
+    <span class="grid w-full grid-rows-[0fr] transition-[grid-template-rows] duration-(--duration-surface) ease-(--ease-kosmo) group-hover:grid-rows-[1fr] group-data-[open]:grid-rows-[1fr]">
+      <span class="block overflow-hidden">
+        <span class="block pt-2 text-small text-(--body-soft) opacity-0 transition-opacity duration-(--duration-surface) group-hover:opacity-100 group-data-[open]:opacity-100">{text}</span>
+      </span>
+    </span>
+  </button>
+</li>
+
+<script>
+  import '../../scripts/brief-folder';
+</script>

@@ -1,0 +1,56 @@
+---
+/**
+ * Méthode d'un service de la 3D anamorphique (pages /3dooh/<service>) : en-tête de section (surtitre, titre deux tons,
+ * intro, comme Formats), quatre étapes numérotées sur des tuiles blanches (comme les chiffres), chacune avec une photo de
+ * l'équipe en train de faire l'étape quand elle existe (photo générée, comme les cases de Formats), puis « What you get » :
+ * la liste des livrables avec une coche. Données : `method` dans src/data/anamorphic-services.ts.
+ * Sur mobile (≤ 767 px), les quatre étapes forment un rail qui défile au doigt (global.css [data-rail]).
+ */
+import Section from '../ui/Section.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+import TwoTone from '../ui/TwoTone.astro';
+import Icon from '../ui/Icon.astro';
+
+interface Props {
+  id?: string;
+  data: { heading: string; intro: string; steps: { title: string; text: string; image?: { src: string; alt: string } }[]; deliverables: string[] };
+}
+const { id, data } = Astro.props;
+---
+
+<Section id={id} data-fade="trigger" class="scroll-mt-(--nav-inset)">
+  <Eyebrow label="method" />
+  <div class="mt-(--head-gap) grid grid-cols-2 items-end gap-10 max-lg:grid-cols-1">
+    <h2 data-stagger-text class="heading-h3"><TwoTone text={data.heading} /></h2>
+    <p data-fade="target" class="max-w-(--head-intro-max) justify-self-end text-body-medium text-(--body-soft) max-lg:justify-self-start">{data.intro}</p>
+  </div>
+  <ol data-fade="target" data-rail class="mt-12 grid grid-cols-4 gap-3 max-lg:grid-cols-2 max-sm:grid-cols-1">
+    {
+      data.steps.map((step, i) => (
+        <li class="flex flex-col overflow-hidden rounded-sm bg-white">
+          {step.image && <img src={step.image.src} alt={step.image.alt} loading="lazy" width="800" height="600" class="aspect-4/3 w-full object-cover" />}
+          <span class="flex flex-col gap-4 px-6 pt-5 pb-6 max-md:p-4">
+            <span class="text-tagline text-(--label-color)">{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="heading-h6">{step.title}</h3>
+            <p class="text-body-small text-(--body-soft)">{step.text}</p>
+          </span>
+        </li>
+      ))
+    }
+  </ol>
+  <div data-fade="target" class="mt-12 grid grid-cols-2 gap-10 max-lg:grid-cols-1">
+    <h3 class="heading-h4">What you get.</h3>
+    <ul class="grid grid-cols-2 gap-x-6 gap-y-3 max-sm:grid-cols-1">
+      {
+        data.deliverables.map((item) => (
+          <li class="flex items-start gap-2.5 text-body-small">
+            <span class="grid size-(--button-icon) shrink-0 place-items-center rounded-default bg-acid text-black">
+              <Icon name="check" class="size-(--case-arrow)" />
+            </span>
+            {item}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</Section>

@@ -1,0 +1,62 @@
+---
+/**
+ * Home du site IA (mot-clé principal : AI creative agency ; secondaires : ai design agency, ai content agency,
+ * generative ai agency, ai creative solutions). Films : projets du studio, aucun DOOH.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/layout/Nav.astro';
+import Footer from '../components/layout/Footer.astro';
+import Hero from '../components/sections/Hero.astro';
+import LogoStrip from '../components/sections/LogoStrip.astro';
+import Process from '../components/sections/Process.astro';
+import Stats from '../components/sections/Stats.astro';
+import Faq from '../components/sections/Faq.astro';
+import Contact from '../components/sections/Contact.astro';
+import Deliverables from '../components/ai/Deliverables.astro';
+import ServiceGrid from '../components/ai/ServiceGrid.astro';
+import ProjectPicks from '../components/ai/ProjectPicks.astro';
+import Compare from '../components/ai/Compare.astro';
+import { home, aiProcess, aiStats } from '../data/ai';
+import { brands, bookLabel } from '../data/site';
+import { foohBySlug, poster } from '../lib/fooh';
+import { faqJsonLd } from '../lib/seo';
+import type { ProcessData } from '../data/3dooh';
+
+const heroProject = foohBySlug(home.hero.project)!;
+const tiles = [
+  { src: '/video/ascii/porsche.mp4', label: 'Porsche film by KOSMO®' },
+  { src: '/video/ascii/squid-game.mp4', label: 'Squid Game film by KOSMO®' },
+  { src: '/video/ascii/maisons-du-monde.mp4', label: 'Maisons du Monde film by KOSMO®' },
+  { src: '/video/ascii/france-tv.mp4', label: 'France TV film by KOSMO®' },
+];
+---
+
+<BaseLayout title={home.seo.title} description={home.seo.description} path="/" image={poster(heroProject)} jsonLd={[faqJsonLd(home.faq)]}>
+  <Nav />
+  <main>
+    <Hero
+      title={home.hero.title}
+      subtitle={{ demo: false, text: home.hero.subtitle }}
+      video={{ src: heroProject.media.mainVideo, poster: poster(heroProject) ?? '' }}
+      fallback={{ src: poster(heroProject) ?? '' }}
+      proof={{ views: '3B+ earned and owned media', partners: brands }}
+      primary={{ label: 'contact', href: '/contact' }}
+      secondary={{ label: bookLabel, href: '/book' }}
+      award={false}
+    />
+    <LogoStrip />
+    <Deliverables overline={home.intro.overline} heading={home.intro.heading} text={home.intro.text} items={home.pillars} />
+    <ServiceGrid id="services" intro="Twelve ways we put generative AI to work for brands, from a 30 second TV spot to a monthly batch of UGC ads." />
+    <ProjectPicks
+      slugs={['below-statue-of-liberty', 'disney-la-haut', 'zalando-prive-tennis', 'porsche', 'disney-lilo-and-stitch', 'renault-i']}
+      heading="Made by the studio behind Netflix and Zalando."
+      intro="KOSMO® AI is run by the KOSMO® studio. These are films we produced for brands, in CGI, mixed reality and AI."
+    />
+    <Compare overline={home.compare.overline} heading={home.compare.heading} head={home.compare.head} rows={home.compare.rows} />
+    <Process data={aiProcess as unknown as ProcessData} />
+    <Stats items={aiStats.items} overline={aiStats.overline} tiles={tiles} ctas />
+    <Faq items={home.faq.map((q) => ({ ...q, demo: false }))} heading="Questions brands ask us." />
+    <Contact id="contact" />
+  </main>
+  <Footer />
+</BaseLayout>

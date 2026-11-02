@@ -1,0 +1,65 @@
+---
+/**
+ * Page de service du site IA (une par entrée de src/data/ai.ts) : hero vidéo, intro + livrables, films du studio,
+ * process, FAQ (FAQPage), services liés, contact. JSON-LD Service + fil d'Ariane.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/layout/Nav.astro';
+import Footer from '../components/layout/Footer.astro';
+import Hero from '../components/sections/Hero.astro';
+import LogoStrip from '../components/sections/LogoStrip.astro';
+import Process from '../components/sections/Process.astro';
+import Faq from '../components/sections/Faq.astro';
+import Contact from '../components/sections/Contact.astro';
+import Deliverables from '../components/ai/Deliverables.astro';
+import ServiceGrid from '../components/ai/ServiceGrid.astro';
+import ProjectPicks from '../components/ai/ProjectPicks.astro';
+import { services, serviceHref, aiProcess, type AiService } from '../data/ai';
+import { brands, bookLabel } from '../data/site';
+import { foohBySlug, poster } from '../lib/fooh';
+import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from '../lib/seo';
+import type { ProcessData } from '../data/3dooh';
+
+export function getStaticPaths() {
+  return services.map((service) => ({ params: { service: service.slug }, props: { service } }));
+}
+interface Props {
+  service: AiService;
+}
+const { service: s } = Astro.props;
+const path = serviceHref(s);
+const heroProject = foohBySlug(s.hero.project)!;
+const cover = poster(heroProject) ?? '';
+const jsonLd = [
+  serviceJsonLd(s.keyword.replace(/^\w/, (c) => c.toUpperCase()), s.seo.description, path),
+  faqJsonLd(s.faq),
+  breadcrumbJsonLd([
+    { name: 'KOSMO® AI', path: '/' },
+    { name: s.label, path },
+  ]),
+];
+---
+
+<BaseLayout title={s.seo.title} description={s.seo.description} path={path} image={cover} jsonLd={jsonLd}>
+  <Nav />
+  <main>
+    <Hero
+      title={{ demo: false, text: s.hero.title, soft: s.hero.soft }}
+      subtitle={{ demo: false, text: s.hero.subtitle }}
+      video={{ src: heroProject.media.mainVideo, poster: cover }}
+      fallback={{ src: cover }}
+      proof={{ views: '3B+ earned and owned media', partners: brands }}
+      primary={{ label: 'contact', href: '/contact' }}
+      secondary={{ label: bookLabel, href: '/book' }}
+      award={false}
+    />
+    <Deliverables overline={s.label} heading={s.intro.heading} text={s.intro.text} itemsHeading={s.deliverables.heading} items={s.deliverables.items} />
+    <ProjectPicks slugs={s.projects} intro="Films we produced for brands at the KOSMO® studio, in CGI, mixed reality and AI." />
+    <LogoStrip />
+    <Process data={aiProcess as unknown as ProcessData} />
+    <Faq items={s.faq.map((q) => ({ ...q, demo: false }))} heading={`${s.label}: your questions.`} />
+    <ServiceGrid only={s.related} overline="related services" heading="Often produced together." />
+    <Contact id="contact" />
+  </main>
+  <Footer />
+</BaseLayout>

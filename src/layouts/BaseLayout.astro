@@ -1,0 +1,110 @@
+---
+/**
+ * Gabarit de page : polices (Hanken Grotesk + Inconsolata uniquement), SEO (meta, OG, JSON-LD),
+ * analytics, bandeau cookies, WhatsApp flottant, barre CTA mobile, animations GSAP.
+ */
+import '../styles/global.css';
+import Analytics from '../components/ui/Analytics.astro';
+import { publicEnv } from '../lib/env';
+import WhatsAppButton from '../components/ui/WhatsAppButton.astro';
+import MobileCtaBar from '../components/ui/MobileCtaBar.astro';
+import { SITE, graph, organizationJsonLd, tokenColor, websiteJsonLd, webPageJsonLd } from '../lib/seo';
+
+interface Props {
+  title: string;
+  description?: string;
+  /** Chemin canonique (défaut : l'URL courante). */
+  path?: string;
+  image?: string;
+  video?: string;
+  noindex?: boolean;
+  /** Nœuds JSON-LD supplémentaires (FAQPage, Service, BreadcrumbList…). */
+  jsonLd?: unknown[];
+  /** false = pas de WhatsApp flottant ni de barre CTA (pages utilitaires). */
+  chrome?: boolean;
+  /** Article de journal : og:type article + dates de publication. */
+  article?: { published: string; modified?: string };
+  /** Cible du CTA principal de la barre mobile (défaut : /contact). */
+  ctaHref?: string;
+}
+
+const { title, description, path = Astro.originPathname ?? Astro.url.pathname, image = SITE.defaultImage, video, noindex = false, jsonLd = [], chrome = true, ctaHref, article } = Astro.props;
+const lang = 'en';
+const canonicalPath = path === '/' ? '/' : path.replace(/\/$/, '');
+const canonical = `${SITE.url}${canonicalPath}`;
+const ogImage = image.startsWith('http') ? image : `${SITE.url}${image}`;
+const ld = graph(organizationJsonLd, websiteJsonLd, webPageJsonLd(canonicalPath, title, description), ...jsonLd);
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-video-preview:-1, max-snippet:-1'} />
+    <meta property="og:type" content={article ? 'article' : 'website'} />
+    {article && <meta property="article:published_time" content={article.published} />}
+    {article && <meta property="article:modified_time" content={article.modified ?? article.published} />}
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    {
+      video && (
+        <>
+          <meta property="og:video" content={video} />
+          <meta property="og:video:type" content="video/mp4" />
+        </>
+      )
+    }
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    {description && <meta name="twitter:description" content={description} />}
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="theme-color" content={tokenColor('kosmo-black')} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32 48x48" />
+    <link rel="apple-touch-icon" href="/webclip.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://vz-78bf47d9-72b.b-cdn.net" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400..800&family=Inconsolata:wght@400;700&display=swap"
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(ld)} />
+    <script is:inline>
+      // Masque les éléments animés jusqu'à l'initialisation de GSAP (filet de sécurité : 3 s).
+      document.documentElement.classList.add('js');
+      setTimeout(() => document.documentElement.classList.add('motion-ready'), 3000);
+    </script>
+    {/* Captcha des formulaires (Cloudflare Turnstile), seulement si la clé de site est configurée. */}
+    {publicEnv.turnstileSiteKey && <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}
+  </head>
+  <body data-cta-bar={chrome ? '' : undefined}>
+    <slot />
+    {
+      chrome && (
+        <>
+          <WhatsAppButton />
+          <MobileCtaBar ctaHref={ctaHref} />
+        </>
+      )
+    }
+    <Analytics />
+    <script>
+      import '../scripts/animations';
+      import '../scripts/dither';
+      import '../scripts/personalize';
+      import '../scripts/video-lazy';
+    </script>
+  </body>
+</html>

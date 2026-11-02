@@ -1,0 +1,15 @@
+---
+/** Icône SVG inline (src/assets/icons), colorée via currentColor. */
+interface Props {
+  name: string;
+  class?: string;
+  [key: `data-${string}`]: string | undefined;
+}
+
+const icons = import.meta.glob<string>('../../assets/icons/*.svg', { query: '?raw', import: 'default', eager: true });
+const { name, class: className, ...attrs } = Astro.props;
+const svg = icons[`../../assets/icons/${name}.svg`];
+if (!svg) throw new Error(`Icône « ${name} » introuvable dans src/assets/icons`);
+---
+
+<span class:list={['inline-flex shrink-0 items-center justify-center [&>svg]:size-full', className]} aria-hidden="true" {...attrs} set:html={svg} />

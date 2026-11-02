@@ -1,0 +1,40 @@
+---
+/**
+ * Barre CTA fixe sur mobile (≤ 767px) : contact (CTA principal), réserver un call, WhatsApp. Papier à plat, filet au-dessus.
+ * Elle glisse sous l'écran tant que les boutons du hero ([data-hero-ctas]) sont visibles : jamais deux « Contact » à la fois.
+ */
+import Button from './Button.astro';
+import Icon from './Icon.astro';
+import { whatsappHref } from '../../lib/env';
+import { ctaLabel, ctaHref as contactHref } from '../../data/site';
+
+interface Props {
+  ctaHref?: string;
+  bookHref?: string;
+}
+const { ctaHref = contactHref, bookHref = '/book' } = Astro.props;
+---
+
+<div data-mobile-cta-bar class="fixed inset-x-0 bottom-0 z-(--cta-bar-z) hidden h-(--cta-bar-height) items-center gap-2 border-t border-line bg-paper px-3 transition-transform duration-(--duration-surface) ease-(--ease-kosmo) max-md:flex data-hidden:transform-(--cta-bar-hidden)">
+  <Button href={ctaHref} label={ctaLabel} variant="dark" class="min-w-0 flex-1 [&_.text-button]:truncate" data-track-click="cta_bar_contact" />
+  <Button href={bookHref} label="book a call" variant="light" go={false} data-track-click="cta_bar_book" />
+  <a
+    href={whatsappHref('Hi KOSMO, I would like to talk about an AI production.')}
+    target="_blank"
+    rel="noopener"
+    aria-label="Chat on WhatsApp"
+    data-track-click="whatsapp_click"
+    class="flex size-(--button-height) shrink-0 items-center justify-center rounded-sm bg-acid text-black"
+  >
+    <Icon name="brand-whatsapp" class="size-5" />
+  </a>
+</div>
+
+<script>
+  // Masquée tant qu'un bouton du hero est à l'écran ; revient dès qu'ils sortent (ou d'emblée sans hero).
+  const bar = document.querySelector<HTMLElement>('[data-mobile-cta-bar]');
+  const ctas = document.querySelector('[data-hero-ctas]');
+  if (bar && ctas) {
+    new IntersectionObserver(([entry]) => bar.toggleAttribute('data-hidden', entry.isIntersecting)).observe(ctas);
+  }
+</script>

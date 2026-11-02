@@ -1,0 +1,21 @@
+---
+/** Texture « noise overlay » de la charte. `fade` reprend le masque du footer (.footer5_noise-overlay). */
+interface Props {
+  fade?: boolean;
+  /** `cover` : variante étirée du bandeau CTA (.table_footer). */
+  cover?: boolean;
+  class?: string;
+}
+const { fade = false, cover = false, class: className } = Astro.props;
+---
+
+<div
+  aria-hidden="true"
+  class:list={[
+    'pointer-events-none absolute inset-0 bg-(image:--texture-noise) bg-left-top',
+    cover ? 'bg-cover' : 'bg-auto',
+    fade && '[mask-image:var(--footer-noise-mask)]',
+    className,
+  ]}
+>
+</div>

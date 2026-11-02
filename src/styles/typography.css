@@ -1,0 +1,175 @@
+/*
+ * Styles typographiques de DESIGN-SYSTEM.md (système « Cofounder »),
+ * exposés en utilitaires Tailwind : `heading-h3`, `text-tagline`, etc.
+ * Titres : capitales, graisse 800, interlignage serré, deux tons (le second
+ * dans un <em>, voir TwoTone.astro). Étiquettes : Inconsolata capitales.
+ * Les tailles responsives suivent les breakpoints Webflow (max-lg / max-md).
+ */
+
+@utility display-heading {
+  font-family: var(--font-family-sans);
+  font-size: var(--display-size);
+  font-weight: var(--display-weight);
+  line-height: var(--display-leading);
+  letter-spacing: var(--display-tracking);
+  text-transform: uppercase;
+  @variant max-lg {
+    font-size: var(--display-size-tablet);
+  }
+  @variant max-md {
+    font-size: var(--display-size-mobile);
+  }
+}
+
+@utility heading-h1 {
+  font-family: var(--font-family-sans);
+  font-size: var(--h1-size);
+  font-weight: var(--h1-weight);
+  line-height: var(--h1-leading);
+  letter-spacing: var(--h1-tracking);
+  text-transform: uppercase;
+  @variant max-lg {
+    font-size: var(--display-size-tablet);
+  }
+  @variant max-md {
+    font-size: var(--display-size-mobile);
+  }
+}
+
+@utility heading-h2 {
+  font-family: var(--font-family-sans);
+  font-size: var(--h2-size);
+  font-weight: var(--h2-weight);
+  line-height: var(--h2-leading);
+  letter-spacing: var(--h2-tracking);
+  text-transform: uppercase;
+  @variant max-lg {
+    font-size: var(--h3-size);
+  }
+  @variant max-md {
+    font-size: var(--h3-size-tablet);
+  }
+}
+
+@utility heading-h3 {
+  font-family: var(--font-family-sans);
+  font-size: var(--h3-size);
+  font-weight: var(--h3-weight);
+  line-height: var(--h3-leading);
+  letter-spacing: var(--h3-tracking);
+  text-transform: uppercase;
+  @variant max-lg {
+    font-size: var(--h3-size-tablet);
+  }
+  @variant max-md {
+    font-size: var(--h3-size-mobile);
+  }
+}
+
+@utility heading-h4 {
+  font-family: var(--font-family-sans);
+  font-size: var(--h4-size);
+  font-weight: var(--h4-weight);
+  line-height: var(--h4-leading);
+  letter-spacing: var(--h4-tracking);
+  text-transform: uppercase;
+  @variant max-lg {
+    font-size: var(--h4-size-tablet);
+  }
+  @variant max-md {
+    font-size: var(--h4-size-mobile);
+  }
+}
+
+@utility heading-h5 {
+  font-family: var(--font-family-sans);
+  font-size: var(--h5-size);
+  font-weight: var(--h5-weight);
+  line-height: var(--h5-leading);
+  letter-spacing: var(--h5-tracking);
+  text-transform: uppercase;
+  @variant max-lg {
+    font-size: var(--h5-size-tablet);
+  }
+  @variant max-md {
+    font-size: var(--h5-size-mobile);
+  }
+}
+
+@utility heading-h6 {
+  font-family: var(--font-family-sans);
+  font-size: var(--h6-size);
+  font-weight: var(--h6-weight);
+  line-height: var(--h6-leading);
+  letter-spacing: var(--h6-tracking);
+  @variant max-md {
+    font-size: var(--h6-size-mobile);
+  }
+}
+
+/* Titre de la carte mise en avant du dropdown nav (.heading-style-h6.text-weight-semibold) */
+@utility heading-feature {
+  font-family: var(--font-family-sans);
+  font-size: var(--h6-feature-size);
+  font-weight: var(--heavy-weight);
+  line-height: var(--h6-feature-leading);
+  letter-spacing: var(--h6-tracking);
+  text-transform: uppercase;
+}
+
+@utility text-body-large {
+  font-size: var(--text-large-size);
+  line-height: var(--text-body-leading);
+}
+
+@utility text-body-medium {
+  font-size: var(--text-medium-size);
+  line-height: var(--text-body-leading);
+}
+
+@utility text-body-small {
+  font-size: var(--text-small-size);
+  line-height: var(--text-body-leading);
+}
+
+/* Étiquette / surtitre : Inconsolata 12 px capitales, lettres resserrées */
+@utility text-tagline {
+  font-family: var(--font-family-mono);
+  font-size: var(--tagline-size);
+  font-weight: var(--tagline-weight);
+  line-height: var(--text-body-leading);
+  letter-spacing: var(--tagline-tracking);
+  text-transform: uppercase;
+}
+
+/* Paragraphe en Inconsolata (texte des timbres, tickets) */
+@utility text-mono-body {
+  font-family: var(--font-family-mono);
+  font-size: var(--text-small-size);
+  line-height: var(--text-body-leading);
+  letter-spacing: var(--tagline-tracking);
+}
+
+/* Libellé de bouton : casse normale, première lettre en capitale (les libellés de src/data sont en minuscules) */
+@utility text-button {
+  font-family: var(--font-family-sans);
+  font-size: var(--button-font-size);
+  font-weight: var(--label-weight);
+  line-height: var(--text-button-leading);
+  letter-spacing: var(--button-tracking);
+  &::first-letter {
+    text-transform: uppercase;
+  }
+}
+
+/* Libellé mono des cartes réalisations (.text-size-xlarge) */
+@utility text-mono-label {
+  font-family: var(--font-family-mono);
+  font-size: var(--text-xlarge-size);
+  line-height: var(--text-body-leading);
+  letter-spacing: var(--text-xlarge-tracking);
+  text-transform: uppercase;
+  @variant max-md {
+    font-size: var(--text-xlarge-size-mobile);
+  }
+}

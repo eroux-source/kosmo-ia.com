@@ -1,0 +1,25 @@
+---
+/** Ligne de preuve du hero (chiffre clé + logos des marques), réutilisée sur les pages intérieures. `light` : fond clair. */
+import BrandLogo from './BrandLogo.astro';
+
+interface Props {
+  views: string;
+  partners: string[];
+  light?: boolean;
+  class?: string;
+}
+const { views, partners, light = false, class: className } = Astro.props;
+---
+
+<div class:list={['flex flex-col gap-1 border-l border-acid pl-4', className]}>
+  <div class="text-body-large font-extrabold">{views}</div>
+  <ul class:list={['flex flex-wrap items-center gap-x-5 gap-y-2', light ? 'text-ink-soft [--logo-detail:var(--kosmo-white)]' : 'text-on-dark-soft']} aria-label="Brands we work with">
+    {
+      partners.map((name) => (
+        <li class="flex items-center">
+          <BrandLogo name={name} class="h-(--proof-logo) text-(length:--proof-logo)" />
+        </li>
+      ))
+    }
+  </ul>
+</div>

@@ -1,0 +1,515 @@
+@import "tailwindcss";
+@import "./tokens.css";
+@import "./typography.css";
+
+/*
+ * Styles de base. Aucune valeur brute ici : tout vient de tokens.css.
+ */
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+
+  html {
+    overflow-x: clip;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--kosmo-paper);
+    color: var(--kosmo-black);
+    font-family: var(--font-family-sans);
+    font-size: var(--text-medium-size);
+    font-weight: var(--text-body-weight);
+    line-height: var(--text-body-leading);
+    letter-spacing: var(--text-body-tracking);
+  }
+
+  /* Titres en deux tons : la seconde partie (dans un <em>, TwoTone.astro) prend la couleur du texte à 50 %. */
+  :is(h1, h2, h3, h4, h5, [class*='heading-'], .display-heading) em {
+    font-style: normal;
+    color: var(--tone-soft);
+  }
+
+  /* Les éléments décalés avant leur animation d'entrée ne doivent pas créer de scroll horizontal. */
+  main {
+    overflow-x: clip;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Barre CTA fixe sur mobile : on réserve sa hauteur en bas de page. */
+  body[data-cta-bar] {
+    @variant max-md {
+      padding-bottom: var(--cta-bar-height);
+    }
+  }
+
+  /* Pages « prose » (légal, journal, cas) : corps 15 à 17 px (classe text-body-* posée sur le bloc), intertitres en
+     capitales 800 (taille heading-h5), sous-titres en titre de carte, filets --line, liens soulignés, citation à
+     filet acide. Rythme vertical à partir des tokens. */
+  .prose-kosmo {
+    max-width: var(--prose-max);
+  }
+  .prose-kosmo h2 {
+    margin-top: var(--prose-h2-gap);
+    font-size: var(--h5-size);
+    font-weight: var(--h5-weight);
+    line-height: var(--h5-leading);
+    letter-spacing: var(--h5-tracking);
+    text-transform: uppercase;
+    @variant max-lg {
+      font-size: var(--h5-size-tablet);
+    }
+    @variant max-md {
+      font-size: var(--h5-size-mobile);
+    }
+  }
+  .prose-kosmo h3 {
+    margin-top: var(--prose-h3-gap);
+    font-size: var(--h6-size);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--h6-leading);
+    letter-spacing: var(--h6-tracking);
+  }
+  .prose-kosmo > :is(h2, h3) + * {
+    margin-top: var(--prose-block-gap);
+  }
+  .prose-kosmo :is(h2, h3):first-child {
+    margin-top: 0;
+  }
+  /* Rythme vertical entre les blocs du texte seulement (enfants directs) : deux images côte à côte dans une grille restent alignées. */
+  .prose-kosmo > :is(p, ul, ol, table, figure, blockquote, img, video, hr, div) + :is(p, ul, ol, table, figure, blockquote, img, video, hr, div) {
+    margin-top: var(--prose-block-gap);
+  }
+  .prose-kosmo :is(strong, b) {
+    font-weight: var(--font-weight-bold);
+  }
+  .prose-kosmo ol {
+    list-style: decimal;
+  }
+  .prose-kosmo :is(ul, ol) {
+    padding-left: var(--text-large-size);
+    list-style-position: outside;
+  }
+  .prose-kosmo ul {
+    list-style-type: disc;
+  }
+  .prose-kosmo li + li {
+    margin-top: var(--chip-gap);
+  }
+  .prose-kosmo li::marker {
+    color: var(--label-color);
+  }
+  /* Tableaux Markdown : défilement horizontal sur mobile, filet --line sous chaque ligne, en-têtes en étiquettes mono */
+  .prose-kosmo table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+    font-size: var(--text-small-size);
+    line-height: var(--text-body-leading);
+  }
+  .prose-kosmo :is(th, td) {
+    padding: var(--prose-table-cell-pad);
+    border-bottom: var(--prose-rule);
+    text-align: left;
+    vertical-align: top;
+  }
+  .prose-kosmo th {
+    border-bottom-color: var(--line-strong);
+    font-family: var(--font-family-mono);
+    font-size: var(--tagline-size);
+    font-weight: var(--tagline-weight);
+    letter-spacing: var(--tagline-tracking);
+    text-transform: uppercase;
+    color: var(--label-color);
+  }
+  .prose-kosmo a {
+    text-decoration: underline;
+    text-underline-offset: var(--prose-link-offset);
+    transition: color var(--duration-color) var(--ease-kosmo);
+  }
+  .prose-kosmo a:hover {
+    color: var(--body-soft);
+  }
+  .prose-kosmo blockquote {
+    padding-left: var(--prose-quote-pad);
+    border-left: var(--prose-quote-rule);
+    color: var(--body-soft);
+  }
+  .prose-kosmo :is(img, video) {
+    border-radius: var(--rounded-sm);
+  }
+  .prose-kosmo hr {
+    border: 0;
+    border-top: var(--prose-rule);
+  }
+  .prose-kosmo code {
+    font-family: var(--font-family-mono);
+  }
+
+  ::selection {
+    background-color: var(--kosmo-acid);
+    color: var(--kosmo-black);
+  }
+
+  /* Tant que GSAP n'a pas posé les états initiaux, on masque ce qui va
+     s'animer (équivalent du masquage `w-mod-ix3` de Webflow). */
+  html.js:not(.motion-ready) [data-fade="trigger"] [data-fade="target"],
+  html.js:not(.motion-ready) [data-stagger-text] {
+    visibility: hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html.js:not(.motion-ready) [data-fade="trigger"] [data-fade="target"],
+    html.js:not(.motion-ready) [data-stagger-text] {
+      visibility: visible;
+    }
+  }
+}
+
+/* Champs date/mois sur fond sombre : l'icône native du sélecteur est noire, on l'inverse. */
+input[type='month']::-webkit-calendar-picker-indicator,
+input[type='date']::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+
+/* Fond « Dark Dot Matrix » des sections sombres (Section tone="dark", contact, footer). */
+@utility bg-dot-matrix {
+  background-color: var(--kosmo-black);
+  background-image: var(--dot-matrix);
+  background-size: var(--dot-matrix-size);
+  image-rendering: pixelated;
+}
+
+/* Carte du système : blanche sur le papier, liseré intérieur 1 px, à plat. */
+@utility card {
+  background-color: var(--kosmo-white);
+  border-radius: var(--rounded-sm);
+  box-shadow: var(--card-ring);
+}
+
+/* Même carte, posée sur un fond sombre. */
+@utility card-dark {
+  background-color: var(--surface-dark);
+  border-radius: var(--rounded-sm);
+  box-shadow: var(--card-ring-dark);
+}
+
+/* Contexte sombre : textes secondaires, filets et surtitres passent en blanc atténué. */
+@utility tone-dark {
+  color: var(--on-dark);
+  --label-color: var(--on-dark-soft);
+  --body-soft: var(--on-dark-soft);
+  --eyebrow-track: var(--eyebrow-track-dark);
+  --line: var(--line-dark);
+}
+
+/* Étiquette du système : Inconsolata 11 px capitales, rayon 2 px, liseré. */
+@utility chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--chip-gap);
+  height: var(--chip-height);
+  padding: 0 var(--chip-pad);
+  border-radius: var(--rounded-default);
+  font-family: var(--font-family-mono);
+  font-size: var(--text-tiny-size);
+  letter-spacing: var(--chip-tracking);
+  text-transform: uppercase;
+  white-space: nowrap;
+  background-color: var(--chip-surface);
+  box-shadow: var(--card-ring);
+  color: var(--label-color);
+}
+
+/* Timbre : bords perforés (masque des timbres du modèle de campagne). Une image posée en absolute inset-0 dedans est
+   découpée elle-même par les perforations (pas de cadre blanc) ; posée dans le padding, elle a un cadre blanc. */
+@utility stamp {
+  padding: var(--stamp-pad);
+  background-color: var(--kosmo-white);
+  -webkit-mask: var(--ticket-mask);
+  mask: var(--ticket-mask);
+}
+
+/* Reflet « holo » pixelisé (timbres de la home, grande image du journal) : dégradé qui suit le pointeur, mélange
+   hard-light, vu à travers une trame de pixels (--holo-mask, générée par src/scripts/tilt-holo.ts). */
+/* Angle du faisceau de l'utilitaire beam (propriété enregistrée pour pouvoir l'animer). */
+@property --beam-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: true;
+}
+/* Balayage du faisceau (GridBeam) : en diagonale vers le haut à gauche, comme l'original, avec des changements de
+   vitesse le long du trajet (rapide, lent, rapide, arrivée douce), puis une pause. */
+@keyframes grid-beam-sweep {
+  0% {
+    mask-position: 100% 100%;
+    animation-timing-function: var(--grid-beam-ease-out);
+  }
+  12% {
+    mask-position: 62% 62%;
+    animation-timing-function: var(--grid-beam-ease-in-out);
+  }
+  28% {
+    mask-position: 48% 48%;
+    animation-timing-function: var(--grid-beam-ease-in);
+  }
+  40% {
+    mask-position: 14% 14%;
+    animation-timing-function: var(--grid-beam-ease-out);
+  }
+  47%,
+  100% {
+    mask-position: 0% 0%;
+  }
+}
+@keyframes beam-spin {
+  to {
+    --beam-angle: 360deg;
+  }
+}
+
+@layer components {
+  /* Cartes à coin coupé (services anamorphiques, disciplines) : Formats.astro, Services.astro. */
+  /* Coin coupé en haut à droite, liseré 1 px qui suit la coupe : la case est peinte de la couleur du liseré,
+     ::before pose le fond blanc en retrait, coupé en parallèle (coin intérieur = coupe − 0,586 × épaisseur). */
+  .service-card {
+    --bd: var(--hairline);
+    --bc: var(--line-strong);
+    background: var(--bc);
+    clip-path: polygon(0 0, calc(100% - var(--service-cut)) 0, 100% var(--service-cut), 100% 100%, 0 100%);
+    transition: background-color var(--duration-surface);
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    inset: var(--bd);
+    z-index: -1;
+    background: var(--kosmo-white);
+    clip-path: polygon(0 0, calc(100% - var(--service-cut) + var(--bd) * 0.586) 0, 100% calc(var(--service-cut) - var(--bd) * 0.586), 100% 100%, 0 100%);
+  }
+
+  /* Grille + faisceau des blocs CTA noirs (GridBeam.astro). */
+  /* La grille est sur ::before, masquée en dégradé ; le tracé du faisceau (svg) n'est pas concerné par ce masque. */
+  .grid-beam::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+    background-size: var(--grid-cell) var(--grid-cell);
+    mask-image: var(--grid-fade-at, var(--grid-fade));
+  }
+  .grid-beam-path {
+    overflow: visible;
+    mask-image: var(--grid-beam-mask);
+    mask-size: 400% 400%;
+    mask-repeat: no-repeat;
+    mask-position: 100% 100%;
+    animation: grid-beam-sweep var(--grid-beam-cycle) linear infinite;
+  }
+  .grid-beam-path path {
+    stroke-width: var(--grid-beam-stroke);
+    vector-effect: non-scaling-stroke;
+  }
+  .grid-beam-path stop:nth-child(1) {
+    stop-color: var(--grid-beam-cyan);
+  }
+  .grid-beam-path stop:nth-child(2) {
+    stop-color: var(--grid-beam-violet);
+  }
+  .grid-beam-path stop:nth-child(3) {
+    stop-color: var(--grid-beam-purple);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .grid-beam-path {
+      animation: none;
+    }
+  }
+
+  /* Liseré animé : faisceau sur le bord de l'élément (::before, anneau découpé par masque). Le halo est un élément à
+     part posé derrière (beam-halo), pour ne déborder qu'à l'extérieur d'un fond opaque. Même angle animé : synchronisés. */
+  .beam,
+  .beam-halo {
+    animation: beam-spin var(--beam-duration) linear infinite;
+  }
+  .beam {
+    position: relative;
+  }
+  .beam::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    padding: var(--beam-width);
+    border-radius: inherit;
+    background: var(--beam-gradient);
+    pointer-events: none;
+    mask:
+      linear-gradient(black, black) content-box exclude,
+      linear-gradient(black, black);
+  }
+  .beam-halo {
+    background: var(--beam-gradient);
+    filter: blur(var(--beam-blur));
+    opacity: var(--beam-bloom-opacity);
+    pointer-events: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .beam,
+    .beam-halo {
+      animation-duration: var(--beam-duration-reduced);
+    }
+  }
+
+  .holo {
+    isolation: isolate;
+  }
+  .holo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: var(--holo-gradient);
+    mix-blend-mode: hard-light;
+    opacity: var(--glare-o, 0);
+    transition: opacity var(--duration-surface);
+    -webkit-mask-image: var(--holo-mask);
+    mask-image: var(--holo-mask);
+    -webkit-mask-size: var(--holo-mask-size);
+    mask-size: var(--holo-mask-size);
+  }
+  /* Variante « projecteur » : les pixels ne s'allument qu'autour du pointeur (grande image du journal). */
+  .holo--spot::after {
+    -webkit-mask-image: var(--holo-mask), radial-gradient(circle var(--holo-spot) at var(--gx, 50%) var(--gy, 50%), black var(--holo-spot-core), transparent 100%);
+    mask-image: var(--holo-mask), radial-gradient(circle var(--holo-spot) at var(--gx, 50%) var(--gy, 50%), black var(--holo-spot-core), transparent 100%);
+    -webkit-mask-size: var(--holo-mask-size), 100% 100%;
+    mask-size: var(--holo-mask-size), 100% 100%;
+    -webkit-mask-repeat: repeat, no-repeat;
+    mask-repeat: repeat, no-repeat;
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+  }
+}
+
+/* Trame de points en dégradé radial depuis le bas (cartes d'articles du journal) : à poser sur un élément vide en
+   absolute inset-0 derrière le contenu. */
+@utility dots-bottom {
+  background-image: radial-gradient(circle at var(--post-dot-at), var(--dot-color, var(--grey-400)) var(--post-dot-r), transparent var(--post-dot-fade));
+  background-size: var(--post-dots-size);
+  -webkit-mask-image: var(--post-dots-mask);
+  mask-image: var(--post-dots-mask);
+}
+
+/* Avant / après « Compare » (SparkCompare.astro) : la ligne et le film de gauche suivent --spark-x. */
+@layer components {
+  .spark-front {
+    clip-path: inset(0 calc(100% - var(--spark-x)) 0 0);
+  }
+  .spark-seam {
+    left: var(--spark-x);
+    background-image: var(--spark-line);
+  }
+  .spark-glow {
+    background-image: var(--spark-glow);
+    mask-image: var(--spark-glow-mask);
+    opacity: var(--spark-glow-opacity);
+  }
+  .spark-glow-core {
+    background-image: var(--spark-glow-core);
+    mask-image: var(--spark-glow-core-mask);
+  }
+  .spark-field {
+    mask-image: var(--spark-glow-mask);
+  }
+}
+
+/* Rail mobile (≤ 767 px) : une liste de cartes posée avec data-rail devient une rangée qui défile au doigt, cartes calées
+   sur la gouttière et de même hauteur, la suivante dépasse à droite. Hors couche : passe devant la grille du composant
+   (grid-cols…, basis…).
+   Tuiles projet ([data-ratio], MosaicCard) : largeur selon leur format natif. Au-dessus de 767 px, rien ne change. */
+[data-rail] {
+  @variant max-md {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: stretch;
+    gap: var(--rail-gap);
+    margin-inline: calc(-1 * var(--gutter));
+    padding-inline: var(--gutter);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    /* Un groupe (rangée « flat » de WorkRow) s'efface : ses cartes deviennent celles du rail. */
+    & > [data-rail-group] {
+      display: contents;
+    }
+    & > :not([data-rail-group]),
+    & > [data-rail-group] > * {
+      flex: none;
+      width: var(--rail-card);
+      scroll-snap-align: start;
+    }
+    & [data-ratio] {
+      align-self: flex-start;
+      width: var(--rail-tile);
+      padding-bottom: 0;
+    }
+    & [data-ratio='1:1'] {
+      width: var(--rail-tile-square);
+    }
+    & [data-ratio='16:9'] {
+      width: var(--rail-tile-wide);
+    }
+    /* Tuile de mosaïque (hauteur donnée par la grille sur ordinateur) : le format natif fixe la hauteur. */
+    & [data-layout='grid'] {
+      aspect-ratio: var(--aspect-portrait);
+    }
+    & [data-layout='grid'][data-ratio='1:1'] {
+      aspect-ratio: var(--aspect-square);
+    }
+    & [data-layout='grid'][data-ratio='16:9'] {
+      aspect-ratio: var(--aspect-video);
+    }
+    /* Rail qui mêle films 9:16 et 16:9 / 1:1 : toutes les tuiles à la hauteur des films verticaux, les autres recadrées au
+       centre (un 16:9 bien plus bas laissait un vide à côté des verticaux). */
+    &:has([data-ratio='9:16']) :is([data-ratio='16:9'], [data-ratio='1:1']) {
+      align-self: stretch;
+      aspect-ratio: auto;
+      & [data-tile-media] {
+        aspect-ratio: auto;
+        height: 100%;
+      }
+    }
+  }
+}
+
+/* Rail d'étiquettes (filtres de /work et /journal) : chaque étiquette garde sa largeur, pas d'aimantation. */
+[data-rail='chips'] {
+  @variant max-md {
+    align-items: center;
+    scroll-snap-type: none;
+    & > :not([data-rail-group]) {
+      width: auto;
+    }
+  }
+}
+
+/* Écran tactile : champs à 16 px, sinon Safari iOS zoome toute la page dès qu'on touche un champ. Hors couche : passe
+   devant les tailles de texte du composant. */
+@media (pointer: coarse) {
+  :is(input:not([type='checkbox'], [type='radio'], [type='range']), select, textarea) {
+    font-size: var(--field-font-size-touch);
+  }
+}

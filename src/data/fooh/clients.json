@@ -1,0 +1,326 @@
+[
+  {
+    "slug": "apple",
+    "name": "Apple",
+    "framerDraft": true,
+    "restricted": false,
+    "projectCount": 1
+  },
+  {
+    "slug": "astorg",
+    "name": "Astorg",
+    "logo": "https://framerusercontent.com/images/4b8m97SP1YrhdzUaDRLTgrefGXU.svg",
+    "framerDraft": true,
+    "restricted": false,
+    "projectCount": 1
+  },
+  {
+    "slug": "asus",
+    "name": "Asus",
+    "logo": "/images/logos/asus.svg",
+    "framerDraft": true,
+    "restricted": true,
+    "projectCount": 2
+  },
+  {
+    "slug": "betclic",
+    "name": "Betclic",
+    "logo": "/images/logos/betclic.svg",
+    "framerDraft": true,
+    "restricted": false,
+    "projectCount": 1
+  },
+  {
+    "slug": "bolero",
+    "name": "Bolero",
+    "logo": "/images/logos/bolero.svg",
+    "framerDraft": true,
+    "restricted": false,
+    "projectCount": 1
+  },
+  {
+    "slug": "bose",
+    "name": "Bose",
+    "logo": "/images/logos/bose.svg",
+    "framerDraft": true,
+    "restricted": true,
+    "projectCount": 1
+  },
+  {
+    "slug": "coyote",
+    "name": "Coyote",
+    "logo": "/images/logos/coyote.svg",
+    "framerDraft": true,
+    "restricted": false,
+    "projectCount": 1
+  },
+  {
+    "slug": "disney",
+    "name": "Disney+",
+    "logo": "https://framerusercontent.com/images/1vsYNC8gyEgsWknB8kPcocftI.svg",
+    "framerDraft": true,
+    "restricted": false,
+    "projectCount": 2
+  },
+  {
+    "slug": "extreme",
+    "name": "Extrême",
+    "logo": "https://framerusercontent.com/images/vTrcmwy62tp6GCDXBIDnerNRmY.svg",
+    "framerDraft": true,
+    "restricted": false,
+    "projectCount": 1
+  },
+  {
+    "slug": "france-tv",
+    "name": "France TV",
+    "logo": "/images/logos/france-tv.svg",
+    "framerDraft": true,
+    "restricted": false,
+    "projectCount": 1
+  },
+  {
+    "slug": "havas-africa",
+    "name": "Havas Africa",
+    "logo": "https://framerusercontent.com/images/I8Z1tesr4rmCAWnSRosMDmsczA.svg",
+    "framerDraft": true,
+    "restricted": false,
+    "projectCount": 1
+  },
+  {
+    "slug": "hermes",
+    "name": "Hermes",
+    "logo": "/images/logos/hermes.svg",
+    "framerDraft": true,
+    "restricted": false,
+    "projectCount": 1
+  },
+  {
+    "slug": "hiscox",
+    "name": "Hiscox",
+    "logo": "/images/logos/hiscox.svg",
+    "framerDraft": true,
+    "restricted": false,
+    "projectCount": 1
+  },
+  {
+    "slug": "icade",
+    "name": "Icade",
+    "logo": "/images/logos/icade.svg",
+    "framerDraft": true,
+    "restricted": false,
+    "projectCount": 1
+  },
+  {
+    "slug": "icemoon",
+    "name": "Icemoon",
+    "framerDraft": false,
+    "restricted": false,
+    "projectCount": 1
+  },
+  {
+    "slug": "jardin-d-acclimatation",
+    "name": "Jardin d'acclimatation",
+    "logo": "/images/logos/jardin-d-acclimatation.svg",
+    "framerDraft": true,
+    "restricted": false,
+    "projectCount": 1
+  },
+  {
+    "slug": "jylor",
+    "name": "Jylor",
+    "framerDraft": true,
+    "restricted": false,
+    "projectCount": 1
+  },
+  {
+    "slug": "keepcool",
+    "name": "Keepcool",
+    "logo": "/images/logos/keepcool.svg",
+    "framerDraft": true,
+    "restricted": false,
+    "projectCount": 1
+  },
+  {
+    "slug": "kof",
+    "name": "KOF",
+    "framerDraft": true,
+    "restricted": false,
+    "projectCount": 1
+  },
+  {
+    "slug": "kosmo",
+    "name": "KOSMO",
+    "logo": "https://framerusercontent.com/images/8IRrnIPkR0Z7Wk9tmiOY3eWpuI.svg",
+    "framerDraft": true,
+    "restricted": false,
+    "projectCount": 6
+  },
+  {
+    "slug": "la-baleine",
+    "name": "La Baleine",
+    "logo": "/images/logos/la-baleine.svg",
+    "framerDraft": true,
+    "restricted": false,
+    "projectCount": 1
+  },
+  {
+    "slug": "lego",
+    "name": "Lego",
+    "logo": "/images/logos/lego.svg",
+    "framerDraft": false,
+    "restricted": true,
+    "projectCount": 0
+  },
+  {
+    "slug": "macsf",
+    "name": "MACSF",
+    "logo": "/images/logos/macsf.svg",
+    "framerDraft": true,
+    "restricted": false,
+    "projectCount": 2
+  },
+  {
+    "slug": "maisons-du-monde",
+    "name": "Maisons du monde",
+    "logo": "/images/logos/maisons-du-monde.svg",
+    "framerDraft": false,
+    "restricted": false,
+    "projectCount": 5
+  },
+  {
+    "slug": "miele",
+    "name": "Miele",
+    "logo": "/images/logos/miele.svg",
+    "framerDraft": false,
+    "restricted": false,
+    "projectCount": 1
+  },
+  {
+    "slug": "mojang-studios",
+    "name": "Mojang Studios",
+    "logo": "https://framerusercontent.com/images/xmMVyCjOnLg2NCo8fuk9lCsPN7k.svg",
+    "framerDraft": true,
+    "restricted": false,
+    "projectCount": 1
+  },
+  {
+    "slug": "neoness",
+    "name": "Neoness",
+    "logo": "/images/logos/neoness.svg",
+    "framerDraft": false,
+    "restricted": false,
+    "projectCount": 1
+  },
+  {
+    "slug": "netflix",
+    "name": "Netflix",
+    "logo": "/images/logos/netflix.svg",
+    "framerDraft": false,
+    "restricted": true,
+    "projectCount": 6
+  },
+  {
+    "slug": "nrj",
+    "name": "NRJ",
+    "logo": "https://framerusercontent.com/images/2ZYGSNhwHkoL2t5FECb6Oczef4.svg",
+    "framerDraft": true,
+    "restricted": false,
+    "projectCount": 1
+  },
+  {
+    "slug": "oysho",
+    "name": "Oysho",
+    "logo": "/images/logos/oysho.svg",
+    "framerDraft": true,
+    "restricted": false,
+    "projectCount": 3
+  },
+  {
+    "slug": "porsche",
+    "name": "Porsche",
+    "logo": "https://framerusercontent.com/images/tfQi27ygSxbzigqldKUSuny91A.svg",
+    "framerDraft": true,
+    "restricted": false,
+    "projectCount": 1
+  },
+  {
+    "slug": "pringles",
+    "name": "Pringles",
+    "logo": "/images/logos/pringles.svg",
+    "framerDraft": true,
+    "restricted": true,
+    "projectCount": 1
+  },
+  {
+    "slug": "proman",
+    "name": "Proman",
+    "logo": "/images/logos/proman.svg",
+    "framerDraft": true,
+    "restricted": false,
+    "projectCount": 2
+  },
+  {
+    "slug": "renault",
+    "name": "Renault",
+    "logo": "/images/logos/renault.svg",
+    "framerDraft": true,
+    "restricted": false,
+    "projectCount": 2
+  },
+  {
+    "slug": "rhode",
+    "name": "Rhode",
+    "logo": "/images/logos/rhode.svg",
+    "framerDraft": true,
+    "restricted": false,
+    "projectCount": 1
+  },
+  {
+    "slug": "roland-garros",
+    "name": "Roland Garros",
+    "logo": "https://framerusercontent.com/images/LxIdDWwD3NDDywAEhKHDeOCY.svg",
+    "framerDraft": true,
+    "restricted": false,
+    "projectCount": 1
+  },
+  {
+    "slug": "sogelym-dixence",
+    "name": "Sogelym Dixence",
+    "logo": "https://framerusercontent.com/images/t41E4N5xOtR9v7BnGCEo6g7Io.svg",
+    "framerDraft": true,
+    "restricted": false,
+    "projectCount": 3
+  },
+  {
+    "slug": "uber-eats",
+    "name": "Uber Eats",
+    "logo": "/images/logos/uber-eats.svg",
+    "framerDraft": true,
+    "restricted": false,
+    "projectCount": 1
+  },
+  {
+    "slug": "uefa",
+    "name": "UEFA",
+    "logo": "https://framerusercontent.com/images/U80DrvtXdOnh3sXD7bC2I11I.svg",
+    "framerDraft": true,
+    "restricted": false,
+    "projectCount": 2
+  },
+  {
+    "slug": "weyou-group",
+    "name": "Weyou Group",
+    "logo": "https://framerusercontent.com/images/3KHSx9TfBnNMmJSVdyAjiVlQkf8.svg",
+    "framerDraft": true,
+    "restricted": false,
+    "projectCount": 3
+  },
+  {
+    "slug": "zalando",
+    "name": "Zalando",
+    "logo": "/images/logos/zalando.svg",
+    "framerDraft": false,
+    "restricted": false,
+    "projectCount": 2
+  }
+]

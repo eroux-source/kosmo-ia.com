@@ -1,0 +1,23 @@
+---
+/** Comparatif « production classique / KOSMO® AI » : en-tête de section puis le tableau ComparisonTable. */
+import Section from '../ui/Section.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+import TwoTone from '../ui/TwoTone.astro';
+import ComparisonTable from '../ui/ComparisonTable.astro';
+
+interface Props {
+  overline: string;
+  heading: string;
+  head: string[];
+  rows: { icon: string; feature: string; old: string; new: string }[];
+}
+const { overline, heading, head, rows } = Astro.props;
+---
+
+<Section data-fade="trigger">
+  <Eyebrow label={overline} />
+  <h2 data-stagger-text class="mt-(--head-gap) max-w-(--gallery-heading-max) heading-h3"><TwoTone text={heading} /></h2>
+  <div data-fade="target" class="mt-12">
+    <ComparisonTable head={head} rows={rows} />
+  </div>
+</Section>

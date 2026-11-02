@@ -1,0 +1,34 @@
+{
+  "demo": true,
+  "title": "The screen brief checklist",
+  "subtitle": "What we need from your media owner before we build, so your film is accepted first time.",
+  "intro": "Most delays on a 3D campaign come from missing information about the screen, not from the creative. Send this list to your media owner, or to us, and the production starts on solid ground.",
+  "sections": [
+    {
+      "title": "The screen",
+      "items": ["Media owner and site name", "Address and screen reference", "Shape: portrait, landscape, corner or facade", "Real size of the screen and how far people stand from it"]
+    },
+    {
+      "title": "The exact layout",
+      "items": ["Resolution of each face", "Gaps and edges between faces", "The angle, if it is a corner screen", "Areas that must stay clear", "The template file the media owner provides"]
+    },
+    {
+      "title": "The video format accepted",
+      "items": ["File type and maximum size", "Frames per second", "Length of the spot and how often it plays", "Sound or no sound", "Anything about colour or brightness"]
+    },
+    {
+      "title": "The view people have",
+      "items": ["A photo or video from where people usually see the screen", "How far and how high that spot is", "Poles, trees, signs or reflections in the way", "What it looks like by day and by night"]
+    },
+    {
+      "title": "The schedule",
+      "items": ["Campaign dates and share of the loop", "Delivery deadline and approval time", "Who signs off on the media-owner side", "A test slot on the real screen, if possible"]
+    },
+    {
+      "title": "The delivery",
+      "items": ["How files should be named", "Where and how to send them", "The other screens in the network that need a version", "A still image for screens that refuse video"]
+    }
+  ],
+  "closing": "Missing half of it? That is normal. Send what you have and we ask the media owner for the rest.",
+  "file": "/downloads/3dooh-media-owner-checklist.pdf"
+}

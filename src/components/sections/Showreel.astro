@@ -1,0 +1,61 @@
+---
+/**
+ * Showreel : le film de présentation KOSMO® (avec bande son), lancé automatiquement à l'approche du viewport, muet,
+ * en boucle. Carte fenêtre à plat (DESIGN-SYSTEM.md) : carte blanche, 6 px de marge autour du film (rayon 2 px).
+ * Un bouton « sound on / off » en bas à droite active le son (geste utilisateur, donc autorisé par les navigateurs).
+ * ratio="film" : vidéo 4:3 centrée (VSL des pages 3DOOH) ; restart : activer le son relance le film depuis le début.
+ */
+import Section from '../ui/Section.astro';
+import Icon from '../ui/Icon.astro';
+
+interface Props {
+  id?: string;
+  video: { src: string; poster: string };
+  ratio?: 'video' | 'film';
+  restart?: boolean;
+}
+const { id, video, ratio = 'video', restart = false } = Astro.props;
+---
+
+{/* Accueil : collé au bloc du dessus, espace en bas seulement. VSL (film) : espacement standard en haut et en bas. */}
+<Section id={id} spacing={ratio === 'film' ? 'md' : 'none'} class={ratio === 'film' ? undefined : 'pb-(--section-md-y)'}>
+  <div class:list={['card w-full p-(--card-pad)', ratio === 'film' && 'mx-auto max-w-(--measure-vsl)']}>
+    <div
+      data-showreel
+      data-restart={restart ? '' : undefined}
+      class:list={['group relative w-full overflow-hidden rounded-default bg-black', ratio === 'film' ? 'aspect-film' : 'aspect-video']}
+    >
+      <video class="size-full object-cover" data-lazy data-src={video.src} autoplay muted loop playsinline preload="none" poster={video.poster}></video>
+      <button
+        type="button"
+        data-showreel-sound
+        aria-pressed="false"
+        aria-label="Turn sound on"
+        class="group/sound absolute right-3 bottom-3 flex h-(--button-height) cursor-pointer items-center gap-2 rounded-sm bg-black px-(--button-pad-x) text-tagline text-white transition-colors duration-(--duration-color) hover:bg-acid hover:text-black aria-pressed:bg-acid aria-pressed:text-black max-sm:right-2 max-sm:bottom-2"
+      >
+        {/* L'icône a son propre display : la visibilité se pilote sur un span parent. */}
+        <span class="flex group-aria-pressed/sound:hidden"><Icon name="volume-off" class="size-(--button-icon)" /></span>
+        <span class="hidden group-aria-pressed/sound:flex"><Icon name="volume" class="size-(--button-icon)" /></span>
+        <span class="group-aria-pressed/sound:hidden">Sound on</span>
+        <span class="hidden group-aria-pressed/sound:inline">Sound off</span>
+      </button>
+    </div>
+  </div>
+</Section>
+
+<script>
+  // Le son ne peut être activé que par un geste : au clic on démute et on relance la lecture.
+  document.querySelectorAll<HTMLElement>('[data-showreel]').forEach((root) => {
+    const video = root.querySelector<HTMLVideoElement>('video');
+    const button = root.querySelector<HTMLButtonElement>('[data-showreel-sound]');
+    if (!video || !button) return;
+    button.addEventListener('click', () => {
+      const on = video.muted;
+      video.muted = !on;
+      if (on && root.hasAttribute('data-restart')) video.currentTime = 0;
+      if (on) video.play().catch(() => {});
+      button.setAttribute('aria-pressed', String(on));
+      button.setAttribute('aria-label', on ? 'Turn sound off' : 'Turn sound on');
+    });
+  });
+</script>

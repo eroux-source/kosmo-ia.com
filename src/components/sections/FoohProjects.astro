@@ -1,0 +1,51 @@
+---
+/**
+ * Sélection de projets FOOH (les plus récents) en rangées de trois au format natif (cartes projet MosaicCard), avec
+ * l'en-tête de section du système : surtitre, titre deux tons à gauche, bouton vers /work calé en haut à droite.
+ * Sur mobile (≤ 767 px), les deux mises en page deviennent un rail qui défile au doigt (global.css [data-rail]).
+ */
+import Section from '../ui/Section.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+import Button from '../ui/Button.astro';
+import TwoTone from '../ui/TwoTone.astro';
+import WorkRow from '../ui/WorkRow.astro';
+import MosaicCard from '../ui/MosaicCard.astro';
+import { foohItem } from '../../lib/mosaic';
+import { foohProjects } from '../../lib/fooh';
+
+interface Props {
+  id?: string;
+  heading?: string;
+  limit?: number;
+  /** Projets à exclure (la page courante). */
+  exclude?: string[];
+  /** rows = rangées de trois (défaut) ; mosaic = la mosaïque 4 colonnes de /work (formats natifs, trous comblés). */
+  layout?: 'rows' | 'mosaic';
+}
+const { id, heading = 'FOOH work.', limit = 3, exclude = [], layout = 'rows' } = Astro.props;
+const projects = foohProjects.filter((p) => !exclude.includes(p.slug)).slice(0, limit);
+const rows = Array.from({ length: Math.ceil(projects.length / 3) }, (_, i) => projects.slice(i * 3, i * 3 + 3).map(foohItem));
+---
+
+<Section id={id} data-fade="trigger" class="scroll-mt-(--nav-inset)">
+  <Eyebrow label="fooh & mixed reality" />
+  <div class="mt-(--head-gap) flex flex-wrap items-start justify-between gap-6">
+    <h2 data-stagger-text class="heading-h3 max-w-(--gallery-heading-max)"><TwoTone text={heading} /></h2>
+    <Button data-fade="target" href="/work?category=fooh" label={`all fooh work (${foohProjects.length})`} variant="dark" />
+  </div>
+  {
+    layout === 'mosaic' ? (
+      <ul data-fade="target" data-mosaic data-rail class="mt-12 grid grid-flow-row-dense grid-cols-4 auto-rows-(--mosaic-unit) gap-x-(--mosaic-gap) max-md:grid-cols-2">
+        {projects.map((p) => <MosaicCard item={foohItem(p)} />)}
+      </ul>
+    ) : (
+      <div data-fade="target" data-rail class="mt-12 flex flex-col gap-3">
+        {rows.map((row) => <WorkRow items={row} flat />)}
+      </div>
+    )
+  }
+</Section>
+
+<script>
+  import '../../scripts/mosaic';
+</script>

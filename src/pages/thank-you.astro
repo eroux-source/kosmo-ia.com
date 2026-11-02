@@ -1,0 +1,65 @@
+---
+/**
+ * Page de remerciement après un formulaire : la suite (trois cartes blanches), le rendez-vous, WhatsApp.
+ * Événement de conversion.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageTop from '../components/layout/PageTop.astro';
+import Footer from '../components/layout/Footer.astro';
+import Section from '../components/ui/Section.astro';
+import Eyebrow from '../components/ui/Eyebrow.astro';
+import TwoTone from '../components/ui/TwoTone.astro';
+import BookingEmbed from '../components/ui/BookingEmbed.astro';
+import Button from '../components/ui/Button.astro';
+import Icon from '../components/ui/Icon.astro';
+import Demo from '../components/ui/Demo.astro';
+import { whatsappHref } from '../lib/env';
+import { contact } from '../data/site';
+
+const steps = [
+  { icon: 'check', title: 'Your brief is in', text: 'We read it and reply within one working day.' },
+  { icon: 'sparkles', title: 'A first direction', text: 'We come back with questions, a first idea of the approach and what the project would include.' },
+  { icon: 'calendar', title: 'Then we talk', text: 'The quickest way to move forward is a call. Pick a slot below and we look at your plan together.' },
+];
+---
+
+<BaseLayout title="Thank you | KOSMO® AI" description="Your request has been received." noindex chrome={false}>
+  <PageTop />
+  <main data-track-view="lead_thank_you">
+    <Section spacing="lg" data-fade="trigger">
+      <Eyebrow label="Received" />
+      <Demo inline note="titre de la page de remerciement">
+        <h1 data-stagger-text class="mt-(--head-gap) max-w-(--measure-2xl) heading-h3"><TwoTone text="Thanks. Here is what happens next." /></h1>
+      </Demo>
+      <Demo note="étapes de la page de remerciement" class="mt-12">
+        <ol class="grid grid-cols-3 gap-3 max-lg:grid-cols-1">
+          {
+            steps.map((step, i) => (
+              <li data-fade="target" class="card flex flex-col p-(--way-pad)">
+                <div class="flex items-center justify-between">
+                  <span class="grid size-(--way-icon) place-items-center rounded-default bg-acid text-black">
+                    <Icon name={step.icon} class="size-(--button-icon)" />
+                  </span>
+                  <span class="text-tagline text-(--label-color)">0{i + 1}</span>
+                </div>
+                <h2 class="mt-5 heading-h6">{step.title}</h2>
+                <p class="mt-2 text-small text-(--body-soft)">{step.text}</p>
+              </li>
+            ))
+          }
+        </ol>
+      </Demo>
+      <div id="book" class="mt-16 flex flex-col gap-6">
+        <div class="flex flex-wrap items-end justify-between gap-4">
+          <h2 data-stagger-text class="heading-h5"><TwoTone text="Skip the wait: book the call now." /></h2>
+          <div class="flex flex-wrap gap-2">
+            <Button href={whatsappHref('Hi KOSMO, I just sent a brief on the AI site.')} label="whatsapp" variant="light" data-track-click="whatsapp_click" />
+            <Button href={`mailto:${contact.email}`} label={contact.email} icon="mail" variant="light" go={false} verbatim />
+          </div>
+        </div>
+        <BookingEmbed />
+      </div>
+    </Section>
+  </main>
+  <Footer />
+</BaseLayout>

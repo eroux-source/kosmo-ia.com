@@ -1,0 +1,399 @@
+---
+/**
+ * Nav fixe (DESIGN-SYSTEM.md, maquette Cofounder) : logo KOSMO® à gauche ; à droite, un segment de liens (menu
+ * « Services » déroulant, Work, Journal, About), un segment langue, « Book a call » et « Contact ».
+ * Sur un hero sombre : transparente, logo blanc, segments vitrés ; passe en papier (68 px) quand le hero sort de
+ * l'écran (src/scripts/nav.ts). Pages intérieures (`light`) : papier d'emblée. ≤ 991 px : menu repliable.
+ */
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+import LangSwitch from '../ui/LangSwitch.astro';
+import wordmark from '../../assets/brand/wordmark.svg?raw';
+import { nav, ctaLabel, ctaHref as contactHref, bookLabel } from '../../data/site';
+
+interface Props {
+  ctaHref?: string;
+  /** Pages intérieures sur fond clair : nav papier dès le haut de page. */
+  light?: boolean;
+}
+const { ctaHref = contactHref, light = false } = Astro.props;
+---
+
+<header data-nav data-solid={light ? 'true' : 'false'} data-fixed-solid={light ? '' : undefined} class="nav fixed inset-x-0 top-0 z-(--nav-z)">
+  <div class="nav__bar flex h-(--nav-height) items-center justify-between gap-(--nav-group-gap) px-(--nav-pad)">
+    <a href="/" aria-label="KOSMO®" class="nav__logo flex shrink-0 items-center [&>svg]:h-(--nav-wordmark-height) [&>svg]:w-auto" set:html={wordmark} />
+    <div class="flex items-center gap-(--nav-group-gap)">
+      <nav data-menu data-open="false" aria-label="Main navigation" class="nav__menu">
+        <ul class="nav__seg flex items-center max-lg:flex-col max-lg:items-stretch max-lg:gap-1">
+          {
+            nav.links.map((link, i) =>
+              link.dropdown ? (
+                <li data-dropdown class="max-lg:static">
+                  <button type="button" data-dropdown-toggle aria-expanded="false" aria-controls="nav-services" class="nav__item w-full justify-between">
+                    <span>{link.label}</span>
+                    <Icon name="chevron-down" class="size-(--button-icon) transition-transform duration-(--duration-surface) ease-(--ease-kosmo)" data-dropdown-arrow="" />
+                  </button>
+                  <div id="nav-services" data-dropdown-list hidden class="nav__panel">
+                    <div class="nav__mega card flex flex-col gap-2 p-2 max-lg:bg-transparent max-lg:p-0 max-lg:shadow-none">
+                      <div class="flex items-center justify-between px-2 pt-1.5 max-lg:p-0">
+                        <span class="text-tagline text-ink-soft max-lg:hidden">{nav.anamorphic.title}</span>
+                        <a href={nav.anamorphic.href} class="group/all flex items-center gap-1 text-small leading-nav font-medium text-black max-lg:text-medium">
+                          <span class="max-lg:hidden">{nav.anamorphic.all}</span>
+                          <span class="hidden max-lg:inline">{nav.anamorphic.title}</span>
+                          <Icon name="arrow-right-small" class="size-(--button-icon) transition-transform duration-(--duration-surface) ease-(--ease-kosmo) group-hover/all:translate-x-0.5" />
+                        </a>
+                      </div>
+                      <ul data-nav-strips class="nav__strips">
+                        {nav.anamorphic.items.map((item, n) => (
+                          <li data-nav-strip class:list={['nav__strip', { 'is-active': n === 0 }]}>
+                            <a href={item.href} class="nav__strip-link">
+                              <img src={item.image} alt="" width="1200" height="675" loading="lazy" decoding="async" class="nav__strip-img" />
+                              <span aria-hidden="true" class="nav__strip-vert max-lg:hidden">{item.title}</span>
+                              <span class="nav__strip-text">
+                                <span class="block text-medium leading-(--nav-strip-leading) font-semibold max-lg:text-small">{item.title}</span>
+                                <span class="mt-1 block text-caption leading-(--footer-link-leading) opacity-(--nav-strip-desc-opacity) max-lg:hidden">{item.description}</span>
+                              </span>
+                              <span aria-hidden="true" class="nav__strip-go max-lg:hidden">
+                                <Icon name="arrow-right-small" class="size-(--button-icon)" />
+                              </span>
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                      <ul class="grid grid-cols-3 gap-0.5 border-t border-line pt-2 max-lg:grid-cols-1 max-lg:border-0 max-lg:pt-1">
+                        {nav.services.map((service) => (
+                          <li>
+                            <a
+                              href={service.href}
+                              class="group/item flex items-center gap-2.5 rounded-default p-2 text-small leading-nav font-medium whitespace-nowrap text-black transition-colors duration-(--duration-color) hover:bg-paper max-lg:px-0 max-lg:text-medium max-lg:hover:bg-transparent"
+                            >
+                              <span class="flex size-(--nav-more-icon) shrink-0 items-center justify-center rounded-default bg-paper transition-colors duration-(--duration-surface) group-hover/item:bg-acid max-lg:bg-white">
+                                <Icon name={service.icon} class="size-(--nav-more-glyph)" />
+                              </span>
+                              {service.title}
+                              <Icon
+                                name="arrow-right-small"
+                                class="size-(--button-icon) shrink-0 -translate-x-1.5 opacity-0 transition duration-(--duration-surface) ease-(--ease-kosmo) group-hover/item:translate-x-0 group-hover/item:opacity-100 max-lg:hidden"
+                              />
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+              ) : (
+                <>
+                  {i === 1 && <li aria-hidden="true" class="nav__divider max-lg:hidden" />}
+                  <li>
+                    <a href={link.href} class="nav__item">
+                      {link.label}
+                    </a>
+                  </li>
+                </>
+              ),
+            )
+          }
+        </ul>
+        <div class="hidden flex-col gap-2 border-t border-line pt-4 max-lg:flex">
+          <Button href="/book" label={bookLabel} variant="light" data-track-click="nav_book" />
+          <LangSwitch fill />
+        </div>
+      </nav>
+
+      <div class="flex shrink-0 items-center gap-(--nav-group-gap)">
+        <div class="nav__seg max-lg:hidden">
+          <LangSwitch variant="dropdown" />
+        </div>
+        <div class="max-lg:hidden">
+          <Button href="/book" label={bookLabel} variant="light" data-track-click="nav_book" />
+        </div>
+        <div class="max-md:hidden">
+          <Button href={ctaHref} label={ctaLabel} variant="dark" />
+        </div>
+        <button
+          type="button"
+          data-menu-button
+          aria-expanded="false"
+          aria-label="Menu"
+          class="nav__burger hidden size-(--nav-menu-button-size) cursor-pointer items-center justify-center rounded-sm max-lg:flex"
+        >
+          <Icon name="menu" class="size-5" />
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<style is:global>
+  /* Couche « components » : les utilitaires Tailwind du markup (max-lg:hidden…) gardent la main. */
+  @layer components {
+    /* États de la nav (transparente sur un hero / papier) : couleurs lues dans les tokens. */
+    .nav {
+      color: var(--kosmo-white);
+      --seg-surface: var(--glass-dark);
+      --seg-hover: var(--glass-dark-hover);
+      --seg-ring: none;
+      transition:
+        background-color var(--duration-surface-slow),
+        color var(--duration-surface-slow),
+        box-shadow var(--duration-surface-slow);
+    }
+    .nav__bar {
+      transition: height var(--duration-surface-slow) var(--ease-kosmo);
+    }
+    .nav[data-solid='true'] {
+      color: var(--kosmo-black);
+      background-color: var(--nav-surface-solid);
+      box-shadow: var(--nav-rule);
+      --seg-surface: var(--kosmo-white);
+      --seg-hover: var(--kosmo-paper);
+      --seg-ring: var(--card-ring);
+    }
+    .nav[data-solid='true'] .nav__bar {
+      height: var(--nav-height-solid);
+    }
+    .nav__seg {
+      display: flex;
+      align-items: center;
+      height: var(--nav-seg-height);
+      padding: 0 var(--nav-seg-pad);
+      border-radius: var(--rounded-sm);
+      background-color: var(--seg-surface);
+      box-shadow: var(--seg-ring);
+      transition:
+        background-color var(--duration-surface-slow),
+        box-shadow var(--duration-surface-slow);
+    }
+    .nav__item {
+      display: flex;
+      align-items: center;
+      gap: var(--button-go-inset);
+      height: var(--nav-item-height);
+      padding: 0 var(--nav-item-pad);
+      border-radius: var(--rounded-default);
+      font-size: var(--text-medium-size);
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background-color var(--duration-color);
+    }
+    .nav__item:hover,
+    [data-dropdown].is-open > .nav__item {
+      background-color: var(--seg-hover);
+    }
+    .nav__divider {
+      width: var(--hairline);
+      height: var(--nav-divider-height);
+      background-color: currentColor;
+      opacity: var(--nav-divider-opacity);
+    }
+    .nav__panel {
+      position: absolute;
+      top: 100%;
+      left: calc(-1 * var(--nav-seg-pad));
+      width: var(--measure-dropdown);
+      padding-top: var(--nav-dropdown-gap);
+    }
+    .nav__burger {
+      background-color: var(--seg-surface);
+      box-shadow: var(--seg-ring);
+    }
+    .nav__burger[aria-expanded='true'] {
+      background-color: var(--kosmo-acid);
+      color: var(--kosmo-black);
+    }
+
+    /* Menu Services : bandes photo, la bande survolée s'ouvre, les autres passent en noir et blanc. */
+    .nav__strips {
+      display: flex;
+      gap: var(--nav-strip-gap);
+      height: var(--nav-strip-height);
+    }
+    .nav__strip {
+      flex: 1 1 0;
+      min-width: 0;
+      transition: flex-grow var(--duration-surface-slow) var(--ease-kosmo);
+    }
+    .nav__strip.is-active {
+      flex-grow: var(--nav-strip-grow);
+    }
+    .nav__strip-link {
+      position: relative;
+      isolation: isolate;
+      display: block;
+      height: 100%;
+      overflow: hidden;
+      border-radius: var(--rounded-default);
+      color: var(--kosmo-white);
+    }
+    .nav__strip-link::before,
+    .nav__strip-link::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+    }
+    .nav__strip-link::before {
+      z-index: -1;
+      background-image: var(--overlay-caption);
+    }
+    .nav__strip-link::after {
+      box-shadow: var(--card-ring-acid);
+      opacity: 0;
+      transition: opacity var(--duration-surface);
+    }
+    .nav__strip-link:hover::after,
+    .nav__strip-link:focus-visible::after {
+      opacity: 1;
+    }
+    .nav__strip-img {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition:
+        scale var(--duration-surface-slow) var(--ease-kosmo),
+        filter var(--duration-surface-slow);
+    }
+    .nav__strip:not(.is-active) .nav__strip-img {
+      filter: var(--nav-strip-dim);
+    }
+    .nav__strip-link:hover .nav__strip-img {
+      scale: var(--nav-strip-zoom);
+    }
+    .nav__strip-vert {
+      position: absolute;
+      left: var(--nav-strip-pad);
+      bottom: var(--nav-strip-pad);
+      writing-mode: vertical-rl;
+      rotate: 180deg;
+      font-size: var(--text-small-size);
+      font-weight: var(--font-weight-semibold);
+      white-space: nowrap;
+      transition: opacity var(--duration-surface);
+    }
+    .nav__strip-text {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: var(--nav-strip-pad);
+      white-space: nowrap;
+      opacity: 0;
+      translate: 0 var(--nav-strip-text-shift);
+      transition:
+        opacity var(--duration-surface) var(--ease-kosmo),
+        translate var(--duration-surface) var(--ease-kosmo);
+    }
+    .nav__strip-go {
+      position: absolute;
+      top: var(--nav-strip-gap);
+      right: var(--nav-strip-gap);
+      display: grid;
+      place-items: center;
+      width: var(--nav-strip-go);
+      height: var(--nav-strip-go);
+      border-radius: var(--rounded-default);
+      background-color: var(--kosmo-acid);
+      color: var(--kosmo-black);
+      opacity: 0;
+      scale: var(--nav-strip-go-from);
+      transition:
+        opacity var(--duration-surface) var(--ease-kosmo),
+        scale var(--duration-surface) var(--ease-kosmo);
+    }
+    .nav__strip.is-active .nav__strip-vert {
+      opacity: 0;
+    }
+    .nav__strip.is-active .nav__strip-text {
+      opacity: 1;
+      translate: 0 0;
+      transition-delay: var(--nav-strip-text-delay);
+    }
+    .nav__strip.is-active .nav__strip-go {
+      opacity: 1;
+      scale: 1;
+    }
+
+    /* Ordinateur : le panneau s'aligne sous la nav, à droite (il dépasserait de l'écran s'il partait de « Services »). */
+    @media (min-width: 992px) {
+      .nav__bar {
+        position: relative;
+      }
+      .nav__panel {
+        left: auto;
+        right: var(--nav-pad);
+        width: var(--nav-mega-width);
+        max-width: calc(100vw - 2 * var(--nav-pad));
+      }
+    }
+
+    /* ≤ 991 px : le menu se replie sous la barre, sur le papier. */
+    @media (max-width: 991px) {
+      .nav__menu {
+        position: absolute;
+        inset-inline: 0;
+        top: 100%;
+        display: none;
+        flex-direction: column;
+        gap: var(--nav-group-gap);
+        overflow: hidden;
+        max-height: calc(100dvh - var(--nav-height-solid));
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        padding: var(--nav-seg-pad) var(--gutter) var(--gutter);
+        background-color: var(--kosmo-paper);
+        color: var(--kosmo-black);
+        box-shadow: var(--nav-rule);
+      }
+      .nav__menu[data-open='true'] {
+        display: flex;
+      }
+      /* Menu ouvert : la page derrière ne défile plus (nav.ts pose la classe sur <html>). */
+      html.nav-menu-open {
+        overflow: hidden;
+      }
+      .nav__menu .nav__seg {
+        height: auto;
+        padding: 0;
+        background: none;
+        box-shadow: none;
+      }
+      .nav__menu .nav__item {
+        height: auto;
+        padding: var(--nav-item-pad) 0;
+        font-size: var(--text-large-size);
+      }
+      .nav__menu .nav__item:hover {
+        background: none;
+      }
+      .nav__panel {
+        position: static;
+        width: 100%;
+        padding: 0 0 var(--nav-item-pad);
+      }
+      /* Bandes → vignettes 2 × 2, titre toujours visible */
+      .nav__strips {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        height: auto;
+      }
+      .nav__strip-link {
+        aspect-ratio: var(--nav-strip-ratio-mobile);
+      }
+      .nav__strip:not(.is-active) .nav__strip-img {
+        filter: none;
+      }
+      .nav__strip-text {
+        padding: var(--nav-item-pad);
+        white-space: normal;
+        opacity: 1;
+        translate: 0 0;
+      }
+    }
+  }
+</style>
+
+<script>
+  import '../../scripts/nav';
+</script>
