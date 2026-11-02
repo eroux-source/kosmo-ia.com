@@ -1,7 +1,7 @@
 # KOSMO® AI — notes de lancement (02/11/2026)
 
 ## Ce qui est fait
-- Accueil (AI creative agency) + 12 pages services, mots-clés du plan Semrush US.
+- Accueil (AI creative agency) + 8 pages services (TV, photoshoot, entertainment et automotive retirés le 02/11), mots-clés du plan Semrush US.
 - /work : les 65 films de projects.json (aucun DOOH), une page par film (/work/<slug>).
 - /contact avec formulaire de brief (form `ai-brief` → /api/lead → HubSpot, champ « Service » ajouté au résumé du lead).
 - JSON-LD : Service, FAQPage, BreadcrumbList, VideoObject. Sitemap, llms.txt.
@@ -22,7 +22,7 @@
   dans les variables d'environnement Vercel (RB2B utile pour un site US).
 
 ## Médias manquants (aucun film du studio ne correspond vraiment)
-- AI music videos, AI explainer videos, AI influencers, AI UGC ads, AI photoshoot : films de remplacement pris dans le
+- AI music videos, AI explainer videos, AI influencers, AI UGC ads : films de remplacement pris dans le
   portfolio. Idéalement, de vraies productions IA de KOSMO® pour ces pages.
 - Les vidéos et logos hébergés sur framer-bg-videos.b-cdn.net / framerusercontent.com ne sont pas copiés en local.
 

@@ -73,46 +73,7 @@ export const services: AiService[] = [
       { question: 'Can you work with our existing footage and assets?', answer: 'Yes. We extend, restyle and finish footage you already own, and we can build your product in 3D from packshots or CAD files so it stays exact in every shot.' },
       { question: 'Do you only work with US brands?', answer: 'No. We work worldwide, with recent work in the United States, France, Japan and across Europe.' },
     ],
-    related: ['ai-commercials', 'ai-tv-commercial-production', 'ai-animated-commercials'],
-  },
-  {
-    slug: 'ai-tv-commercial-production',
-    label: 'AI TV commercials',
-    blurb: 'TV and CTV spots, 15 to 60 seconds, delivered to broadcast specs.',
-    keyword: 'TV commercial production',
-    seo: {
-      title: 'AI TV Commercial Production Company | KOSMO® AI',
-      description: 'TV commercial production with AI: 15, 30 and 60 second spots for TV and streaming, produced faster and delivered to broadcast specs by KOSMO®.',
-    },
-    hero: {
-      title: 'TV commercial production, rebuilt with AI.',
-      subtitle: 'Thirty seconds on national TV or on streaming. We produce the spot with AI and CGI and deliver it to broadcast and CTV specs.',
-      project: 'renault-i',
-    },
-    intro: {
-      heading: 'A commercial production company for the AI era.',
-      text: [
-        'TV commercial production used to mean a crew, a location, a shoot day and weeks of post. With AI and CGI, most of that moves into the studio: the world is built, the camera moves where the idea needs it, and the edit starts on day one.',
-        'KOSMO® produces TV ads for brands and their agencies, from the script and the animatic to the final master. You get the craft of a commercial production company with the speed and flexibility of AI.',
-      ],
-    },
-    deliverables: {
-      heading: 'From script to broadcast master.',
-      items: [
-        { icon: 'file-text', title: 'Script and animatic', text: 'We turn the idea into a script and an AI animatic, so you see the spot moving before anything is produced.' },
-        { icon: 'video', title: '15, 30 and 60 second spots', text: 'The hero spot and its cutdowns, built together so every length tells the full story.' },
-        { icon: 'device-screen', title: 'Broadcast and CTV delivery', text: 'Masters delivered to the specs of the networks and streaming platforms on your plan.' },
-        { icon: 'world', title: 'Market versions', text: 'Language, legal and pack variations for each market, without reshooting.' },
-      ],
-    },
-    projects: ['renault-i', 'renault-ii', 'uber-eats', 'astorg', 'porsche', 'coyote'],
-    faq: [
-      { question: 'How is AI TV commercial production different from a traditional shoot?', answer: 'There is no shoot day to plan around. Sets, products and camera moves are generated and built in the studio, so changes happen in days instead of reshoots. The script, direction and finishing stay in human hands.' },
-      { question: 'Can an AI commercial run on national TV?', answer: 'Yes, as long as it is delivered to the network specs and cleared like any other spot. We deliver broadcast and CTV masters and document the tools and assets used on every project.' },
-      { question: 'How long does a TV ad take to produce?', answer: 'Most projects run 3 to 4 weeks from an approved brief to the final master, with 2 rounds of revisions included.' },
-      { question: 'Do you work with media agencies and creative agencies?', answer: 'Yes. We produce for brands directly and as the production partner of agencies that own the idea and the media.' },
-    ],
-    related: ['ai-commercials', 'ai-video-production', 'ai-automotive-video-production'],
+    related: ['ai-commercials', 'ai-animated-commercials', 'ai-ugc-agency'],
   },
   {
     slug: 'ai-commercials',
@@ -151,7 +112,7 @@ export const services: AiService[] = [
       { question: 'How many versions do we get?', answer: 'We agree the list of formats and variations with you at the brief, so the price and the timeline cover everything your plan needs.' },
       { question: 'Will people know the ad was made with AI?', answer: 'They will notice the idea, not the tool. We avoid the uncanny AI look and we follow the disclosure rules of each platform when they apply.' },
     ],
-    related: ['ai-ugc-agency', 'ai-tv-commercial-production', 'ai-photoshoot'],
+    related: ['ai-ugc-agency', 'ai-video-production', 'ai-fashion-beauty'],
   },
   {
     slug: 'ai-animated-commercials',
@@ -189,46 +150,7 @@ export const services: AiService[] = [
       { question: 'What styles can you produce?', answer: 'Photoreal 3D, stylized 3D, illustrated and mixed styles. We show you frames in two or three directions before production starts.' },
       { question: 'How long is an animated commercial?', answer: 'Usually 15 to 60 seconds, with shorter cutdowns for social. Series of short films are common too.' },
     ],
-    related: ['ai-commercials', 'ai-explainer-videos', 'ai-entertainment'],
-  },
-  {
-    slug: 'ai-photoshoot',
-    label: 'AI photoshoot',
-    blurb: 'Product and campaign photography without a studio day.',
-    keyword: 'AI photoshoot',
-    seo: {
-      title: 'AI Photoshoot and Product Photography Studio | KOSMO® AI',
-      description: 'An AI photoshoot studio for brands: product photography, campaign stills and still life created with AI and 3D, art directed and retouched by our team.',
-    },
-    hero: {
-      title: 'The AI photoshoot, art directed.',
-      subtitle: 'Campaign stills and product photography created with AI and 3D, from a few hero images to a full catalog, without a studio day.',
-      project: 'asus-ii',
-    },
-    intro: {
-      heading: 'A product photography studio without the studio.',
-      text: [
-        'An AI photoshoot replaces the set, the lighting and the location with images generated around your real product. We build the product in 3D or from your packshots, so the label, the shape and the color stay exactly right.',
-        'Then an art director composes every image like a shoot: light, props, casting and mood, retouched until it is ready for a billboard, a product page or a feed.',
-      ],
-    },
-    deliverables: {
-      heading: 'What one AI photoshoot can deliver.',
-      items: [
-        { icon: 'eye', title: 'Campaign stills', text: 'Hero images for launches, out of home and print, with the scale and mood of a big production.' },
-        { icon: 'cube', title: 'Product photography', text: 'Clean packshots and lifestyle images for e-commerce, consistent across the whole range.' },
-        { icon: 'sparkles', title: 'Still life', text: 'Food, jewelry, beauty and objects in sets that would be impossible or too costly to build.' },
-        { icon: 'share', title: 'Social sets', text: 'Series of images for a season or a drop, in every ratio your channels need.' },
-      ],
-    },
-    projects: ['asus-ii', 'rhode', 'jylor', 'la-baleine', 'apple-iphone-17-pro-max', 'miele-hydroclean'],
-    faq: [
-      { question: 'Will our product look exactly like the real one?', answer: 'Yes. We never let the model invent your product. It is built in 3D or taken from your packshots and composited into the generated scene, then checked against the real thing.' },
-      { question: 'What does an AI photoshoot replace?', answer: 'The location, the set build and most of the studio day. Casting, light and composition are still directed by people, just inside the computer.' },
-      { question: 'Can you produce a full catalog?', answer: 'Yes. Once the product and the look are set up, adding products, colors and scenes is fast, which is where AI photography saves the most.' },
-      { question: 'Can we use the images in print and out of home?', answer: 'Yes. We deliver high resolution files sized for the uses agreed at the brief, from product pages to billboards.' },
-    ],
-    related: ['ai-fashion-beauty', 'ai-commercials', 'ai-ugc-agency'],
+    related: ['ai-commercials', 'ai-explainer-videos', 'ai-music-videos'],
   },
   {
     slug: 'ai-fashion-beauty',
@@ -266,7 +188,7 @@ export const services: AiService[] = [
       { question: 'Can we keep the same model across campaigns?', answer: 'Yes. We create a virtual cast for your brand and keep it consistent, so the same faces come back each season.' },
       { question: 'Is AI fashion photography right for luxury brands?', answer: 'For many uses, yes: lookbooks, social, early campaign visuals and impossible sets. The level of art direction and retouching is what makes it read as luxury.' },
     ],
-    related: ['ai-photoshoot', 'ai-influencers', 'ai-commercials'],
+    related: ['ai-influencers', 'ai-commercials', 'ai-ugc-agency'],
   },
   {
     slug: 'ai-ugc-agency',
@@ -304,7 +226,7 @@ export const services: AiService[] = [
       { question: 'Is AI UGC allowed on Meta and TikTok?', answer: 'Yes, within each platform’s rules. We label AI content where the platform requires it and we never make claims a real customer did not make.' },
       { question: 'Can you mix AI and human creators?', answer: 'Yes. Many brands keep human creators for their best angles and use AI to multiply hooks and versions around them.' },
     ],
-    related: ['ai-commercials', 'ai-influencers', 'ai-photoshoot'],
+    related: ['ai-commercials', 'ai-influencers', 'ai-fashion-beauty'],
   },
   {
     slug: 'ai-music-videos',
@@ -342,83 +264,7 @@ export const services: AiService[] = [
       { question: 'What does an AI music video include?', answer: 'A treatment, look development frames, the generated and animated scenes, the edit to the track and the color and finishing. Release assets like visualizers and vertical clips can be added.' },
       { question: 'Do you make lyric videos?', answer: 'Yes, as a standalone project or alongside the main video, designed in the same world.' },
     ],
-    related: ['ai-entertainment', 'ai-animated-commercials', 'ai-video-production'],
-  },
-  {
-    slug: 'ai-entertainment',
-    label: 'AI for entertainment',
-    blurb: 'Trailers, teasers and launch content for studios, streamers and games.',
-    keyword: 'AI movie trailer',
-    seo: {
-      title: 'AI Movie Trailers and Entertainment Marketing | KOSMO® AI',
-      description: 'AI movie trailers, teasers and launch content for studios, streamers and game publishers, from the team behind mixed reality campaigns for Netflix.',
-    },
-    hero: {
-      title: 'Launch content for studios, streamers and games.',
-      subtitle: 'Teasers, AI trailers, key art and social stunts for film, series and game launches, from the studio behind Netflix mixed reality campaigns.',
-      project: 'below-statue-of-liberty',
-    },
-    intro: {
-      heading: 'Entertainment marketing, made faster with AI.',
-      text: [
-        'A launch needs far more content than the official trailer: teasers, character moments, social stunts, localized versions and something new every day of the campaign. AI makes that volume possible without diluting the world of the show.',
-        'We have produced launch films for Netflix series like Below, Avatar: The Last Airbender, Big Mistakes and Squid Game. For entertainment brands, we combine that craft with AI to produce trailers, teasers and game trailer production at launch speed.',
-      ],
-    },
-    deliverables: {
-      heading: 'What we make for launches.',
-      items: [
-        { icon: 'video', title: 'Teasers and AI trailers', text: 'Short teasers and alternative trailers built from your world, characters and key art.' },
-        { icon: 'sparkles', title: 'Social stunts', text: 'The creature in the harbor, the necklace stolen from a billboard: moments fans share before the premiere.' },
-        { icon: 'eye', title: 'Key art and stills', text: 'Key art variations and character stills for every market and platform.' },
-        { icon: 'play', title: 'Game trailers', text: 'Game trailer production for reveals, updates and launches.' },
-      ],
-    },
-    projects: ['below-statue-of-liberty', 'avatar-earth-kingdom-public-works', 'big-mistakes-i', 'squid-game-i', 'minecraft', 'below-niagara-falls'],
-    faq: [
-      { question: 'Can AI be used on official studio IP?', answer: 'Only with the rights holder’s approval and inside their guidelines. We work from the assets the studio provides and keep every character and logo on model.' },
-      { question: 'What have you made for entertainment brands?', answer: 'Launch films for Netflix series including Below, Avatar: The Last Airbender, Big Mistakes and Squid Game, and content for Minecraft and France TV. You can see them on our work page.' },
-      { question: 'Do you produce game trailers?', answer: 'Yes, for reveals, updates and launches, from in-engine captures or fully produced scenes.' },
-    ],
-    related: ['ai-music-videos', 'ai-animated-commercials', 'ai-commercials'],
-  },
-  {
-    slug: 'ai-automotive-video-production',
-    label: 'AI automotive video',
-    blurb: 'Car launches and automotive films without closing a road.',
-    keyword: 'automotive video production',
-    seo: {
-      title: 'AI Automotive Video Production | KOSMO® AI',
-      description: 'Automotive video production with AI and CGI: car launch films, commercials and social content for car brands and dealers, without closing a road.',
-    },
-    hero: {
-      title: 'Automotive video production, no road closures needed.',
-      subtitle: 'Launch films, commercials and social content for car brands, with the car built in CGI and the world around it generated.',
-      project: 'porsche',
-    },
-    intro: {
-      heading: 'Automotive video production built around the real car.',
-      text: [
-        'Car films are expensive because everything has to be perfect: the car, the light, the road, the weather. In automotive video production with AI and CGI, the car is built in 3D from your data and every location is generated around it.',
-        'We have made films for Porsche, Renault and Coyote. The car stays exact in every frame, and the world can change for every market, season and model year.',
-      ],
-    },
-    deliverables: {
-      heading: 'For car brands and dealers.',
-      items: [
-        { icon: 'cube', title: 'CGI car', text: 'The vehicle built in 3D from your CAD or reference, accurate in every trim and color.' },
-        { icon: 'video', title: 'Launch films', text: 'Reveal and launch films for a new model, from teaser to hero spot.' },
-        { icon: 'world', title: 'Locations on demand', text: 'Any road, city or landscape, matched to each market without a location shoot.' },
-        { icon: 'share', title: 'Social and dealer content', text: 'Short formats for social and dealer networks, in every color and version.' },
-      ],
-    },
-    projects: ['porsche', 'renault-i', 'renault-ii', 'coyote'],
-    faq: [
-      { question: 'Can you build our car from CAD data?', answer: 'Yes. CAD or a detailed reference lets us build the car exactly in 3D, so badges, rims and colors are right in every shot.' },
-      { question: 'Can we change trims and colors after production?', answer: 'Yes. Because the car is CGI, new colors, trims and model years are new renders, not new shoots.' },
-      { question: 'Which car brands have you worked with?', answer: 'Porsche, Renault and Coyote, among others. You can see the films on our work page.' },
-    ],
-    related: ['ai-tv-commercial-production', 'ai-commercials', 'ai-video-production'],
+    related: ['ai-animated-commercials', 'ai-video-production', 'ai-commercials'],
   },
   {
     slug: 'ai-explainer-videos',
@@ -494,7 +340,7 @@ export const services: AiService[] = [
       { question: 'Who owns the AI influencer?', answer: 'The ownership of the character is set in the contract before work starts. The usual setup is that the brand owns the character it commissions.' },
       { question: 'Do we have to say it is AI?', answer: 'Yes, where platforms or local rules require it, and we recommend being open about it. Audiences accept virtual ambassadors; they do not accept being misled.' },
     ],
-    related: ['ai-fashion-beauty', 'ai-ugc-agency', 'ai-photoshoot'],
+    related: ['ai-fashion-beauty', 'ai-ugc-agency', 'ai-commercials'],
   },
 ];
 
@@ -502,16 +348,16 @@ export const serviceBySlug = (slug: string) => services.find((s) => s.slug === s
 export const serviceHref = (s: AiService) => `/${s.slug}`;
 
 /** Ordre du menu : quatre services en vedette (bandes avec image), puis les autres sur une grille. */
-export const featuredServices = ['ai-video-production', 'ai-tv-commercial-production', 'ai-commercials', 'ai-photoshoot'];
+export const featuredServices = ['ai-video-production', 'ai-commercials', 'ai-ugc-agency', 'ai-fashion-beauty'];
 
 export const home = {
   seo: {
     title: 'AI Creative Agency for Brands | KOSMO® AI',
-    description: 'KOSMO® is an AI creative agency and AI design agency for brands: AI commercials, TV spots, UGC ads, photoshoots and music videos, made by a real CGI studio.',
+    description: 'KOSMO® is an AI creative agency and AI design agency for brands: AI commercials, UGC ads, music videos and campaigns, made by a real CGI studio.',
   },
   hero: {
     title: 'The AI creative agency with a real studio behind it.',
-    subtitle: 'AI commercials, TV spots, photoshoots and films for brands, made by the CGI team behind campaigns for Netflix, Zalando and Miele.',
+    subtitle: 'AI commercials, UGC ads, music videos and films for brands, made by the CGI team behind campaigns for Netflix, Zalando and Miele.',
     project: 'below-statue-of-liberty',
   },
   intro: {

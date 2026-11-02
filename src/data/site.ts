@@ -8,11 +8,7 @@ import { foohBySlug, poster } from '../lib/fooh';
 
 const SERVICE_ICONS: Record<string, string> = {
   'ai-animated-commercials': 'sparkles',
-  'ai-fashion-beauty': 'eye',
-  'ai-ugc-agency': 'users',
   'ai-music-videos': 'volume',
-  'ai-entertainment': 'play',
-  'ai-automotive-video-production': 'cube',
   'ai-explainer-videos': 'device-screen',
   'ai-influencers': 'heart',
 };
@@ -63,11 +59,11 @@ export const footer: {
   groups: [
     {
       title: 'Services',
-      links: services.slice(0, 6).map((x) => ({ label: x.label, href: serviceHref(x) })),
+      links: services.slice(0, 4).map((x) => ({ label: x.label, href: serviceHref(x) })),
     },
     {
       title: 'More services',
-      links: services.slice(6).map((x) => ({ label: x.label, href: serviceHref(x) })),
+      links: services.slice(4).map((x) => ({ label: x.label, href: serviceHref(x) })),
     },
     {
       title: 'Company',
@@ -120,7 +116,7 @@ export const form = {
   budget: { label: 'Media budget' },
   brief: {
     label: 'Tell us about the campaign',
-    placeholder: 'The product, what you need (a TV spot, ads, a photoshoot…), the channels and the timing. A few lines are enough.',
+    placeholder: 'The product, what you need (ads, UGC, a music video…), the channels and the timing. A few lines are enough.',
   },
   submit: 'Send Message',
   wait: 'Please wait...',

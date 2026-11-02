@@ -41,9 +41,9 @@ export const organizationJsonLd = {
   sameAs: SITE.social.map((s) => s.url),
   email: SITE.email,
   telephone: SITE.phone,
-  description: 'AI creative agency and AI video production studio by KOSMO®: AI commercials, TV spots, UGC ads, music videos, photoshoots and campaigns for brands, made by the CGI team behind work for Netflix, Zalando and Miele.',
+  description: 'AI creative agency and AI video production studio by KOSMO®: AI commercials, UGC ads, music videos and campaigns for brands, made by the CGI team behind work for Netflix, Zalando and Miele.',
   identifier: { '@type': 'PropertyValue', propertyID: 'SIREN', value: '930375902' },
-  knowsAbout: ['AI video production', 'Generative AI advertising', 'AI commercials', 'TV commercial production', 'AI UGC ads', 'AI music videos', 'AI photoshoots', 'CGI', 'Mixed reality advertising'],
+  knowsAbout: ['AI video production', 'Generative AI advertising', 'AI commercials', 'AI UGC ads', 'AI music videos', 'AI influencers', 'CGI', 'Mixed reality advertising'],
   areaServed: 'Worldwide',
   contactPoint: [{ '@type': 'ContactPoint', contactType: 'sales', email: SITE.email, telephone: SITE.phone, availableLanguage: ['en', 'fr'] }],
 };
