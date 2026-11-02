@@ -4,7 +4,7 @@
  * Ton : on parle à des responsables marque, communication et marketing. Pas de jargon, pas de tirets.
  */
 import { services, featuredServices, serviceBySlug, serviceHref } from './ai';
-import { foohBySlug, poster } from '../lib/fooh';
+import { heroOf } from '../lib/ai-hero';
 
 const SERVICE_ICONS: Record<string, string> = {
   'ai-animated-commercials': 'sparkles',
@@ -33,8 +33,7 @@ export const nav = {
     href: '/#services',
     items: featuredServices.map((slug) => {
       const s = serviceBySlug(slug)!;
-      const p = foohBySlug(s.hero.project);
-      return { title: s.label, description: s.blurb, href: serviceHref(s), image: (p && poster(p)) ?? '' };
+      return { title: s.label, description: s.blurb, href: serviceHref(s), image: heroOf(s).poster };
     }),
   },
   services: services

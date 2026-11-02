@@ -8,7 +8,7 @@ import Eyebrow from '../ui/Eyebrow.astro';
 import Icon from '../ui/Icon.astro';
 import TwoTone from '../ui/TwoTone.astro';
 import { services, serviceHref, type AiService } from '../../data/ai';
-import { foohBySlug, poster } from '../../lib/fooh';
+import { heroOf } from '../../lib/ai-hero';
 
 interface Props {
   id?: string;
@@ -21,10 +21,7 @@ interface Props {
 }
 const { id, overline = 'services', heading = 'Everything a campaign needs. Made with AI.', intro, only, current } = Astro.props;
 const list: AiService[] = only ? (only.map((slug) => services.find((s) => s.slug === slug)).filter(Boolean) as AiService[]) : services;
-const cover = (s: AiService) => {
-  const p = foohBySlug(s.hero.project);
-  return (p && poster(p)) ?? '';
-};
+const cover = (s: AiService) => heroOf(s).poster;
 ---
 
 <Section id={id} data-fade="trigger" class="scroll-mt-(--nav-inset)">

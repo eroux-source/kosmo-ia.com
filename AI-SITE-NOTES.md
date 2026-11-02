@@ -29,3 +29,12 @@
 ## Pas encore fait
 - Article « Best AI commercials » (cluster 4 000+ recherches/mois) et les 4 articles GEO.
 - Nettoyage de public/ (assets 3DOOH inutilisés, ~60 Mo).
+
+## Productions IA (02/11/2026)
+- 17 références (Téléchargements d'Eugène, ~/Downloads/kosmo-ia-web) encodées en 720p sans son : public/video/ai,
+  affiches public/images/ai, données src/data/ai-work.ts, pages /work/ai/<slug>.
+- **À confirmer** : `concept: true` affiche « AI concept » (film fait à l'initiative de KOSMO®, sans commande) pour Gucci,
+  Alaïa, Zara, Oakley, Lanvin, Balenciaga, Loewe, Polène et Etam ; « AI production » pour TUI, Memoria et All Quiet.
+  Passer `concept` à false pour chaque vraie commande.
+- Ambassadeurs IA (page AI influencers, hero UGC et influencers) : générés sur Higgsfield avec le logo KOSMO®, hébergés
+  sur le stockage Higgsfield du compte (URLs dans ai-work.ts). À rapatrier dans public/images pour ne plus en dépendre.

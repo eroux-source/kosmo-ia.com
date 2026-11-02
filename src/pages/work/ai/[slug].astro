@@ -1,0 +1,85 @@
+---
+/** /work/ai/[slug] : page d'une production IA (src/data/ai-work.ts) : film, fiche, autres productions, contact. */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageTop from '../../../components/layout/PageTop.astro';
+import Footer from '../../../components/layout/Footer.astro';
+import Section from '../../../components/ui/Section.astro';
+import TalkCta from '../../../components/ui/TalkCta.astro';
+import ProjectPicks from '../../../components/ai/ProjectPicks.astro';
+import Contact from '../../../components/sections/Contact.astro';
+import { aiWorks, aiWorkHref, aiWorkPoster, aiWorkVideo, type AiWork } from '../../../data/ai-work';
+import { breadcrumbJsonLd, videoJsonLd } from '../../../lib/seo';
+
+export function getStaticPaths() {
+  return aiWorks.map((work) => ({ params: { slug: work.slug }, props: { work } }));
+}
+interface Props {
+  work: AiWork;
+}
+const { work: w } = Astro.props;
+const portrait = w.ratio === '9:16';
+const square = w.ratio === '1:1';
+const label = w.concept ? 'AI concept' : 'AI production';
+const title = `${w.brand}: ${w.title}, ${label} | KOSMO® AI`;
+const description = `${w.subtitle} ${w.concept ? 'An AI concept film' : 'An AI production'} by KOSMO®, ${w.format.toLowerCase()}.`.slice(0, 158);
+const meta: [string, string][] = [
+  ['Brand', w.brand],
+  ['Type', label],
+  ['Industry', w.industry],
+  ['Format', w.format],
+];
+const others = [...aiWorks.filter((o) => o.slug !== w.slug && o.industry === w.industry), ...aiWorks.filter((o) => o.slug !== w.slug && o.industry !== w.industry)].slice(0, 3).map((o) => o.slug);
+const jsonLd = [
+  breadcrumbJsonLd([
+    { name: 'KOSMO® AI', path: '/' },
+    { name: 'Work', path: '/work' },
+    { name: `${w.brand}: ${w.title}`, path: aiWorkHref(w) },
+  ]),
+  videoJsonLd({ name: `${w.brand}: ${w.title}`, description, thumbnailUrl: aiWorkPoster(w), contentUrl: aiWorkVideo(w), uploadDate: '2026-11-02' }),
+];
+---
+
+<BaseLayout title={title} description={description} path={aiWorkHref(w)} image={aiWorkPoster(w)} video={aiWorkVideo(w)} jsonLd={jsonLd}>
+  <PageTop />
+  <main>
+    <Section spacing="lg" data-fade="trigger">
+      <div class="flex flex-col gap-12">
+        <nav aria-label="Breadcrumb" class="text-tagline">
+          <a href="/work" class="text-(--label-color) transition-colors duration-(--duration-color) hover:text-black">← All work</a>
+        </nav>
+        <div class="flex flex-col gap-4">
+          <div class="flex flex-wrap gap-1.5">
+            <span class="chip [--chip-surface:var(--kosmo-black)] [--label-color:var(--kosmo-white)]">{label}</span>
+            <span class="chip">{w.industry}</span>
+          </div>
+          <h1 class="heading-h3">{w.brand}: {w.title}</h1>
+          <p class="max-w-(--measure-2xl) text-body-large">{w.subtitle}</p>
+        </div>
+        <div class:list={['grid gap-8 max-lg:grid-cols-1', portrait || square ? 'grid-cols-(--project-cols)' : 'grid-cols-1']}>
+          <div
+            class:list={[
+              'relative overflow-hidden rounded-sm bg-black',
+              portrait ? 'aspect-portrait w-full max-lg:mx-auto max-lg:max-w-(--gallery-slide-width)' : square ? 'aspect-square w-full max-lg:mx-auto max-lg:max-w-(--gallery-slide-width)' : 'aspect-video w-full',
+            ]}
+          >
+            <video class:list={['size-full', square ? 'object-contain' : 'object-cover']} data-lazy data-src={aiWorkVideo(w)} muted loop playsinline preload="none" poster={aiWorkPoster(w)} controls></video>
+          </div>
+          <dl class="grid grid-cols-2 content-start gap-x-8 gap-y-4 max-sm:grid-cols-1">
+            {
+              meta.map(([k, v]) => (
+                <div class="flex flex-col gap-1 border-b border-line pb-3">
+                  <dt class="text-tagline text-(--label-color)">{k}</dt>
+                  <dd class="text-medium font-medium">{v}</dd>
+                </div>
+              ))
+            }
+          </dl>
+        </div>
+        <TalkCta />
+      </div>
+    </Section>
+    <ProjectPicks works={others} overline="more ai productions" heading="More made with AI." />
+    <Contact id="contact" />
+  </main>
+  <Footer />
+</BaseLayout>

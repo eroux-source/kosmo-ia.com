@@ -10,21 +10,34 @@ import MosaicCard from '../../components/ui/MosaicCard.astro';
 import Contact from '../../components/sections/Contact.astro';
 import { foohItem } from '../../lib/mosaic';
 import { foohProjects } from '../../lib/fooh';
+import { aiItem, aiWorks } from '../../data/ai-work';
 import { breadcrumbJsonLd } from '../../lib/seo';
 
-const title = 'Work: Films for Netflix, Zalando, Porsche | KOSMO® AI';
-const description = `${foohProjects.length} films produced by the KOSMO® studio for Netflix, Zalando, Miele, Porsche, Renault and more, in CGI, mixed reality and AI.`;
+const title = 'Work: AI Films and Studio Productions | KOSMO® AI';
+const description = `${aiWorks.length} AI productions and ${foohProjects.length} studio films by KOSMO®: AI spots, fashion films and social content, plus CGI work for Netflix, Zalando and Porsche.`;
 ---
 
 <BaseLayout title={title} description={description} path="/work" jsonLd={[breadcrumbJsonLd([{ name: 'KOSMO® AI', path: '/' }, { name: 'Work', path: '/work' }])]}>
   <PageTop />
   <main>
     <Section spacing="lg" data-fade="trigger">
-      <Eyebrow label={`work · ${foohProjects.length} films`} />
+      <Eyebrow label={`ai productions · ${aiWorks.length} films`} />
       <div class="mt-(--head-gap) grid grid-cols-2 items-end gap-10 max-lg:grid-cols-1">
-        <h1 data-stagger-text class="heading-h3"><TwoTone text="Films people stop for, made for brands." /></h1>
+        <h1 data-stagger-text class="heading-h3"><TwoTone text="Made with AI, finished like a campaign." /></h1>
         <p data-fade="target" class="max-w-(--head-intro-max) justify-self-end text-body-medium text-(--body-soft) max-lg:justify-self-start">
-          Every film here was produced by the KOSMO® studio, the team behind KOSMO® AI. Most are CGI and mixed reality; our AI concepts are marked in their description.
+          TV spots, fashion films and social content generated, directed and finished by the KOSMO® team. Films marked “AI concept” were made on our own initiative, not commissioned by the brand.
+        </p>
+      </div>
+      <ul data-fade="target" data-mosaic class="mt-12 grid grid-flow-row-dense grid-cols-4 auto-rows-(--mosaic-unit) gap-x-(--mosaic-gap) max-md:grid-cols-2">
+        {aiWorks.map((w) => <MosaicCard item={aiItem(w)} />)}
+      </ul>
+    </Section>
+    <Section spacing="lg" data-fade="trigger">
+      <Eyebrow label={`from the studio · ${foohProjects.length} films`} />
+      <div class="mt-(--head-gap) grid grid-cols-2 items-end gap-10 max-lg:grid-cols-1">
+        <h2 data-stagger-text class="heading-h3"><TwoTone text="The studio behind KOSMO® AI." /></h2>
+        <p data-fade="target" class="max-w-(--head-intro-max) justify-self-end text-body-medium text-(--body-soft) max-lg:justify-self-start">
+          Before AI, KOSMO® built its name on CGI and mixed reality films for Netflix, Zalando, Miele, Porsche and Renault. Same team, same standards.
         </p>
       </div>
       <ul data-fade="target" data-mosaic class="mt-12 grid grid-flow-row-dense grid-cols-4 auto-rows-(--mosaic-unit) gap-x-(--mosaic-gap) max-md:grid-cols-2">

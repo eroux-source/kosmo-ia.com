@@ -1,6 +1,6 @@
 ---
 /**
- * Films du studio choisis pour une page (slugs de projects.json), en rangées de trois au format natif (WorkRow), avec
+ * Films choisis pour une page (productions IA de ai-work.ts, puis films du studio de projects.json), en rangées de trois au format natif (WorkRow), avec
  * le bouton vers /work. Mobile : rail qui défile au doigt.
  */
 import Section from '../ui/Section.astro';
@@ -10,17 +10,24 @@ import TwoTone from '../ui/TwoTone.astro';
 import WorkRow from '../ui/WorkRow.astro';
 import { foohItem } from '../../lib/mosaic';
 import { foohBySlug, foohProjects, type FoohProject } from '../../lib/fooh';
+import { aiItem, aiWorkBySlug, aiWorks, type AiWork } from '../../data/ai-work';
 
 interface Props {
   id?: string;
-  slugs: string[];
+  /** Films du studio (projects.json). */
+  slugs?: string[];
+  /** Productions IA (ai-work.ts), montrées avant les films du studio. */
+  works?: string[];
   overline?: string;
   heading?: string;
   intro?: string;
 }
-const { id, slugs, overline = 'selected work', heading = 'Films from the KOSMO® studio.', intro } = Astro.props;
-const projects = slugs.map(foohBySlug).filter(Boolean) as FoohProject[];
-const rows = Array.from({ length: Math.ceil(projects.length / 3) }, (_, i) => projects.slice(i * 3, i * 3 + 3).map(foohItem));
+const { id, slugs = [], works = [], overline = 'selected work', heading = 'Films from the KOSMO® studio.', intro } = Astro.props;
+const items = [
+  ...(works.map(aiWorkBySlug).filter(Boolean) as AiWork[]).map(aiItem),
+  ...(slugs.map(foohBySlug).filter(Boolean) as FoohProject[]).map(foohItem),
+];
+const rows = Array.from({ length: Math.ceil(items.length / 3) }, (_, i) => items.slice(i * 3, i * 3 + 3));
 ---
 
 <Section id={id} data-fade="trigger" class="scroll-mt-(--nav-inset)">
@@ -30,7 +37,7 @@ const rows = Array.from({ length: Math.ceil(projects.length / 3) }, (_, i) => pr
       <h2 data-stagger-text class="heading-h3"><TwoTone text={heading} /></h2>
       {intro && <p data-fade="target" class="max-w-(--head-intro-max) text-body-medium text-(--body-soft)">{intro}</p>}
     </div>
-    <Button data-fade="target" href="/work" label={`all work (${foohProjects.length})`} variant="dark" />
+    <Button data-fade="target" href="/work" label={`all work (${foohProjects.length + aiWorks.length})`} variant="dark" />
   </div>
   <div data-fade="target" data-rail class="mt-12 flex flex-col gap-3">
     {rows.map((row) => <WorkRow items={row} flat />)}

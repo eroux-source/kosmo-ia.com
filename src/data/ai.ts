@@ -23,7 +23,10 @@ export interface AiService {
   /** Mot-clé principal de la page, repris dans le H1, le title et la première phrase. */
   keyword: string;
   seo: { title: string; description: string };
-  hero: { title: string; soft?: string; subtitle: string; project: string };
+  /** `project` : film du studio (projects.json) ; `work` : production IA (ai-work.ts), prioritaire ; `image` : visuel fixe. */
+  hero: { title: string; soft?: string; subtitle: string; project: string; work?: string; image?: string };
+  /** Productions IA montrées sur la page (slugs de ai-work.ts). */
+  works?: string[];
   intro: { heading: string; text: string[] };
   deliverables: { heading: string; items: Deliverable[] };
   /** Projets montrés (slugs de projects.json). */
@@ -46,6 +49,7 @@ export const services: AiService[] = [
       title: 'AI video production, made by a real studio.',
       subtitle: 'An AI video agency for brands that want films people watch to the end. Generative AI for speed and scale, a CGI team for the finish.',
       project: 'disney-la-haut',
+      work: 'oakley-ai-tv-spot',
     },
     intro: {
       heading: 'An AI video production company with a craft team behind it.',
@@ -65,6 +69,7 @@ export const services: AiService[] = [
         { icon: 'world', title: 'Versions at scale', text: 'One film adapted for markets, languages and seasons, so a campaign stays consistent in every country.' },
       ],
     },
+    works: ['gucci-ai-fashion-film', 'tui-egypt', 'memoria-dernier-rayon', 'zara-ai-fashion-film', 'tui-suitcase', 'polene-ai-product-film'],
     projects: ['disney-la-haut', 'disney-lilo-and-stitch', 'below-statue-of-liberty', 'zalando-lounge-balance', 'miele-hydroclean', 'porsche'],
     faq: [
       { question: 'What does an AI video production company do?', answer: 'It turns a brief into finished brand films using generative AI for images, motion and sound, with people directing and finishing the work. At KOSMO®, AI covers concept frames, generation and variations; our 3D and post-production team handles consistency, compositing, color and the final delivery.' },
@@ -88,6 +93,7 @@ export const services: AiService[] = [
       title: 'AI commercials people actually stop for.',
       subtitle: 'An AI ad agency for social, digital and TV campaigns. One idea, made impossible to scroll past, delivered in every format.',
       project: 'zalando-prive-tennis',
+      work: 'alaia-ai-tv-spot',
     },
     intro: {
       heading: 'AI commercial production for the feed.',
@@ -107,6 +113,7 @@ export const services: AiService[] = [
         { icon: 'trending-up', title: 'Variations for testing', text: 'Hooks, openings and endings in several versions, so your media team can test what performs.' },
       ],
     },
+    works: ['oakley-ai-tv-spot', 'loewe-ai-social', 'etam-live-show-cake', 'alaia-ai-tv-spot', 'memoria-jardin-interdit', 'tui-brazil'],
     projects: ['zalando-prive-tennis', 'asus-i', 'pringles', 'la-baleine', 'bose', 'maisons-du-monde-ii'],
     faq: [
       { question: 'What is an AI commercial?', answer: 'An ad where images, motion or sound are generated with AI instead of filmed. The best ones use AI for what a camera cannot do, and keep the product and the brand exact with CGI and careful finishing.' },
@@ -130,6 +137,7 @@ export const services: AiService[] = [
       title: 'Animated commercials, without the animation timeline.',
       subtitle: 'Characters, worlds and product stories in 3D or stylized animation, produced with AI and finished by animators.',
       project: 'super-mario-galaxy-yoshi-eggs',
+      work: 'all-quiet-teaser',
     },
     intro: {
       heading: 'Animated commercial production that keeps its charm.',
@@ -147,6 +155,7 @@ export const services: AiService[] = [
         { icon: 'video', title: 'Spots and series', text: 'A single spot or a series of short films for social, with the same world across all of them.' },
       ],
     },
+    works: ['all-quiet-teaser', 'tui-suitcase', 'loewe-ai-social', 'etam-live-show-alarm', 'polene-ai-product-film', 'tui-brazil'],
     projects: ['super-mario-galaxy-yoshi-eggs', 'minecraft', 'disney-lilo-and-stitch', 'hiscox', 'france-tv', 'fk-agency-x-jardin-d-acclimatation'],
     faq: [
       { question: 'Can AI animation keep a character consistent?', answer: 'Not by itself. We build the character once, in 3D or as a reference set, and use it to control every generation, then animators fix what drifts. That is how a mascot stays on model across a campaign.' },
@@ -168,6 +177,7 @@ export const services: AiService[] = [
       title: 'Fashion and beauty campaigns, generated with taste.',
       subtitle: 'AI lookbooks, virtual models and campaign films for fashion, beauty and luxury brands, art directed like a real shoot.',
       project: 'zalando-lounge-balance',
+      work: 'zara-ai-fashion-film',
     },
     intro: {
       heading: 'AI fashion campaigns that still look like your brand.',
@@ -185,6 +195,7 @@ export const services: AiService[] = [
         { icon: 'video', title: 'Campaign films', text: 'Short films for launches and social, in the same world as the stills.' },
       ],
     },
+    works: ['gucci-ai-fashion-film', 'lanvin-ai-social', 'balenciaga-ai-social', 'zara-ai-fashion-film', 'memoria-dernier-rayon', 'polene-ai-product-film'],
     projects: ['zalando-lounge-balance', 'oysho-i', 'icemoon', 'rhode', 'jylor', 'extreme'],
     faq: [
       { question: 'Can AI show our real garments?', answer: 'Yes. We work from your products, flat lays or samples, and check every look against the real piece: cut, fabric, color and logo.' },
@@ -206,6 +217,7 @@ export const services: AiService[] = [
       title: 'UGC ads at the speed your tests need.',
       subtitle: 'An AI UGC agency for brands and performance teams: scripted, produced and versioned so you can test more hooks every week.',
       project: 'neoness',
+      image: 'AMB:1',
     },
     intro: {
       heading: 'An AI UGC agency built for testing.',
@@ -223,6 +235,7 @@ export const services: AiService[] = [
         { icon: 'trending-up', title: 'Iteration', text: 'New batches built from what your tests tell us, every week or every month.' },
       ],
     },
+    works: ['etam-live-show-cake', 'etam-live-show-shower', 'etam-live-show-alarm', 'tui-brazil', 'tui-egypt', 'memoria-dernier-rayon'],
     projects: ['neoness', 'keepcool', 'extreme', 'la-baleine', 'betclic-civ', 'uber-eats'],
     faq: [
       { question: 'What is an AI UGC ad?', answer: 'A short video in the style of user-generated content, where the presenter, the scene or both are produced with AI. It keeps the native feel of UGC while making it possible to test far more variations.' },
@@ -261,6 +274,7 @@ export const services: AiService[] = [
         { icon: 'share', title: 'Visualizers and social', text: 'Loops for Spotify Canvas, visualizers and vertical clips for the release campaign.' },
       ],
     },
+    works: ['oakley-ai-tv-spot', 'memoria-dernier-rayon', 'balenciaga-ai-social', 'gucci-ai-fashion-film', 'lanvin-ai-social', 'tui-egypt'],
     projects: ['nrj-x-fini', 'bolero', 'extreme', 'france-tv', 'below-niagara-falls', 'kof'],
     faq: [
       { question: 'Can you use footage of the artist?', answer: 'Yes. We can film or use existing performance footage and build the AI world around it, or create the artist as a consistent character with their consent.' },
@@ -299,6 +313,7 @@ export const services: AiService[] = [
         { icon: 'device-screen', title: 'App and feature videos', text: 'Short app promo videos and feature clips for your site, stores and sales decks.' },
       ],
     },
+    works: ['all-quiet-teaser', 'tui-suitcase', 'polene-ai-product-film', 'loewe-ai-social', 'etam-live-show-alarm', 'tui-brazil'],
     projects: ['hiscox', 'proman-i', 'icade', 'astorg', 'macsf-i', 'heavent-i'],
     faq: [
       { question: 'How long should a SaaS explainer video be?', answer: 'Usually 60 to 90 seconds for the main film, and 15 to 30 seconds for feature and ad versions.' },
@@ -320,6 +335,7 @@ export const services: AiService[] = [
       title: 'An AI influencer that belongs to your brand.',
       subtitle: 'Virtual influencers and AI brand ambassadors, designed with you and produced consistently across content, campaigns and seasons.',
       project: 'rhode',
+      image: 'AMB:2',
     },
     intro: {
       heading: 'An AI influencer agency for brands.',
@@ -337,6 +353,7 @@ export const services: AiService[] = [
         { icon: 'sparkles', title: 'Campaign appearances', text: 'Your ambassador inside your ads, launches and events.' },
       ],
     },
+    works: ['lanvin-ai-social', 'balenciaga-ai-social', 'memoria-dernier-rayon', 'loewe-ai-social', 'etam-live-show-cake', 'polene-ai-product-film'],
     projects: ['rhode', 'jylor', 'oysho-i', 'icemoon', 'zalando-lounge-balance', 'extreme'],
     faq: [
       { question: 'What is an AI influencer?', answer: 'A virtual character that posts and appears in campaigns like a real influencer. For a brand, it works as an ambassador the brand fully owns.' },
@@ -362,6 +379,7 @@ export const home = {
     title: 'The AI creative agency with a real studio behind it.',
     subtitle: 'AI commercials, UGC ads, music videos and films for brands, made by the CGI team behind campaigns for Netflix, Zalando and Miele.',
     project: 'below-statue-of-liberty',
+    work: 'gucci-ai-fashion-film',
   },
   intro: {
     overline: 'what we do',

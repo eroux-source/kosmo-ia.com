@@ -18,11 +18,11 @@ import ProjectPicks from '../components/ai/ProjectPicks.astro';
 import Compare from '../components/ai/Compare.astro';
 import { home, aiProcess, aiStats } from '../data/ai';
 import { brands, bookLabel } from '../data/site';
-import { foohBySlug, poster } from '../lib/fooh';
+import { aiWorkBySlug, aiWorkPoster, aiWorkVideo } from '../data/ai-work';
 import { faqJsonLd } from '../lib/seo';
 import type { ProcessData } from '../data/3dooh';
 
-const heroProject = foohBySlug(home.hero.project)!;
+const heroWork = aiWorkBySlug(home.hero.work!)!;
 const tiles = [
   { src: '/video/ascii/porsche.mp4', label: 'Porsche film by KOSMO®' },
   { src: '/video/ascii/squid-game.mp4', label: 'Squid Game film by KOSMO®' },
@@ -31,14 +31,14 @@ const tiles = [
 ];
 ---
 
-<BaseLayout title={home.seo.title} description={home.seo.description} path="/" image={poster(heroProject)} jsonLd={[faqJsonLd(home.faq)]}>
+<BaseLayout title={home.seo.title} description={home.seo.description} path="/" image={aiWorkPoster(heroWork)} jsonLd={[faqJsonLd(home.faq)]}>
   <Nav />
   <main>
     <Hero
       title={home.hero.title}
       subtitle={{ demo: false, text: home.hero.subtitle }}
-      video={{ src: heroProject.media.mainVideo, poster: poster(heroProject) ?? '' }}
-      fallback={{ src: poster(heroProject) ?? '' }}
+      video={{ src: aiWorkVideo(heroWork), poster: aiWorkPoster(heroWork) }}
+      fallback={{ src: aiWorkPoster(heroWork) }}
       proof={{ views: '3B+ earned and owned media', partners: brands }}
       primary={{ label: 'contact', href: '/contact' }}
       secondary={{ label: bookLabel, href: '/book' }}
@@ -48,9 +48,16 @@ const tiles = [
     <Deliverables overline={home.intro.overline} heading={home.intro.heading} text={home.intro.text} items={home.pillars} />
     <ServiceGrid id="services" intro="Eight ways we put generative AI to work for brands, from a launch film to a monthly batch of UGC ads." />
     <ProjectPicks
-      slugs={['below-statue-of-liberty', 'disney-la-haut', 'zalando-prive-tennis', 'porsche', 'disney-lilo-and-stitch', 'renault-i']}
-      heading="Made by the studio behind Netflix and Zalando."
-      intro="KOSMO® AI is run by the KOSMO® studio. These are films we produced for brands, in CGI, mixed reality and AI."
+      overline="ai productions"
+      works={['alaia-ai-tv-spot', 'memoria-jardin-interdit', 'lanvin-ai-social', 'zara-ai-fashion-film', 'tui-brazil', 'polene-ai-product-film', 'oakley-ai-tv-spot', 'etam-live-show-cake', 'balenciaga-ai-social']}
+      heading="Made with AI by KOSMO®."
+      intro="Spots, fashion films and social content generated, directed and finished by our team."
+    />
+    <ProjectPicks
+      overline="from the studio"
+      slugs={['below-statue-of-liberty', 'zalando-prive-tennis', 'porsche', 'disney-la-haut', 'squid-game-i', 'renault-i']}
+      heading="The studio behind Netflix and Zalando."
+      intro="KOSMO® AI is run by the KOSMO® studio. These films were produced for brands in CGI and mixed reality."
     />
     <Compare overline={home.compare.overline} heading={home.compare.heading} head={home.compare.head} rows={home.compare.rows} />
     <Process data={aiProcess as unknown as ProcessData} />
