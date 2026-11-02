@@ -15,7 +15,12 @@ export default defineConfig({
   adapter: vercel(),
   integrations: [
     sitemap({
-      filter: (page) => !PRIVATE_PATHS.includes(new URL(page).pathname.replace(/(.)\/$/, '$1')),
+      filter: (page) => {
+        const path = new URL(page).pathname.replace(/(.)\/$/, '$1');
+        /* Films CGI du studio (/work/<slug>, hors /work/ai/…) : noindex, indexés sur kosmocgi.com. */
+        if (/^\/work\/(?!ai\/)[^/]+$/.test(path)) return false;
+        return !PRIVATE_PATHS.includes(path);
+      },
       lastmod: new Date('2026-11-02'),
     }),
   ],

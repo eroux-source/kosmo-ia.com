@@ -6,8 +6,10 @@ import type { APIRoute } from 'astro';
 import { services, serviceHref, home } from '../data/ai';
 import { aiWorks, aiWorkHref } from '../data/ai-work';
 import { SITE, LAST_UPDATED } from '../lib/seo';
+import { getCollection } from 'astro:content';
 
-export const GET: APIRoute = () => {
+export const GET: APIRoute = async () => {
+  const posts = (await getCollection('posts', ({ data }) => data.published)).sort((a, b) => a.data.title.localeCompare(b.data.title));
   const lines = [
     '# KOSMO® AI',
     '',
@@ -38,8 +40,12 @@ export const GET: APIRoute = () => {
     '## AI productions',
     ...aiWorks.map((w) => `- [${w.brand}: ${w.title}](${SITE.url}${aiWorkHref(w)}): ${w.subtitle} (${w.concept ? 'AI concept by KOSMO®' : 'AI production'}, ${w.format})`),
     '',
+    '## Guides (blog)',
+    ...posts.map((p) => `- [${p.data.title}](${SITE.url}/blog/${p.id}): ${p.data.excerpt}`),
+    '',
     '## Pages',
     `- [Work](${SITE.url}/work): AI productions and studio films`,
+    `- [Blog](${SITE.url}/blog): guides on AI commercials, AI video ads, UGC, AI influencers, lookbooks and music videos`,
     `- [Contact](${SITE.url}/contact): send a brief`,
     `- [Main KOSMO® studio site](https://www.kosmocgi.com): 3D billboards, FOOH and CGI`,
   ];

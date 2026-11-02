@@ -24,6 +24,7 @@ export const nav = {
   links: [
     { label: 'Services', dropdown: true as const },
     { label: 'Work', href: '/work' },
+    { label: 'Blog', href: '/blog' },
     { label: 'Contact', href: '/contact' },
   ],
   /** Menu Services : les quatre services en vedette en bandes avec image (affiche du film du hero), puis les autres. */
@@ -68,6 +69,7 @@ export const footer: {
       title: 'Company',
       links: [
         { label: 'Our Work', href: '/work' },
+        { label: 'Blog', href: '/blog' },
         { label: 'Contact', href: '/contact' },
         { label: 'Book a call', href: '/book' },
         { label: 'KOSMO® studio', href: 'https://www.kosmocgi.com' },

@@ -59,9 +59,9 @@ export const privacyPage = {
       demo: true,
       heading: 'What we collect and why',
       paragraphs: [
-        'Forms (free concept, screen brief checklist, partner enquiry): work email, company, name, campaign details and the brief you write. Purpose: answer your request, prepare a concept and follow up commercially. Legal basis: pre-contractual measures and legitimate interest (B2B prospecting).',
+        'Brief form and contact requests: work email, company, name, the service you need, launch date, budget range and the brief you write. Purpose: answer your request, prepare a proposal and follow up commercially. Legal basis: pre-contractual measures and legitimate interest (B2B prospecting).',
         'Attribution: the campaign parameters of the link you clicked (UTM, company name) and the page you landed on, attached to your request so we know how you reached us.',
-        'Analytics: we measure visits and campaign performance with Plausible, Vercel Analytics, Google Analytics, Contentsquare and RB2B (business visitor identification). Some of these tools set cookies or similar identifiers.',
+        'Analytics: we measure visits and campaign performance with Vercel Analytics and, when enabled, Google Analytics. Some of these tools set cookies or similar identifiers.',
       ],
     },
     {

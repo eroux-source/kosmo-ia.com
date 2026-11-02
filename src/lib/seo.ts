@@ -33,6 +33,18 @@ export const SITE = {
 
 export const ORGANIZATION_ID = `${SITE.url}/#organization`;
 
+/** Auteur des articles du blog (E-E-A-T) : co-fondateur, lié à l'organisation. */
+export const AUTHOR_ID = `${SITE.url}/#eugene-roux`;
+export const authorJsonLd = {
+  '@type': 'Person',
+  '@id': AUTHOR_ID,
+  name: 'Eugène Roux',
+  jobTitle: 'Co-founder and CEO, KOSMO®',
+  worksFor: { '@id': `${SITE.url}/#organization` },
+  url: `${SITE.url}/blog`,
+  knowsAbout: ['AI video production', 'AI commercials', 'Generative AI advertising', 'CGI', 'Mixed reality advertising'],
+};
+
 /** Organisation : KOSMO CGI SAS (fait confirmé). Adresse postale : à compléter (/todo). */
 export const organizationJsonLd = {
   '@type': 'Organization',
@@ -48,7 +60,7 @@ export const organizationJsonLd = {
   description:
     'KOSMO® AI is an AI creative agency and AI video production company. It produces AI commercials, AI fashion films, UGC ads, music videos, explainer videos and AI influencers for brands, with a CGI team that has made campaigns for Netflix, Zalando, Miele, Porsche and Renault.',
   founder: [
-    { '@type': 'Person', name: 'Eugène Roux', jobTitle: 'Co-founder and CEO' },
+    { '@type': 'Person', '@id': `${SITE.url}/#eugene-roux`, name: 'Eugène Roux', jobTitle: 'Co-founder and CEO' },
     { '@type': 'Person', name: 'Mehdi Benkaci', jobTitle: 'Co-founder' },
   ],
   identifier: { '@type': 'PropertyValue', propertyID: 'SIREN', value: '930375902' },

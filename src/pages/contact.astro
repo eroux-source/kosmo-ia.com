@@ -12,16 +12,20 @@ import AiBriefForm from '../components/ui/AiBriefForm.astro';
 import BriefFolder from '../components/ui/BriefFolder.astro';
 import { bookLabel, contact } from '../data/site';
 import { whatsappHref } from '../lib/env';
-import { breadcrumbJsonLd } from '../lib/seo';
+import { SITE, ORGANIZATION_ID, breadcrumbJsonLd } from '../lib/seo';
+import ProjectPicks from '../components/ai/ProjectPicks.astro';
+import Faq from '../components/sections/Faq.astro';
+import { faqJsonLd } from '../lib/faq';
+import { contactFaq } from '../data/ai';
 
 const whatsapp = whatsappHref('Hi KOSMO, I would like to talk about an AI production.');
 const [emailLocal, emailDomain] = contact.email.split('@');
 const brief = [
-  { title: 'The product', text: 'What we are selling, with a link, packshots or 3D files if you have them.' },
+  { title: 'The product', text: 'What we are selling, with a link, packshots or 3D files: the AI is trained on the real product, so the more references the better.' },
   { title: 'The objective', text: 'A launch, a season, sales, awareness: what the content has to do.' },
-  { title: 'The channels', text: 'TV, CTV, social, e-commerce or out of home, and the formats you already know you need.' },
+  { title: 'The channels', text: 'TV, CTV, YouTube, Meta, TikTok or e-commerce, and the ratios you need (16:9, 9:16, 1:1, 4:5).' },
   { title: 'The timing', text: 'The launch date and any fixed milestone before it.' },
-  { title: 'References', text: 'Films, ads or images you like, or the ones you never want to look like.' },
+  { title: 'References', text: 'Films, ads or AI work you like, or the ones you never want to look like. Mention any face, voice or likeness we need consent for.' },
 ];
 const direct = [
   { label: 'Email', value: contact.email, href: `mailto:${contact.email}` },
@@ -34,7 +38,11 @@ const direct = [
   title="Contact KOSMO® AI: Send a Brief"
   description="Send a brief to KOSMO® AI for AI commercials, UGC ads, music videos or brand films. We reply within one working day."
   path="/contact"
-  jsonLd={[breadcrumbJsonLd([{ name: 'KOSMO® AI', path: '/' }, { name: 'Contact', path: '/contact' }])]}
+  jsonLd={[
+    { '@type': 'ContactPage', '@id': `${SITE.url}/contact#page`, url: `${SITE.url}/contact`, name: 'Contact KOSMO® AI', about: { '@id': ORGANIZATION_ID } },
+    faqJsonLd(contactFaq),
+    breadcrumbJsonLd([{ name: 'KOSMO® AI', path: '/' }, { name: 'Contact', path: '/contact' }]),
+  ]}
   ctaHref="#brief"
 >
   <PageTop ctaHref="#brief" />
@@ -97,6 +105,8 @@ const direct = [
         </aside>
       </div>
     </Section>
+    <ProjectPicks works={['gucci-ai-fashion-film', 'tui-brazil', 'ai-influencer-character']} overline="ai productions" heading="What a brief turns into. AI films made by KOSMO®." intro="Generated, directed and finished in our studio, then delivered in every format the campaign needs." />
+    <Faq items={contactFaq.map((q) => ({ ...q, demo: false }))} heading="After you send a brief." overline="faq" ctaHref="#brief" cta="send a brief" />
   </main>
   <Footer ctaHref="#brief" />
 </BaseLayout>

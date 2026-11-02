@@ -12,6 +12,7 @@ import TwoTone from './TwoTone.astro';
 import GridBeam from './GridBeam.astro';
 import { conceptCta } from '../../data/3dooh';
 import { conceptLabel, bookLabel } from '../../data/site';
+import { articleCta } from '../../data/ai';
 
 interface Props {
   conceptHref?: string;
@@ -19,28 +20,31 @@ interface Props {
   compact?: boolean;
   /** sidebar = version étroite (colonne sticky) : titre réduit, boutons empilés. */
   sidebar?: boolean;
+  /** ai = textes du site IA (articleCta, src/data/ai.ts) au lieu du concept gratuit. */
+  ai?: boolean;
   class?: string;
 }
-const { conceptHref = '/contact#brief', sidebar = false, compact = sidebar, class: className } = Astro.props;
+const { sidebar = false, compact = sidebar, ai = false, class: className } = Astro.props;
+const copy = ai ? { ...articleCta, demo: false } : { ...conceptCta, label: conceptLabel, href: Astro.props.conceptHref ?? '/contact#brief' };
 ---
 
-<Demo when={conceptCta.demo} note="texte du bloc concept gratuit" class={className}>
+<Demo when={copy.demo} note="texte du bloc concept gratuit" class={className}>
   <div class="tone-dark relative isolate overflow-hidden rounded-sm bg-black">
     <GridBeam at={compact ? 'end' : 'center'} />
     <div class:list={['grid items-center gap-8 max-sm:p-5', sidebar ? 'p-5' : 'p-8', compact ? 'grid-cols-1' : 'grid-cols-(--process-card-cols) max-lg:grid-cols-1']}>
       <div class="flex flex-col gap-4">
-        <div class="text-tagline text-acid">{conceptCta.overline}</div>
-        <h2 class:list={['max-w-(--measure-2xl)', sidebar ? 'heading-h6' : 'heading-h4']}>{sidebar ? conceptCta.heading : <TwoTone text={conceptCta.heading} />}</h2>
-        <p class:list={['max-w-(--measure-2xl) text-(--body-soft)', sidebar ? 'text-small' : 'text-body-medium']}>{conceptCta.text}</p>
+        <div class="text-tagline text-acid">{copy.overline}</div>
+        <h2 class:list={['max-w-(--measure-2xl)', sidebar ? 'heading-h6' : 'heading-h4']}>{sidebar ? copy.heading : <TwoTone text={copy.heading} />}</h2>
+        <p class:list={['max-w-(--measure-2xl) text-(--body-soft)', sidebar ? 'text-small' : 'text-body-medium']}>{copy.text}</p>
         <div class:list={['flex gap-2 pt-2', sidebar ? 'flex-col [&>*]:w-full' : 'flex-wrap']}>
-          <Button href={conceptHref} label={conceptLabel} variant="light" data-track-click="concept_cta" />
+          <Button href={copy.href} label={copy.label} variant="light" data-track-click="concept_cta" />
           <Button href="/book" label={bookLabel} variant="outline" data-track-click="concept_cta_book" />
         </div>
       </div>
       {
         !compact && (
           <div data-tilt class="card-dark relative ml-auto aspect-portrait w-full max-w-(--cta-image-max) p-(--card-pad) max-lg:mx-auto">
-            <video data-lazy data-src={conceptCta.video.src} poster={conceptCta.video.poster} muted loop playsinline preload="none" aria-label={conceptCta.video.alt} class="size-full rounded-default object-cover"></video>
+            <video data-lazy data-src={copy.video.src} poster={copy.video.poster} muted loop playsinline preload="none" aria-label={copy.video.alt} class="size-full rounded-default object-cover"></video>
           </div>
         )
       }

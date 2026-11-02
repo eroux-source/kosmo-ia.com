@@ -38,3 +38,10 @@
   Passer `concept` à false pour chaque vraie commande.
 - Ambassadeurs IA (page AI influencers, hero UGC et influencers) : générés sur Higgsfield avec le logo KOSMO®, hébergés
   sur le stockage Higgsfield du compte (URLs dans ai-work.ts). À rapatrier dans public/images pour ne plus en dépendre.
+
+## 02/11/2026 : accent orange, blog, cohérence IA
+
+- Accent du site : `--kosmo-acid` passe au orange KOSMO® `#FF5310` (le citron reste celui de kosmocgi.com). Le liseré d'erreur des champs est aussi orange : à surveiller.
+- Blog `/blog` : 10 articles (src/content/posts, brief de rédaction dans docs/ARTICLE-BRIEF.md), auteur Eugène Roux (Person JSON-LD), FAQPage tirée de « ## FAQ », sources en fin d'article. À relire avant diffusion, en particulier les chiffres cités.
+- Les films CGI / réalité mixte du studio (/work/<slug>, hors /work/ai) restent visibles dans /work mais sont en `noindex, follow` et hors sitemap, pour garder kosmo-ia.com centré sur l'IA (ils sont indexés sur kosmocgi.com). Décision à valider.
+- /contact : textes du brief orientés IA, films IA, FAQ « après le brief » + ContactPage / FAQPage. Politique de confidentialité : formulaire de brief IA, outils d'analyse réellement actifs.

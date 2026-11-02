@@ -1,0 +1,131 @@
+---
+/**
+ * /blog — articles SEO / GEO du site IA (guides, explainers, tendances), repris de /journal de kosmocgi.com :
+ * article mis en avant en tête, puis cartes « pochette » (PostCard). Filtre par type (work-filters).
+ * JSON-LD : Blog + ItemList des articles + fil d'Ariane.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageTop from '../../components/layout/PageTop.astro';
+import Footer from '../../components/layout/Footer.astro';
+import Section from '../../components/ui/Section.astro';
+import PostCard from '../../components/ui/PostCard.astro';
+import Eyebrow from '../../components/ui/Eyebrow.astro';
+import Icon from '../../components/ui/Icon.astro';
+import TwoTone from '../../components/ui/TwoTone.astro';
+import ShaderCover from '../../components/ui/ShaderCover.astro';
+import { paletteFor } from '../../lib/shader';
+import { getCollection } from 'astro:content';
+import { SITE, ORGANIZATION_ID, AUTHOR_ID, breadcrumbJsonLd } from '../../lib/seo';
+
+const KIND_LABELS = { guide: 'Guides', explainer: 'Explainers', trend: 'Examples and trends' } as const;
+type Kind = keyof typeof KIND_LABELS;
+const byDate = (a: { data: { date: Date } }, b: { data: { date: Date } }) => b.data.date.getTime() - a.data.date.getTime();
+const all = (await getCollection('posts', ({ data }) => data.published)).sort(byDate);
+/* Ordre éditorial : les articles piliers d'abord, puis le reste par date. */
+const PILLARS = ['ai-in-advertising', 'ai-commercials-examples', 'ai-ugc-ads', 'ai-influencers-for-brands'];
+const posts = [...PILLARS.map((id) => all.find((p) => p.id === id)).filter((p): p is (typeof all)[number] => Boolean(p)), ...all.filter((p) => !PILLARS.includes(p.id))];
+const counts = Object.fromEntries((Object.keys(KIND_LABELS) as Kind[]).map((k) => [k, all.filter((p) => p.data.kind === k).length])) as Record<Kind, number>;
+const kinds = (Object.keys(KIND_LABELS) as Kind[]).filter((k) => counts[k] > 0);
+/* En tête, comme la page Resources de cofounder.co : le dernier article mis en avant (image à gauche, texte à droite). */
+const featured = posts[0];
+const featuredPalette = featured && paletteFor(featured.id, all.filter((p) => !p.data.cover).map((p) => p.id));
+/* Code couleur par type d'article (tokens --kind-*) : carré devant le type de l'article mis en avant. */
+const KIND_SWATCH = { guide: 'bg-(--kind-guide)', explainer: 'bg-(--kind-explainer)', trend: 'bg-(--kind-trend)' } as const;
+const dateFormat = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+const title = 'AI Advertising Blog: Guides and Examples | KOSMO® AI';
+const description = 'Guides on AI commercials, AI video ads, UGC, AI influencers, lookbooks and music videos, with costs, examples and rules. Written by the KOSMO® AI team.';
+const jsonLd = [
+  {
+    '@type': 'Blog',
+    '@id': `${SITE.url}/blog#blog`,
+    name: 'KOSMO® AI blog',
+    url: `${SITE.url}/blog`,
+    description,
+    publisher: { '@id': ORGANIZATION_ID },
+    blogPost: posts.map((p) => ({
+      '@type': 'BlogPosting',
+      headline: p.data.title,
+      url: `${SITE.url}/blog/${p.id}`,
+      datePublished: p.data.date.toISOString(),
+      dateModified: (p.data.updated ?? p.data.date).toISOString(),
+      author: { '@id': AUTHOR_ID },
+    })),
+  },
+  breadcrumbJsonLd([{ name: 'KOSMO® AI', path: '/' }, { name: 'Blog', path: '/blog' }]),
+];
+/* Filtres : étiquettes `chip` du système (même recette que /work) ; actif = fond noir, texte blanc. */
+const chip =
+  'chip cursor-pointer transition-[background-color,color] duration-(--duration-color) ease-(--ease-kosmo) hover:not-aria-pressed:[--label-color:var(--kosmo-black)] aria-pressed:[--chip-surface:var(--kosmo-black)] aria-pressed:[--label-color:var(--kosmo-white)] disabled:cursor-not-allowed disabled:[--label-color:var(--ink-faint)] [&_[data-filter-count]]:opacity-60';
+---
+
+<BaseLayout title={title} description={description} path="/blog" jsonLd={jsonLd}>
+  <PageTop />
+  <main>
+    <Section spacing="lg" data-fade="trigger">
+      <div data-work="blog" class="flex flex-col gap-10">
+        <div class="flex flex-col">
+          <Eyebrow label="blog" />
+          <h1 class="mt-(--head-gap) heading-h3 max-w-(--gallery-heading-max)"><TwoTone text="AI advertising, explained. Guides, costs and examples from an AI production studio." soft="Guides, costs and examples from an AI production studio." /></h1>
+        </div>
+        {featured && <a href={`/blog/${featured.id}`} data-fade="target" class="group grid grid-cols-(--featured-cols) items-center gap-10 max-lg:grid-cols-1 max-lg:gap-6">
+          <span data-tilt-holo class="stamp relative block aspect-video bg-black will-change-transform">
+            <span class="holo holo--spot absolute inset-0 block overflow-hidden">
+              {
+                featured.data.cover ? (
+                  <img src={featured.data.cover.src} alt={featured.data.cover.alt} class="absolute inset-0 size-full object-cover" />
+                ) : (
+                  <ShaderCover palette={featuredPalette} class="absolute inset-0 size-full" />
+                )
+              }
+            </span>
+          </span>
+          <span class="flex flex-col gap-4">
+            <span class="flex items-center gap-3 text-tagline text-(--label-color)">
+              <span class="flex items-center gap-2"><span aria-hidden="true" class:list={['size-(--kind-swatch) rounded-default', KIND_SWATCH[featured.data.kind]]}></span>{featured.data.kind}</span>
+              <span>{dateFormat.format(featured.data.date)}</span>
+            </span>
+            <h2 class="text-(length:--featured-title) leading-(--h6-leading) font-medium tracking-(--h6-tracking)">{featured.data.title}</h2>
+            <span class="text-body-medium text-(--body-soft)">{featured.data.excerpt}</span>
+            <span class="inline-flex items-center gap-1.5 text-tagline text-ink-soft transition-colors duration-(--duration-color) group-hover:text-black">
+              read article
+              <Icon name="arrow-right" class="size-3 -translate-x-1 opacity-0 transition-[opacity,translate] duration-(--duration-surface) ease-(--ease-sleeve) group-hover:translate-x-0 group-hover:opacity-100" />
+            </span>
+          </span>
+        </a>}
+        <h2 class="sr-only">All articles</h2>
+        <div data-filter-group="kind" class="mt-6 flex flex-wrap items-center gap-2 max-md:flex-col max-md:items-stretch">
+          <span class="mr-2 text-tagline text-(--label-color)">Type</span>
+          {/* Mobile : les étiquettes sur une ligne qui défile au doigt (global.css [data-rail='chips']). */}
+          <div data-rail="chips" class="contents">
+            <button type="button" data-filter-value="" aria-pressed="true" class={chip}>
+              All <span data-filter-count>{posts.length}</span>
+            </button>
+            {
+              kinds.map((kind) => (
+                <button type="button" data-filter-value={kind} aria-pressed="false" class={chip}>
+                  {KIND_LABELS[kind]} <span data-filter-count>{counts[kind]}</span>
+                </button>
+              ))
+            }
+          </div>
+        </div>
+        <ul data-fade="target" class="grid grid-cols-(--case-grid-cols) gap-x-4 gap-y-(--journal-row-gap) pt-(--journal-grid-top) max-lg:grid-cols-(--case-grid-cols-tablet) max-sm:grid-cols-(--case-grid-cols-mobile)">
+          {
+            posts.map((post) => (
+              <li data-case data-kind={post.data.kind}>
+                <PostCard post={post} />
+              </li>
+            ))
+          }
+        </ul>
+        <p data-work-empty hidden class="text-tagline text-(--label-color)">Nothing of that type yet.</p>
+      </div>
+    </Section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<script>
+  import '../../scripts/work-filters';
+  import '../../scripts/tilt-holo';
+</script>

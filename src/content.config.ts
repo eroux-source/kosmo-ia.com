@@ -11,6 +11,11 @@ const posts = defineCollection({
     updated: z.coerce.date().optional(),
     readingMinutes: z.number().int().positive(),
     cover: z.object({ src: z.string(), alt: z.string() }).optional(),
+    /** Type d'article (code couleur des cartes, tokens --kind-*). */
+    kind: z.enum(['guide', 'explainer', 'trend']).default('guide'),
+    /** Mot-clé principal et service lié (slug de src/data/ai.ts) pour le maillage interne. */
+    keyword: z.string(),
+    service: z.string(),
     published: z.boolean().default(true),
     seo: z.object({ title: z.string().max(70).optional(), description: z.string().max(160).optional() }).optional(),
   }),

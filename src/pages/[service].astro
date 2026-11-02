@@ -13,9 +13,10 @@ import Faq from '../components/sections/Faq.astro';
 import Contact from '../components/sections/Contact.astro';
 import Deliverables from '../components/ai/Deliverables.astro';
 import ServiceGrid from '../components/ai/ServiceGrid.astro';
+import JournalPicks from '../components/sections/JournalPicks.astro';
 import ProjectPicks from '../components/ai/ProjectPicks.astro';
 import Ambassadors from '../components/ai/Ambassadors.astro';
-import { services, serviceHref, aiProcess, type AiService } from '../data/ai';
+import { services, serviceHref, aiProcess, serviceArticles, type AiService } from '../data/ai';
 import { brands, bookLabel } from '../data/site';
 import { heroOf } from '../lib/ai-hero';
 import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd, videoJsonLd, LAST_UPDATED } from '../lib/seo';
@@ -61,6 +62,7 @@ const jsonLd = [
     <LogoStrip />
     <Process data={aiProcess as unknown as ProcessData} />
     <Faq items={s.faq.map((q) => ({ ...q, demo: false }))} heading={`${s.label}: your questions.`} />
+    <JournalPicks overline="guides" heading={`Before you brief us. Read the guides on ${s.keyword}.`} slugs={serviceArticles[s.slug] ?? []} />
     <ServiceGrid only={s.related} overline="related services" heading="Often produced together." />
     <Contact id="contact" />
   </main>

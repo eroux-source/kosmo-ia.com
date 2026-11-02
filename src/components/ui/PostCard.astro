@@ -20,18 +20,17 @@ const { post, class: className } = Astro.props;
 /* Sans image : couverture animée, palette unique par article (rang parmi les articles sans image). */
 const uncovered = (await getCollection('posts', ({ data }) => data.published && !data.cover)).map((p) => p.id);
 const palette = paletteFor(post.id, uncovered);
-const format = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
-const isCase = post.data.kind === 'case';
+const format = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+const isCase = false;
 /* Code couleur par type (tokens --kind-*) : carré devant le type et trame de points du bas. */
 const KIND = {
-  case: '[--kind-color:var(--kind-case)] [--dot-color:var(--kind-case-dots)]',
   guide: '[--kind-color:var(--kind-guide)] [--dot-color:var(--kind-guide-dots)]',
   explainer: '[--kind-color:var(--kind-explainer)] [--dot-color:var(--kind-explainer-dots)]',
   trend: '[--kind-color:var(--kind-trend)] [--dot-color:var(--kind-trend-dots)]',
 } as const;
 ---
 
-<a href={`/journal/${post.id}`} class:list={['group relative block h-full pt-(--sleeve-front-top) text-black', KIND[post.data.kind], className]}>
+<a href={`/blog/${post.id}`} class:list={['group relative block h-full pt-(--sleeve-front-top) text-black', KIND[post.data.kind], className]}>
   {/* Onglet arrière de la pochette */}
   <span aria-hidden="true" class="absolute inset-x-0 top-0 z-1 h-(--sleeve-tab-h) rounded-t-sm bg-(--sleeve-back) shadow-(--card-ring)"></span>
   {/* Photo rangée dans la pochette */}
@@ -60,7 +59,7 @@ const KIND = {
       <span>{format.format(post.data.date)}</span>
     </span>
     <span class="mt-4 flex flex-col gap-3">
-      <h2 class="heading-h6">{post.data.title}</h2>
+      <h3 class="heading-h6">{post.data.title}</h3>
       <p class="line-clamp-3 text-body-small text-ink-soft">{post.data.excerpt}</p>
     </span>
     <span class="mt-auto flex items-center justify-between gap-3 pt-8 text-tagline">

@@ -67,7 +67,8 @@ const jsonLd = [
 ];
 ---
 
-<BaseLayout title={title} description={description} path={foohHref(p)} image={cover} video={p.media.mainVideo} jsonLd={jsonLd}>
+{/* Films CGI / réalité mixte du studio : visibles sur /work, mais noindex et hors sitemap pour garder kosmo-ia.com centré sur l'IA (ils sont indexés sur kosmocgi.com). */}
+<BaseLayout title={title} description={description} path={foohHref(p)} image={cover} video={p.media.mainVideo} jsonLd={jsonLd} noindex>
   <PageTop />
   <main>
     <Section spacing="lg" data-fade="trigger">

@@ -395,7 +395,7 @@ export const home = {
     { icon: 'bulb', title: 'Ideas first', text: 'We start from the concept people will share, then choose the tools. AI is how we make it, not what we sell.' },
     { icon: 'cube', title: 'Your product, exact', text: 'Products are built in 3D or taken from your packshots, never invented by a model.' },
     { icon: 'shield-check', title: 'Safe for brands', text: 'Commercial-use tools and assets, documented on every project, and platform disclosure rules followed.' },
-    { icon: 'world', title: 'Every format', text: 'TV, CTV, social, e-commerce and out of home, from one production.' },
+    { icon: 'world', title: 'Every format', text: 'TV, CTV, YouTube, social and e-commerce, every ratio from one production.' },
   ],
   compare: {
     overline: 'ai vs traditional production',
@@ -450,3 +450,34 @@ export const aiStats = {
     { value: 2, label: 'revision rounds included', demo: false },
   ],
 };
+
+/** Bloc d'appel des articles du blog (ConceptCta, colonne sticky) : envoyer un brief, ou réserver un call. */
+export const articleCta = {
+  overline: 'AI brief',
+  heading: 'Have a launch coming? See what AI can do with it.',
+  text: 'Send us the brief. We come back with a fixed-price proposal and a timeline: most projects run 3 to 4 weeks, 2 rounds of revisions included.',
+  label: 'send a brief',
+  href: '/contact',
+  video: { src: '/video/ai/gucci-ai-fashion-film.mp4', poster: '/images/ai/gucci-ai-fashion-film.jpg', alt: 'An AI fashion film by KOSMO® AI: a cast in embroidered coats across a dry lake' },
+};
+
+/** Articles du blog liés à chaque service (identifiants de src/content/posts), affichés sur la page du service. */
+export const serviceArticles: Record<string, string[]> = {
+  'ai-video-production': ['ai-in-advertising', 'ai-video-ads', 'ai-commercial-cost'],
+  'ai-commercials': ['ai-commercials-examples', 'ai-commercial-cost', 'ai-video-ads'],
+  'ai-animated-commercials': ['ai-explainer-video', 'ai-commercials-examples', 'ai-commercial-cost'],
+  'ai-fashion-beauty': ['ai-lookbook', 'ai-fashion-models', 'ai-influencers-for-brands'],
+  'ai-ugc-agency': ['ai-ugc-ads', 'ai-video-ads', 'ai-influencers-for-brands'],
+  'ai-music-videos': ['how-to-make-an-ai-music-video', 'ai-commercials-examples', 'ai-in-advertising'],
+  'ai-explainer-videos': ['ai-explainer-video', 'ai-video-ads', 'ai-commercial-cost'],
+  'ai-influencers': ['ai-influencers-for-brands', 'ai-ugc-ads', 'ai-fashion-models'],
+};
+
+/** FAQ de /contact : ce qui se passe après l'envoi d'un brief (faits confirmés du site). */
+export const contactFaq: QA[] = [
+  { question: 'What happens after I send a brief?', answer: 'We read it and reply within one working day with questions and a first direction. Then a short call to agree on the scope, followed by a fixed-price proposal and a timeline.' },
+  { question: 'How long does an AI production take?', answer: 'Most projects run 3 to 4 weeks from an approved brief to delivery, with 2 rounds of revisions included. Smaller batches of social ads can be faster.' },
+  { question: 'How is an AI project priced?', answer: 'Every project is scoped as a fixed price after a short call. The price depends on length, the number of formats and versions, and how much of the product has to be built in 3D.' },
+  { question: 'Do you work with US brands and agencies?', answer: 'Yes. KOSMO® AI works with US brands and agencies remotely, across time zones, and delivers every format for TV, CTV, YouTube, social and e-commerce.' },
+  { question: 'What do you need from us to start?', answer: 'The product with a link and references, the objective, the channels and formats, the launch date, and films or ads you like. Packshots or 3D files help the AI keep the product exact.' },
+];

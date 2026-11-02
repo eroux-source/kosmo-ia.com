@@ -1,0 +1,122 @@
+---
+/**
+ * /blog/[slug] — article (JSON-LD BlogPosting avec auteur Person, FAQPage tirée de la section « ## FAQ », fil d'Ariane),
+ * signature de l'auteur, lien vers le service lié, CTA sticky à droite sur desktop, articles liés en bas.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageTop from '../../components/layout/PageTop.astro';
+import Footer from '../../components/layout/Footer.astro';
+import Section from '../../components/ui/Section.astro';
+import ConceptCta from '../../components/ui/ConceptCta.astro';
+import ShaderCover from '../../components/ui/ShaderCover.astro';
+import TwoTone from '../../components/ui/TwoTone.astro';
+import { paletteFor } from '../../lib/shader';
+import Contact from '../../components/sections/Contact.astro';
+import JournalPicks from '../../components/sections/JournalPicks.astro';
+import Button from '../../components/ui/Button.astro';
+import { serviceBySlug, serviceHref, serviceArticles } from '../../data/ai';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import { SITE, ORGANIZATION_ID, AUTHOR_ID, authorJsonLd, breadcrumbJsonLd } from '../../lib/seo';
+import { faqFromHtml, faqJsonLd } from '../../lib/faq';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', ({ data }) => data.published);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+}
+const { post } = Astro.props;
+const { Content } = await render(post);
+const uncovered = (await getCollection('posts', ({ data }) => data.published && !data.cover)).map((p) => p.id);
+const palette = paletteFor(post.id, uncovered);
+const format = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+const path = `/blog/${post.id}`;
+const service = serviceBySlug(post.data.service);
+const all = await getCollection('posts', ({ data }) => data.published);
+/* Articles liés : ceux du même service d'abord, puis les plus récents, sans l'article courant. */
+const related = [...(serviceArticles[post.data.service] ?? []), ...all.map((p) => p.id)].filter((id, i, a) => id !== post.id && a.indexOf(id) === i).slice(0, 3);
+/* Titre en deux tons : le second ton commence après le premier « : » ou « ? » (« What is DOOH? <em>Digital out-of-home…</em> »). */
+const titleSoft = post.data.title.match(/^.+?[:?]\s+(.+)$/)?.[1];
+const description = post.data.seo?.description ?? post.data.excerpt;
+const modified = (post.data.updated ?? post.data.date).toISOString();
+const faq = faqFromHtml(post.rendered?.html);
+const jsonLd = [
+  {
+    '@type': 'BlogPosting',
+    '@id': `${SITE.url}${path}#article`,
+    headline: post.data.title,
+    keywords: post.data.keyword,
+    inLanguage: 'en-US',
+    ...(service ? { about: { '@type': 'Service', name: service.label, url: `${SITE.url}${serviceHref(service)}` } } : {}),
+    description,
+    datePublished: post.data.date.toISOString(),
+    dateModified: modified,
+    image: post.data.cover ? `${SITE.url}${post.data.cover.src}` : `${SITE.url}${SITE.defaultImage}`,
+    author: { '@id': AUTHOR_ID },
+    publisher: { '@id': ORGANIZATION_ID },
+    mainEntityOfPage: `${SITE.url}${path}`,
+  },
+  authorJsonLd,
+  breadcrumbJsonLd([
+    { name: 'KOSMO® AI', path: '/' },
+    { name: 'Blog', path: '/blog' },
+    { name: post.data.title, path },
+  ]),
+  ...(faq.length ? [faqJsonLd(faq)] : []),
+];
+---
+
+<BaseLayout
+  title={post.data.seo?.title ?? `${post.data.title} | KOSMO® AI`}
+  description={description}
+  path={path}
+  image={post.data.cover?.src}
+  article={{ published: post.data.date.toISOString(), modified }}
+  jsonLd={jsonLd}
+>
+  <PageTop />
+  <main>
+    <Section spacing="lg">
+      <div class="grid grid-cols-(--article-cols) items-start gap-(--article-gap) max-lg:grid-cols-1 max-lg:gap-12">
+      <article class="flex max-w-(--prose-max) flex-col gap-8">
+        <nav aria-label="Breadcrumb" class="text-tagline">
+          <a href="/blog" class="text-(--label-color) transition-colors duration-(--duration-color) hover:text-black">← Blog</a>
+        </nav>
+        <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-tagline text-(--label-color)">
+          <span class="chip [--chip-surface:var(--kosmo-black)] [--label-color:var(--kosmo-white)]">{post.data.kind}</span>
+          <span>By <a href="#author" rel="author" class="underline-offset-2 hover:underline">Eugène Roux</a></span>
+          <time datetime={post.data.date.toISOString()}>{format.format(post.data.date)}</time>
+          {post.data.updated && <span>Updated <time datetime={post.data.updated.toISOString()}>{format.format(post.data.updated)}</time></span>}
+          <span>{post.data.readingMinutes} min read</span>
+        </div>
+        <h1 class="heading-h3"><TwoTone text={post.data.title} soft={titleSoft} /></h1>
+        <p class="text-body-large text-(--body-soft)">{post.data.excerpt}</p>
+        <div class="card p-(--card-pad)">
+          {post.data.cover ? <img src={post.data.cover.src} alt={post.data.cover.alt} width="1600" height="900" fetchpriority="high" class="aspect-video w-full rounded-default object-cover" /> : <ShaderCover palette={palette} class="aspect-video w-full rounded-default" />}
+        </div>
+        <div class="prose-kosmo text-body-large">
+          <Content />
+        </div>
+        <div id="author" class="card flex flex-col gap-3 p-(--card-pad)">
+          <span class="text-tagline text-(--label-color)">About the author</span>
+          <p class="text-body-medium"><strong>Eugène Roux</strong> is the co-founder and CEO of KOSMO®, the CGI and mixed reality studio behind campaigns for Netflix, Zalando, Miele and Porsche, and of its AI production arm, KOSMO® AI.</p>
+          {service && (
+            <div class="flex flex-wrap gap-2 pt-2">
+              <Button href={serviceHref(service)} label={service.label} variant="dark" />
+              <Button href="/work" label="see our work" variant="light" />
+            </div>
+          )}
+        </div>
+      </article>
+      <aside class="lg:sticky lg:top-(--process-sticky-top)">
+        <ConceptCta sidebar ai />
+      </aside>
+      </div>
+    </Section>
+    <JournalPicks overline="keep reading" heading="More on AI production. Guides, costs and examples." slugs={related} />
+    <Contact id="contact" />
+  </main>
+  <Footer />
+</BaseLayout>
