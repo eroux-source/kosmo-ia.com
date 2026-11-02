@@ -217,7 +217,7 @@ export const services: AiService[] = [
       title: 'UGC ads at the speed your tests need.',
       subtitle: 'An AI UGC agency for brands and performance teams: scripted, produced and versioned so you can test more hooks every week.',
       project: 'neoness',
-      image: 'AMB:1',
+      work: 'tui-brazil',
     },
     intro: {
       heading: 'An AI UGC agency built for testing.',
@@ -335,7 +335,7 @@ export const services: AiService[] = [
       title: 'An AI influencer that belongs to your brand.',
       subtitle: 'Virtual influencers and AI brand ambassadors, designed with you and produced consistently across content, campaigns and seasons.',
       project: 'rhode',
-      image: 'AMB:2',
+      work: 'ai-influencer-character',
     },
     intro: {
       heading: 'An AI influencer agency for brands.',
@@ -353,7 +353,7 @@ export const services: AiService[] = [
         { icon: 'sparkles', title: 'Campaign appearances', text: 'Your ambassador inside your ads, launches and events.' },
       ],
     },
-    works: ['lanvin-ai-social', 'balenciaga-ai-social', 'memoria-dernier-rayon', 'loewe-ai-social', 'etam-live-show-cake', 'polene-ai-product-film'],
+    works: ['ai-influencer-character', 'lanvin-ai-social', 'balenciaga-ai-social', 'memoria-dernier-rayon', 'loewe-ai-social', 'polene-ai-product-film'],
     projects: ['rhode', 'jylor', 'oysho-i', 'icemoon', 'zalando-lounge-balance', 'extreme'],
     faq: [
       { question: 'What is an AI influencer?', answer: 'A virtual character that posts and appears in campaigns like a real influencer. For a brand, it works as an ambassador the brand fully owns.' },

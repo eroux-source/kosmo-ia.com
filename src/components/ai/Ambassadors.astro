@@ -1,13 +1,12 @@
 ---
 /**
- * « Our AI ambassadors » (page AI influencers) : les trois ambassadeurs créés par KOSMO®, chacun dans une carte blanche
- * « fenêtre » (média à 6 px du bord, rayon 2 px) : le post vertical à gauche, le visuel de campagne à droite, puis le
- * nom et le registre. Mobile : cartes empilées, post au-dessus du visuel.
+ * Vitrine de l'influenceur IA de KOSMO® (page AI influencers) : en-tête de section, le lookbook (trois tenues) en carte
+ * « fenêtre » pleine largeur, puis l'image éditoriale et le film côte à côte. Mobile : empilés.
  */
 import Section from '../ui/Section.astro';
 import Eyebrow from '../ui/Eyebrow.astro';
 import TwoTone from '../ui/TwoTone.astro';
-import { ambassadors } from '../../data/ai-work';
+import { influencer } from '../../data/ai-work';
 
 interface Props {
   id?: string;
@@ -18,25 +17,32 @@ const { id } = Astro.props;
 <Section id={id} data-fade="trigger" class="scroll-mt-(--nav-inset)">
   <Eyebrow label="made by kosmo®" />
   <div class="mt-(--head-gap) grid grid-cols-2 items-end gap-10 max-lg:grid-cols-1">
-    <h2 data-stagger-text class="heading-h3"><TwoTone text="Meet our AI ambassadors." /></h2>
+    <h2 data-stagger-text class="heading-h3"><TwoTone text="One character. Every look, every scene." /></h2>
     <p data-fade="target" class="max-w-(--head-intro-max) justify-self-end text-body-medium text-(--body-soft) max-lg:justify-self-start">
-      Three characters we designed and produced in house, wearing our own brand. The same face in every image, from a campaign shot to a casual post: that consistency is the whole job.
+      Our own AI influencer, designed and produced in house. The same face and the same personality in a lookbook, an editorial shoot and a film: exactly what we build for a brand.
     </p>
   </div>
-  <ul class="mt-12 flex flex-col gap-3">
-    {
-      ambassadors.map((a) => (
-        <li data-fade="target" class="card grid grid-cols-(--project-cols) gap-(--card-pad) p-(--card-pad) max-md:grid-cols-1">
-          <img src={a.post} alt={`${a.name}: social post`} loading="lazy" decoding="async" class="aspect-portrait w-full rounded-default object-cover max-md:aspect-square" />
-          <div class="flex flex-col gap-(--card-pad)">
-            <img src={a.campaign} alt={`${a.name}: campaign visual`} loading="lazy" decoding="async" class="aspect-video w-full rounded-default object-cover" />
-            <div class="mt-auto flex items-end justify-between gap-4 p-3">
-              <h3 class="heading-h6">{a.name}</h3>
-              <span class="chip">{a.role}</span>
-            </div>
-          </div>
-        </li>
-      ))
-    }
-  </ul>
+  <div data-fade="target" class="card mt-12 p-(--card-pad)">
+    <img src={influencer.lookbook.src} alt={influencer.lookbook.alt} loading="lazy" decoding="async" class="aspect-video w-full rounded-default bg-white object-contain" />
+    <div class="flex items-center justify-between gap-4 p-3">
+      <h3 class="heading-h6">The lookbook</h3>
+      <span class="chip">Three looks, one character</span>
+    </div>
+  </div>
+  <div class="mt-3 grid grid-cols-2 gap-3 max-md:grid-cols-1">
+    <div data-fade="target" class="card p-(--card-pad)">
+      <img src={influencer.editorial.src} alt={influencer.editorial.alt} loading="lazy" decoding="async" class="aspect-video w-full rounded-default object-cover" />
+      <div class="flex items-center justify-between gap-4 p-3">
+        <h3 class="heading-h6">The editorial</h3>
+        <span class="chip">Fashion shoot</span>
+      </div>
+    </div>
+    <div data-fade="target" class="card p-(--card-pad)">
+      <video class="aspect-video w-full rounded-default bg-black object-cover" data-lazy data-src={influencer.video} poster={influencer.poster} muted loop playsinline preload="none"></video>
+      <div class="flex items-center justify-between gap-4 p-3">
+        <h3 class="heading-h6">The film</h3>
+        <span class="chip">Social and campaign</span>
+      </div>
+    </div>
+  </div>
 </Section>

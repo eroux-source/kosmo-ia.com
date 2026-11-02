@@ -19,6 +19,7 @@ export interface AiWork {
 }
 
 export const aiWorks: AiWork[] = [
+  { slug: 'ai-influencer-character', brand: 'KOSMO®', title: 'Our AI influencer', subtitle: 'A character built in house: one face, a full wardrobe, editorials and a film in a car full of flowers.', ratio: '16:9', format: 'Character film, 9 s', industry: 'Fashion', concept: false },
   { slug: 'gucci-ai-fashion-film', brand: 'Gucci', title: 'Desert couture', subtitle: 'A fashion film shot nowhere: a cast in embroidered coats across a dry lake, built entirely with AI.', ratio: '16:9', format: 'Fashion film, 22 s', industry: 'Fashion', concept: true },
   { slug: 'alaia-ai-tv-spot', brand: 'Alaïa', title: 'Red lens', subtitle: 'A TV spot for a pair of sunglasses: leather, velvet and one red lens, in ten seconds.', ratio: '16:9', format: 'TV spot, 10 s', industry: 'Fashion', concept: true },
   { slug: 'zara-ai-fashion-film', brand: 'Zara', title: 'Paris, off duty', subtitle: 'A street-style campaign film in Paris, cast, styled and shot with AI.', ratio: '16:9', format: 'Campaign film, 15 s', industry: 'Fashion', concept: true },
@@ -58,28 +59,10 @@ export function aiItem(w: AiWork): MosaicItem {
   };
 }
 
-/**
- * Ambassadeurs IA créés par KOSMO® (Higgsfield, 02/11/2026) : visuels hébergés sur le stockage Higgsfield du compte
- * KOSMO® (WebP compressés). À rapatrier dans public/images si l'on veut se passer de ce stockage.
- */
-const HF = 'https://d2ol7oe51mr4n9.cloudfront.net/user_2wfxxwdDlbdG7tjzItT0Ln2Igtz';
-export const ambassadors = [
-  {
-    name: 'The beauty ambassador',
-    role: 'Skincare and beauty',
-    campaign: `${HF}/5727c820-5469-4c87-bea8-cf67ad1b9dbc.webp`,
-    post: `${HF}/41ca636f-3b91-407d-86d8-3386659119be.webp`,
-  },
-  {
-    name: 'The sport ambassador',
-    role: 'Running and fitness',
-    campaign: `${HF}/10ae4418-3673-4823-aa20-da191edb7b06.webp`,
-    post: `${HF}/44d8fff9-b374-498e-aba4-c924758d16bc.webp`,
-  },
-  {
-    name: 'The tech creator',
-    role: 'Tech and lifestyle',
-    campaign: `${HF}/03635524-dcb1-4857-a7c5-0efe9d2b060e.webp`,
-    post: `${HF}/3ada389a-b553-42b6-bc52-4bfb9ff78f29.webp`,
-  },
-];
+/** Influenceur IA de KOSMO® (références fournies par Eugène le 02/11/2026) : lookbook, image éditoriale et film. */
+export const influencer = {
+  video: '/video/ai/ai-influencer-character.mp4',
+  poster: '/images/ai/ai-influencer-character.jpg',
+  lookbook: { src: '/images/ai/ai-influencer-lookbook.webp', alt: 'The KOSMO® AI influencer in three looks: a suede jacket, a lilac tracksuit and a western shirt' },
+  editorial: { src: '/images/ai/ai-influencer-editorial.webp', alt: 'The KOSMO® AI influencer sitting on a tiled floor among vintage toys, in a harlequin cardigan' },
+};
