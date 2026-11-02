@@ -24,6 +24,9 @@ export interface AiService {
   keyword: string;
   seo: { title: string; description: string };
   hero: { title: string; soft?: string; subtitle: string; project: string };
+  /** Vidéo de fond du hero quand aucun film du studio ne correspond : vidéo libre de droits (Mixkit Free License,
+   *  usage commercial, sans attribution), hébergée par Mixkit. Remplace l'affiche du projet dans les cartes et le menu. */
+  stock?: { video: string; poster: string; source: string };
   intro: { heading: string; text: string[] };
   deliverables: { heading: string; items: Deliverable[] };
   /** Projets montrés (slugs de projects.json). */
@@ -207,6 +210,11 @@ export const services: AiService[] = [
       subtitle: 'An AI UGC agency for brands and performance teams: scripted, produced and versioned so you can test more hooks every week.',
       project: 'neoness',
     },
+    stock: {
+      video: 'https://assets.mixkit.co/videos/49141/49141-720.mp4',
+      poster: 'https://assets.mixkit.co/videos/49141/49141-thumb-720-0.jpg',
+      source: 'https://mixkit.co (video 49141, Mixkit Free License)',
+    },
     intro: {
       heading: 'An AI UGC agency built for testing.',
       text: [
@@ -244,6 +252,11 @@ export const services: AiService[] = [
       title: 'Music video production with no limits on the set.',
       subtitle: 'Music videos, visualizers and lyric videos for artists and labels, produced with AI and finished by a CGI team.',
       project: 'nrj-x-fini',
+    },
+    stock: {
+      video: 'https://assets.mixkit.co/videos/42842/42842-720.mp4',
+      poster: 'https://assets.mixkit.co/videos/42842/42842-thumb-720-0.jpg',
+      source: 'https://mixkit.co (video 42842, Mixkit Free License)',
     },
     intro: {
       heading: 'A music video production company for the AI era.',
@@ -283,6 +296,11 @@ export const services: AiService[] = [
       subtitle: 'SaaS explainer videos, app promo videos and product launch films, scripted by people and produced with AI and 3D.',
       project: 'hiscox',
     },
+    stock: {
+      video: 'https://assets.mixkit.co/videos/42652/42652-720.mp4',
+      poster: 'https://assets.mixkit.co/videos/42652/42652-thumb-720-0.jpg',
+      source: 'https://mixkit.co (video 42652, Mixkit Free License)',
+    },
     intro: {
       heading: 'An explainer video company for SaaS and tech.',
       text: [
@@ -321,6 +339,11 @@ export const services: AiService[] = [
       subtitle: 'Virtual influencers and AI brand ambassadors, designed with you and produced consistently across content, campaigns and seasons.',
       project: 'rhode',
     },
+    stock: {
+      video: 'https://assets.mixkit.co/videos/42323/42323-720.mp4',
+      poster: 'https://assets.mixkit.co/videos/42323/42323-thumb-720-0.jpg',
+      source: 'https://mixkit.co (video 42323, Mixkit Free License)',
+    },
     intro: {
       heading: 'An AI influencer agency for brands.',
       text: [
@@ -349,6 +372,11 @@ export const services: AiService[] = [
 
 export const serviceBySlug = (slug: string) => services.find((s) => s.slug === slug);
 export const serviceHref = (s: AiService) => `/${s.slug}`;
+
+/** Média du hero d'un service : la vidéo libre de droits si définie, sinon le film du studio. */
+export function heroMedia(s: AiService, projectVideo: string, projectPoster: string) {
+  return s.stock ? { video: s.stock.video, poster: s.stock.poster } : { video: projectVideo, poster: projectPoster };
+}
 
 /** Ordre du menu : quatre services en vedette (bandes avec image), puis les autres sur une grille. */
 export const featuredServices = ['ai-video-production', 'ai-commercials', 'ai-ugc-agency', 'ai-fashion-beauty'];

@@ -22,6 +22,7 @@ interface Props {
 const { id, overline = 'services', heading = 'Everything a campaign needs. Made with AI.', intro, only, current } = Astro.props;
 const list: AiService[] = only ? (only.map((slug) => services.find((s) => s.slug === slug)).filter(Boolean) as AiService[]) : services;
 const cover = (s: AiService) => {
+  if (s.stock) return s.stock.poster;
   const p = foohBySlug(s.hero.project);
   return (p && poster(p)) ?? '';
 };
