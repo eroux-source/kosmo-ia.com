@@ -14,7 +14,7 @@ import Contact from '../components/sections/Contact.astro';
 import Deliverables from '../components/ai/Deliverables.astro';
 import ServiceGrid from '../components/ai/ServiceGrid.astro';
 import ProjectPicks from '../components/ai/ProjectPicks.astro';
-import { services, serviceHref, heroMedia, aiProcess, type AiService } from '../data/ai';
+import { services, serviceHref, aiProcess, type AiService } from '../data/ai';
 import { brands, bookLabel } from '../data/site';
 import { foohBySlug, poster } from '../lib/fooh';
 import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from '../lib/seo';
@@ -29,8 +29,7 @@ interface Props {
 const { service: s } = Astro.props;
 const path = serviceHref(s);
 const heroProject = foohBySlug(s.hero.project)!;
-const media = heroMedia(s, heroProject.media.mainVideo, poster(heroProject) ?? '');
-const cover = media.poster;
+const cover = poster(heroProject) ?? '';
 const jsonLd = [
   serviceJsonLd(s.keyword.replace(/^\w/, (c) => c.toUpperCase()), s.seo.description, path),
   faqJsonLd(s.faq),
@@ -47,7 +46,7 @@ const jsonLd = [
     <Hero
       title={{ demo: false, text: s.hero.title, soft: s.hero.soft }}
       subtitle={{ demo: false, text: s.hero.subtitle }}
-      video={{ src: media.video, poster: cover }}
+      video={{ src: heroProject.media.mainVideo, poster: cover }}
       fallback={{ src: cover }}
       proof={{ views: '3B+ earned and owned media', partners: brands }}
       primary={{ label: 'contact', href: '/contact' }}

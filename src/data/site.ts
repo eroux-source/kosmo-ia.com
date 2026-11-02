@@ -34,7 +34,7 @@ export const nav = {
     items: featuredServices.map((slug) => {
       const s = serviceBySlug(slug)!;
       const p = foohBySlug(s.hero.project);
-      return { title: s.label, description: s.blurb, href: serviceHref(s), image: s.stock?.poster ?? (p && poster(p)) ?? '' };
+      return { title: s.label, description: s.blurb, href: serviceHref(s), image: (p && poster(p)) ?? '' };
     }),
   },
   services: services

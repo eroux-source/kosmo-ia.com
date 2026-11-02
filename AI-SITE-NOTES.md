@@ -22,10 +22,8 @@
   dans les variables d'environnement Vercel (RB2B utile pour un site US).
 
 ## Médias manquants (aucun film du studio ne correspond vraiment)
-- Hero de AI music videos, AI explainer videos, AI influencers et AI UGC ads : vidéos libres de droits Mixkit
-  (Free License : usage commercial, sans attribution ; ids 42842, 42652, 42323, 49141), hébergées chez Mixkit.
-  Ce sont des visuels d'ambiance, pas des réalisations KOSMO® : les films montrés plus bas restent ceux du studio.
-  À remplacer par de vraies productions IA de KOSMO® dès qu'il y en a, et à héberger soi-même avant la mise en ligne.
+- AI music videos, AI explainer videos, AI influencers, AI UGC ads : films de remplacement pris dans le
+  portfolio. Idéalement, de vraies productions IA de KOSMO® pour ces pages.
 - Les vidéos et logos hébergés sur framer-bg-videos.b-cdn.net / framerusercontent.com ne sont pas copiés en local.
 
 ## Pas encore fait
