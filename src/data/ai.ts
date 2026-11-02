@@ -78,15 +78,15 @@ export const services: AiService[] = [
   {
     slug: 'ai-commercials',
     label: 'AI commercials',
-    blurb: 'Ads for social and digital, built to stop the scroll.',
+    blurb: 'Ads for social, digital and TV, built to stop the scroll.',
     keyword: 'AI commercial production',
     seo: {
       title: 'AI Commercials and AI Ad Agency for Brands | KOSMO® AI',
-      description: 'AI commercial production for social and digital: an AI ad agency that makes scroll-stopping ads for brands, from concept to every format your channels need.',
+      description: 'AI commercial production for social, digital and TV: an AI ad agency for scroll-stopping ads and TV commercial production, delivered in every format.',
     },
     hero: {
       title: 'AI commercials people actually stop for.',
-      subtitle: 'An AI ad agency for digital and social campaigns. One idea, made impossible to scroll past, delivered in every format.',
+      subtitle: 'An AI ad agency for social, digital and TV campaigns. One idea, made impossible to scroll past, delivered in every format.',
       project: 'zalando-prive-tennis',
     },
     intro: {
@@ -94,6 +94,7 @@ export const services: AiService[] = [
       text: [
         'On social, an ad has a second to earn attention. AI commercial production lets us show your product doing something it never could on a set: a giant ball on a Paris fountain, a laptop in a museum, a whole season of fashion balanced on a bench.',
         'As an AI ad agency, we start from the idea, not the tool. Then we generate, animate and finish the ad, and deliver every version your paid and organic plans need.',
+        'The same production also covers TV commercial production: 15, 30 and 60 second spots for national TV and streaming, delivered to broadcast and CTV specs, with cutdowns made alongside the hero spot instead of after it.',
       ],
     },
     deliverables: {
@@ -102,6 +103,7 @@ export const services: AiService[] = [
         { icon: 'bulb', title: 'The idea', text: 'A concept built around one twist people want to share, tested in frames before production.' },
         { icon: 'video', title: 'Hero ad', text: 'The main film, generated and finished with CGI so the product stays exact.' },
         { icon: 'share', title: 'Every format', text: 'Reels, TikTok, YouTube, display and CTV versions, each paced for its platform.' },
+        { icon: 'device-screen', title: 'TV and CTV spots', text: 'TV ad production for 15, 30 and 60 second spots, delivered to the specs of the networks and streaming platforms on your plan.' },
         { icon: 'trending-up', title: 'Variations for testing', text: 'Hooks, openings and endings in several versions, so your media team can test what performs.' },
       ],
     },
@@ -109,6 +111,7 @@ export const services: AiService[] = [
     faq: [
       { question: 'What is an AI commercial?', answer: 'An ad where images, motion or sound are generated with AI instead of filmed. The best ones use AI for what a camera cannot do, and keep the product and the brand exact with CGI and careful finishing.' },
       { question: 'What does an AI ad agency do that an AI tool does not?', answer: 'The idea, the consistency and the finish. Tools generate shots. An agency writes the concept, keeps your product and characters identical from shot to shot, fixes what the model gets wrong and delivers files your media team can run.' },
+      { question: 'Do you produce TV commercials with AI?', answer: 'Yes. We handle TV commercial production from the script and the AI animatic to the broadcast master: 15, 30 and 60 second spots for national TV and streaming, cleared and delivered to network and CTV specs like any other spot.' },
       { question: 'How many versions do we get?', answer: 'We agree the list of formats and variations with you at the brief, so the price and the timeline cover everything your plan needs.' },
       { question: 'Will people know the ad was made with AI?', answer: 'They will notice the idea, not the tool. We avoid the uncanny AI look and we follow the disclosure rules of each platform when they apply.' },
     ],
